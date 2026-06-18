@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #090d11;
+    color: #e7e3da;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow: hidden; /* el scroll vive en el contenedor con snap */
+  }
+
+  ::selection {
+    background: rgba(176, 141, 87, 0.3);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar minimalista para el contenedor con snap */
+  .scroll-shell {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(176, 141, 87, 0.35) transparent;
+  }
+  .scroll-shell::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scroll-shell::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-shell::-webkit-scrollbar-thumb {
+    background-color: rgba(176, 141, 87, 0.3);
+    border-radius: 9999px;
+  }
+
+  /* Velo radial sobre las imágenes de fondo para legibilidad */
+  .veil {
+    background:
+      linear-gradient(to bottom, rgba(9, 13, 17, 0.35), rgba(9, 13, 17, 0.92)),
+      radial-gradient(
+        120% 80% at 50% 20%,
+        rgba(9, 13, 17, 0.1),
+        rgba(9, 13, 17, 0.85)
+      );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   Capa premium · textura, movimiento y acabado
+   ─────────────────────────────────────────────── */
+
+/* Ken Burns — zoom lentísimo e infinito sobre los fondos */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate3d(-1.5%, -1.5%, 0);
+  }
+}
+.animate-ken-burns {
+  animation: ken-burns 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Shimmer metálico sobre las palabras de acento (champaña → oro) */
+@keyframes shimmer {
+  to {
+    background-position: -200% center;
+  }
+}
+.text-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    #b08d57 0%,
+    #f6e7c4 22%,
+    #d8c4a0 45%,
+    #f6e7c4 68%,
+    #b08d57 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+/* Grano de película + viñeta global */
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-4%, 3%);
+  }
+  40% {
+    transform: translate(3%, -4%);
+  }
+  60% {
+    transform: translate(-3%, 2%);
+  }
+  80% {
+    transform: translate(4%, -2%);
+  }
+}
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  animation: grain 0.7s steps(2) infinite;
+}
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    115% 95% at 50% 45%,
+    transparent 58%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* Cursor personalizado — solo en dispositivos con puntero fino */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select {
+  cursor: text !important;
+}
+
+/* Respeto por usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns,
+  .grain-overlay::before {
+    animation: none !important;
+  }
+  .text-shimmer {
+    animation: none !important;
+    color: #e6d5b3;
+    -webkit-text-fill-color: #e6d5b3;
+  }
+}
+
