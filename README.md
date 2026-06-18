@@ -5,7 +5,7 @@
 **Residencias de súper lujo frente al Mar Caribe — Zona Norte, Cartagena de Indias**
 
 Single Page Application inmersiva de presentación inmobiliaria, con una estética
-minimalista, oscura y editorial inspirada en *Mercedes-Benz Places*.
+minimalista y oscura.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
