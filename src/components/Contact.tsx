@@ -33,7 +33,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen w-full snap-start flex-col bg-ink"
+      className="relative flex min-h-screen w-full flex-col bg-ink scroll-mt-20"
     >
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
         <Reveal>

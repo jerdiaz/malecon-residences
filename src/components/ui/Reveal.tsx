@@ -1,73 +1,47 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+
+type RevealVariant = "fade-up" | "fade-left" | "fade-right" | "clip" | "scale";
 
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
-  /** Retardo de la animación en milisegundos (para escalonar elementos). */
+  /** Delay in milliseconds */
   delay?: number;
-  /** Desplazamiento vertical inicial en px. */
-  y?: number;
-  /** Si solo debe animarse la primera vez (por defecto se reanima al reentrar). */
+  variant?: RevealVariant;
   once?: boolean;
 }
 
-/**
- * Envoltorio de aparición al hacer scroll. Usa IntersectionObserver para
- * desvanecer y elevar el contenido cuando entra en el viewport — el gesto
- * que da vida a cada sección al encajar el snap.
- */
+const variants = {
+  "fade-up":    { hidden: { opacity: 0, y: 32 },              visible: { opacity: 1, y: 0 } },
+  "fade-left":  { hidden: { opacity: 0, x: -48 },             visible: { opacity: 1, x: 0 } },
+  "fade-right": { hidden: { opacity: 0, x: 48 },              visible: { opacity: 1, x: 0 } },
+  "clip":       { hidden: { clipPath: "inset(0 0 100% 0)" },  visible: { clipPath: "inset(0 0 0% 0)" } },
+  "scale":      { hidden: { opacity: 0, scale: 0.94 },        visible: { opacity: 1, scale: 1 } },
+} satisfies Record<RevealVariant, { hidden: Record<string, unknown>; visible: Record<string, unknown> }>;
+
 export default function Reveal({
   children,
   className = "",
   delay = 0,
-  y = 28,
+  variant = "fade-up",
   once = false,
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    // Respeta la preferencia de movimiento reducido.
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce) {
-      setShown(true);
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          if (once) io.disconnect();
-        } else if (!once) {
-          setShown(false);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    io.observe(el);
-    return () => io.disconnect();
-  }, [once]);
-
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-[1100ms] ease-silk ${className}`}
-      style={{
-        transitionDelay: `${delay}ms`,
-        opacity: shown ? 1 : 0,
-        transform: shown ? "translateY(0)" : `translateY(${y}px)`,
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, amount: 0.15 }}
+      variants={variants[variant]}
+      transition={{
+        duration: 1.1,
+        delay: delay / 1000,
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

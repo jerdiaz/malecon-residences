@@ -17,7 +17,7 @@
     background-color: #090d11;
     color: #e7e3da;
     font-family: var(--font-sans), system-ui, sans-serif;
-    overflow: hidden; /* el scroll vive en el contenedor con snap */
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -154,6 +154,12 @@ html.has-custom-cursor input,
 html.has-custom-cursor textarea,
 html.has-custom-cursor select {
   cursor: text !important;
+}
+
+/* Ticker horizontal — keyframe disponible para el componente Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Respeto por usuarios que prefieren menos movimiento */

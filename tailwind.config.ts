@@ -40,10 +40,20 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "line-grow": {
+          "0%": { transform: "scaleX(0)" },
+          "100%": { transform: "scaleX(1)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 1.6s ease forwards",
+        "marquee": "marquee 40s linear infinite",
+        "line-grow": "line-grow 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },

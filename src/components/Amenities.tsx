@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 
 interface Amenity {
@@ -50,20 +51,23 @@ const AMENITIES: Amenity[] = [
   },
 ];
 
-/**
- * Galería de amenidades por pestañas. Al cambiar de tab, la imagen de fondo
- * realiza un fundido cruzado y el texto se reanima con un sutil fade-up.
- */
 export default function Amenities() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const navigate = (index: number) => {
+    setDirection(index > active ? 1 : -1);
+    setActive(index);
+  };
+
   const current = AMENITIES[active];
 
   return (
     <section
       id="amenities"
-      className="relative h-screen w-full snap-start overflow-hidden bg-ink"
+      className="relative min-h-screen w-full overflow-hidden bg-ink scroll-mt-20"
     >
-      {/* Capas de fondo con fundido cruzado */}
+      {/* Fondos con fundido cruzado */}
       {AMENITIES.map((a, i) => (
         <div
           key={a.id}
@@ -77,46 +81,83 @@ export default function Amenities() {
       <div className="veil absolute inset-0" />
 
       {/* Contenido */}
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-20 md:px-12 md:pb-28">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-6 pb-20 md:px-12 md:pb-28">
         <Reveal>
           <p className="mb-10 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
             Amenidades · La experiencia
           </p>
         </Reveal>
 
-        <div className="max-w-2xl">
-          {/* key fuerza el re-montaje para reanimar el texto */}
-          <div key={current.id} className="animate-fade-up">
-            <h2 className="text-balance font-serif text-4xl font-extralight leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
-              {current.title}
-            </h2>
-            <p className="mt-6 max-w-xl text-sm font-light leading-relaxed tracking-wide text-white/70 sm:text-base">
-              {current.description}
-            </p>
-          </div>
+        <div className="max-w-2xl overflow-hidden">
+          <AnimatePresence mode="wait" initial={false} custom={direction}>
+            <motion.div
+              key={current.id}
+              custom={direction}
+              variants={{
+                enter: (d: number) => ({ opacity: 0, x: d * 60 }),
+                center: { opacity: 1, x: 0 },
+                exit:  (d: number) => ({ opacity: 0, x: d * -60 }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h2 className="text-balance font-serif text-4xl font-extralight leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+                {current.title}
+              </h2>
+              <p className="mt-6 max-w-xl text-sm font-light leading-relaxed tracking-wide text-white/70 sm:text-base">
+                {current.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Pestañas */}
-        <Reveal delay={200} className="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/10 pt-8">
-          {AMENITIES.map((a, i) => (
-            <button
-              key={a.id}
-              onClick={() => setActive(i)}
-              className={`group relative text-left text-xs font-light uppercase tracking-[0.2em] transition-colors duration-500 sm:text-sm ${
-                i === active ? "text-champagne" : "text-white/45 hover:text-white/80"
-              }`}
-            >
-              <span className="mr-3 font-serif text-[0.7rem] tabular-nums opacity-60">
-                0{i + 1}
-              </span>
-              {a.label}
-              <span
-                className={`absolute -bottom-3 left-0 h-px bg-bronze transition-all duration-500 ease-silk ${
-                  i === active ? "w-full" : "w-0 group-hover:w-1/2"
+        <Reveal delay={200} className="mt-12 border-t border-white/10 pt-8">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+            {AMENITIES.map((a, i) => (
+              <button
+                key={a.id}
+                onClick={() => navigate(i)}
+                className={`group relative text-left text-xs font-light uppercase tracking-[0.2em] transition-colors duration-500 sm:text-sm ${
+                  i === active ? "text-champagne" : "text-white/45 hover:text-white/80"
                 }`}
-              />
-            </button>
-          ))}
+              >
+                <span className="mr-3 font-serif text-[0.7rem] tabular-nums opacity-60">
+                  0{i + 1}
+                </span>
+                {a.label}
+                <motion.span
+                  className="absolute -bottom-3 left-0 h-px bg-bronze"
+                  initial={false}
+                  animate={{ width: i === active ? "100%" : "0%" }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </button>
+            ))}
+
+            {/* Flechas de navegación */}
+            <div className="ml-auto flex items-center gap-4">
+              <button
+                onClick={() => navigate((active - 1 + AMENITIES.length) % AMENITIES.length)}
+                className="flex h-9 w-9 items-center justify-center border border-white/20 text-white/60 transition-all duration-300 hover:border-bronze hover:text-champagne"
+                aria-label="Anterior"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M9 1L3 7L9 13" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                </svg>
+              </button>
+              <button
+                onClick={() => navigate((active + 1) % AMENITIES.length)}
+                className="flex h-9 w-9 items-center justify-center border border-white/20 text-white/60 transition-all duration-300 hover:border-bronze hover:text-champagne"
+                aria-label="Siguiente"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M5 1L11 7L5 13" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

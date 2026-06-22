@@ -18,7 +18,7 @@ export function useActiveSection(ids: string[]): string {
           }
         }
       },
-      { threshold: 0.55 },
+      { threshold: 0.25 },
     );
 
     for (const id of ids) {

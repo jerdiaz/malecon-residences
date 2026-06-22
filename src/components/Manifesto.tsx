@@ -1,9 +1,9 @@
-import Reveal from "@/components/ui/Reveal";
+"use client";
 
-/**
- * Manifiesto — sección de máximo "whitespace". Un texto sobrio y poético
- * sobre habitar el umbral entre el Caribe y la calma de la Zona Norte.
- */
+import { motion } from "framer-motion";
+import Reveal from "@/components/ui/Reveal";
+import SplitWords from "@/components/ui/SplitWords";
+
 export default function Manifesto() {
   return (
     <section
@@ -19,22 +19,44 @@ export default function Manifesto() {
       </span>
 
       <div className="relative mx-auto max-w-3xl text-center">
-        <Reveal>
+        <Reveal delay={0}>
           <p className="mb-12 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
             La filosofía
           </p>
         </Reveal>
 
-        <Reveal delay={150}>
-          <p className="text-balance font-serif text-2xl font-extralight leading-[1.6] tracking-wide text-white/90 sm:text-3xl md:text-4xl md:leading-[1.55]">
-            Hay un lugar donde el mar deja de ser paisaje
-            <span className="text-champagne"> y se vuelve rutina</span>. Donde el
-            amanecer no se contempla: se habita.
-          </p>
-        </Reveal>
+        {/* Cita principal — palabra por palabra al estilo editorial MB Places */}
+        <p className="text-balance font-serif text-2xl font-extralight leading-[1.6] tracking-wide text-white/90 sm:text-3xl md:text-4xl md:leading-[1.55]">
+          <SplitWords
+            text="Hay un lugar donde el mar deja de ser paisaje"
+            delay={150}
+            stagger={48}
+          />
+          {" "}
+          <SplitWords
+            text="y se vuelve rutina."
+            delay={700}
+            stagger={48}
+            className="text-champagne"
+          />
+          {" "}
+          <SplitWords
+            text="Donde el amanecer no se contempla: se habita."
+            delay={1050}
+            stagger={44}
+          />
+        </p>
 
-        <Reveal delay={300}>
-          <div className="mx-auto my-12 h-px w-16 bg-bronze/40" />
+        {/* Separador animado */}
+        <motion.div
+          className="mx-auto my-12 h-px w-16 origin-center bg-bronze/40"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 1.2, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+
+        <Reveal delay={2000}>
           <p className="mx-auto max-w-xl text-sm font-light leading-loose tracking-wide text-white/55 sm:text-base">
             En la Zona Norte de Cartagena, entre la brisa del Caribe y la quietud
             de la ciénaga, concebimos un refugio para quienes entienden que el
