@@ -38,7 +38,7 @@ export default function Contact() {
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
         <Reveal>
           <p className="mb-5 text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
-            Presentación privada
+            Visita privada
           </p>
         </Reveal>
         <Reveal delay={120}>
