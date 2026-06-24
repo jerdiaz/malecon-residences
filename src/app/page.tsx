@@ -21,7 +21,7 @@ export default function Home() {
         <StoryBlock
           id="residencias"
           kicker="El Proyecto"
-          title="Diseñado para quienes no aceptan medias tintas."
+          title="Diseñado para quienes aprecian la calidad."
           body="Espacios irrepetibles distribuidos en seis niveles boutique. Materiales nobles, acabados de autor y vistas que hacen del horizonte una presencia constante. Cada espacio es una declaración de intenciones."
           image="/images/renders/render-08.png"
           imagePos="right"

@@ -84,17 +84,17 @@ function ImagePanel({ image }: { image: string }) {
   return (
     <motion.div
       className="relative min-h-[55vw] overflow-hidden lg:min-h-0"
-      initial={{ clipPath: "inset(0 0 100% 0)" }}
-      whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-      viewport={{ once: false, amount: 0.15 }}
-      transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.08 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${image}')` }}
-        initial={{ scale: 1.08 }}
+        initial={{ scale: 1.06 }}
         whileInView={{ scale: 1 }}
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: false, amount: 0.08 }}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       />
     </motion.div>
