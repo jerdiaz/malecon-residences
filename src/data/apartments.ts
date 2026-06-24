@@ -18,7 +18,7 @@ export const apartments: Apartment[] = [
     bedrooms: 4,
     bathrooms: 5,
     view: "Sunset View",
-    status: "disponible",
+    status: "reservado",
     tier: "Grand Penthouse",
   },
   {
