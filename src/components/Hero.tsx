@@ -5,9 +5,6 @@ const TICKER_ITEMS = [
   "Zona Norte · Cartagena de Indias",
   "Oficinas y Locales de Lujo",
   "Frente al Mar Caribe",
-  "6 Niveles Boutique",
-  "280 m de Playa Privada",
-  "Entrega 2026",
 ];
 
 export default function Hero() {
