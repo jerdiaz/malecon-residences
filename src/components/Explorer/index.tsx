@@ -21,7 +21,7 @@ export default function Explorer() {
         <div className="flex min-h-0 flex-col">
           <Reveal>
             <p className="mb-2 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
-              Las residencias
+              Las unidades
             </p>
             <h2 className="mb-6 font-serif text-3xl font-extralight tracking-tight text-white sm:text-4xl">
               Diez unidades.{" "}
@@ -175,7 +175,7 @@ function AnimatedCard({ active }: { active: Apartment }) {
       </button>
 
       <p className="mt-4 text-[0.65rem] font-light leading-relaxed tracking-wide text-white/35">
-        Pasa el cursor sobre la fachada para explorar cada residencia.
+        Pasa el cursor sobre la fachada para explorar cada unidad.
       </p>
     </motion.div>
   );

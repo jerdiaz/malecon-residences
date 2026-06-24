@@ -38,13 +38,13 @@ export default function Navbar() {
           <button
             onClick={() => handleNavigate("hero")}
             className="group flex flex-col items-start leading-none"
-            aria-label="Malecón Residences — inicio"
+            aria-label="Malecón Business Center — inicio"
           >
             <span className="font-serif text-xl font-light tracking-[0.3em] text-white">
               MALECÓN
             </span>
             <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.45em] text-bronze/80 transition-colors group-hover:text-champagne">
-              Residences
+              Business Center
             </span>
           </button>
 

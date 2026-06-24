@@ -19,9 +19,9 @@ const sans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Malecón Residences · Zona Norte, Cartagena de Indias",
+  title: "Malecón Business Center · Zona Norte, Cartagena de Indias",
   description:
-    "Residencias de súper lujo frente al Mar Caribe. Una colección boutique de unidades exclusivas en la Zona Norte de Cartagena de Indias.",
+    "Proyecto de uso mixto de súper lujo frente al Mar Caribe. Espacios exclusivos de oficinas y vivienda en la Zona Norte de Cartagena de Indias.",
 };
 
 export default function RootLayout({

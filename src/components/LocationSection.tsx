@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
 
@@ -17,13 +19,30 @@ const HIGHLIGHTS = [
   { value: "12°C", label: "brisa permanente" },
 ];
 
+// ── Tabs del panel derecho ─────────────────────────────────────────────────
+const TABS = ["Foto", "Mapa"] as const;
+type Tab = typeof TABS[number];
+
+// ── URL del iframe de Google Maps ──────────────────────────────────────────
+// Para obtener la URL correcta:
+//   1. Abre Google Maps y navega hasta el lote
+//   2. Clic en "Compartir" → "Insertar un mapa"
+//   3. Copia la URL que aparece dentro de src="..."
+//   4. Pégala aquí reemplazando el valor de MAP_EMBED_URL
+const MAP_EMBED_URL =
+  "https://maps.google.com/maps?q=10.4441,-75.5127&t=k&z=17&ie=UTF8&iwloc=&output=embed";
+// ──────────────────────────────────────────────────────────────────────────
+
 export default function LocationSection() {
+  const [activeTab, setActiveTab] = useState<Tab>("Foto");
+
   return (
     <section
       id="ubicacion"
       className="relative min-h-screen w-full bg-ink scroll-mt-20"
     >
       <div className="grid min-h-screen grid-cols-1 items-stretch lg:grid-cols-2">
+
         {/* ── Columna de texto ── */}
         <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
           <Reveal>
@@ -102,49 +121,99 @@ export default function LocationSection() {
           </Reveal>
         </div>
 
-        {/* ── Columna de imagen aérea ── */}
-        <motion.div
-          className="relative min-h-[50vw] overflow-hidden lg:min-h-0"
-          initial={{ clipPath: "inset(0 0 100% 0)" }}
-          whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Vista aérea de costa caribeña */}
-          <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1600&q=80')",
-            }}
-            initial={{ scale: 1.08 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: false, amount: 0.15 }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          />
+        {/* ── Columna derecha: foto aérea + mapa ── */}
+        <div className="relative flex flex-col min-h-[60vw] lg:min-h-0">
 
-          {/* Velo inferior */}
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+          {/* Tabs */}
+          <div className="absolute top-6 left-6 z-20 flex gap-1">
+            {TABS.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] transition-all duration-300 ${
+                  activeTab === tab
+                    ? "bg-bronze/90 text-ink"
+                    : "bg-ink/60 text-white/60 backdrop-blur-sm hover:text-white"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
 
-          {/* Marcador de ubicación */}
-          <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ delay: 0.8, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Anillo exterior pulsante */}
-            <span className="absolute -inset-4 animate-ping rounded-full bg-bronze/20" />
-            <span className="absolute -inset-2 rounded-full bg-bronze/30" />
-            {/* Punto central */}
-            <span className="relative block h-3 w-3 rounded-full bg-bronze shadow-[0_0_16px_rgba(176,141,87,0.9)]" />
-            {/* Etiqueta */}
-            <span className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-sm bg-ink/80 px-3 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] text-champagne backdrop-blur-sm">
-              Malecón Residences
-            </span>
-          </motion.div>
-        </motion.div>
+          {/* Panel: Foto aérea real del terreno */}
+          <AnimatePresence mode="wait">
+            {activeTab === "Foto" && (
+              <motion.div
+                key="foto"
+                className="absolute inset-0 overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Image
+                  src="/images/lote/terreno-aereo.jpg"
+                  alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                  priority
+                />
+                {/* Velo inferior */}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+
+                {/* Marcador de ubicación */}
+                <motion.div
+                  className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <span className="absolute -inset-4 animate-ping rounded-full bg-bronze/25" />
+                  <span className="absolute -inset-2 rounded-full bg-bronze/35" />
+                  <span className="relative block h-3 w-3 rounded-full bg-bronze shadow-[0_0_16px_rgba(176,141,87,0.9)]" />
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-sm bg-ink/80 px-3 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] text-champagne backdrop-blur-sm">
+                    Malecón Business Center
+                  </span>
+                </motion.div>
+
+                {/* Badge pie de foto */}
+                <div className="absolute bottom-6 left-6">
+                  <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/50">
+                    Foto aérea · Zona Norte · Cartagena de Indias
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Panel: Mapa embebido */}
+            {activeTab === "Mapa" && (
+              <motion.div
+                key="mapa"
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <iframe
+                  src={MAP_EMBED_URL}
+                  title="Ubicación Malecón Business Center"
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                {/* Overlay con branding encima del mapa */}
+                <div className="pointer-events-none absolute bottom-6 left-6">
+                  <span className="rounded-sm bg-ink/80 px-3 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] text-champagne backdrop-blur-sm">
+                    Malecón Business Center · Zona Norte
+                  </span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

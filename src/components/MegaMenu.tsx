@@ -5,18 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { scrollToSection } from "@/lib/sections";
 
 const MENU_LINKS = [
-  { id: "residencias", label: "Residencias",  number: "01" },
-  { id: "ubicacion",   label: "Ubicación",    number: "02" },
-  { id: "amenities",   label: "Amenidades",   number: "03" },
-  { id: "explorer",    label: "Unidades",     number: "04" },
+  { id: "residencias", label: "El Proyecto",  number: "01" },
+  { id: "galeria",     label: "Galería",      number: "02" },
+  { id: "ubicacion",   label: "Ubicación",    number: "03" },
+  { id: "amenities",   label: "Amenidades",   number: "04" },
   { id: "contact",     label: "Contacto",     number: "05" },
 ];
 
 const INFO_ITEMS = [
   { label: "Dirección",  value: "Zona Norte, Cartagena de Indias" },
   { label: "Teléfono",   value: "+57 305 000 0000" },
-  { label: "Email",      value: "info@maleconresidences.com" },
-  { label: "Entrega",    value: "2026 · Diez unidades exclusivas" },
+  { label: "Email",      value: "info@maleconbc.com" },
+  { label: "Entrega",    value: "2026 · Espacios exclusivos" },
 ];
 
 interface MegaMenuProps {
@@ -57,7 +57,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
                 MALECÓN
               </span>
               <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.45em] text-bronze/80">
-                Residences
+                Business Center
               </span>
             </button>
 
@@ -123,8 +123,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')",
+                    backgroundImage: "url('/images/renders/render-04.png')",
                   }}
                 />
                 <div className="absolute inset-0 bg-ink/30" />
@@ -169,7 +168,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
           >
             <div className="flex flex-col gap-2 text-[0.6rem] font-light uppercase tracking-[0.2em] text-white/30 sm:flex-row sm:justify-between">
               <span>Zona Norte · Cartagena de Indias · Colombia</span>
-              <span>© {new Date().getFullYear()} Malecón Residences — Todos los derechos reservados</span>
+              <span>© {new Date().getFullYear()} Malecón Business Center — Todos los derechos reservados</span>
             </div>
           </motion.div>
         </motion.div>

@@ -4,6 +4,15 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PLANTILLA DE AMENIDADES — editar aquí
+// Agrega, elimina o modifica los objetos de este arreglo.
+// Cada amenidad tiene:
+//   label       → nombre corto que aparece en la barra de tabs (ej. "Rooftop Pool")
+//   title       → título grande que aparece en pantalla (ej. "Una lámina de agua")
+//   description → párrafo descriptivo debajo del título
+//   image       → URL o ruta local de la imagen de fondo (ej. "/images/renders/render-04.png")
+// ─────────────────────────────────────────────────────────────────────────────
 interface Amenity {
   id: string;
   label: string;
@@ -14,42 +23,39 @@ interface Amenity {
 
 const AMENITIES: Amenity[] = [
   {
-    id: "pool",
-    label: "Rooftop Infinity Pool",
-    title: "Una lámina de agua sobre el Caribe",
+    id: "amenidad-1",
+    label: "Nombre amenidad 1",                        // TODO: editar
+    title: "Título de la primera amenidad",            // TODO: editar
     description:
-      "En la cubierta, la piscina infinita disuelve el horizonte. El borde desaparece y el mar parece comenzar entre tus manos, mientras la ciudad antigua se enciende en la distancia.",
-    image:
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2400&q=80",
+      "Descripción de la amenidad. Explica la experiencia, los materiales, la atmósfera. Aproximadamente dos o tres frases que transmitan el valor de este espacio para el residente.",  // TODO: editar
+    image: "/images/renders/render-06.png",            // TODO: reemplazar con imagen real
   },
   {
-    id: "beach",
-    label: "Private Beach Club",
-    title: "Arena privada, ritmo propio",
+    id: "amenidad-2",
+    label: "Nombre amenidad 2",                        // TODO: editar
+    title: "Título de la segunda amenidad",            // TODO: editar
     description:
-      "Un club de playa exclusivo para residentes: cabañas de lino, servicio discreto y acceso directo a la orilla. El privilegio de un Caribe sin multitudes.",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=80",
+      "Descripción de la amenidad. Explica la experiencia, los materiales, la atmósfera. Aproximadamente dos o tres frases que transmitan el valor de este espacio para el residente.",  // TODO: editar
+    image: "/images/renders/render-08.png",            // TODO: reemplazar con imagen real
   },
   {
-    id: "spa",
-    label: "Wellness Spa",
-    title: "El cuerpo en pausa",
+    id: "amenidad-3",
+    label: "Nombre amenidad 3",                        // TODO: editar
+    title: "Título de la tercera amenidad",            // TODO: editar
     description:
-      "Un santuario de piedra, agua y penumbra. Circuitos termales, salas de tratamiento y una arquitectura pensada para el reposo absoluto de los sentidos.",
-    image:
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2400&q=80",
+      "Descripción de la amenidad. Explica la experiencia, los materiales, la atmósfera. Aproximadamente dos o tres frases que transmitan el valor de este espacio para el residente.",  // TODO: editar
+    image: "/images/renders/render-09.png",            // TODO: reemplazar con imagen real
   },
   {
-    id: "lounge",
-    label: "VIP Lounge",
-    title: "El arte de recibir",
+    id: "amenidad-4",
+    label: "Nombre amenidad 4",                        // TODO: editar
+    title: "Título de la cuarta amenidad",             // TODO: editar
     description:
-      "Un salón privado de techos altos y materiales nobles para reuniones íntimas, catas y veladas. Hospitalidad curada, lejos de cualquier mirada.",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80",
+      "Descripción de la amenidad. Explica la experiencia, los materiales, la atmósfera. Aproximadamente dos o tres frases que transmitan el valor de este espacio para el residente.",  // TODO: editar
+    image: "/images/renders/render-07.png",            // TODO: reemplazar con imagen real
   },
 ];
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Amenities() {
   const [active, setActive] = useState(0);

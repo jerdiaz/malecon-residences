@@ -12,12 +12,12 @@ export default function VideoSection() {
     >
       {/* Vídeo de fondo — reemplazar src con el vídeo real del proyecto */}
       <video
-        className="absolute inset-0 h-full w-full object-cover opacity-35"
+        className="absolute inset-0 h-full w-full object-cover opacity-60"
         autoPlay
         muted
         loop
         playsInline
-        poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=80"
+        poster="/images/renders/render-04.png"
       >
         <source src="/video/malecon-highlight.mp4" type="video/mp4" />
       </video>
@@ -34,10 +34,10 @@ export default function VideoSection() {
         </Reveal>
 
         <h2 className="mx-auto max-w-4xl font-serif text-5xl font-extralight leading-[1.08] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
-          <SplitWords text="Una sola dirección." delay={150} stagger={58} />
+          <SplitWords text="Donde los negocios" delay={150} stagger={58} />
           <br />
           <SplitWords
-            text="Un mundo aparte."
+            text="se encuentran con el mar."
             delay={750}
             stagger={58}
             className="italic text-champagne"
