@@ -1,0 +1,13 @@
+# Configuración de build para Netlify.
+# Netlify detecta Next.js y aplica su runtime automáticamente; aquí lo
+# dejamos explícito para que el build sea reproducible y versionado.
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  # Fija la versión de Node (Next 15 requiere >= 18.18). Usamos 20 LTS.
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
