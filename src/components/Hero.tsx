@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import ScrollCue from "@/components/ScrollCue";
 import Marquee from "@/components/ui/Marquee";
 
@@ -8,10 +11,17 @@ const TICKER_ITEMS = [
 ];
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.playbackRate = 0.5;
+  }, []);
+
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Video de fondo */}
       <video
+        ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
