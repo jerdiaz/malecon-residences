@@ -14,7 +14,7 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) videoRef.current.playbackRate = 0.5;
+    if (videoRef.current) videoRef.current.playbackRate = 0.7;
   }, []);
 
   return (
