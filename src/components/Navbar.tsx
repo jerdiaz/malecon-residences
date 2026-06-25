@@ -57,7 +57,7 @@ export default function Navbar() {
                   <button
                     onClick={() => handleNavigate(section.id)}
                     className={`group relative text-[0.7rem] font-light uppercase tracking-[0.25em] transition-colors ${
-                      isActive ? "text-champagne" : "text-white/70 hover:text-white"
+                      isActive ? "text-champagne" : "text-white/90 hover:text-white"
                     }`}
                   >
                     {section.label}
@@ -88,7 +88,7 @@ export default function Navbar() {
               aria-expanded={menuOpen}
               className="group flex items-center gap-2.5"
             >
-              <span className="hidden text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/70 transition-colors group-hover:text-white sm:inline">
+              <span className="hidden text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-colors group-hover:text-white sm:inline">
                 {menuOpen ? "Cerrar" : "Menú"}
               </span>
               <span className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]">
