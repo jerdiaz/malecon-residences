@@ -29,7 +29,7 @@ export default function Hero() {
         playsInline
         poster="/images/renders/render-04.png"
       >
-        <source src="/video/malecon-highlight.mp4" type="video/mp4" />
+        <source src="/video/video_202606291024.mp4" type="video/mp4" />
       </video>
       <div className="veil absolute inset-0" />
 
