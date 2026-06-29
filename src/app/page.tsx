@@ -22,7 +22,7 @@ export default function Home() {
           id="residencias"
           kicker="El Proyecto"
           title="Diseñado para quienes aprecian la calidad."
-          body="Oficinas y locales de lujo frente al Mar Caribe. Materiales nobles, acabados de autor y vistas que convierten el horizonte en parte del negocio. Un proyecto diseñado para quienes entienden que la dirección lo dice todo."
+          body="Oficinas y locales de lujo frente al Mar Caribe. Materiales nobles, acabados de autor y vistas que hacen del horizonte una presencia constante. Cada espacio está pensado para inspirar, producir y proyectar."
           image="/images/renders/render-08.png"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
