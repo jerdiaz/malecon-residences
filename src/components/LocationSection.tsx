@@ -143,7 +143,7 @@ export default function LocationSection() {
 
                 {/* Marcador de ubicación */}
                 <motion.div
-                  className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2"
+                  className="absolute left-1/2 top-[62%] -translate-x-1/2 -translate-y-1/2"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
