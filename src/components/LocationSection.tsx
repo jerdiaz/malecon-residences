@@ -13,12 +13,6 @@ const DISTANCES = [
   { place: "La Boquilla · Playa Natural",           time: "4 min",  km: "2.1 km" },
 ];
 
-const HIGHLIGHTS = [
-  { value: "0 m",  label: "al mar" },
-  { value: "280",  label: "metros de playa" },
-  { value: "12°C", label: "brisa permanente" },
-];
-
 // ── Tabs del panel derecho ─────────────────────────────────────────────────
 const TABS = ["Foto", "Mapa"] as const;
 type Tab = typeof TABS[number];
@@ -65,22 +59,6 @@ export default function LocationSection() {
               sobre el Mar Caribe, entre la brisa constante y el paisaje sin igual
               de la ciudad amurallada al horizonte.
             </p>
-          </Reveal>
-
-          {/* Highlights */}
-          <Reveal delay={800}>
-            <div className="mt-12 grid grid-cols-3 gap-px overflow-hidden border border-white/10">
-              {HIGHLIGHTS.map((h) => (
-                <div key={h.label} className="flex flex-col gap-1 bg-ink/80 px-5 py-5">
-                  <span className="font-serif text-2xl font-extralight text-champagne sm:text-3xl">
-                    {h.value}
-                  </span>
-                  <span className="text-[0.6rem] font-light uppercase tracking-[0.2em] text-white/40">
-                    {h.label}
-                  </span>
-                </div>
-              ))}
-            </div>
           </Reveal>
 
           {/* Tabla de distancias */}
