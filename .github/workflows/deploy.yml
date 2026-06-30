@@ -28,7 +28,20 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             set -e
-            cd "${{ secrets.VPS_APP_PATH }}"
+
+            APP_PATH="${{ secrets.VPS_APP_PATH }}"
+            REPO_URL="https://github.com/jerdiaz/malecon-residences.git"
+            # Puerto al que apunta nginx (maleconcenter.duckdns.org → localhost:3050).
+            export PORT=3050
+
+            # Si el directorio no existe (p. ej. lo borraron al reorganizar el VPS),
+            # clonamos el repo en lugar de abortar en el cd.
+            if [ ! -d "$APP_PATH/.git" ]; then
+              echo "→ El directorio no existe; clonando el repo..."
+              git clone "$REPO_URL" "$APP_PATH"
+            fi
+
+            cd "$APP_PATH"
 
             echo "→ Trayendo últimos cambios de main..."
             git fetch --all
@@ -40,8 +53,9 @@ jobs:
             echo "→ Compilando (next build)..."
             npm run build
 
-            echo "→ Reiniciando la app con PM2..."
-            pm2 reload malecon || pm2 start npm --name malecon -- start
+            echo "→ Reiniciando la app con PM2 (PORT=$PORT)..."
+            # Si el proceso no existe, lo creamos con el puerto correcto.
+            pm2 reload malecon --update-env || pm2 start npm --name malecon --update-env -- start
             pm2 save
 
             echo "✓ Despliegue completado."
