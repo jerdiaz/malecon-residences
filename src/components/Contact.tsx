@@ -6,10 +6,20 @@ import Reveal from "@/components/ui/Reveal";
 interface FormState {
   nombre: string;
   email: string;
-  telefono: string;
+  celular: string;
+  empresa: string;
+  cargo: string;
+  mensaje: string;
 }
 
-const EMPTY: FormState = { nombre: "", email: "", telefono: "" };
+const EMPTY: FormState = {
+  nombre: "",
+  email: "",
+  celular: "",
+  empresa: "",
+  cargo: "",
+  mensaje: "",
+};
 
 /**
  * Contacto — formulario VIP minimalista para agendar una presentación privada.
@@ -21,7 +31,7 @@ export default function Contact() {
 
   const handleChange =
     (field: keyof FormState) =>
-    (e: React.ChangeEvent<HTMLInputElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -101,12 +111,34 @@ export default function Contact() {
               required
             />
             <Field
-              label="Teléfono"
+              label="Celular"
               type="tel"
-              value={form.telefono}
-              onChange={handleChange("telefono")}
+              value={form.celular}
+              onChange={handleChange("celular")}
               autoComplete="tel"
               required
+            />
+            <Field
+              label="Empresa"
+              type="text"
+              value={form.empresa}
+              onChange={handleChange("empresa")}
+              autoComplete="organization"
+              required
+            />
+            <Field
+              label="Cargo"
+              type="text"
+              value={form.cargo}
+              onChange={handleChange("cargo")}
+              autoComplete="organization-title"
+              required
+            />
+            <Textarea
+              label="Mensaje (opcional)"
+              value={form.mensaje}
+              onChange={handleChange("mensaje")}
+              className="sm:col-span-2"
             />
 
             <div className="sm:col-span-2">
@@ -179,6 +211,34 @@ function Field({
           className="peer w-full border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
         />
         {/* Línea ámbar que se pinta de izquierda a derecha al enfocar */}
+        <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
+      </div>
+    </label>
+  );
+}
+
+/* ── Subcomponente: área de texto de línea fina ── */
+
+interface TextareaProps {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  className?: string;
+}
+
+function Textarea({ label, value, onChange, className = "" }: TextareaProps) {
+  return (
+    <label className={`group block ${className}`}>
+      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/40 transition-colors duration-500 group-focus-within:text-amber-400">
+        {label}
+      </span>
+      <div className="relative">
+        <textarea
+          value={value}
+          onChange={onChange}
+          rows={3}
+          className="peer w-full resize-none border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
+        />
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
       </div>
     </label>
