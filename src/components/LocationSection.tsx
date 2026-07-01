@@ -55,18 +55,20 @@ export default function LocationSection() {
 
           <Reveal delay={600} variant="fade-up">
             <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              La franja costera más exclusiva de Cartagena de Indias. Directamente
-              sobre el Mar Caribe, entre la brisa constante y el paisaje sin igual
-              de la ciudad amurallada al horizonte.
+              Situado en el polo de mayor desarrollo económico de la ciudad,
+              Malecón Business Center conecta a las empresas con un entorno
+              estratégico. El escenario definitivo para capitalizar nuevas
+              oportunidades y consolidar su liderazgo en la región con mayor
+              proyección del Caribe colombiano.
             </p>
           </Reveal>
 
           <Reveal delay={800} variant="fade-up">
             <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              Una de las zonas de mayor desarrollo económico de la ciudad: el
-              entorno estratégico ideal para hacer negocios, acceder a nuevas
-              oportunidades y fortalecer la confianza de clientes e
-              inversionistas en su empresa.
+              Más que oficinas de alta gama, diseñamos un ecosistema
+              corporativo concebido para proyectar la identidad de su marca,
+              inspirar absoluta confianza en clientes e inversionistas, y
+              potenciar el éxito empresarial desde una ubicación inigualable.
             </p>
           </Reveal>
 
