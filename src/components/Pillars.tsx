@@ -32,9 +32,10 @@ const PANELS: Panel[] = [
 ];
 
 /**
- * Segunda vista — acordeón vertical de 3 columnas ("Vertical Expanding
- * Accordion"). Apiladas por defecto; al pasar el cursor (o al tocar en
- * móvil) el panel activo se expande revelando su descripción.
+ * Segunda vista — 3 columnas de igual ancho ("Fine Dining / Luxury Stays"
+ * style, inspirado en burjkhalifa.ae). Al pasar el cursor (o tocar en
+ * móvil) el panel no cambia de tamaño; solo se aclara su imagen y revela
+ * su descripción debajo del título.
  */
 export default function Pillars() {
   const [active, setActive] = useState<number | null>(null);
@@ -50,7 +51,6 @@ export default function Pillars() {
       <div className="relative flex min-h-screen flex-col md:h-screen md:flex-row">
         {PANELS.map((panel, i) => {
           const isActive = active === i;
-          const isDimmed = active !== null && !isActive;
 
           return (
             <button
@@ -62,13 +62,7 @@ export default function Pillars() {
               onBlur={() => clearIfActive(i)}
               onClick={() => setActive((prev) => (prev === i ? null : i))}
               aria-label={panel.heading}
-              className={`group relative w-full overflow-hidden border-b border-white/5 text-left transition-all duration-700 ease-out last:border-none md:h-full md:w-auto md:border-b-0 md:border-r ${
-                isActive
-                  ? "h-[46vh] md:flex-[2.2]"
-                  : isDimmed
-                  ? "h-[17vh] md:flex-[0.55]"
-                  : "h-[28vh] md:flex-1"
-              }`}
+              className="group relative h-[33vh] w-full flex-1 overflow-hidden border-b border-white/5 text-left last:border-none md:h-full md:border-b-0 md:border-r"
             >
               {/* Imagen de fondo */}
               <div
