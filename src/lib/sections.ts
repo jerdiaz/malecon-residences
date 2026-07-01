@@ -6,6 +6,7 @@ export interface SectionLink {
 
 export const SECTIONS: SectionLink[] = [
   { id: "hero",        label: "Inicio",      hideInNav: true },
+  { id: "pillars",     label: "Pilares",     hideInNav: true },
   { id: "residencias", label: "El Proyecto"                },
   { id: "galeria",     label: "Galería"                   },
   { id: "entorno",     label: "Entorno",     hideInNav: true },
