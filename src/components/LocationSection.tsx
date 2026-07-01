@@ -61,6 +61,15 @@ export default function LocationSection() {
             </p>
           </Reveal>
 
+          <Reveal delay={800} variant="fade-up">
+            <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
+              Una de las zonas de mayor desarrollo económico de la ciudad: el
+              entorno estratégico ideal para hacer negocios, acceder a nuevas
+              oportunidades y fortalecer la confianza de clientes e
+              inversionistas en su empresa.
+            </p>
+          </Reveal>
+
           {/* Tabla de distancias */}
           <Reveal delay={1000}>
             <div className="mt-10">
