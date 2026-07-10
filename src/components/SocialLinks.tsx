@@ -57,31 +57,16 @@ export default function SocialLinks() {
         </svg>
       </a>
 
-      {/* TikTok — glow cian/magenta original al activar */}
+      {/* LinkedIn — azul original al activar */}
       <a
-        href="https://tiktok.com/" // TODO: perfil real
+        href="https://linkedin.com/" // TODO: perfil real
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="TikTok"
-        className="group relative block text-white/40 transition-colors duration-300 group-hover:text-white"
+        aria-label="LinkedIn"
+        className="group block text-white/40 transition-colors duration-300 hover:text-[#0A66C2] focus-visible:text-[#0A66C2] active:text-[#0A66C2]"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
-          {/* Base monocromática */}
-          <path
-            fill="currentColor"
-            className={`transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 group-active:opacity-0`}
-            d="M16.5 2h-2.9v13.6a2.55 2.55 0 1 1-2.55-2.55c.28 0 .56.05.8.13v-2.98a5.6 5.6 0 0 0-.8-.06 5.65 5.65 0 1 0 5.65 5.65V9.2a7.35 7.35 0 0 0 4 1.2V7.4a4.32 4.32 0 0 1-3-1.03A4.32 4.32 0 0 1 16.5 3.4V2Z"
-          />
-          {/* Capa blanca con glow de marca */}
-          <path
-            fill="#fff"
-            style={{
-              filter:
-                "drop-shadow(1.4px 0 #25F4EE) drop-shadow(-1.4px 0 #FE2C55)",
-            }}
-            className={`opacity-0 transition-opacity duration-300 ${ACTIVE}`}
-            d="M16.5 2h-2.9v13.6a2.55 2.55 0 1 1-2.55-2.55c.28 0 .56.05.8.13v-2.98a5.6 5.6 0 0 0-.8-.06 5.65 5.65 0 1 0 5.65 5.65V9.2a7.35 7.35 0 0 0 4 1.2V7.4a4.32 4.32 0 0 1-3-1.03A4.32 4.32 0 0 1 16.5 3.4V2Z"
-          />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
         </svg>
       </a>
 

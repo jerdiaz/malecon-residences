@@ -164,8 +164,47 @@ export default function Contact() {
 
       {/* Pie */}
       <footer className="border-t border-white/5 px-6 py-8 md:px-12">
-        {/* Redes sociales y contacto */}
-        <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4">
+        {/* Datos de contacto — dirección, teléfono y correo */}
+        <div className="mx-auto mb-10 grid max-w-7xl grid-cols-1 gap-8 text-center sm:grid-cols-3">
+          <div>
+            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+              Dirección
+            </p>
+            {/* TODO: dirección física real */}
+            <p className="text-sm font-light leading-relaxed text-white/55">
+              Zona Norte · Cartagena de Indias
+              <br />
+              Bolívar, Colombia
+            </p>
+          </div>
+          <div>
+            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+              Teléfono
+            </p>
+            {/* TODO: número real */}
+            <a
+              href="tel:+573001234567"
+              className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
+            >
+              +57 300 123 4567
+            </a>
+          </div>
+          <div>
+            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+              Correo
+            </p>
+            {/* TODO: correo real */}
+            <a
+              href="mailto:info@maleconbusinesscenter.com"
+              className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
+            >
+              info@maleconbusinesscenter.com
+            </a>
+          </div>
+        </div>
+
+        {/* Redes sociales */}
+        <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4 border-t border-white/5 pt-8">
           <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
             Síguenos
           </p>

@@ -11,6 +11,7 @@ import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
 import SectionNav from "@/components/SectionNav";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -76,6 +77,9 @@ En Malecón Business Center desarrollamos un proyecto de oficinas corporativas e
 
         <Contact />
       </main>
+
+      {/* Botón flotante de WhatsApp — permanente abajo a la derecha */}
+      <WhatsAppButton />
     </>
   );
 }
