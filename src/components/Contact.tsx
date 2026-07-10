@@ -152,7 +152,7 @@ export default function Contact() {
                   aria-hidden
                   className="absolute inset-0 -translate-x-full bg-bronze/10 transition-transform duration-700 ease-silk group-hover:translate-x-0"
                 />
-                <span className="relative z-10">Agendar presentación</span>
+                <span className="relative z-10">Agendar tu cita</span>
                 <span className="relative z-10 text-bronze transition-transform duration-500 ease-silk group-hover:translate-x-1">
                   →
                 </span>
@@ -204,7 +204,7 @@ export default function Contact() {
         </div>
 
         {/* Redes sociales */}
-        <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4 border-t border-white/5 pt-8">
+        <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4 pt-4">
           <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
             Síguenos
           </p>
@@ -215,7 +215,6 @@ export default function Contact() {
           <span className="font-serif text-sm tracking-[0.3em] text-white/60">
             MALECÓN <span className="text-bronze/70">·</span> BUSINESS CENTER
           </span>
-          <span>Zona Norte · Cartagena de Indias · Colombia</span>
           <span>© {new Date().getFullYear()} — Todos los derechos reservados</span>
         </div>
       </footer>
