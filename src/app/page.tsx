@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import BrandReveal from "@/components/BrandReveal";
 import Pillars from "@/components/Pillars";
 import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
@@ -21,9 +20,6 @@ export default function Home() {
       <SectionNav />
       <main>
         <Hero />
-
-        {/* Transición cinética — reveal del nombre de marca al bajar */}
-        <BrandReveal />
 
         {/* Segunda vista — los 3 pilares (acordeón interactivo) */}
         <Pillars />
