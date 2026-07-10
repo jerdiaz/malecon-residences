@@ -142,7 +142,7 @@ export default function LocationSection() {
                 transition={{ duration: 0.5 }}
               >
                 <Image
-                  src="/images/lote/terreno-aereo.jpg"
+                  src="/images/lote/maleconn.jpeg"
                   alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
