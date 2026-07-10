@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/ui/Reveal";
+import SocialLinks from "@/components/SocialLinks";
 
 interface FormState {
   nombre: string;
@@ -162,8 +163,16 @@ export default function Contact() {
       </div>
 
       {/* Pie */}
-      <footer className="border-t border-white/5 px-6 py-6 md:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/30 sm:flex-row">
+      <footer className="border-t border-white/5 px-6 py-8 md:px-12">
+        {/* Redes sociales y contacto */}
+        <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4">
+          <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
+            Síguenos
+          </p>
+          <SocialLinks />
+        </div>
+
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/30 sm:flex-row">
           <span className="font-serif text-sm tracking-[0.3em] text-white/60">
             MALECÓN <span className="text-bronze/70">·</span> BUSINESS CENTER
           </span>
