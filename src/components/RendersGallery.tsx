@@ -28,7 +28,7 @@ export default function RendersGallery() {
           </p>
         </Reveal>
         <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
-          <SplitWords text="El proyecto. En detalle." delay={100} stagger={50} />
+          <SplitWords text="Galería." delay={100} stagger={50} />
         </h2>
         <Reveal delay={500}>
           <p className="mt-6 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
