@@ -54,21 +54,22 @@ export default function RendersGallery() {
         </Reveal>
       </div>
 
-      {/* Carrusel — avanza solo; se pausa mientras el cursor está encima */}
-      <div
-        className="mx-auto max-w-7xl px-6 md:px-12"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+      {/* Carrusel — avanza solo; se pausa solo al pasar el cursor sobre una foto */}
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div
           key={slide}
           className="grid animate-[fade-in_0.4s_ease-out] grid-cols-1 gap-3 sm:grid-cols-2"
         >
           {/* Foto grande */}
-          <RenderTile render={current[0]} className="sm:col-span-2" big />
+          <RenderTile
+            render={current[0]}
+            className="sm:col-span-2"
+            big
+            onHoverChange={setPaused}
+          />
           {/* Dos fotos pequeñas */}
-          <RenderTile render={current[1]} />
-          <RenderTile render={current[2]} />
+          <RenderTile render={current[1]} onHoverChange={setPaused} />
+          <RenderTile render={current[2]} onHoverChange={setPaused} />
         </div>
       </div>
 
@@ -88,14 +89,18 @@ function RenderTile({
   render,
   big = false,
   className = "",
+  onHoverChange,
 }: {
   render: (typeof RENDERS)[number];
   big?: boolean;
   className?: string;
+  onHoverChange?: (hovering: boolean) => void;
 }) {
   return (
     <Link
       href={`/galeria/${render.slug}`}
+      onMouseEnter={() => onHoverChange?.(true)}
+      onMouseLeave={() => onHoverChange?.(false)}
       className={`group relative block overflow-hidden ${className}`}
     >
       <div
