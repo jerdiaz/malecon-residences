@@ -52,9 +52,16 @@ export default function StoryBlock({
             </h2>
 
             <Reveal delay={600} variant="fade-up">
-              <p className="text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-                {body}
-              </p>
+              <div className="space-y-4">
+                {body.split("\n\n").map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </Reveal>
 
             {cta && (

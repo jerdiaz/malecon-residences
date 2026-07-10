@@ -47,7 +47,7 @@ export default function LocationSection() {
 
           <h2 className="mb-8 font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
             <SplitWords
-              text="En el corazón de la Zona Norte."
+              text="¿Por qué elegir un centro de negocios en Cartagena?"
               delay={100}
               stagger={42}
             />
@@ -55,20 +55,20 @@ export default function LocationSection() {
 
           <Reveal delay={600} variant="fade-up">
             <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              Situado en el polo de mayor desarrollo económico de la ciudad,
-              Malecón Business Center conecta a las empresas con un entorno
-              estratégico. El escenario definitivo para capitalizar nuevas
-              oportunidades y consolidar su liderazgo en la región con mayor
-              proyección del Caribe colombiano.
+              Ubicado en una de las zonas de mayor desarrollo económico de
+              Cartagena, Malecón Business Center conecta a las empresas con un
+              entorno estratégico para hacer negocios, acceder a nuevas
+              oportunidades y consolidar su presencia en una de las ciudades
+              con mayor proyección del Caribe colombiano.
             </p>
           </Reveal>
 
           <Reveal delay={800} variant="fade-up">
             <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              Más que oficinas de alta gama, diseñamos un ecosistema
-              corporativo concebido para proyectar la identidad de su marca,
-              inspirar absoluta confianza en clientes e inversionistas, y
-              potenciar el éxito empresarial desde una ubicación inigualable.
+              Más que oficinas premium en Cartagena, ofrecemos un centro de
+              negocios pensado para fortalecer la identidad de las empresas,
+              generar confianza en clientes e inversionistas y proporcionar un
+              entorno que impulse el éxito empresarial.
             </p>
           </Reveal>
 
