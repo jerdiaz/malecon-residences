@@ -23,8 +23,8 @@ const PANELS: Panel[] = [
     image: "/images/hero/locales.jpeg",
   },
   {
-    id: "business-hub",
-    heading: "Business Hub",
+    id: "rooftop",
+    heading: "Rooftop",
     description:
       "El escenario perfecto para cerrar tratos con vista al horizonte.",
     image: "/images/hero/rooftop.jpeg",
@@ -81,9 +81,6 @@ export default function Pillars() {
 
               {/* Contenido del panel */}
               <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-10">
-                <span className="mb-3 font-serif text-xs tabular-nums text-bronze/80">
-                  0{i + 1}
-                </span>
                 <h3 className="font-serif text-xl font-light uppercase tracking-[0.3em] text-white sm:text-2xl">
                   {panel.heading}
                 </h3>
