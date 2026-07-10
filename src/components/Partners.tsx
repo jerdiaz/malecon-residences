@@ -33,13 +33,13 @@ const PARTNERS: Partner[] = [
 export default function Partners() {
   return (
     <section
-      id="aliados"
+      id="marcas"
       className="relative w-full overflow-hidden bg-ink py-24 scroll-mt-20 md:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <Reveal>
           <p className="text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
-            Aliados
+            Confianza
           </p>
         </Reveal>
         <Reveal delay={120}>

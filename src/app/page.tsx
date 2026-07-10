@@ -6,6 +6,7 @@ import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
 import LocationSection from "@/components/LocationSection";
 import Amenities from "@/components/Amenities";
+import Aliados from "@/components/Aliados";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -67,7 +68,10 @@ En Malecón Business Center desarrollamos un proyecto de oficinas corporativas e
 
         <Amenities />
 
-        {/* Aliados — marcas que han confiado en nosotros (marquee) */}
+        {/* Aliados estratégicos (distintos de las marcas) */}
+        <Aliados />
+
+        {/* Marcas que han confiado en nosotros (marquee) */}
         <Partners />
 
         <Contact />
