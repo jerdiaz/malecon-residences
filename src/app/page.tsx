@@ -42,7 +42,7 @@ export default function Home() {
         {/* Por qué escogernos */}
         <StoryBlock
           id="porque"
-          kicker="Por qué escogernos"
+          kicker="¿Por qué escogernos?"
           title="¿Por qué instalar tu empresa en un centro de negocios de alto nivel?"
           body={`El lugar donde opera una empresa también construye su reputación. Un centro de negocios moderno no solo ofrece oficinas; proyecta confianza, fortalece la imagen corporativa y crea el entorno ideal para impulsar el crecimiento empresarial.
 
