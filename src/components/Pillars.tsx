@@ -48,6 +48,9 @@ export default function Pillars() {
       id="pillars"
       className="relative w-full overflow-hidden bg-[#090d11] min-h-screen md:h-screen"
     >
+      {/* Fundido de entrada — disuelve la costura con el final del Hero */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-32 bg-gradient-to-b from-[#090d11] to-transparent md:h-40" />
+
       <div className="relative flex min-h-screen flex-col md:h-screen md:flex-row">
         {PANELS.map((panel, i) => {
           const isActive = active === i;
