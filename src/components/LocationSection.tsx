@@ -7,10 +7,10 @@ import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
 
 const DISTANCES = [
-  { place: "Aeropuerto Internacional Rafael Núñez", time: "8 min",  km: "5.2 km" },
-  { place: "Centro Histórico · Ciudad Amurallada",  time: "12 min", km: "7.8 km" },
-  { place: "Bocagrande · Zona Comercial",           time: "6 min",  km: "3.5 km" },
-  { place: "La Boquilla · Playa Natural",           time: "4 min",  km: "2.1 km" },
+  { place: "Aeropuerto Internacional Rafael Núñez", minutes: 8,  km: "5.2 km" },
+  { place: "Centro Histórico · Ciudad Amurallada",  minutes: 12, km: "7.8 km" },
+  { place: "Bocagrande · Zona Comercial",           minutes: 6,  km: "3.5 km" },
+  { place: "La Boquilla · Playa Natural",           minutes: 4,  km: "2.1 km" },
 ];
 
 // ── Tabs del panel derecho ─────────────────────────────────────────────────
@@ -72,37 +72,36 @@ export default function LocationSection() {
             </p>
           </Reveal>
 
-          {/* Tabla de distancias */}
+          {/* Distancias clave — grilla de tarjetas 2×2 */}
           <Reveal delay={1000}>
-            <div className="mt-10">
-              <p className="mb-5 text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
+            <div className="mt-10 max-w-xl">
+              <p className="mb-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
                 Distancias clave
               </p>
-              <div className="space-y-0">
+              <div className="grid grid-cols-2 gap-3">
                 {DISTANCES.map((d, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.1 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
                     transition={{
                       delay: 1.1 + i * 0.1,
                       duration: 0.6,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="flex items-center justify-between border-b border-white/[0.07] py-3 last:border-b-0"
+                    className="border border-white/10 p-5 transition-colors duration-500 ease-silk hover:border-bronze/50"
                   >
-                    <span className="text-[0.75rem] font-light tracking-wide text-white/60">
-                      {d.place}
+                    <span className="flex items-baseline font-serif text-4xl font-extralight leading-none text-champagne">
+                      {d.minutes}
+                      <span className="ml-1.5 font-sans text-[0.65rem] font-light uppercase tracking-[0.15em] text-bronze/70">
+                        min
+                      </span>
                     </span>
-                    <div className="ml-4 flex shrink-0 items-center gap-4">
-                      <span className="font-serif text-sm font-light text-champagne">
-                        {d.time}
-                      </span>
-                      <span className="text-[0.65rem] font-light text-white/30">
-                        {d.km}
-                      </span>
-                    </div>
+                    <p className="mt-4 text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-white/55">
+                      {d.place}
+                    </p>
+                    <p className="mt-1.5 text-[0.65rem] font-light text-white/30">{d.km}</p>
                   </motion.div>
                 ))}
               </div>
