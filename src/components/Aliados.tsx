@@ -6,19 +6,17 @@ import Reveal from "@/components/ui/Reveal";
 // ALIADOS — aliados estratégicos del proyecto (distintos de "Marcas que han
 // confiado en nosotros"). Reemplaza cada plantilla por el aliado real:
 //   name  → nombre del aliado
-//   role  → rol / categoría (constructora, banca, firma legal, etc.)
 //   Para el logo real: sube el archivo a /public/images/aliados y cambia
 //   <PlaceholderMark> por <img src="/images/aliados/tu-logo.svg" ... />
 // ─────────────────────────────────────────────────────────────────────────────
 interface Ally {
   name: string;
-  role: string;
 }
 
 const ALLIES: Ally[] = [
-  { name: "Aliado 01", role: "Constructora" },
-  { name: "Aliado 02", role: "Entidad financiera" },
-  { name: "Aliado 03", role: "Firma legal" },
+  { name: "Aliado 01" },
+  { name: "Aliado 02" },
+  { name: "Aliado 03" },
 ];
 
 /**
@@ -53,14 +51,9 @@ export default function Aliados() {
               className="group flex flex-col items-center gap-5 bg-ink px-8 py-14 transition-colors duration-500 hover:bg-white/[0.02]"
             >
               <PlaceholderMark />
-              <div className="text-center">
-                <p className="font-serif text-lg font-light tracking-[0.15em] text-white/80 transition-colors duration-500 group-hover:text-champagne">
-                  {ally.name}
-                </p>
-                <p className="mt-2 text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
-                  {ally.role}
-                </p>
-              </div>
+              <p className="text-center font-serif text-lg font-light tracking-[0.15em] text-white/80 transition-colors duration-500 group-hover:text-champagne">
+                {ally.name}
+              </p>
             </div>
           ))}
         </div>
