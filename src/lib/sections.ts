@@ -8,10 +8,12 @@ export const SECTIONS: SectionLink[] = [
   { id: "hero",        label: "Inicio",      hideInNav: true },
   { id: "pillars",     label: "Pilares",     hideInNav: true },
   { id: "residencias", label: "El Proyecto"                },
+  { id: "porque",      label: "Por qué",     hideInNav: true },
   { id: "galeria",     label: "Galería"                   },
   { id: "entorno",     label: "Entorno",     hideInNav: true },
   { id: "ubicacion",   label: "Ubicación",   hideInNav: true },
   { id: "amenities",   label: "Amenidades"                },
+  { id: "aliados",     label: "Aliados",     hideInNav: true },
   { id: "contact",     label: "Contacto"                  },
 ];
 

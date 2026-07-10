@@ -6,6 +6,7 @@ import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
 import LocationSection from "@/components/LocationSection";
 import Amenities from "@/components/Amenities";
+import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
 import SectionNav from "@/components/SectionNav";
@@ -29,11 +30,23 @@ export default function Home() {
         <StoryBlock
           id="residencias"
           kicker="El Proyecto"
-          title="Diseñado para quienes aprecian la calidad."
-          body="Oficinas y locales de lujo frente al Mar Caribe. Materiales nobles, acabados de autor y vistas que hacen del horizonte una presencia constante. Cada espacio está pensado para inspirar, producir y proyectar."
+          title="Edificio de oficinas y locales corporativos de alto nivel."
+          body="Malecón Business Center es un moderno centro de negocios ubicado en Cartagena, diseñado para ofrecer oficinas corporativas de alto nivel. Sus espacios boutique, acabados premium y excelente ubicación lo convierten en una opción ideal para empresas, profesionales e inversionistas que buscan un entorno empresarial exclusivo."
           image="/images/renders/render-08.png"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
+        />
+
+        {/* Por qué escogernos */}
+        <StoryBlock
+          id="porque"
+          kicker="Por qué escogernos"
+          title="¿Por qué instalar tu empresa en un centro de negocios de alto nivel?"
+          body={`El lugar donde opera una empresa también construye su reputación. Un centro de negocios moderno no solo ofrece oficinas; proyecta confianza, fortalece la imagen corporativa y crea el entorno ideal para impulsar el crecimiento empresarial.
+
+En Malecón Business Center desarrollamos un proyecto de oficinas corporativas en Cartagena diseñado para empresas, inversionistas y profesionales que buscan un espacio alineado con los más altos estándares de calidad, funcionalidad y prestigio. Nuestra arquitectura contemporánea, los acabados premium y los espacios cuidadosamente diseñados reflejan los valores de organizaciones que entienden que la excelencia también se comunica a través de su sede.`}
+          image="/images/renders/render-04.png"
+          imagePos="left"
         />
 
         {/* Galería de renders arquitectónicos */}
@@ -53,6 +66,10 @@ export default function Home() {
         <LocationSection />
 
         <Amenities />
+
+        {/* Aliados — marcas que han confiado en nosotros (marquee) */}
+        <Partners />
+
         <Contact />
       </main>
     </>
