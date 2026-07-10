@@ -39,7 +39,7 @@ export default function StoryBlock({
         {imagePos === "left" && <ImagePanel image={image} />}
 
         {/* Texto */}
-        <div className="flex items-center px-8 py-28 lg:px-16 xl:px-24">
+        <div className="flex items-center px-8 py-28 lg:items-start lg:px-16 xl:px-24">
           <div className="max-w-lg">
             <Reveal>
               <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">

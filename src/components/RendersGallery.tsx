@@ -31,7 +31,7 @@ export default function RendersGallery() {
   const current = SLIDES[slide];
 
   return (
-    <section id="galeria" className="relative w-full bg-stone-950 scroll-mt-20 py-24 lg:py-32">
+    <section id="galeria" className="relative w-full bg-ink scroll-mt-20 py-24 lg:py-32">
       {/* Header */}
       <div className="mx-auto max-w-7xl px-6 md:px-12 mb-16">
         <Reveal>
@@ -58,16 +58,16 @@ export default function RendersGallery() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div
           key={slide}
-          className="grid animate-[fade-in_0.4s_ease-out] grid-cols-1 gap-3 sm:grid-cols-2"
+          className="grid animate-[fade-in_0.4s_ease-out] grid-cols-1 gap-3 sm:h-[60vh] sm:max-h-[480px] sm:grid-cols-3 sm:grid-rows-2"
         >
-          {/* Foto grande */}
+          {/* Foto grande — ocupa 2 columnas y ambas filas */}
           <RenderTile
             render={current[0]}
-            className="sm:col-span-2"
+            className="sm:col-span-2 sm:row-span-2"
             big
             onHoverChange={setPaused}
           />
-          {/* Dos fotos pequeñas */}
+          {/* Dos fotos pequeñas, apiladas a la derecha */}
           <RenderTile render={current[1]} onHoverChange={setPaused} />
           <RenderTile render={current[2]} onHoverChange={setPaused} />
         </div>
@@ -105,7 +105,7 @@ function RenderTile({
     >
       <div
         className={`relative w-full overflow-hidden ${
-          big ? "h-[52vw] max-h-[520px] sm:h-[42vw]" : "h-[52vw] max-h-[380px] sm:h-[38vw]"
+          big ? "h-72 sm:h-full" : "h-56 sm:h-full"
         }`}
       >
         <Image
