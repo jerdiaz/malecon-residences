@@ -77,6 +77,26 @@
   will-change: transform;
 }
 
+/* Ken Burns corto — para la foto activa de un slide/carrusel puntual */
+@keyframes gallery-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Barra de progreso — se llena de 0% a 100% mientras dura un slide */
+@keyframes gallery-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* Shimmer metálico sobre las palabras de acento (champaña → oro) */
 @keyframes shimmer {
   to {

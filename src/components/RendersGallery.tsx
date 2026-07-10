@@ -31,11 +31,11 @@ export default function RendersGallery() {
   const current = SLIDES[slide];
 
   return (
-    <section id="galeria" className="relative w-full bg-ink scroll-mt-20 py-24 lg:py-32">
-      {/* Header */}
-      <div className="mx-auto max-w-7xl px-6 md:px-12 mb-16">
+    <section id="galeria" className="relative w-full bg-ink scroll-mt-20 py-28 lg:py-40">
+      {/* Header — con más aire alrededor para una composición más exclusiva */}
+      <div className="mx-auto max-w-7xl px-6 md:px-12 mb-20 lg:mb-28">
         <Reveal>
-          <p className="mb-5 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+          <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
             Galería
           </p>
         </Reveal>
@@ -47,52 +47,63 @@ export default function RendersGallery() {
           />
         </h2>
         <Reveal delay={500}>
-          <p className="mt-6 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
+          <p className="mt-8 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
             Nueve perspectivas del Malecón Business Center. Arquitectura contemporánea
             diseñada para la Zona Norte de Cartagena de Indias.
           </p>
         </Reveal>
       </div>
 
-      {/* Carrusel — avanza solo; se pausa solo al pasar el cursor sobre una foto */}
+      {/* Carrusel — composición asimétrica; avanza solo, se pausa al pasar el cursor sobre una foto */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div
           key={slide}
-          className="grid animate-[fade-in_0.4s_ease-out] grid-cols-1 gap-3 sm:h-[60vh] sm:max-h-[480px] sm:grid-cols-3 sm:grid-rows-2"
+          className="flex animate-[fade-in_0.4s_ease-out] flex-col gap-4 sm:h-[65vh] sm:max-h-[560px] sm:flex-row"
         >
-          {/* Foto grande — ocupa 2 columnas y ambas filas */}
+          {/* Foto grande — ~65% del ancho, con leve desfase de posición */}
           <RenderTile
             render={current[0]}
-            className="sm:col-span-2 sm:row-span-2"
-            big
+            className="h-80 w-full sm:h-full sm:w-[65%] sm:translate-y-4"
             onHoverChange={setPaused}
           />
-          {/* Dos fotos pequeñas, apiladas a la derecha */}
-          <RenderTile render={current[1]} onHoverChange={setPaused} />
-          <RenderTile render={current[2]} onHoverChange={setPaused} />
+
+          {/* Columna derecha — asimétrica: una más alargada y desplazada, otra más baja */}
+          <div className="flex w-full flex-col gap-4 sm:w-[35%]">
+            <RenderTile
+              render={current[1]}
+              className="h-64 w-full sm:h-[58%] sm:-translate-y-6"
+              onHoverChange={setPaused}
+            />
+            <RenderTile
+              render={current[2]}
+              className="h-56 w-full sm:h-[42%] sm:mt-2"
+              onHoverChange={setPaused}
+            />
+          </div>
+        </div>
+
+        {/* Barra de progreso — se llena mientras dura el slide activo */}
+        <div className="mt-8 h-px w-full bg-white/10">
+          <div
+            key={slide}
+            className="h-full bg-amber-500/80"
+            style={{
+              animation: `gallery-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
+              animationPlayState: paused ? "paused" : "running",
+            }}
+          />
         </div>
       </div>
-
-      {/* Número total de renders */}
-      <Reveal delay={200}>
-        <div className="mx-auto mt-8 max-w-7xl px-6 text-right md:px-12">
-          <span className="font-serif text-[0.65rem] font-light uppercase tracking-[0.35em] text-white/20">
-            9 perspectivas · Malecón Business Center
-          </span>
-        </div>
-      </Reveal>
     </section>
   );
 }
 
 function RenderTile({
   render,
-  big = false,
   className = "",
   onHoverChange,
 }: {
   render: (typeof RENDERS)[number];
-  big?: boolean;
   className?: string;
   onHoverChange?: (hovering: boolean) => void;
 }) {
@@ -101,24 +112,23 @@ function RenderTile({
       href={`/galeria/${render.slug}`}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
-      className={`group relative block overflow-hidden ${className}`}
+      className={`group relative block overflow-hidden transition-all duration-700 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 ${className}`}
     >
-      <div
-        className={`relative w-full overflow-hidden ${
-          big ? "h-72 sm:h-full" : "h-56 sm:h-full"
-        }`}
-      >
+      <div className="relative h-full w-full overflow-hidden">
         <Image
           src={render.src}
           alt={render.label}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
-          className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+          className="object-cover"
+          style={{
+            animation: "gallery-ken-burns 8000ms ease-out forwards",
+          }}
         />
         {/* Velo inferior */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100" />
         {/* Etiqueta */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-5 opacity-0 transition-all duration-700 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
           <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
             {render.label}
           </p>
