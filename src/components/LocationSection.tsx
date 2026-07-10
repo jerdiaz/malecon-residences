@@ -135,7 +135,7 @@ export default function LocationSection() {
             {activeTab === "Foto" && (
               <motion.div
                 key="foto"
-                className="absolute inset-0 overflow-hidden"
+                className="absolute inset-0 overflow-hidden bg-ink"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -146,7 +146,7 @@ export default function LocationSection() {
                   alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center"
+                  className="object-contain object-center"
                   priority
                 />
                 {/* Velo inferior */}
