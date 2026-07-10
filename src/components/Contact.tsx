@@ -183,10 +183,10 @@ export default function Contact() {
             </p>
             {/* TODO: número real */}
             <a
-              href="tel:+573001234567"
+              href="tel:+570000000000"
               className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
             >
-              +57 300 123 4567
+              +57 000 000 0000
             </a>
           </div>
           <div>
@@ -195,10 +195,10 @@ export default function Contact() {
             </p>
             {/* TODO: correo real */}
             <a
-              href="mailto:info@maleconbusinesscenter.com"
+              href="mailto:correo@ejemplo.com"
               className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
             >
-              info@maleconbusinesscenter.com
+              correo@ejemplo.com
             </a>
           </div>
         </div>
