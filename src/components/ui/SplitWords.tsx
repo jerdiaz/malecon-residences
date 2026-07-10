@@ -47,7 +47,11 @@ export default function SplitWords({
       {words.map((word, i) => (
         // El espacio está FUERA del overflow-hidden para que no quede clippeado
         <Fragment key={i}>
-          <span className="inline-block overflow-hidden" style={{ verticalAlign: "bottom" }}>
+          {/* pb + -mb: deja aire para descendentes como "¿" sin mover el layout */}
+          <span
+            className="inline-block overflow-hidden pb-[0.14em] -mb-[0.14em]"
+            style={{ verticalAlign: "bottom" }}
+          >
             <motion.span
               className="inline-block"
               variants={wordVariants}
