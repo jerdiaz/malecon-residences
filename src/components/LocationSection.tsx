@@ -111,7 +111,10 @@ export default function LocationSection() {
         </div>
 
         {/* ── Columna derecha: foto aérea + mapa ── */}
-        <div className="relative flex flex-col min-h-[60vw] lg:min-h-0">
+        <div className="relative flex items-center justify-center lg:h-full">
+          {/* Caja con la proporción real de la imagen (2272×1880) para que la
+              foto se vea completa, sin recorte, y los controles queden encima */}
+          <div className="relative aspect-[2272/1880] w-full overflow-hidden">
 
           {/* Tabs */}
           <div className="absolute top-6 left-6 z-20 flex gap-1">
@@ -202,6 +205,7 @@ export default function LocationSection() {
               </motion.div>
             )}
           </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
