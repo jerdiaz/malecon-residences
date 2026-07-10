@@ -24,11 +24,15 @@ export default function RendersGallery() {
       <div className="mx-auto max-w-7xl px-6 md:px-12 mb-16">
         <Reveal>
           <p className="mb-5 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
-            Renders arquitectónicos
+            Galería
           </p>
         </Reveal>
         <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
-          <SplitWords text="Galería." delay={100} stagger={50} />
+          <SplitWords
+            text="Espacios diseñados con altos estándares."
+            delay={100}
+            stagger={50}
+          />
         </h2>
         <Reveal delay={500}>
           <p className="mt-6 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
