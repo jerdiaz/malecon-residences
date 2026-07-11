@@ -63,7 +63,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
 
             <button
               onClick={onClose}
-              className="group flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/70 transition-colors hover:text-white"
+              className="group -m-2 flex items-center gap-3 p-2 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/70 transition-colors hover:text-white"
             >
               Cerrar
               <span className="relative flex h-8 w-8 items-center justify-center">

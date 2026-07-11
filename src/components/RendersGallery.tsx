@@ -115,10 +115,10 @@ function RenderTile({
             animation: "gallery-ken-burns 8000ms ease-out forwards",
           }}
         />
-        {/* Velo inferior */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100" />
-        {/* Etiqueta */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-5 opacity-0 transition-all duration-700 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+        {/* Velo inferior — visible siempre en táctil; en desktop solo aparece al pasar el cursor */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-100 transition-opacity duration-700 ease-in-out [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100" />
+        {/* Etiqueta — visible siempre en táctil; en desktop solo aparece al pasar el cursor */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-0 p-5 opacity-100 transition-all duration-700 ease-in-out [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
           <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
             {render.label}
           </p>

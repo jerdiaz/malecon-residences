@@ -6,7 +6,7 @@ import { scrollToSection } from "@/lib/sections";
 export default function ScrollCue() {
   return (
     <button
-      onClick={() => scrollToSection("manifesto")}
+      onClick={() => scrollToSection("pillars")}
       className="group absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       aria-label="Continuar"
     >

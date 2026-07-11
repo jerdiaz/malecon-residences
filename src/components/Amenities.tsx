@@ -120,8 +120,8 @@ export default function Amenities() {
             <div
               key={a.id}
               aria-hidden={i !== active}
-              className={`animate-ken-burns absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-silk ${
-                i === active ? "opacity-100" : "opacity-0"
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-silk ${
+                i === active ? "animate-ken-burns opacity-100" : "opacity-0"
               }`}
               style={{ backgroundImage: `url('${a.image}')` }}
             />

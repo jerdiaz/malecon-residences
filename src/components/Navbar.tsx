@@ -86,7 +86,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
-              className="group flex items-center gap-2.5"
+              className="group -m-2 flex items-center gap-2.5 p-2"
             >
               <span className="hidden text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-colors group-hover:text-white sm:inline">
                 {menuOpen ? "Cerrar" : "Menú"}

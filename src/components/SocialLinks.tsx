@@ -20,7 +20,7 @@ export default function SocialLinks() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
-        className="group relative block text-white/40 transition-colors duration-300"
+        className="group relative -m-3 block p-3 text-white/40 transition-colors duration-300"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
           <defs>
@@ -63,7 +63,7 @@ export default function SocialLinks() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="group block text-white/40 transition-colors duration-300 hover:text-[#0A66C2] focus-visible:text-[#0A66C2] active:text-[#0A66C2]"
+        className="group -m-3 block p-3 text-white/40 transition-colors duration-300 hover:text-[#0A66C2] focus-visible:text-[#0A66C2] active:text-[#0A66C2]"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
@@ -76,7 +76,7 @@ export default function SocialLinks() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Facebook"
-        className="group block text-white/40 transition-colors duration-300 group-hover:text-[#1877F2] hover:text-[#1877F2] focus-visible:text-[#1877F2] active:text-[#1877F2]"
+        className="group -m-3 block p-3 text-white/40 transition-colors duration-300 group-hover:text-[#1877F2] hover:text-[#1877F2] focus-visible:text-[#1877F2] active:text-[#1877F2]"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
@@ -87,7 +87,7 @@ export default function SocialLinks() {
       <a
         href={`tel:${PHONE}`}
         aria-label="Llamar"
-        className="group block text-white/40 transition-colors duration-300 hover:text-[#22C55E] focus-visible:text-[#22C55E] active:text-[#22C55E]"
+        className="group -m-3 block p-3 text-white/40 transition-colors duration-300 hover:text-[#22C55E] focus-visible:text-[#22C55E] active:text-[#22C55E]"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.28-.28.68-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.12.34.04.74-.24 1.02L6.6 10.8Z" />

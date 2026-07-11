@@ -190,6 +190,14 @@ html.has-custom-cursor select {
   animation-play-state: paused;
 }
 
+/* En móvil, el grano queda estático (sin animar) para no gastar batería/GPU
+   en un detalle que apenas se percibe en pantallas pequeñas. */
+@media (max-width: 767px) {
+  .grain-overlay::before {
+    animation: none;
+  }
+}
+
 /* Respeto por usuarios que prefieren menos movimiento */
 @media (prefers-reduced-motion: reduce) {
   .animate-ken-burns,

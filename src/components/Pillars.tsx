@@ -63,7 +63,7 @@ export default function Pillars() {
               onMouseLeave={() => clearIfActive(i)}
               onFocus={() => setActive(i)}
               onBlur={() => clearIfActive(i)}
-              onClick={() => setActive((prev) => (prev === i ? null : i))}
+              onClick={() => setActive(i)}
               aria-label={panel.heading}
               className="group relative h-[33vh] w-full flex-1 overflow-hidden border-b border-white/5 text-left last:border-none md:h-full md:border-b-0 md:border-r"
             >
@@ -88,18 +88,18 @@ export default function Pillars() {
                   {panel.heading}
                 </h3>
                 <div
-                  className={`grid transition-all ease-silk ${
+                  className={`grid transition-all ease-silk mt-4 grid-rows-[1fr] opacity-100 duration-500 delay-100 ${
                     isActive
-                      ? "mt-4 grid-rows-[1fr] opacity-100 duration-500 delay-100"
-                      : "grid-rows-[0fr] opacity-0 duration-150"
+                      ? ""
+                      : "[@media(hover:hover)]:mt-0 [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:duration-150 [@media(hover:hover)]:delay-0"
                   }`}
                 >
                   <div className="overflow-hidden">
                     <p
-                      className={`max-w-[80%] text-sm font-light leading-relaxed tracking-wide text-white/75 transition-all ease-silk sm:max-w-xs ${
+                      className={`max-w-[80%] text-sm font-light leading-relaxed tracking-wide text-white/75 transition-all ease-silk sm:max-w-xs translate-y-0 duration-500 delay-150 ${
                         isActive
-                          ? "translate-y-0 duration-500 delay-150"
-                          : "translate-y-4 duration-150"
+                          ? ""
+                          : "[@media(hover:hover)]:translate-y-4 [@media(hover:hover)]:duration-150 [@media(hover:hover)]:delay-0"
                       }`}
                     >
                       {panel.description}
