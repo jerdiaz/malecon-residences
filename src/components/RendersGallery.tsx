@@ -18,15 +18,13 @@ const AUTO_ADVANCE_MS = 5000;
 
 export default function RendersGallery() {
   const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused) return;
     const timer = setInterval(() => {
       setSlide((prev) => (prev + 1) % SLIDES.length);
     }, AUTO_ADVANCE_MS);
     return () => clearInterval(timer);
-  }, [paused]);
+  }, []);
 
   const current = SLIDES[slide];
 
@@ -54,7 +52,7 @@ export default function RendersGallery() {
         </Reveal>
       </div>
 
-      {/* Carrusel — composición asimétrica; avanza solo, se pausa al pasar el cursor sobre una foto */}
+      {/* Carrusel — composición asimétrica; siempre rota, sin pausarse con el cursor */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div
           key={slide}
@@ -64,7 +62,6 @@ export default function RendersGallery() {
           <RenderTile
             render={current[0]}
             className="h-80 w-full sm:h-full sm:w-[65%] sm:translate-y-4"
-            onHoverChange={setPaused}
           />
 
           {/* Columna derecha — asimétrica: una más alargada y desplazada, otra más baja */}
@@ -72,12 +69,10 @@ export default function RendersGallery() {
             <RenderTile
               render={current[1]}
               className="h-64 w-full sm:h-[58%] sm:-translate-y-6"
-              onHoverChange={setPaused}
             />
             <RenderTile
               render={current[2]}
               className="h-56 w-full sm:h-[42%] sm:mt-2"
-              onHoverChange={setPaused}
             />
           </div>
         </div>
@@ -89,7 +84,6 @@ export default function RendersGallery() {
             className="h-full bg-amber-500/80"
             style={{
               animation: `gallery-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
-              animationPlayState: paused ? "paused" : "running",
             }}
           />
         </div>
@@ -101,17 +95,13 @@ export default function RendersGallery() {
 function RenderTile({
   render,
   className = "",
-  onHoverChange,
 }: {
   render: (typeof RENDERS)[number];
   className?: string;
-  onHoverChange?: (hovering: boolean) => void;
 }) {
   return (
     <Link
       href={`/galeria/${render.slug}`}
-      onMouseEnter={() => onHoverChange?.(true)}
-      onMouseLeave={() => onHoverChange?.(false)}
       className={`group relative block overflow-hidden transition-all duration-700 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 ${className}`}
     >
       <div className="relative h-full w-full overflow-hidden">
