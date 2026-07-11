@@ -35,11 +35,13 @@ export default function StoryBlock({
           imagePos === "left" ? "lg:[grid-template-columns:1fr_1fr]" : ""
         }`}
       >
-        {/* Imagen izquierda */}
-        {imagePos === "left" && <ImagePanel image={image} />}
+        {/* Imagen izquierda — en móvil siempre va después del texto (order-2) para
+            que cada sección se identifique por su propio título antes que por su foto;
+            en desktop vuelve a su posición natural en la columna izquierda. */}
+        {imagePos === "left" && <ImagePanel image={image} className="order-2 lg:order-none" />}
 
-        {/* Texto */}
-        <div className="flex items-center px-8 py-28 lg:items-start lg:px-16 xl:px-24">
+        {/* Texto — en móvil siempre primero (order-1), en desktop vuelve a su posición natural */}
+        <div className="order-1 flex items-center px-8 py-28 lg:order-none lg:items-start lg:px-16 xl:px-24">
           <div className="max-w-lg">
             <Reveal>
               <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
@@ -80,17 +82,17 @@ export default function StoryBlock({
           </div>
         </div>
 
-        {/* Imagen derecha */}
-        {imagePos === "right" && <ImagePanel image={image} />}
+        {/* Imagen derecha — mismo orden forzado en móvil que la variante izquierda */}
+        {imagePos === "right" && <ImagePanel image={image} className="order-2 lg:order-none" />}
       </div>
     </section>
   );
 }
 
-function ImagePanel({ image }: { image: string }) {
+function ImagePanel({ image, className = "" }: { image: string; className?: string }) {
   return (
     <motion.div
-      className="relative min-h-[55vw] overflow-hidden lg:min-h-0"
+      className={`relative min-h-[55vw] overflow-hidden lg:min-h-0 ${className}`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.08 }}
