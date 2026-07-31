@@ -7,13 +7,14 @@ import Reveal from "@/components/ui/Reveal";
 // ─────────────────────────────────────────────────────────────────────────────
 // PLANTILLA DE AMENIDADES — editar aquí
 //
-// ⚠️ Las imágenes de "image" son RENDERS POR DEFECTO (placeholder), tomados
-// del set genérico de fachadas/vistas aéreas que ya existe en /public/images/renders.
-// Ninguna es la foto definitiva de cada amenidad — deben reemplazarse por
-// fotografía/render específico de cada espacio (interior de oficina, sala de
-// juntas, rooftop al atardecer, detalle de iluminación, etc.) antes de lanzar.
+// Las imágenes ya son renders OFICIALES del proyecto, pero el set entregado
+// por los arquitectos no incluye NINGÚN interior. Las cuatro primeras
+// amenidades (smart office, espacios personalizables, salas de juntas,
+// rooftop) están ilustradas con la toma exterior más cercana a su idea, no
+// con el espacio real — por eso se mantiene el aviso "Render ilustrativo"
+// sobre la imagen. Reemplazar en cuanto lleguen renders de interior.
 //
-// ⚠️ Los "icon" también son PLACEHOLDER genéricos — a futuro cada amenidad
+// ⚠️ Los "icon" son PLACEHOLDER genéricos — a futuro cada amenidad
 // tendrá su propio ícono definitivo, reemplazar cuando estén listos.
 // ─────────────────────────────────────────────────────────────────────────────
 interface Amenity {
@@ -22,6 +23,8 @@ interface Amenity {
   description: string;
   image: string;
   icon: ComponentType<{ className?: string }>;
+  /** true = la imagen es una aproximación (falta el render del espacio real) */
+  illustrative?: boolean;
 }
 
 const AMENITIES: Amenity[] = [
@@ -30,39 +33,43 @@ const AMENITIES: Amenity[] = [
     title: "Smart Office",
     description:
       "Oficinas diseñadas para integrar tecnología, eficiencia y productividad.",
-    image: "/images/renders/render-08.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/acceso-peatonal.webp", // TODO: reemplazar por interior de oficina
     icon: IconMonitor,
+    illustrative: true,
   },
   {
     id: "espacios-personalizables",
     title: "Espacios personalizables",
     description:
       "Adapta la distribución de tu oficina según las necesidades de tu empresa.",
-    image: "/images/renders/render-07.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/fachada-modulos.webp", // TODO: reemplazar por interior/planta tipo
     icon: IconLayout,
+    illustrative: true,
   },
   {
     id: "salas-de-juntas",
     title: "Salas de juntas equipadas",
     description:
       "Espacios modernos para reuniones, presentaciones y encuentros de negocios.",
-    image: "/images/renders/render-06.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/fachada-frontal.webp", // TODO: reemplazar por interior de sala de juntas
     icon: IconPresentation,
+    illustrative: true,
   },
   {
     id: "rooftop-empresarial",
     title: "Rooftop empresarial",
     description:
       "Un espacio exclusivo para networking, reuniones informales y eventos corporativos con vistas privilegiadas.",
-    image: "/images/renders/render-01.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/aerea-nocturna-rooftop.webp", // TODO: reemplazar por render a nivel del rooftop
     icon: IconRooftop,
+    illustrative: true,
   },
   {
     id: "iluminacion-inteligente",
     title: "Iluminación inteligente",
     description:
       "Diseño lumínico que recrea la luz natural para brindar mayor confort y bienestar durante la jornada laboral.",
-    image: "/images/renders/render-05.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/plaza-atardecer.webp",
     icon: IconBulb,
   },
   {
@@ -70,7 +77,7 @@ const AMENITIES: Amenity[] = [
     title: "Arquitectura contemporánea",
     description:
       "Acabados premium y materiales de alta calidad que reflejan profesionalismo y exclusividad.",
-    image: "/images/renders/render-04.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/esquina-fachada.webp",
     icon: IconBuilding,
   },
   {
@@ -78,7 +85,7 @@ const AMENITIES: Amenity[] = [
     title: "Ubicación estratégica en Cartagena",
     description:
       "Conecta tu empresa con uno de los principales polos empresariales y de inversión del Caribe colombiano.",
-    image: "/images/renders/render-02.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/aerea-diurna.webp",
     icon: IconPin,
   },
   {
@@ -86,7 +93,7 @@ const AMENITIES: Amenity[] = [
     title: "Ambientes para el crecimiento empresarial",
     description:
       "Espacios que fortalecen la imagen corporativa y mejoran la experiencia de colaboradores y clientes.",
-    image: "/images/renders/render-03.png", // TODO: reemplazar por render definitivo
+    image: "/images/renders/zona-estar.webp",
     icon: IconGrowth,
   },
 ];
@@ -127,8 +134,12 @@ export default function Amenities() {
             />
           ))}
 
-          {/* Aviso: render por defecto, no definitivo */}
-          <div className="absolute bottom-6 left-6 z-10 flex items-center gap-2 rounded-sm bg-ink/70 px-3 py-1.5 backdrop-blur-sm">
+          {/* Aviso — solo sobre las amenidades que aún no tienen su render propio */}
+          <div
+            className={`absolute bottom-6 left-6 z-10 flex items-center gap-2 rounded-sm bg-ink/70 px-3 py-1.5 backdrop-blur-sm transition-opacity duration-700 ease-silk ${
+              AMENITIES[active].illustrative ? "opacity-100" : "opacity-0"
+            }`}
+          >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze" />
             <span className="text-[0.6rem] font-light uppercase tracking-[0.2em] text-white/60">
               Render ilustrativo · imagen no definitiva

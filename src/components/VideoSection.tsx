@@ -17,7 +17,7 @@ export default function VideoSection() {
         muted
         loop
         playsInline
-        poster="/images/renders/render-04.png"
+        poster="/images/renders/plaza-atardecer.webp"
       >
         <source src="/video/malecon-highlight.mp4" type="video/mp4" />
       </video>

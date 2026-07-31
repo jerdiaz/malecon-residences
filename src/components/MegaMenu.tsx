@@ -123,7 +123,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
-                    backgroundImage: "url('/images/renders/render-04.png')",
+                    backgroundImage: "url('/images/renders/fachada-avenida.webp')",
                   }}
                 />
                 <div className="absolute inset-0 bg-ink/30" />

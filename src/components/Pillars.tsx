@@ -14,20 +14,23 @@ const PANELS: Panel[] = [
     id: "oficinas",
     heading: "Oficinas",
     description: "Espacios de alta eficiencia para empresas de vanguardia.",
-    image: "/images/hero/oficinas.jpeg",
+    // Fachada acristalada con los interiores de oficina iluminados: es lo que
+    // mejor lee en el recorte vertical estrecho de estos paneles.
+    image: "/images/renders/oficinas-vidrio.webp",
   },
   {
     id: "locales",
     heading: "Locales",
     description: "Zonas comerciales premium en el epicentro de la Zona Norte.",
-    image: "/images/hero/locales.jpeg",
+    image: "/images/renders/locales-comerciales.webp",
   },
   {
     id: "rooftop",
     heading: "Rooftop",
     description:
       "El escenario perfecto para cerrar tratos con vista al horizonte.",
-    image: "/images/hero/rooftop.jpeg",
+    // Única toma del set donde se ve el rooftop (terraza y mobiliario).
+    image: "/images/renders/aerea-nocturna-rooftop.webp",
   },
 ];
 

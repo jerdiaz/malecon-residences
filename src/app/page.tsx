@@ -30,7 +30,7 @@ export default function Home() {
           kicker="El Proyecto"
           title="Edificio de oficinas y locales corporativos de alto nivel."
           body="Malecón Business Center es un moderno centro de negocios ubicado en Cartagena, diseñado para ofrecer oficinas corporativas de alto nivel. Sus espacios boutique, acabados premium y excelente ubicación lo convierten en una opción ideal para empresas, profesionales e inversionistas que buscan un entorno empresarial exclusivo."
-          image="/images/renders/render-08.png"
+          image="/images/renders/frontal-palmeras.webp"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
         />
@@ -43,7 +43,7 @@ export default function Home() {
           body={`El lugar donde opera una empresa también construye su reputación. Un centro de negocios moderno no solo ofrece oficinas; proyecta confianza, fortalece la imagen corporativa y crea el entorno ideal para impulsar el crecimiento empresarial.
 
 En Malecón Business Center desarrollamos un proyecto de oficinas corporativas en Cartagena diseñado para empresas, inversionistas y profesionales que buscan un espacio alineado con los más altos estándares de calidad, funcionalidad y prestigio. Nuestra arquitectura contemporánea, los acabados premium y los espacios cuidadosamente diseñados reflejan los valores de organizaciones que entienden que la excelencia también se comunica a través de su sede.`}
-          image="/images/renders/render-04.png"
+          image="/images/renders/fachada-nocturna.webp"
           imagePos="left"
         />
 
@@ -56,7 +56,7 @@ En Malecón Business Center desarrollamos un proyecto de oficinas corporativas e
           kicker="El Entorno"
           title="El Caribe como ventana permanente."
           body="La Zona Norte de Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
-          image="/images/renders/render-01.png"
+          image="/images/renders/panoramica-zona-norte.webp"
           imagePos="left"
         />
 
