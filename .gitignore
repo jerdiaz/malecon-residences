@@ -34,3 +34,7 @@ next-env.d.ts
 # Al sitio solo entran las versiones optimizadas en /public/images/renders.
 /MALECON BUSSINESS CENTER/
 /demostraci*.mp4
+
+# auditorías internas — quedan solo en local, no se suben al repo
+/SECURITY_AUDIT.md
+/ARCHITECTURE_AUDIT.md
