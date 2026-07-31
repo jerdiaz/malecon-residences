@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { NAV_LINKS, SECTION_IDS, scrollToSection } from "@/lib/sections";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import MegaMenu from "@/components/MegaMenu";
+import Logo from "@/components/Logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,12 +41,7 @@ export default function Navbar() {
             className="group flex flex-col items-start leading-none"
             aria-label="Malecón Business Center — inicio"
           >
-            <span className="font-serif text-xl font-light tracking-[0.3em] text-white">
-              MALECÓN
-            </span>
-            <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.45em] text-bronze/80 transition-colors group-hover:text-champagne">
-              Business Center
-            </span>
+            <Logo hoverEffect />
           </button>
 
           {/* Links desktop */}

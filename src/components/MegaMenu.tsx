@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollToSection } from "@/lib/sections";
 import { CONTACT } from "@/lib/contact";
+import Logo from "@/components/Logo";
 
 const MENU_LINKS = [
   { id: "residencias", label: "El Proyecto",  number: "01" },
@@ -54,12 +55,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
               onClick={() => handleNavigate("hero")}
               className="flex flex-col items-start leading-none"
             >
-              <span className="font-serif text-xl font-light tracking-[0.3em] text-white">
-                MALECÓN
-              </span>
-              <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.45em] text-bronze/80">
-                Business Center
-              </span>
+              <Logo />
             </button>
 
             <button
