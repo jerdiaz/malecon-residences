@@ -32,7 +32,9 @@ next-env.d.ts
 
 # renders originales de los arquitectos (~430 MB, 5760 px) y material de trabajo.
 # Al sitio solo entran las versiones optimizadas en /public/images/renders.
-/MALECON BUSSINESS CENTER/
+# El comodín cubre las entregas sucesivas ("... 2", "... NUEVO", etc.).
+/MALECON BUSSINESS CENTER*/
+/renders-fuente*/
 /demostraci*.mp4
 
 # auditorías internas — quedan solo en local, no se suben al repo

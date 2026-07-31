@@ -7,12 +7,12 @@ import Reveal from "@/components/ui/Reveal";
 // ─────────────────────────────────────────────────────────────────────────────
 // PLANTILLA DE AMENIDADES — editar aquí
 //
-// Las imágenes ya son renders OFICIALES del proyecto, pero el set entregado
-// por los arquitectos no incluye NINGÚN interior. Las cuatro primeras
-// amenidades (smart office, espacios personalizables, salas de juntas,
-// rooftop) están ilustradas con la toma exterior más cercana a su idea, no
-// con el espacio real — por eso se mantiene el aviso "Render ilustrativo"
-// sobre la imagen. Reemplazar en cuanto lleguen renders de interior.
+// Las imágenes son renders OFICIALES del proyecto. La entrega del 30 de julio
+// sumó los interiores, así que smart office, salas de juntas y rooftop ya se
+// ilustran con su espacio real. Solo queda pendiente "espacios
+// personalizables", que sigue usando una fachada: lleva `illustrative: true`
+// y por eso muestra el aviso "Render ilustrativo". Quitar la bandera al
+// reemplazarla por su render definitivo.
 //
 // ⚠️ Los "icon" son PLACEHOLDER genéricos — a futuro cada amenidad
 // tendrá su propio ícono definitivo, reemplazar cuando estén listos.
@@ -33,9 +33,8 @@ const AMENITIES: Amenity[] = [
     title: "Smart Office",
     description:
       "Oficinas diseñadas para integrar tecnología, eficiencia y productividad.",
-    image: "/images/renders/acceso-peatonal.webp", // TODO: reemplazar por interior de oficina
+    image: "/images/renders/oficina-interior.webp",
     icon: IconMonitor,
-    illustrative: true,
   },
   {
     id: "espacios-personalizables",
@@ -51,18 +50,16 @@ const AMENITIES: Amenity[] = [
     title: "Salas de juntas equipadas",
     description:
       "Espacios modernos para reuniones, presentaciones y encuentros de negocios.",
-    image: "/images/renders/fachada-frontal.webp", // TODO: reemplazar por interior de sala de juntas
+    image: "/images/renders/coworking-lounge.webp",
     icon: IconPresentation,
-    illustrative: true,
   },
   {
     id: "rooftop-empresarial",
     title: "Rooftop empresarial",
     description:
       "Un espacio exclusivo para networking, reuniones informales y eventos corporativos con vistas privilegiadas.",
-    image: "/images/renders/aerea-nocturna-rooftop.webp", // TODO: reemplazar por render a nivel del rooftop
+    image: "/images/renders/rooftop-terraza.webp",
     icon: IconRooftop,
-    illustrative: true,
   },
   {
     id: "iluminacion-inteligente",
@@ -77,7 +74,7 @@ const AMENITIES: Amenity[] = [
     title: "Arquitectura contemporánea",
     description:
       "Acabados premium y materiales de alta calidad que reflejan profesionalismo y exclusividad.",
-    image: "/images/renders/esquina-fachada.webp",
+    image: "/images/renders/detalle-fachada.webp",
     icon: IconBuilding,
   },
   {
