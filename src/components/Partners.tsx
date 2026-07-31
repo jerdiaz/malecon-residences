@@ -1,9 +1,10 @@
 "use client";
 
 import Reveal from "@/components/ui/Reveal";
+import Marquee from "@/components/ui/Marquee";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ALIADOS — logos de plantilla (placeholder)
+// MARCAS — logos de plantilla (placeholder)
 // Reemplaza cada objeto por el logo real de la marca aliada:
 //   name → nombre de la marca (accesible / alt)
 //   Sube el logo a /public/images/partners y cambia el bloque <PlaceholderMark>
@@ -54,7 +55,7 @@ export default function Partners() {
 
       {/* Pista del marquee — con máscaras de degradado en los bordes */}
       <div
-        className="group/marquee relative mt-16 flex overflow-hidden"
+        className="relative mt-16"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
@@ -62,11 +63,11 @@ export default function Partners() {
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
         }}
       >
-        <div className="animate-marquee flex w-max shrink-0 items-center gap-16 pr-16 md:gap-24 md:pr-24">
-          {[...PARTNERS, ...PARTNERS].map((p, i) => (
+        <Marquee pauseOnHover>
+          {PARTNERS.map((p, i) => (
             <PlaceholderMark key={i} name={p.name} />
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   );
