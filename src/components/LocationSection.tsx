@@ -111,9 +111,9 @@ export default function LocationSection() {
 
         {/* ── Columna derecha: foto aérea + mapa ── */}
         <div className="relative flex items-center justify-center lg:h-full">
-          {/* Caja con la proporción real de la imagen (2272×1880) para que la
+          {/* Caja con la proporción real de la imagen (3840×2160) para que la
               foto se vea completa, sin recorte, y los controles queden encima */}
-          <div className="relative aspect-[2272/1880] w-full overflow-hidden">
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
 
           {/* Tabs */}
           <div className="absolute top-6 left-6 z-20 flex gap-1">
@@ -144,7 +144,7 @@ export default function LocationSection() {
                 transition={{ duration: 0.5 }}
               >
                 <Image
-                  src="/images/lote/maleconnew.jpg"
+                  src="/images/lote/terreno-aereo.jpg"
                   alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
