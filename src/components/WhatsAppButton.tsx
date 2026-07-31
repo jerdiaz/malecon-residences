@@ -1,14 +1,13 @@
 "use client";
 
+import { CONTACT } from "@/lib/contact";
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Botón flotante de WhatsApp — fijo abajo a la derecha en toda la página.
-// TODO: reemplazar el número por el real (formato internacional, sin "+").
 // ─────────────────────────────────────────────────────────────────────────────
-const WHATSAPP_NUMBER = "573001234567";
-const MESSAGE = "Hola, me interesa Malecón Business Center.";
 
 export default function WhatsAppButton() {
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
+  const href = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
 
   return (
     <a

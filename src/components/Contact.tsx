@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 import SocialLinks from "@/components/SocialLinks";
+import { CONTACT } from "@/lib/contact";
 
 interface FormState {
   nombre: string;
@@ -170,9 +171,8 @@ export default function Contact() {
             <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
               Dirección
             </p>
-            {/* TODO: dirección física real */}
             <p className="text-sm font-light leading-relaxed text-white/55">
-              Zona Norte · Cartagena de Indias
+              {CONTACT.address}
               <br />
               Bolívar, Colombia
             </p>
@@ -181,24 +181,22 @@ export default function Contact() {
             <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
               Teléfono
             </p>
-            {/* TODO: número real */}
             <a
-              href="tel:+570000000000"
+              href={`tel:${CONTACT.phoneTel}`}
               className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
             >
-              +57 000 000 0000
+              {CONTACT.phoneDisplay}
             </a>
           </div>
           <div>
             <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
               Correo
             </p>
-            {/* TODO: correo real */}
             <a
-              href="mailto:correo@ejemplo.com"
+              href={`mailto:${CONTACT.email}`}
               className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
             >
-              correo@ejemplo.com
+              {CONTACT.email}
             </a>
           </div>
         </div>

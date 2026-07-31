@@ -1,12 +1,12 @@
 "use client";
 
+import { CONTACT } from "@/lib/contact";
+
 // ─────────────────────────────────────────────────────────────────────────────
 // REDES SOCIALES Y CONTACTO — reemplaza los href por los enlaces reales.
 // Los íconos van en gris tenue y se colorean con el color original de cada red
 // al pasar el mouse, enfocar o tocar (hover / focus / active — móvil incluido).
 // ─────────────────────────────────────────────────────────────────────────────
-
-const PHONE = "+573001234567"; // TODO: número real de contacto
 
 // Estados que disparan el color de marca (mouse, teclado y toque en móvil).
 const ACTIVE = "group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100";
@@ -76,7 +76,7 @@ export default function SocialLinks() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Facebook"
-        className="group -m-3 block p-3 text-white/40 transition-colors duration-300 group-hover:text-[#1877F2] hover:text-[#1877F2] focus-visible:text-[#1877F2] active:text-[#1877F2]"
+        className="group -m-3 block p-3 text-white/40 transition-colors duration-300 hover:text-[#1877F2] focus-visible:text-[#1877F2] active:text-[#1877F2]"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
@@ -85,7 +85,7 @@ export default function SocialLinks() {
 
       {/* Contacto numérico — verde de llamada al activar */}
       <a
-        href={`tel:${PHONE}`}
+        href={`tel:${CONTACT.phoneTel}`}
         aria-label="Llamar"
         className="group -m-3 block p-3 text-white/40 transition-colors duration-300 hover:text-[#22C55E] focus-visible:text-[#22C55E] active:text-[#22C55E]"
       >

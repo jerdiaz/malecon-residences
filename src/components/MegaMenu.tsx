@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollToSection } from "@/lib/sections";
+import { CONTACT } from "@/lib/contact";
 
 const MENU_LINKS = [
   { id: "residencias", label: "El Proyecto",  number: "01" },
@@ -13,9 +14,9 @@ const MENU_LINKS = [
 ];
 
 const INFO_ITEMS = [
-  { label: "Dirección",  value: "Zona Norte, Cartagena de Indias" },
-  { label: "Teléfono",   value: "+57 305 000 0000" },
-  { label: "Email",      value: "info@maleconbc.com" },
+  { label: "Dirección",  value: CONTACT.address },
+  { label: "Teléfono",   value: CONTACT.phoneDisplay },
+  { label: "Email",      value: CONTACT.email },
   { label: "Entrega",    value: "2026 · Espacios exclusivos" },
 ];
 
