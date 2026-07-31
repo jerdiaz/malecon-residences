@@ -6,6 +6,13 @@ import Link from "next/link";
 import SplitWords from "@/components/ui/SplitWords";
 import Reveal from "@/components/ui/Reveal";
 import { CAROUSEL_RENDERS, chunk, type RenderItem } from "@/lib/renders";
+import { blurFor } from "@/lib/blur";
+
+// Ancho real de cada hueco. La grande ocupa el 65% de un contenedor que tope
+// en 1280px, las chicas el 35%; sin esto el navegador pedía para las tres el
+// corte de 1920px, siete veces más pesado del que cabe en las chicas.
+const SIZES_GRANDE = "(max-width: 640px) 100vw, (max-width: 1280px) 65vw, 760px";
+const SIZES_CHICA = "(max-width: 640px) 100vw, (max-width: 1280px) 35vw, 410px";
 
 // Grupos de 3 por slide: 1 grande + 2 pequeñas. Se arman solos a partir del
 // catálogo, así que sumar un render en lib/renders.ts basta para que aparezca.
@@ -30,6 +37,7 @@ export default function RendersGallery() {
     setSlide((prev) => (prev + dir + SLIDES.length) % SLIDES.length);
 
   const current = SLIDES[slide];
+  const next = SLIDES[(slide + 1) % SLIDES.length];
 
   return (
     <section id="galeria" className="relative w-full bg-ink scroll-mt-20 py-28 lg:py-40">
@@ -58,39 +66,66 @@ export default function RendersGallery() {
 
       {/* Carrusel — composición asimétrica sobre el set completo de renders */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div
-          key={slide}
-          className="flex animate-[fade-in_0.4s_ease-out] flex-col gap-4 sm:h-[65vh] sm:max-h-[560px] sm:flex-row"
-        >
-          {/* Foto grande — ocupa todo el ancho si el slide quedó con una sola */}
-          <RenderTile
-            render={current[0]}
-            className={
-              current.length === 1
-                ? "h-80 w-full sm:h-full"
-                : "h-80 w-full sm:h-full sm:w-[65%] sm:translate-y-4"
-            }
-          />
+        <div className="relative">
+          <div
+            key={slide}
+            className="flex animate-[fade-in_0.4s_ease-out] flex-col gap-4 sm:h-[65vh] sm:max-h-[560px] sm:flex-row"
+          >
+            {/* Foto grande — ocupa todo el ancho si el slide quedó con una sola */}
+            <RenderTile
+              render={current[0]}
+              sizes={SIZES_GRANDE}
+              className={
+                current.length === 1
+                  ? "h-80 w-full sm:h-full"
+                  : "h-80 w-full sm:h-full sm:w-[65%] sm:translate-y-4"
+              }
+            />
 
-          {/* Columna derecha — asimétrica: una más alargada y desplazada, otra más baja */}
-          {current.length > 1 && (
-            <div className="flex w-full flex-col gap-4 sm:w-[35%]">
-              <RenderTile
-                render={current[1]}
-                className={
-                  current.length === 2
-                    ? "h-64 w-full sm:h-full sm:-translate-y-6"
-                    : "h-64 w-full sm:h-[58%] sm:-translate-y-6"
-                }
-              />
-              {current[2] && (
+            {/* Columna derecha — asimétrica: una más alargada y desplazada, otra más baja */}
+            {current.length > 1 && (
+              <div className="flex w-full flex-col gap-4 sm:w-[35%]">
                 <RenderTile
-                  render={current[2]}
-                  className="h-56 w-full sm:h-[42%] sm:mt-2"
+                  render={current[1]}
+                  sizes={SIZES_CHICA}
+                  className={
+                    current.length === 2
+                      ? "h-64 w-full sm:h-full sm:-translate-y-6"
+                      : "h-64 w-full sm:h-[58%] sm:-translate-y-6"
+                  }
                 />
-              )}
-            </div>
-          )}
+                {current[2] && (
+                  <RenderTile
+                    render={current[2]}
+                    sizes={SIZES_CHICA}
+                    className="h-56 w-full sm:h-[42%] sm:mt-2"
+                  />
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Precarga del slide siguiente — ocupa la misma caja pero invisible y
+              detrás, así el navegador resuelve el mismo srcset y al avanzar la
+              foto ya está en caché en vez de empezar a bajarse recién ahí. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 flex flex-col gap-4 overflow-hidden opacity-0 sm:flex-row"
+          >
+            <PreloadTile
+              render={next[0]}
+              sizes={SIZES_GRANDE}
+              className={next.length === 1 ? "h-full w-full" : "h-full w-full sm:w-[65%]"}
+            />
+            {next.length > 1 && (
+              <div className="flex w-full flex-col gap-4 sm:w-[35%]">
+                <PreloadTile render={next[1]} sizes={SIZES_CHICA} className="h-[58%] w-full" />
+                {next[2] && (
+                  <PreloadTile render={next[2]} sizes={SIZES_CHICA} className="h-[42%] w-full" />
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Barra de progreso — se llena mientras dura el slide activo */}
@@ -156,13 +191,42 @@ function Arrow({ className = "" }: { className?: string }) {
   );
 }
 
-function RenderTile({
+/** Copia invisible del slide siguiente: solo existe para calentar la caché. */
+function PreloadTile({
   render,
+  sizes,
   className = "",
 }: {
   render: RenderItem;
+  sizes: string;
   className?: string;
 }) {
+  const blur = blurFor(render.src);
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      <Image
+        src={render.src}
+        alt=""
+        fill
+        sizes={sizes}
+        className="object-cover"
+        {...(blur ? { placeholder: "blur" as const, blurDataURL: blur } : {})}
+      />
+    </div>
+  );
+}
+
+function RenderTile({
+  render,
+  sizes,
+  className = "",
+}: {
+  render: RenderItem;
+  sizes: string;
+  className?: string;
+}) {
+  const blur = blurFor(render.src);
+
   return (
     <Link
       href={`/galeria/${render.slug}`}
@@ -173,8 +237,9 @@ function RenderTile({
           src={render.src}
           alt={render.label}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
+          sizes={sizes}
           className="object-cover"
+          {...(blur ? { placeholder: "blur" as const, blurDataURL: blur } : {})}
           style={{
             animation: "gallery-ken-burns 8000ms ease-out forwards",
           }}

@@ -7,6 +7,7 @@ import {
   getRendersByCategory,
   type RenderCategory,
 } from "@/lib/renders";
+import { blurFor } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "Galería completa · Malecón Business Center",
@@ -82,6 +83,9 @@ export default function GaleriaPage() {
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-[1200ms] ease-silk group-hover:scale-[1.04]"
+                    {...(blurFor(render.src)
+                      ? { placeholder: "blur" as const, blurDataURL: blurFor(render.src)! }
+                      : {})}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">

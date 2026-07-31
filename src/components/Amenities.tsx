@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ComponentType } from "react";
 import Reveal from "@/components/ui/Reveal";
+import BackgroundImage from "@/components/ui/BackgroundImage";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PLANTILLA DE AMENIDADES — editar aquí
@@ -124,11 +125,15 @@ export default function Amenities() {
             <div
               key={a.id}
               aria-hidden={i !== active}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-silk ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-silk ${
                 i === active ? "animate-ken-burns opacity-100" : "opacity-0"
               }`}
-              style={{ backgroundImage: `url('${a.image}')` }}
-            />
+            >
+              <BackgroundImage
+                src={a.image}
+                sizes="(max-width: 1024px) 100vw, 60vw"
+              />
+            </div>
           ))}
 
           {/* Aviso — solo sobre las amenidades que aún no tienen su render propio */}

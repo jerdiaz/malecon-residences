@@ -27,7 +27,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        poster="/images/renders/frente-al-mar.webp"
+        poster="/images/hero-poster.webp"
       >
         <source src="/video/video_202606291024.mp4" type="video/mp4" />
       </video>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SplitWords from "@/components/ui/SplitWords";
 import Reveal from "@/components/ui/Reveal";
 import { scrollToSection } from "@/lib/sections";
+import BackgroundImage from "@/components/ui/BackgroundImage";
 
 interface StoryBlockProps {
   id?: string;
@@ -99,13 +100,14 @@ function ImagePanel({ image, className = "" }: { image: string; className?: stri
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('${image}')` }}
+        className="absolute inset-0"
         initial={{ scale: 1.06 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: false, amount: 0.08 }}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-      />
+      >
+        <BackgroundImage src={image} sizes="(max-width: 1024px) 100vw, 50vw" />
+      </motion.div>
     </motion.div>
   );
 }

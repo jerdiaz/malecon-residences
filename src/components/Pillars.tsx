@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BackgroundImage from "@/components/ui/BackgroundImage";
 
 interface Panel {
   id: string;
@@ -67,13 +68,18 @@ export default function Pillars() {
               aria-label={panel.heading}
               className="group relative h-[33vh] w-full flex-1 overflow-hidden border-b border-white/5 text-left last:border-none md:h-full md:border-b-0 md:border-r"
             >
-              {/* Imagen de fondo */}
+              {/* Imagen de fondo — la escala va en el contenedor para que
+                  `next/image` pueda seguir sirviendo el corte adecuado */}
               <div
-                className={`absolute inset-0 bg-cover bg-center transition-transform duration-[1400ms] ease-silk ${
+                className={`absolute inset-0 transition-transform duration-[1400ms] ease-silk ${
                   isActive ? "scale-105" : "scale-100"
                 }`}
-                style={{ backgroundImage: `url('${panel.image}')` }}
-              />
+              >
+                <BackgroundImage
+                  src={panel.image}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
 
               {/* Overlay oscuro — se aclara al activar */}
               <div
