@@ -6,6 +6,6 @@ export const CONTACT = {
   phoneTel: "+573050000000",
   whatsappNumber: "573050000000",
   whatsappMessage: "Hola, me interesa Malecón Business Center.",
-  email: "info@maleconbc.com",
+  email: "correo@ejemplo.com",
   address: "Zona Norte, Cartagena de Indias",
 } as const;
