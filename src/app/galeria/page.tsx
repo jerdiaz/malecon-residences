@@ -26,10 +26,10 @@ export default function GaleriaPage() {
   return (
     <main className="relative min-h-screen w-full bg-ink pb-32">
       {/* Cabecera */}
-      <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12 lg:pt-36">
+      <div className="mx-auto max-w-7xl px-6 pt-16 md:px-12 lg:pt-20">
         <Link
           href="/#galeria"
-          className="group mb-16 inline-flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 ease-silk hover:text-champagne"
+          className="group mb-10 inline-flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 ease-silk hover:text-champagne"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition-colors duration-300 ease-silk group-hover:border-bronze">
             <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -45,7 +45,7 @@ export default function GaleriaPage() {
         <h1 className="max-w-3xl font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
           Los renders del proyecto.
         </h1>
-        <p className="mt-8 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
+        <p className="mt-6 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
           El set completo entregado por los arquitectos. Toca cualquier imagen
           para verla en grande.
         </p>
@@ -57,7 +57,7 @@ export default function GaleriaPage() {
         if (items.length === 0) return null;
 
         return (
-          <section key={category} className="mx-auto max-w-7xl px-6 pt-24 md:px-12 lg:pt-32">
+          <section key={category} className="mx-auto max-w-7xl px-6 pt-16 md:px-12 lg:pt-20">
             <div className="mb-10 flex items-baseline justify-between border-b border-white/10 pb-5">
               <h2 className="font-serif text-2xl font-extralight tracking-tight text-champagne sm:text-3xl">
                 {CATEGORY_LABELS[category]}
