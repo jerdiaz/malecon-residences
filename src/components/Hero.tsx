@@ -34,7 +34,8 @@ export default function Hero() {
       <div className="veil absolute inset-0" />
 
       {/* Línea decorativa superior */}
-      <div className="absolute left-6 right-6 top-24 z-10 h-px bg-white/10 md:left-12 md:right-12" />
+      {/* Línea de encuadre — debe quedar por debajo del navbar (104px móvil / 120px desktop) */}
+      <div className="absolute left-6 right-6 top-28 z-10 h-px bg-white/10 md:left-12 md:right-12 md:top-32" />
 
       {/* Contenido central */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
