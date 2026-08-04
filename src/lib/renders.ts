@@ -63,6 +63,21 @@ export function getRenderBySlug(slug: string): RenderItem | undefined {
   return RENDERS.find((r) => r.slug === slug);
 }
 
+/** Render anterior y siguiente (circular) para navegar en la vista de detalle. */
+export function getAdjacentRenders(
+  slug: string,
+): { prev: RenderItem; next: RenderItem; index: number; total: number } | undefined {
+  const index = RENDERS.findIndex((r) => r.slug === slug);
+  if (index === -1) return undefined;
+  const total = RENDERS.length;
+  return {
+    prev: RENDERS[(index - 1 + total) % total],
+    next: RENDERS[(index + 1) % total],
+    index,
+    total,
+  };
+}
+
 export function getRendersByCategory(category: RenderCategory): RenderItem[] {
   return RENDERS.filter((r) => r.category === category);
 }
