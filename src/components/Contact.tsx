@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 import SocialLinks from "@/components/SocialLinks";
+import Logo from "@/components/Logo";
 import { CONTACT } from "@/lib/contact";
 
 interface FormState {
@@ -210,9 +211,7 @@ export default function Contact() {
         </div>
 
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/30 sm:flex-row">
-          <span className="font-serif text-sm tracking-[0.3em] text-white/60">
-            MALECÓN <span className="text-bronze/70">·</span> BUSINESS CENTER
-          </span>
+          <Logo variant="stacked" className="h-20" />
           <span>© {new Date().getFullYear()} — Todos los derechos reservados</span>
         </div>
       </footer>

@@ -41,7 +41,7 @@ export default function Navbar() {
             className="group flex flex-col items-start leading-none"
             aria-label="Malecón Business Center — inicio"
           >
-            <Logo hoverEffect />
+            <Logo variant="stacked" className="h-16 md:h-20" hoverEffect priority />
           </button>
 
           {/* Links desktop */}
