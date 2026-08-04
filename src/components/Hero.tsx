@@ -35,7 +35,7 @@ export default function Hero() {
 
       {/* Línea decorativa superior */}
       {/* Línea de encuadre — debe quedar por debajo del navbar (104px móvil / 120px desktop) */}
-      <div className="absolute left-6 right-6 top-28 z-10 h-px bg-white/10 md:left-12 md:right-12 md:top-32" />
+      <div className="absolute left-6 right-6 top-24 z-10 h-px bg-white/10 md:left-12 md:right-12 md:top-28" />
 
       {/* Contenido central */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
