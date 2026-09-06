@@ -56,9 +56,9 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="text-balance text-center font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            Conozca lo que aún
+            Haz clic aquí y descubre
             <span className="block font-light italic text-shimmer">
-              no está a la vista
+              la nueva sede corporativa de tu empresa en Cartagena.
             </span>
           </h2>
         </Reveal>
@@ -154,7 +154,7 @@ export default function Contact() {
                   aria-hidden
                   className="absolute inset-0 -translate-x-full bg-bronze/10 transition-transform duration-700 ease-silk group-hover:translate-x-0"
                 />
-                <span className="relative z-10">Agendar tu cita</span>
+                <span className="relative z-10">Agenda tu cita</span>
                 <span className="relative z-10 text-bronze transition-transform duration-500 ease-silk group-hover:translate-x-1">
                   →
                 </span>
