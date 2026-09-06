@@ -1,9 +1,12 @@
 // Datos de contacto centralizados: el cambio se propaga solo a navbar, pie,
 // mega menú, WhatsApp y redes.
 //
-// Confirmados: dirección y correo.
-// TODO: el teléfono sigue con pinta de placeholder (000 0000); el número de
-// WhatsApp se mantiene igual al teléfono mientras no digan lo contrario.
+// Confirmados por el cliente: dirección y correo.
+//
+// TODO: el teléfono +57 300 000 0000 es PLACEHOLDER — confirmado por el
+// cliente el 2026-09-06, todavía no hay número definitivo. El de WhatsApp se
+// mantiene igual al teléfono, así que hereda el mismo pendiente: hoy el botón
+// flotante abre un chat con un número que no existe.
 
 const addressStreet = "Cra. 3 #46-110 a 46-2, Piso 14, Barrio Marbella";
 const addressCity = "Cartagena de Indias, Bolívar";
