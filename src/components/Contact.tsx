@@ -173,9 +173,9 @@ export default function Contact() {
               Dirección
             </p>
             <p className="text-sm font-light leading-relaxed text-white/55">
-              {CONTACT.address}
+              {CONTACT.addressStreet}
               <br />
-              Bolívar, Colombia
+              {CONTACT.addressCity}
             </p>
           </div>
           <div>
