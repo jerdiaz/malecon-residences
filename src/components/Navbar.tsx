@@ -74,7 +74,7 @@ export default function Navbar() {
               onClick={() => handleNavigate("contact")}
               className="hidden rounded-full border border-white/15 px-6 py-2 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne md:inline-block"
             >
-              Agendar visita
+              Agenda tu visita
             </button>
 
             {/* Botón MENÚ — estilo MB Places */}
