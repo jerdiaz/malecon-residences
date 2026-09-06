@@ -110,7 +110,7 @@ export default function Amenities() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            Todo lo que su empresa
+            Todo lo que tu empresa
             <span className="block font-light italic text-shimmer">
               necesita para crecer
             </span>

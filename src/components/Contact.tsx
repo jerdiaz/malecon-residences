@@ -64,7 +64,7 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={240}>
           <p className="mx-auto mt-5 max-w-md text-center text-sm font-light leading-relaxed tracking-wide text-white/60">
-            Agende una cita reservada con nuestro equipo. Atendemos un número
+            Agenda una cita reservada con nuestro equipo. Atendemos un número
             limitado de clientes por temporada.
           </p>
         </Reveal>
@@ -78,8 +78,8 @@ export default function Contact() {
               Gracias, {form.nombre || "estimado cliente"}.
             </p>
             <p className="mx-auto mt-3 max-w-sm text-sm font-light leading-relaxed text-white/55">
-              Hemos recibido su solicitud. Un asesor de Malecón Business Center
-              se pondrá en contacto con usted de forma personal y discreta.
+              Hemos recibido tu solicitud. Un asesor de Malecón Business Center
+              se pondrá en contacto contigo de forma personal y discreta.
             </p>
             <button
               onClick={() => {
