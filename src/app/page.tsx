@@ -6,7 +6,7 @@ import RendersGallery from "@/components/RendersGallery";
 import LocationSection from "@/components/LocationSection";
 import Amenities from "@/components/Amenities";
 import Aliados from "@/components/Aliados";
-import Partners from "@/components/Partners";
+// import Partners from "@/components/Partners"; // sección oculta por ahora
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
 import SectionNav from "@/components/SectionNav";
@@ -68,8 +68,11 @@ En Malecón Business Center desarrollamos un proyecto de oficinas corporativas e
         {/* Aliados estratégicos (distintos de las marcas) */}
         <Aliados />
 
-        {/* Marcas que han confiado en nosotros (marquee) */}
-        <Partners />
+        {/* Marcas que han confiado en nosotros (marquee) — OCULTA POR AHORA.
+            Para reactivarla: descomentar esto, el import de Partners arriba, y
+            la entrada "marcas" en src/lib/sections.ts (si no, el punto de la
+            navegación lateral queda sin destino). */}
+        {/* <Partners /> */}
 
         <Contact />
       </main>
