@@ -45,7 +45,7 @@ export default function Navbar() {
           </button>
 
           {/* Links desktop */}
-          <ul className="hidden items-center gap-10 md:flex">
+          <ul className="hidden items-center gap-10 lg:flex">
             {NAV_LINKS.map((section) => {
               const isActive = section.id === active;
               return (
