@@ -87,7 +87,11 @@ export default function Navbar() {
               <span className="hidden text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-colors group-hover:text-white sm:inline">
                 {menuOpen ? "Cerrar" : "Menú"}
               </span>
-              <span className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]">
+              {/* Hamburguesa — solo hasta tablet. En escritorio (lg+) el botón
+                  queda como texto: ahí ya están los links y el ícono sobra.
+                  No se puede ocultar antes de sm, porque bajo 640px el texto
+                  "Menú" está oculto y el ícono es lo único que se ve. */}
+              <span className="flex h-8 w-8 flex-col items-center justify-center gap-[5px] lg:hidden">
                 <span
                   className={`h-px bg-white transition-all duration-400 ease-silk ${
                     menuOpen ? "w-5 translate-y-[4.5px] rotate-45" : "w-5"
