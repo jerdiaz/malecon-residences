@@ -39,10 +39,16 @@ export default function Home() {
         <StoryBlock
           id="porque"
           kicker="¿Por qué escogernos?"
-          title="¿Por qué instalar tu empresa en un centro de negocios de alto nivel?"
-          body={`El lugar donde opera una empresa también construye su reputación. Un centro de negocios moderno no solo ofrece oficinas; proyecta confianza, fortalece la imagen corporativa y crea el entorno ideal para impulsar el crecimiento empresarial.
-
-En Malecón Business Center desarrollamos un proyecto de oficinas corporativas en Cartagena diseñado para empresas, inversionistas y profesionales que buscan un espacio alineado con los más altos estándares de calidad, funcionalidad y prestigio. Nuestra arquitectura contemporánea, los acabados premium y los espacios cuidadosamente diseñados reflejan los valores de organizaciones que entienden que la excelencia también se comunica a través de su sede.`}
+          title="Inversión inmobiliaria en Cartagena"
+          body="Invierte en Malecón Business Center, un activo inmobiliario premium con ubicación estratégica frente a Malecón del Mar y alta proyección de valorización."
+          bullets={{
+            label: "Beneficios",
+            items: [
+              "Potencial de valorización",
+              "Demanda de oficinas corporativas",
+              "Uso propio o renta",
+            ],
+          }}
           image="/images/renders/fachada-nocturna.webp"
           imagePos="left"
         />

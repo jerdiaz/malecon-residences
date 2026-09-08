@@ -11,6 +11,8 @@ interface StoryBlockProps {
   kicker: string;
   title: string;
   body: string;
+  /** Lista opcional bajo el cuerpo. `label` encabeza los ítems. */
+  bullets?: { label: string; items: string[] };
   image: string;
   /** Posición de la imagen respecto al texto */
   imagePos?: "left" | "right";
@@ -22,6 +24,7 @@ export default function StoryBlock({
   kicker,
   title,
   body,
+  bullets,
   image,
   imagePos = "right",
   cta,
@@ -67,8 +70,32 @@ export default function StoryBlock({
               </div>
             </Reveal>
 
+            {bullets && (
+              <Reveal delay={750} variant="fade-up">
+                <div className="mt-8">
+                  <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                    {bullets.label}
+                  </p>
+                  <ul className="space-y-2.5">
+                    {bullets.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-bronze"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
+
             {cta && (
-              <Reveal delay={850}>
+              <Reveal delay={950}>
                 <button
                   onClick={() => scrollToSection(cta.sectionId)}
                   className="group mt-10 flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
