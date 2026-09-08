@@ -1,69 +1,79 @@
 // GENERADO AUTOMÁTICAMENTE — no editar a mano.
 // Miniaturas de 12 px en base64 que `next/image` usa como placeholder
-// borroso mientras descarga la imagen real. Regenerar al agregar renders.
+// borroso mientras descarga la imagen real. Regenerar al cambiar los renders.
 export const BLUR: Record<string, string> = {
   "/images/renders/acceso-peatonal.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMAAgAA8BgJZwAAxcHYc2VsQAA/rgtjZABaX8qpMxiYeIvwRivVynuZ1q5ADMVDe3ZMwOcrXqchnAA",
+    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMAAgAA8BgJZQCdAC1FJ5DoAD+m+mMwDb/quT52s8YK1NGzQYy76xqDmoFrK3dn4g8EzmYHNchwJAJmej7xgAA",
   "/images/renders/acceso-principal.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoMAAgAA8BgJQBdgBn5ORV2KAD9sxJiN7TO4ly6rPnXbOqz5ckUfdQFj9sP1V9vB3KbqrdaYo8BWAAA",
+    "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAgAA8BgJYgC7ADOahB6AAD9sxJiN6+iUzom/520lbdurAtrrDlJ6fU+85QBtPBmXxiQGXFHp1MAAAA=",
   "/images/renders/acceso-vehicular.webp":
-    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoMAAgAA8BgJYwC7AD7Fu7auLccAP6RvVEcA08cqoLNypnXwuTGJPYkGdEb/9F5rwbi1StU07ghb+cbTLosXQ69hn5gAA==",
+    "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoMAAgAA8BgJQBOgCL4wPX/BeoAAP6RvVEcA04qUKC33HUdO77INR+hG0o5zge/ZSZPYJi9gS/C2oABRzGYjsG2oiTImmPl5NAAAA==",
   "/images/renders/aerea-atardecer.webp":
-    "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoMAAgAA8BgJQBOgCIj/eWsaTAA/uuGFn3GlFMc8Hzz4Nhk+4duDeBpHQB0mQ5y+diVG//JALbKbLQAAAA=",
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAgAA8BgJYgCdADbU8QnYAAA/ufuGNQGE5e0lcOLNmrjz470PXom16vt8lAiO+Mztm2562skAxEjJX8jjDWXgAA=",
+  "/images/renders/aerea-avenida.webp":
+    "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAcAA8BgJZQC7AEPCltagAD+mX9ruXuREMegEAXKk544In43qZCTuCQ3SN8xNQ4eSqSqEwAqx0MAAAA=",
+  "/images/renders/aerea-contexto.webp":
+    "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACQAQCdASoMAAcAA8BgJZQAAlJx8MAA/PsUQQkRznJTCfcPlMi9ibykXif8lbSJ7jCbTSTmXaJiJl0PgAA=",
   "/images/renders/aerea-diurna.webp":
-    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAgAA8BgJQBOgCHpG0kBXAAA/mtdRGjKmO3M0+OGlpNsYjMBHw1QgGBNrX71l/ygSdJjmKIhKV6BF/L+nCpogAA=",
-  "/images/renders/aerea-nocturna-rooftop.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoMAAgAA8BgJYgCdAD7FupImQQAAM3yk6k6+Mk0n0EfmOIi1MCxirhr/K2ZKZBC5BCWEwVxTyHuzoAA",
+    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAgAA8BgJYgCdAD8K/t1cQAA/gncXelUsO+gb6Gj5RWQs0KR2XvTFL6jWK3mNH0qILme7egN3iXLyAtOT+R9O52gAA==",
+  "/images/renders/aerea-nocturna.webp":
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAgAA8BgJaACdAD0uUsMRPAA+wVh5Q+cVcDF7/8GIE+MX09OmUx5YSWD7YBm7C5mANie4mowcKwyPfKA/OIZAAA=",
   "/images/renders/atardecer-mar.webp":
-    "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoMAAgAA8BgJZQAAlhTZRF8AAD+h5t9a+fw8UTZWp9bwMO2zzwAblL65i0WLGQPuRqAIAAA",
-  "/images/renders/coworking-lounge.webp":
-    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoMAAgAA8BgJYwCdAD1cUjjpuAA+TGt+Uv0NsaUmAhUX45U+ZXj77d+tdEjevopDS8tHATjx+FQAA==",
+    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoMAAgAA8BgJZQAAlcEKUAAAP6tNFsfyXWXw2UJI+n3haoV99BWqyye7AwPA8QRURaKkK6LMIAAAA==",
   "/images/renders/detalle-fachada.webp":
-    "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoMAAgAA8BgJYgCdADcRFpEAAD9pdtALf/rtPO9n0RXO8cxDB8TGfpeYWy576tQp/qMr8+r5BkmKKRO6XZ6HJrzpxrEI4whEAA=",
+    "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoMAAgAA8BgJZACdADcT1UYGOAA/kQovvHc9+UJPhVR98YldbwQMsgTj2rzqCOZpSfsgbyyHmdNvR4mRFXd6IUSL3y2kInwgAA=",
   "/images/renders/esquina-fachada.webp":
-    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAgAA8BgJQBOkERigZrgCgAA/puza5YmwjBuB4jGFhqCoGA6YbrNb5VYAPHkUh03565O9GXWWpGHMvmrhp70AAA=",
+    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAgAA8BgJaACdADhlJkXr1gA/puzbFP8AGxJP9x5sNQhVAIvNGEpmJ6dr4SDfcxDcwKXjaqqoreXVAOPYXoOZUgAAA==",
   "/images/renders/fachada-avenida.webp":
-    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAgAA8BgJZQCdAEQzE68dAAA/pUOJetYTqXQWQbJVS3Gapv2mTXEnZCi7nPqNsFQA7UXVQgEytJ3sgAAAA==",
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoMAAgAA8BgJQBOgB58JZfMAAD+lQ4l61ilC/5hmQNtGHYPn2gD10Z3OIHwbALW32PMxxwZZgwwAmfki9MlUpeAAAA=",
   "/images/renders/fachada-frontal.webp":
-    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoMAAgAA8BgJYwCdIExGOPmmbDkwAD9dIhHkQWjobMlAdv7sYG7F4+ru7k7/4iUbm3qVxqCp8mMgMXUW5AAAA==",
+    "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoMAAgAA8BgJbACdAEXxI4ejKoaAAD+M+QRMgZyFXdcZwnfAz81kw+aQfgXvxDWBUwoen75WhD4WJ07CP5ywHDk0R3jk2yYAAA=",
   "/images/renders/fachada-modulos.webp":
-    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoMAAgAA8BgJYwCdAD8IzBwAP7iRtFGihIvxL3hjUT57uBJEN0QMoG5n62ogAsNrkdsF0aJr3DBKRHjqSzX74AA",
+    "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMAAgAA8BgJZACdAD8JCvCPAAA/slEhd7KRMqIMUlKcj46RldxEc27CvxaP9MhooBJM7EwuxpKOpiSxYVIOUD2CsUMQAAA",
   "/images/renders/fachada-nocturna.webp":
-    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAgAA8BgJZQCdAECwWwNjAkAAP6rjgzsW1QelstsqiROxU0R4LULkEDPRfZJxXTKm737LBCkyoQcJeQN/oAA",
+    "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoMAAgAA8BgJbACdAYrxc6YS75QYAD+3Xa+wSLXqYbmVGEzYvRPz8SSLUe8mwCe9+lsKLOuoEGfi6qmrpXxqqtfA9gvOx9mcOyFUMAA",
   "/images/renders/frente-al-mar.webp":
-    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAwAgCdASoMAAgAA8BgJYgCdGuAAoaaq+fuAAD91bct0uyS3cloDcfw+T5SIB4BKR/TyWUWlI7o0g8WH/rQAA==",
+    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoMAAgAA8BgJYgCdGuAAkbGXuXQAPxnnFlFne5icRI+hxM63TI5GriCc5lTxAC6dOQrel0oGH1jtAAA",
   "/images/renders/frontal-palmeras.webp":
-    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABwAgCdASoMAAgAA8BgJYwCdIExgqy3wNWePKwAAP7ruqjLlhEeE2VEyuvEgIwe9Qd5hnUBoF4zao146YmMHiNIDVZMehYjgAA=",
+    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAwAgCdASoMAAgAA8BgJQBOgMWb5ErMqJ25QAD+6I4AbLnhNew1gCBbZ+V9UTaFJz2zh4kdXUcMUhhxVjvqtnWgCizkahJskcqcAA==",
+  "/images/renders/ingreso-principal.webp":
+    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAgAA8BgJZQCdAEXaYLwn5pAAP4AcCImw5aK1oRlcqryq31GCKhK2+/rFBbBeUYnZc7VEMaZQCWJMmVVAAAA",
+  "/images/renders/lobby-acceso.webp":
+    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAcAA8BgJZgCdAEQdqM8sooAAP67bZ5KQZd7ePpFc+KV8xSqpuL/tUgSbIush4tLYUycfcrTDpw3t8b2FyAA",
+  "/images/renders/lobby-recepcion.webp":
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAcAA8BgJZACdADcTYPuqAAA/sII1M3y6emeG1OEqIjA61ucfld8bvR0cOzRTI8a1yDXLpjL3M/A5EWok24AAAA=",
   "/images/renders/locales-comerciales.webp":
-    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAgAA8BgJYwCdH8AF8LtO6mgAP7SXhyRJ822fkhlsSknwBECfgvyb1lhhM5zGUKyX0kaaavWSkvD67D0BYemAAA=",
+    "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoMAAgAA8BgJbACdAEVvGqt290AAP7mzsU9pQA9uar/7Cu00ZGHrylOr5cNuAR2MIQaoglO7+34b0VaVNWFcdMukM12yqyfr2m/O3E1B02AAA==",
   "/images/renders/malecon-playa.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoMAAgAA8BgJYwCdIExFxQc/6kAAP7tnomCTN3+2owHPsJj8rXgo3T0bOwX9UmDy25tj8W+rPFIMAAA",
-  "/images/renders/oficina-interior.webp":
-    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAgAA8BgJYgCdADhSW8iEAAA9kU0KVrZTDN32hHP8W9yETVMWrj1mQmKQq2AzFyF5mYOIxTJnSm52JAAAA==",
+    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAgAA8BgJYgCdAEJB8BOQAD+56Ewuwb8Uo5BeBJsDeGNM28VdQIETQlxvUm/XyA6uF/2YZAAAA==",
+  "/images/renders/oficina-open-space.webp":
+    "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoMAAgAA8BgJZgCdAYuRkfK3lvVAAD8186yBES5PQkgHpacw4ygUPusAvN2dSIOXnPgyk5JUX5otru+JMIRByxz+ABYb8AA",
+  "/images/renders/oficina-privada.webp":
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAgAA8BgJYgCdAD8Lkh4zjAAAP7c4YDUsYLJxQ7r/nfhacIE3piINeZvuO7kM/FEzLKxe+tHD8+6h9P40hgAAAA=",
   "/images/renders/oficinas-vidrio.webp":
-    "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAwAgCdASoMAAgAA8BgJZQCw7Eev7Z637W6AAD+6jBhbqMle4L5jAKrzzwra0uOJohCWcgyYL847Pi3YfuCgCfwAAA=",
+    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoMAAgAA8BgJYwCdAYqDn6qFnd6gAD+7Njn6jwX8WyhFZRKTfaRc5ZP5+dAOnLdIoIcmZJrnkNqZz0lS+AAAA==",
   "/images/renders/panoramica-zona-norte.webp":
-    "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoMAAgAA8BgJYwCdADzd4UAAP7oTMMEIQvC1cP/Cv9a8k5qrv55P+BBFQ8lFIqil6e51K5ylAA=",
+    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAgAA8BgJZACdAEO5MPU70AA/t/3cMifNVZmnSpC3zVqCtwaiJ7SCJBHEyIFcaHQ5GG7IwwDqdL4HoAAAA==",
+  "/images/renders/parqueadero-rampa.webp":
+    "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoMAAgAA8BgJZQAAlKJUIAA/oagSi1eactbgEo+8lceWWb1+p8U9q11UhkUbRFfUP5dwoAA",
+  "/images/renders/parqueadero.webp":
+    "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAgAA8BgJYwCdADhOblhAADLTkcP5EhgQf4+O/PKARl0lWAOI2pL86Bya/tg7bkCn2RXBw1zZZsgAAA=",
   "/images/renders/planta-diafana.webp":
     "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAAAQAgCdASoMAAgAA8BgJZwC7AEesQtKqwQAAP5T/LNPN9432o/yVPb8Lgjg4I78gAA=",
   "/images/renders/planta-oficinas.webp":
     "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoMAAgAA8BgJZQCdAD6/TJ1gAD2DL/mlWhz7z1d/UNXMghayXm8alKE2XgAAA==",
   "/images/renders/planta-rooftop.webp":
     "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAQCdASoMAAgAA8BgJZQCdAC3srVwAPpyX2lyOxOsgPaoHyqODkY8ukYAAA==",
-  "/images/renders/plaza-acceso.webp":
-    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMAAgAA8BgJYwC7ADcqZ4jEAD48HWzoo7Gnxtn2zRxGApSxLgmqboLj/aK4RU7yCfgFUV/ZQbboKmwT+oD8EAA",
   "/images/renders/plaza-atardecer.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoMAAgAA8BgJZwAAtx5yb9IAP7oUVQE2lagZAdNIUFb5UiveRZ5kM1b7Dk9Jaz53jyartTFaX0ooAAA",
-  "/images/renders/rooftop-mirador.webp":
-    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAgAA8BgJZQCdAEQXLv/Y23wAP6yOxLvXIZJDBEhlWYzc9CPy4Dq3lYNSmdktb+DEvWiYO1aC0KngtSmFQwA",
-  "/images/renders/rooftop-pergola.webp":
-    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoMAAgAA8BgJQBOgBufLeP/OAD+vc3poP15li8TH8ymRkkwW3DmWUXJkov6LIjdes02r8QgtCOHGxAA",
-  "/images/renders/rooftop-terraza.webp":
-    "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoMAAgAA8BgJQBOgBt+OvoAAP6w3W9TGZixiWWw5aqxeIvmNudcZyX/mVWrDhta4wHJcDvSV6Sphl3sj8v0AAAA",
+    "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMAAgAA8BgJZwAAt0DhTTftgAA/uhRVATaVqBkB00hQVvlSK95FpBP2/zr32BiCQUYhF4GQS8t0oAA",
+  "/images/renders/rooftop-atardecer.webp":
+    "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAgAA8BgJYwCdAEQzOobDKpwAPlw4hEKffdpgt8gKdQ+uXGThQI2Ur+xAlcgPfaXpBASvNQzElNqZn+Ep84AAAA=",
+  "/images/renders/rooftop-bar.webp":
+    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAgAA8BgJYgCdAD0XgrI8AD+fI10DkvOvclOm9Wfo6bc23CoR3hyIXo9CB7dIvO5YZV6vK4AAA==",
   "/images/renders/vista-caribe.webp":
-    "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoMAAgAA8BgJZwAAim3k+MAAP703eG8eiMSrfaWtc8fzJnQSa2JEi032VSb1uhAAAA=",
+    "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoMAAgAA8BgJZQAAfJ8oQTwAP703eG8eiMSrfaWxbwvvcyvCPgooi6L0AUmYp6dZIAn6EAA",
   "/images/renders/zona-estar.webp":
-    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAgAA8BgJYwCdAD0DhC+1wAA9qXT1j6Zn5P6Cykqm6v24NO+ABJ8kpRx3lXDuIQkkTYaHIkA+mrc6TuGncsiWFQwAA==",
+    "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoMAAgAA8BgJQBOgB6QBWJ6GAD7/+wKTJ3h+n4P0thn282oX9c524sDyFYc80bQK8LTdN9VaHBKNtGEU6rBslRBGmAAAA==",
 };
 
 /** Placeholder de un render; undefined si no está generado todavía. */

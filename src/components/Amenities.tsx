@@ -34,7 +34,7 @@ const AMENITIES: Amenity[] = [
     title: "Smart Office",
     description:
       "Oficinas diseñadas para integrar tecnología, eficiencia y productividad.",
-    image: "/images/renders/oficina-interior.webp",
+    image: "/images/renders/oficina-privada.webp",
     icon: IconMonitor,
   },
   {
@@ -51,7 +51,7 @@ const AMENITIES: Amenity[] = [
     title: "Salas de juntas equipadas",
     description:
       "Espacios modernos para reuniones, presentaciones y encuentros de negocios.",
-    image: "/images/renders/coworking-lounge.webp",
+    image: "/images/renders/oficina-open-space.webp",
     icon: IconPresentation,
   },
   {
@@ -59,7 +59,7 @@ const AMENITIES: Amenity[] = [
     title: "Rooftop empresarial",
     description:
       "Un espacio exclusivo para networking, reuniones informales y eventos corporativos con vistas privilegiadas.",
-    image: "/images/renders/rooftop-terraza.webp",
+    image: "/images/renders/rooftop-atardecer.webp",
     icon: IconRooftop,
   },
   {

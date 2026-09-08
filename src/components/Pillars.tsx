@@ -15,20 +15,20 @@ const PANELS: Panel[] = [
     id: "oficinas",
     heading: "Oficinas",
     description: "Espacios de alta eficiencia para empresas de vanguardia.",
-    image: "/images/renders/oficina-interior.webp",
+    image: "/images/renders/oficina-open-space.webp",
   },
   {
     id: "locales",
     heading: "Locales",
     description: "Zonas comerciales premium en el epicentro de la Zona Norte.",
-    image: "/images/renders/coworking-lounge.webp",
+    image: "/images/renders/locales-comerciales.webp",
   },
   {
     id: "rooftop",
     heading: "Rooftop",
     description:
       "El escenario perfecto para cerrar tratos con vista al horizonte.",
-    image: "/images/renders/rooftop-pergola.webp",
+    image: "/images/renders/rooftop-bar.webp",
   },
 ];
 

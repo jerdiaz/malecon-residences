@@ -44,3 +44,6 @@ next-env.d.ts
 # páginas del brochure en SVG (~20-40 MB cada una, llevan rasters incrustados).
 # Material de trabajo: al sitio solo entran versiones optimizadas.
 /Portafolio MBC*.svg
+
+# entregas comprimidas de material (cientos de MB) — se descomprimen local
+*.zip
