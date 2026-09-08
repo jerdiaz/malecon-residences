@@ -11,7 +11,7 @@ export const SECTIONS: SectionLink[] = [
   { id: "porque",      label: "Por qué",     hideInNav: true },
   { id: "galeria",     label: "Galería"                   },
   { id: "entorno",     label: "Entorno",     hideInNav: true },
-  { id: "ubicacion",   label: "Ubicación",   hideInNav: true },
+  { id: "ubicacion",   label: "Ubicación"                 },
   { id: "amenities",   label: "Amenidades"                },
   { id: "aliados",     label: "Aliados",     hideInNav: true },
   // { id: "marcas", label: "Marcas", hideInNav: true }, // sección oculta por ahora

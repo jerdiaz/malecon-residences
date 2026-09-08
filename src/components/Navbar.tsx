@@ -77,21 +77,19 @@ export default function Navbar() {
               Agenda tu visita
             </button>
 
-            {/* Botón MENÚ — estilo MB Places */}
+            {/* Botón MENÚ — oculto en escritorio: allí la barra horizontal ya
+                lista las secciones y este botón la duplicaría. Móvil y tablet no
+                muestran esa barra, así que aquí es la única navegación. */}
             <button
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
-              className="group -m-2 flex items-center gap-2.5 p-2"
+              className="group -m-2 flex items-center gap-2.5 p-2 lg:hidden"
             >
               <span className="hidden text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-colors group-hover:text-white sm:inline">
                 {menuOpen ? "Cerrar" : "Menú"}
               </span>
-              {/* Hamburguesa — solo hasta tablet. En escritorio (lg+) el botón
-                  queda como texto: ahí ya están los links y el ícono sobra.
-                  No se puede ocultar antes de sm, porque bajo 640px el texto
-                  "Menú" está oculto y el ícono es lo único que se ve. */}
-              <span className="flex h-8 w-8 flex-col items-center justify-center gap-[5px] lg:hidden">
+              <span className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]">
                 <span
                   className={`h-px bg-white transition-all duration-400 ease-silk ${
                     menuOpen ? "w-5 translate-y-[4.5px] rotate-45" : "w-5"
