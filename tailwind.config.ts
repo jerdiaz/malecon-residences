@@ -8,13 +8,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Deep, profound dark backgrounds
+        // Azul profundo de marca — RGB(20, 34, 56). Reemplaza al casi-negro
+        // que se usaba antes. La escala mantiene el mismo tono y saturación,
+        // subiendo solo la luminosidad para capas sutiles.
         ink: {
-          DEFAULT: "#090d11",
-          900: "#090d11",
-          800: "#0c1116",
-          700: "#11171d",
-          600: "#171f27",
+          DEFAULT: "#142238",
+          900: "#142238",
+          800: "#16263e",
+          700: "#192b47",
+          600: "#1e3253",
         },
         // Subtle metallic accents — champagne / bronze
         champagne: "#d8c4a0",
