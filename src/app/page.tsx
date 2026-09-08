@@ -35,7 +35,9 @@ export default function Home() {
           cta={{ label: "Ver galería", sectionId: "galeria" }}
         />
 
-        {/* Por qué escogernos */}
+        {/* Por qué escogernos — "Malecón del Mar" es el nombre propio de otro
+            proyecto de Cartagena, no una errata por "Mar Caribe" ni por el
+            nombre de este proyecto. Confirmado por el cliente. No corregir. */}
         <StoryBlock
           id="porque"
           kicker="¿Por qué escogernos?"
