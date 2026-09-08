@@ -40,3 +40,7 @@ next-env.d.ts
 # auditorías internas — quedan solo en local, no se suben al repo
 /SECURITY_AUDIT.md
 /ARCHITECTURE_AUDIT.md
+
+# páginas del brochure en SVG (~20-40 MB cada una, llevan rasters incrustados).
+# Material de trabajo: al sitio solo entran versiones optimizadas.
+/Portafolio MBC*.svg
