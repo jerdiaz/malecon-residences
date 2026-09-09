@@ -150,13 +150,23 @@ export default function LocationSection() {
         </div>
 
         {/* ── Columna derecha: foto aérea + mapa ── */}
-        <div className="relative flex items-center justify-center lg:h-full">
-          {/* Caja con la proporción real de la imagen (3840×2160) para que la
-              foto se vea completa, sin recorte, y los controles queden encima */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden">
+        <div className="relative flex items-center justify-center lg:h-full lg:items-start">
+          {/* En móvil la caja guarda la proporción de la imagen (3840×2160) y
+              se ve completa. En escritorio se sangra de lado a lado como los
+              StoryBlock: con la columna de texto en 1264px, una caja 16/9
+              dejaba 364px de azul vacío arriba y abajo del panel.
+              El alto se topa en una pantalla en vez de seguir a la columna: al
+              llenar los 1376px que mide la sección a 1024px solo quedaba
+              visible el 21% del ancho de la foto —una tira de casas sin
+              lectura—. Topado, el recorte va del 32% al 50%. Pegajoso además,
+              como el panel de Plantas, la foto acompaña la lectura de la lista.
+              El recorte es horizontal y centrado, así que el marcador —que va
+              al 50% del ancho— sigue cayendo donde caía. */}
+          <div className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
 
-          {/* Tabs */}
-          <div className="absolute top-6 left-6 z-20 flex gap-1">
+          {/* Tabs — en escritorio bajan bajo el navbar: con el panel fijo
+              arriba, a top-6 quedaban detrás de la barra (121px). */}
+          <div className="absolute left-6 top-6 z-20 flex gap-1 lg:top-36">
             {TABS.map((tab) => (
               <button
                 key={tab}
