@@ -55,13 +55,31 @@ export default function RendersGallery() {
             stagger={50}
           />
         </h2>
-        <Reveal delay={500}>
-          <p className="mt-8 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
-            {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
-            Arquitectura contemporánea diseñada para la Zona Norte de Cartagena
-            de Indias.
-          </p>
-        </Reveal>
+        {/* El acceso a la galería completa vive aquí, a la derecha del párrafo
+            y no bajo el carrusel: abajo era un enlace gris al 60% del tamaño
+            del pie de foto, junto a las flechas, y se pasaba de largo. Arriba
+            cae en la vista al entrar a la sección, y con caja se lee como
+            acción. Misma esquina que en las páginas de detalle. */}
+        <div className="mt-8 flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
+          <Reveal delay={500}>
+            <p className="max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
+              {CAROUSEL_RENDERS.length} perspectivas del Malecón Business
+              Center. Arquitectura contemporánea diseñada para la Zona Norte de
+              Cartagena de Indias.
+            </p>
+          </Reveal>
+          <Reveal delay={700} className="shrink-0">
+            <Link
+              href="/galeria"
+              className="group inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+            >
+              Ver galería completa
+              <span className="transition-transform duration-500 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </Reveal>
+        </div>
       </div>
 
       {/* Carrusel — composición asimétrica sobre el set completo de renders */}
@@ -165,11 +183,14 @@ export default function RendersGallery() {
             </p>
           </div>
 
+          {/* Se repite el acceso al terminar de recorrer el carrusel, pero en
+              voz baja: el botón con caja ya está arriba y dos iguales en la
+              misma sección compiten. */}
           <Link
             href="/galeria"
             className="group flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 ease-silk hover:text-champagne"
           >
-            Ver galería completa
+            Ver las {CAROUSEL_RENDERS.length} imágenes
             <span className="h-px w-8 bg-white/25 transition-all duration-500 ease-silk group-hover:w-12 group-hover:bg-bronze" />
           </Link>
         </div>
