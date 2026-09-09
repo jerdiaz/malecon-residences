@@ -100,7 +100,7 @@ export default function Plantas() {
               posicionarían contra la caja de relleno y lo ignorarían, quedando
               pegados a los bordes y por debajo del navbar.
               Arriba se reserva más espacio porque el navbar mide 105px. */}
-          <div className="absolute inset-0 px-8 pb-16 pt-32 md:px-14 md:pb-20 md:pt-36">
+          <div className="absolute inset-0 px-6 pb-14 pt-28 md:px-10 md:pb-14 md:pt-32">
             <div className="relative h-full w-full">
               {planos.map((p, i) => (
                 <button
@@ -285,7 +285,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
   // propia imagen: `object-contain` encaja dentro de la caja de contenido, así
   // que reducirla con padding es lo que le da aire. Los apaisados no lo
   // necesitan porque les sobra altura.
-  const aire = plano.aspecto < 1 ? "py-[7%]" : "";
+  const aire = plano.aspecto < 1 ? "py-[3%]" : "";
 
   if (plano.vector) {
     return (

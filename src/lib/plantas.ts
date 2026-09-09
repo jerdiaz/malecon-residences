@@ -91,8 +91,11 @@ export const NIVELES: NivelPlantas[] = [
     planos: [
       {
         src: "/images/plantas/plantas-por-zona.svg",
+        // Recortado a los planos: la leyenda de metrajes que traía la página
+        // ahora vive como tipografía en la columna, y sacarla del dibujo
+        // permite que las tres zonas se vean un 50% más grandes.
         label: "Oficinas por zona",
-        aspecto: 1.737,
+        aspecto: 1.632,
         vector: true,
       },
       { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A", aspecto: 0.444 },
