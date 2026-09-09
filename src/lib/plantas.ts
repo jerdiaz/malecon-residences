@@ -10,10 +10,8 @@ export interface NivelPlantas {
   label: string;
   /** Frase corta que explica qué se está viendo en esa pestaña */
   intro: string;
-  /** Plano que abre el nivel, a lo ancho */
-  principal: Plano;
-  /** Detalles por zona, bajo el principal */
-  detalles?: Plano[];
+  /** Planos del nivel, en el orden en que los recorre el carrusel. */
+  planos: Plano[];
 }
 
 // Plantas del proyecto, agrupadas por nivel.
@@ -29,24 +27,25 @@ export interface NivelPlantas {
 // los `clipPath` del brochure coinciden con las de cada plano (Tipo 04 = Zona A,
 // Tipo 02 = Zona B, Tipo 03 = Zona C). En los locales se aplicó la misma
 // convención de numeración; conviene confirmarla con los arquitectos.
+//
+// El primero de cada nivel es el que abre: conviene que sea la vista que ubica
+// al visitante antes de entrar en el detalle de cada zona.
 export const NIVELES: NivelPlantas[] = [
   {
     id: "general",
     label: "General",
     intro:
       "El conjunto visto desde arriba, con las tres zonas —A, B y C— que organizan cada nivel.",
-    principal: {
-      src: "/images/plantas/planta-general.svg",
-      label: "Planta general",
-      vector: true,
-    },
+    planos: [
+      { src: "/images/plantas/planta-general.svg", label: "Planta general", vector: true },
+    ],
   },
   {
     id: "locales",
     label: "Locales",
     intro: "El nivel comercial, a pie de calle.",
-    principal: { src: "/images/plantas/locales-general.webp", label: "Nivel de locales" },
-    detalles: [
+    planos: [
+      { src: "/images/plantas/locales-general.webp", label: "El nivel completo" },
       { src: "/images/plantas/locales-zona-a.webp", label: "Zona A" },
       { src: "/images/plantas/locales-zona-b.webp", label: "Zona B" },
       { src: "/images/plantas/locales-zona-c.webp", label: "Zona C" },
@@ -57,12 +56,8 @@ export const NIVELES: NivelPlantas[] = [
     label: "Oficinas",
     intro:
       "Planta tipo con la numeración de cada oficina, sus metrajes y la disponibilidad.",
-    principal: {
-      src: "/images/plantas/plantas-por-zona.svg",
-      label: "Oficinas por zona",
-      vector: true,
-    },
-    detalles: [
+    planos: [
+      { src: "/images/plantas/plantas-por-zona.svg", label: "Oficinas por zona", vector: true },
       { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A" },
       { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B" },
       { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C" },
@@ -73,6 +68,6 @@ export const NIVELES: NivelPlantas[] = [
     id: "cubierta",
     label: "Cubierta",
     intro: "La cubierta, con la terraza del rooftop.",
-    principal: { src: "/images/plantas/cubierta.webp", label: "Planta de cubierta" },
+    planos: [{ src: "/images/plantas/cubierta.webp", label: "Planta de cubierta" }],
   },
 ];
