@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
 import { CONTACT } from "@/lib/contact";
@@ -27,30 +25,24 @@ const CONEXIONES = [
   "Clínica Serena del Mar y Centro Comercial Las Ramblas",
 ];
 
-// ── Tabs del panel derecho ─────────────────────────────────────────────────
-const TABS = ["Foto", "Mapa", "Conexiones"] as const;
-type Tab = typeof TABS[number];
-
-// Mapa de conexiones — página 8 del brochure. El cliente lo pasó como
-// captura de WhatsApp (no como archivo), así que esto es esa misma imagen,
-// recortada a solo el panel del mapa (el título, los párrafos y la lista de
-// abajo ya son texto real en la columna izquierda de esta sección, incluirlos
-// otra vez como imagen habría sido redundante) y reexportada a WebP.
-const MAPA_CONEXIONES_SRC = "/images/lote/mapa-conexiones.webp";
-
-// ── URL del iframe de Google Maps ──────────────────────────────────────────
-// Para obtener la URL correcta:
-//   1. Abre Google Maps y navega hasta el lote
-//   2. Clic en "Compartir" → "Insertar un mapa"
-//   3. Copia la URL que aparece dentro de src="..."
-//   4. Pégala aquí reemplazando el valor de MAP_EMBED_URL
-const MAP_EMBED_URL =
-  "https://maps.google.com/maps?q=10.4441,-75.5127&t=k&z=17&ie=UTF8&iwloc=&output=embed";
-// ──────────────────────────────────────────────────────────────────────────
+// Mapa de conexiones — página 8 del brochure. Primero solo había una captura
+// de WhatsApp del cliente (de ahí salió un recorte en WebP); después llegó el
+// SVG real ("Portafolio MBC - Pág 8 Mapa.svg") y este es ese archivo, recortado
+// a solo el panel del mapa cambiando el viewBox (sin tocar el contenido, así
+// no se pierde nada) — el título, los párrafos y la lista de abajo ya son
+// texto real en la columna izquierda, incluirlos otra vez habría sido
+// redundante. Se le quitaron dos imágenes incrustadas que no se veían en la
+// página (11MB → 354KB): una con una ruta rota a un archivo del cliente que
+// no existe aquí, y otra que su propio clipPath dejaba fuera del área
+// visible.
+//
+// El "terreno" del mapa es transparente a propósito en el diseño original
+// (se apoya en el fondo blanco de la página completa) — sin un fondo claro
+// detrás, las etiquetas de los pines quedan ilegibles. Por eso el panel de
+// abajo lo pone sobre bg-white, no sobre el azul de marca del sitio.
+const MAPA_CONEXIONES_SRC = "/images/ubicacion/mapa-conexiones.svg";
 
 export default function LocationSection() {
-  const [activeTab, setActiveTab] = useState<Tab>("Foto");
-
   return (
     <section
       id="ubicacion"
@@ -157,137 +149,35 @@ export default function LocationSection() {
           </Reveal>
         </div>
 
-        {/* ── Columna derecha: foto aérea + mapa ── */}
-        <div className="relative flex items-center justify-center lg:h-full lg:items-start">
-          {/* En móvil la caja guarda la proporción de la imagen (3840×2160) y
-              se ve completa. En escritorio se sangra de lado a lado como los
-              StoryBlock: con la columna de texto en 1264px, una caja 16/9
-              dejaba 364px de azul vacío arriba y abajo del panel.
-              El alto se topa en una pantalla en vez de seguir a la columna: al
-              llenar los 1376px que mide la sección a 1024px solo quedaba
-              visible el 21% del ancho de la foto —una tira de casas sin
-              lectura—. Topado, el recorte va del 32% al 50%. Pegajoso además,
-              como el panel de Plantas, la foto acompaña la lectura de la lista.
-              El recorte es horizontal y centrado, así que el marcador —que va
-              al 50% del ancho— sigue cayendo donde caía. */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
-
-          {/* Tabs — en escritorio bajan bajo el navbar: con el panel fijo
-              arriba, a top-6 quedaban detrás de la barra (121px). */}
-          <div className="absolute left-6 top-6 z-20 flex gap-1 lg:top-36">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-bronze/90 text-ink"
-                    : "bg-ink/60 text-white/60 backdrop-blur-sm hover:text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+        {/* ── Columna derecha: mapa de conexiones (página 8 del brochure) ──
+            Antes había tabs (Foto aérea / Google Maps / Conexiones); el
+            cliente pidió dejar solo el diseño de Conexiones. El iframe de
+            Google Maps ya no se usa en ningún lado. La foto aérea
+            (public/images/lote/terreno-aereo.jpg) queda sin referenciar en
+            el código — el archivo sigue en public/ por si se necesita
+            recuperar este panel.
+            Mismo criterio de tamaño que tenían los otros paneles: en móvil
+            aspect-[16/9], en escritorio se sangra de lado a lado y queda
+            pegajoso (sticky) para acompañar la lectura de la lista. Es una
+            infografía vectorial, no una foto: los pines y la leyenda no
+            pueden recortarse (object-contain, no object-cover), y va sobre
+            bg-white porque el "terreno" del mapa es transparente en el
+            diseño original — ver la nota junto a MAPA_CONEXIONES_SRC. Se
+            sirve con <img>, no con next/image: es un SVG y next/image no
+            lo optimiza, con fill perdería el vector. */}
+        <Reveal delay={200}>
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-white lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={MAPA_CONEXIONES_SRC}
+                alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
+                loading="lazy"
+                className="h-full w-full object-contain"
+              />
+            </div>
           </div>
-
-          {/* Panel: Foto aérea real del terreno */}
-          <AnimatePresence mode="wait">
-            {activeTab === "Foto" && (
-              <motion.div
-                key="foto"
-                className="absolute inset-0 overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Image
-                  src="/images/lote/terreno-aereo.jpg"
-                  alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
-                  fill
-                  // 165vh, no 50vw: ver la nota de `sizes` en BackgroundImage.
-                  sizes="(max-width: 1024px) 100vw, 165vh"
-                  className="object-cover object-center"
-                  priority
-                />
-                {/* Velo inferior */}
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
-
-                {/* Marcador de ubicación */}
-                <motion.div
-                  className="absolute left-1/2 top-[62%] -translate-x-1/2 -translate-y-1/2"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="absolute -inset-4 animate-ping rounded-full bg-bronze/25" />
-                  <span className="absolute -inset-2 rounded-full bg-bronze/35" />
-                  <span className="relative block h-3 w-3 rounded-full bg-bronze shadow-[0_0_16px_rgba(176,141,87,0.9)]" />
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-sm bg-ink/80 px-3 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] text-champagne backdrop-blur-sm">
-                    Malecón Business Center
-                  </span>
-                </motion.div>
-
-                {/* Badge pie de foto */}
-                <div className="absolute bottom-6 left-6">
-                  <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/50">
-                    Foto aérea · Zona Norte · Cartagena de Indias
-                  </p>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Panel: Mapa embebido */}
-            {activeTab === "Mapa" && (
-              <motion.div
-                key="mapa"
-                className="absolute inset-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <iframe
-                  src={MAP_EMBED_URL}
-                  title="Ubicación Malecón Business Center"
-                  className="h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                {/* Overlay con branding encima del mapa */}
-                <div className="pointer-events-none absolute bottom-6 left-6">
-                  <span className="rounded-sm bg-ink/80 px-3 py-1.5 text-[0.6rem] font-light uppercase tracking-[0.25em] text-champagne backdrop-blur-sm">
-                    Malecón Business Center · Zona Norte
-                  </span>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Panel: mapa de conexiones (página 8 del brochure) — es una
-                infografía, no una foto: los pines y la leyenda no pueden
-                recortarse, así que va con object-contain sobre un fondo claro
-                en vez de object-cover a sangre como en el panel de Foto. */}
-            {activeTab === "Conexiones" && (
-              <motion.div
-                key="conexiones"
-                className="absolute inset-0 bg-[#f5f2ec]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Image
-                  src={MAPA_CONEXIONES_SRC}
-                  alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
