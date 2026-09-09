@@ -3,7 +3,12 @@ import Hero from "@/components/Hero";
 import Pillars from "@/components/Pillars";
 import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
-import LocationSection from "@/components/LocationSection";
+// import LocationSection from "@/components/LocationSection"; // sección
+// oculta por ahora, reemplazada por Ubicacion (la página 8 del brochure tal
+// cual, como imagen). El cliente pidió el mismo tratamiento que Amenidades;
+// queda en el repo por si hay que volver a ella — descomentar este import y
+// usar <LocationSection /> en vez de <Ubicacion />.
+import Ubicacion from "@/components/Ubicacion";
 // import Amenities from "@/components/Amenities"; // sección oculta por ahora,
 // reemplazada por Amenidades (contenido real del brochure). El cliente pidió
 // quitar esta versión; queda en el repo por si hay que volver a ella —
@@ -77,7 +82,7 @@ export default function Home() {
         />
 
         {/* Ubicación — mapa y distancias */}
-        <LocationSection />
+        <Ubicacion />
 
         <AmenidadesTexto id="amenities" />
 
