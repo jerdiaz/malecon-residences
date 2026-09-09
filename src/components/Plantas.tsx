@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
-import BackgroundImage from "@/components/ui/BackgroundImage";
 import { NIVELES, type Plano } from "@/lib/plantas";
 
 /**
@@ -15,8 +14,9 @@ import { NIVELES, type Plano } from "@/lib/plantas";
  * Se descartó la barra de pestañas que tenía antes: es lenguaje de aplicación
  * web y desentonaba con el resto del sitio, que elige siempre por lista serif.
  *
- * El plano flota sobre el render fotográfico del nivel, muy atenuado. El dibujo
- * dice cómo se distribuye el espacio; la foto detrás dice cómo se siente.
+ * El plano va sobre el azul de marca, sin fotografía detrás: se probó con el
+ * render del nivel atenuado y competían: un plano es información que se lee y
+ * una foto es atmósfera que se contempla, y superpuestos no ganaba ninguno.
  */
 export default function Plantas() {
   const [nivel, setNivel] = useState(0);
@@ -76,24 +76,8 @@ export default function Plantas() {
       </div>
 
       <div className="relative mt-16 lg:flex lg:items-start">
-        {/* ── Izquierda: el plano sobre el ambiente del nivel ── */}
+        {/* ── Izquierda: el plano, fijo mientras se recorre la columna ── */}
         <div className="relative h-[60vh] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:w-[60%]">
-          {NIVELES.map((n, i) => (
-            <div
-              key={n.id}
-              aria-hidden
-              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-silk ${
-                i === nivel ? "animate-ken-burns opacity-100" : "opacity-0"
-              }`}
-            >
-              <BackgroundImage
-                src={n.ambiente}
-                sizes="(max-width: 1024px) 100vw, 60vw"
-              />
-            </div>
-          ))}
-          <div className="absolute inset-0 bg-ink/85" />
-
           {/* El plano, flotando sin marco.
               El relleno va en esta capa y los planos se apilan dentro de la caja
               interior: si fueran `absolute inset-0` directamente aquí, se

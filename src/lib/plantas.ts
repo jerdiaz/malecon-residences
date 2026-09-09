@@ -26,9 +26,6 @@ export interface NivelPlantas {
   label: string;
   /** Frase corta que explica qué se está viendo en ese nivel */
   intro: string;
-  /** Render fotográfico del nivel. Va detrás del plano, atenuado: conecta el
-   *  dibujo técnico con el espacio real y evita que la sección se sienta fría. */
-  ambiente: string;
   planos: Plano[];
   /** Inventario comercial, cuando el nivel lo tiene. */
   inventario?: {
@@ -57,12 +54,12 @@ export const NIVELES: NivelPlantas[] = [
     label: "General",
     intro:
       "El conjunto visto desde arriba. Tres zonas —A, B y C— organizan cada nivel del edificio.",
-    ambiente: "/images/renders/aerea-contexto.webp",
     planos: [
       {
         src: "/images/plantas/planta-general.svg",
         label: "Planta general",
-        aspecto: 1.737, escala: 1,
+        aspecto: 1.737,
+        escala: 1,
         vector: true,
       },
     ],
@@ -72,12 +69,31 @@ export const NIVELES: NivelPlantas[] = [
     label: "Locales",
     intro:
       "El nivel comercial, a pie de calle y con frente sobre la avenida del malecón.",
-    ambiente: "/images/renders/locales-comerciales.webp",
     planos: [
-      { src: "/images/plantas/locales-general.webp", label: "El nivel completo", aspecto: 1.509, escala: 1 },
-      { src: "/images/plantas/locales-zona-a.webp", label: "Zona A", aspecto: 0.698, escala: 0.94 },
-      { src: "/images/plantas/locales-zona-b.webp", label: "Zona B", aspecto: 1.427, escala: 1 },
-      { src: "/images/plantas/locales-zona-c.webp", label: "Zona C", aspecto: 0.537, escala: 0.94 },
+      {
+        src: "/images/plantas/locales-general.webp",
+        label: "El nivel completo",
+        aspecto: 1.509,
+        escala: 1,
+      },
+      {
+        src: "/images/plantas/locales-zona-a.webp",
+        label: "Zona A",
+        aspecto: 0.698,
+        escala: 0.94,
+      },
+      {
+        src: "/images/plantas/locales-zona-b.webp",
+        label: "Zona B",
+        aspecto: 1.427,
+        escala: 1,
+      },
+      {
+        src: "/images/plantas/locales-zona-c.webp",
+        label: "Zona C",
+        aspecto: 0.537,
+        escala: 0.94,
+      },
     ],
     inventario: {
       titulo: "Locales disponibles",
@@ -94,7 +110,6 @@ export const NIVELES: NivelPlantas[] = [
     label: "Oficinas",
     intro:
       "La planta tipo, con veinticuatro oficinas repartidas entre las tres zonas.",
-    ambiente: "/images/renders/oficina-open-space.webp",
     planos: [
       {
         src: "/images/plantas/plantas-por-zona.svg",
@@ -102,13 +117,34 @@ export const NIVELES: NivelPlantas[] = [
         // ahora vive como tipografía en la columna, y sacarla del dibujo
         // permite que las tres zonas se vean un 50% más grandes.
         label: "Oficinas por zona",
-        aspecto: 1.632, escala: 1,
+        aspecto: 1.632,
+        escala: 1,
         vector: true,
       },
-      { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A", aspecto: 0.444, escala: 0.94 },
-      { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B", aspecto: 1.473, escala: 1 },
-      { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C", aspecto: 0.553, escala: 0.94 },
-      { src: "/images/plantas/oficinas-general.webp", label: "El nivel completo", aspecto: 1.509, escala: 1 },
+      {
+        src: "/images/plantas/oficinas-zona-a.webp",
+        label: "Zona A",
+        aspecto: 0.444,
+        escala: 0.94,
+      },
+      {
+        src: "/images/plantas/oficinas-zona-b.webp",
+        label: "Zona B",
+        aspecto: 1.473,
+        escala: 1,
+      },
+      {
+        src: "/images/plantas/oficinas-zona-c.webp",
+        label: "Zona C",
+        aspecto: 0.553,
+        escala: 0.94,
+      },
+      {
+        src: "/images/plantas/oficinas-general.webp",
+        label: "El nivel completo",
+        aspecto: 1.509,
+        escala: 1,
+      },
     ],
     // Transcrito de la página 12 del brochure. Antes solo existía dentro de la
     // imagen; aquí se actualiza sin pedir arte nueva cuando cambie la oferta.
@@ -117,7 +153,10 @@ export const NIVELES: NivelPlantas[] = [
       unidad: "oficina",
       filas: [
         { area: "32.6", unidades: ["13", "15", "17", "19", "21"] },
-        { area: "35.6", unidades: ["02", "03", "04", "05", "08", "09", "10", "11"] },
+        {
+          area: "35.6",
+          unidades: ["02", "03", "04", "05", "08", "09", "10", "11"],
+        },
         { area: "36.0", unidades: ["07"] },
         { area: "40.6", unidades: ["14", "16", "18", "20", "22"] },
         { area: "49.2", unidades: ["06"] },
@@ -131,9 +170,13 @@ export const NIVELES: NivelPlantas[] = [
     id: "cubierta",
     label: "Cubierta",
     intro: "La cubierta, con la terraza del rooftop asomada al Caribe.",
-    ambiente: "/images/renders/rooftop-bar.webp",
     planos: [
-      { src: "/images/plantas/cubierta.webp", label: "Planta de cubierta", aspecto: 1.509, escala: 1 },
+      {
+        src: "/images/plantas/cubierta.webp",
+        label: "Planta de cubierta",
+        aspecto: 1.509,
+        escala: 1,
+      },
     ],
   },
 ];
