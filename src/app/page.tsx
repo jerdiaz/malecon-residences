@@ -5,6 +5,7 @@ import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
 import LocationSection from "@/components/LocationSection";
 import Amenities from "@/components/Amenities";
+import Plantas from "@/components/Plantas";
 import Aliados from "@/components/Aliados";
 // import Partners from "@/components/Partners"; // sección oculta por ahora
 import Contact from "@/components/Contact";
@@ -72,6 +73,11 @@ export default function Home() {
         <LocationSection />
 
         <Amenities />
+
+        {/* Plantas — va después de Amenidades y antes del cierre: es el
+            contenido más concreto de la página, y quien lo mira ya está
+            evaluando comprar. */}
+        <Plantas />
 
         {/* Aliados estratégicos (distintos de las marcas) */}
         <Aliados />

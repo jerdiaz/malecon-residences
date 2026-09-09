@@ -1,4 +1,4 @@
-export type RenderCategory = "exteriores" | "interiores" | "plantas";
+export type RenderCategory = "exteriores" | "interiores";
 
 export interface RenderItem {
   slug: string;
@@ -10,7 +10,6 @@ export interface RenderItem {
 export const CATEGORY_LABELS: Record<RenderCategory, string> = {
   exteriores: "Exteriores",
   interiores: "Interiores",
-  plantas: "Plantas",
 };
 
 // Set completo de renders oficiales entregados por los arquitectos.
@@ -54,17 +53,11 @@ export const RENDERS: RenderItem[] = [
   { slug: "rooftop-al-atardecer",   src: "/images/renders/rooftop-atardecer.webp",      label: "Rooftop al atardecer",        category: "interiores" },
   { slug: "parqueadero",            src: "/images/renders/parqueadero.webp",            label: "Parqueadero",                 category: "interiores" },
   { slug: "rampa-del-parqueadero",  src: "/images/renders/parqueadero-rampa.webp",      label: "Rampa del parqueadero",       category: "interiores" },
-
-  // ── Plantas ───────────────────────────────────────────────────────────────
-  // Pendiente: reemplazar por los planos de la carpeta Plantas de la entrega
-  // de agosto, cuando se defina la sección Plantas.
-  { slug: "planta-del-rooftop",     src: "/images/renders/planta-rooftop.webp",         label: "Planta del rooftop",          category: "plantas" },
-  { slug: "planta-de-oficinas",     src: "/images/renders/planta-oficinas.webp",        label: "Planta de oficinas",          category: "plantas" },
-  { slug: "planta-diafana",         src: "/images/renders/planta-diafana.webp",         label: "Planta diáfana",              category: "plantas" },
 ];
 
-/** Los que rotan en el carrusel del home: las fotos, sin los planos. */
-export const CAROUSEL_RENDERS = RENDERS.filter((r) => r.category !== "plantas");
+/** Los que rotan en el carrusel del home. Las plantas viven en su propia
+ *  sección, no en la galería. */
+export const CAROUSEL_RENDERS = RENDERS;
 
 export function getRenderBySlug(slug: string): RenderItem | undefined {
   return RENDERS.find((r) => r.slug === slug);

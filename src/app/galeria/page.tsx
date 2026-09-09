@@ -11,15 +11,14 @@ import { blurFor } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "Galería completa · Malecón Business Center",
-  description: `Los ${RENDERS.length} renders oficiales del Malecón Business Center: exteriores, interiores y plantas del proyecto en la Zona Norte de Cartagena de Indias.`,
+  description: `Los ${RENDERS.length} renders oficiales del Malecón Business Center: exteriores e interiores del proyecto en la Zona Norte de Cartagena de Indias.`,
 };
 
-const ORDER: RenderCategory[] = ["exteriores", "interiores", "plantas"];
+const ORDER: RenderCategory[] = ["exteriores", "interiores"];
 
 const INTRO: Record<RenderCategory, string> = {
   exteriores: "Fachadas, accesos, plazas y el proyecto en su contexto costero.",
-  interiores: "Oficinas, espacios de trabajo y el rooftop.",
-  plantas: "Distribución de las plantas, vista desde arriba.",
+  interiores: "Lobby, oficinas, rooftop y parqueadero.",
 };
 
 export default function GaleriaPage() {

@@ -58,12 +58,6 @@ export const BLUR: Record<string, string> = {
     "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoMAAgAA8BgJZQAAlKJUIAA/oagSi1eactbgEo+8lceWWb1+p8U9q11UhkUbRFfUP5dwoAA",
   "/images/renders/parqueadero.webp":
     "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAgAA8BgJYwCdADhOblhAADLTkcP5EhgQf4+O/PKARl0lWAOI2pL86Bya/tg7bkCn2RXBw1zZZsgAAA=",
-  "/images/renders/planta-diafana.webp":
-    "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAAAQAgCdASoMAAgAA8BgJZwC7AEesQtKqwQAAP5T/LNPN9432o/yVPb8Lgjg4I78gAA=",
-  "/images/renders/planta-oficinas.webp":
-    "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoMAAgAA8BgJZQCdAD6/TJ1gAD2DL/mlWhz7z1d/UNXMghayXm8alKE2XgAAA==",
-  "/images/renders/planta-rooftop.webp":
-    "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAQCdASoMAAgAA8BgJZQCdAC3srVwAPpyX2lyOxOsgPaoHyqODkY8ukYAAA==",
   "/images/renders/plaza-atardecer.webp":
     "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMAAgAA8BgJZwAAt0DhTTftgAA/uhRVATaVqBkB00hQVvlSK95FpBP2/zr32BiCQUYhF4GQS8t0oAA",
   "/images/renders/rooftop-atardecer.webp":

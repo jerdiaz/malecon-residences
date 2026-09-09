@@ -45,7 +45,10 @@ export default function Navbar() {
           </button>
 
           {/* Links desktop */}
-          <ul className="hidden items-center gap-10 lg:flex">
+          {/* gap-6 a 1024px y gap-10 desde 1280: con seis links, el espaciado
+          amplio no cabe en 1024 y el logo —único bloque sin ancho mínimo—
+          se comprimía para compensar. */}
+          <ul className="hidden items-center gap-6 lg:flex xl:gap-10">
             {NAV_LINKS.map((section) => {
               const isActive = section.id === active;
               return (
