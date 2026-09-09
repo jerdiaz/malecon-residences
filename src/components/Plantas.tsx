@@ -2,18 +2,21 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
+import BackgroundImage from "@/components/ui/BackgroundImage";
 import { NIVELES, type Plano } from "@/lib/plantas";
 
 /**
- * Plantas — pestañas por nivel y, dentro de cada una, un carrusel de planos.
+ * Plantas — mismo esqueleto que Amenidades: el visual queda fijo a la izquierda
+ * y la lista editorial se recorre a la derecha.
  *
- * Se eligió pestañas y no scroll porque son once planos: apilados harían la
- * sección interminable, y el visitante suele venir a mirar un nivel concreto.
+ * Se descartó la barra de pestañas que tenía antes: es lenguaje de aplicación
+ * web y desentonaba con el resto del sitio, que elige siempre por lista serif.
  *
- * El carrusel NO avanza solo, a diferencia del de la galería: aquí la gente se
- * detiene a leer metrajes y numeración, y un cambio automático interrumpiría.
+ * El plano flota sobre el render fotográfico del nivel, muy atenuado. El dibujo
+ * dice cómo se distribuye el espacio; la foto detrás dice cómo se siente.
  */
 export default function Plantas() {
   const [nivel, setNivel] = useState(0);
@@ -23,170 +26,223 @@ export default function Plantas() {
   const actual = NIVELES[nivel];
   const planos = actual.planos;
   const plano = planos[indice];
-  const hayCarrusel = planos.length > 1;
+  const variosPlanos = planos.length > 1;
 
   const irA = useCallback(
     (dir: 1 | -1) => setIndice((i) => (i + dir + planos.length) % planos.length),
     [planos.length]
   );
 
-  const cambiarNivel = (i: number) => {
+  const elegirNivel = (i: number) => {
+    if (i === nivel) return;
     setNivel(i);
     setIndice(0);
   };
 
-  // Flechas del teclado: navegan el carrusel y también el visor ampliado
   useEffect(() => {
-    if (!hayCarrusel && !ampliado) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setAmpliado(false);
-      else if (hayCarrusel && e.key === "ArrowLeft") irA(-1);
-      else if (hayCarrusel && e.key === "ArrowRight") irA(1);
+      else if (variosPlanos && e.key === "ArrowLeft") irA(-1);
+      else if (variosPlanos && e.key === "ArrowRight") irA(1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [hayCarrusel, ampliado, irA]);
+  }, [variosPlanos, irA]);
 
-  // Con el visor abierto, el fondo no debe desplazarse
   useEffect(() => {
     document.body.style.overflow = ampliado ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [ampliado]);
 
   return (
-    <section id="plantas" className="relative w-full bg-ink scroll-mt-20 py-28 lg:py-36">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section id="plantas" className="relative w-full bg-ink scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12">
         <Reveal>
-          <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
-            Plantas
+          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+            Plantas · La distribución
           </p>
         </Reveal>
-        <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-          <SplitWords text="Así se distribuye el edificio." delay={100} stagger={45} />
-        </h2>
-        <Reveal delay={450}>
-          <p className="mt-8 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
-            Cada nivel se organiza en tres zonas. Explóralas para ver la
-            distribución, los metrajes y la disponibilidad.
-          </p>
+        <Reveal delay={120}>
+          <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+            <SplitWords text="Cada metro," delay={200} stagger={50} />
+            <span className="block font-light italic text-shimmer">
+              pensado de antemano
+            </span>
+          </h2>
         </Reveal>
+      </div>
 
-        {/* Pestañas por nivel */}
-        <Reveal delay={600}>
-          <div
-            role="tablist"
-            aria-label="Niveles del edificio"
-            className="mt-12 flex flex-wrap gap-2 border-b border-white/10 pb-px"
-          >
-            {NIVELES.map((n, i) => (
+      <div className="relative mt-16 lg:flex lg:items-start">
+        {/* ── Izquierda: el plano sobre el ambiente del nivel ── */}
+        <div className="relative h-[60vh] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:w-[60%]">
+          {NIVELES.map((n, i) => (
+            <div
+              key={n.id}
+              aria-hidden
+              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-silk ${
+                i === nivel ? "animate-ken-burns opacity-100" : "opacity-0"
+              }`}
+            >
+              <BackgroundImage src={n.ambiente} sizes="(max-width: 1024px) 100vw, 60vw" />
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-ink/85" />
+
+          {/* El plano, flotando sin marco */}
+          <div className="absolute inset-0 flex items-center justify-center p-8 md:p-14">
+            {planos.map((p, i) => (
               <button
-                key={n.id}
-                role="tab"
-                aria-selected={i === nivel}
-                onClick={() => cambiarNivel(i)}
-                className={`-mb-px border-b px-5 py-3 text-[0.65rem] font-light uppercase tracking-[0.25em] transition-colors duration-400 ease-silk ${
-                  i === nivel
-                    ? "border-bronze text-champagne"
-                    : "border-transparent text-white/45 hover:text-white/80"
+                key={p.src}
+                onClick={() => setAmpliado(true)}
+                aria-label={`Ampliar ${p.label}`}
+                tabIndex={i === indice ? 0 : -1}
+                // Ocupa toda la caja y es la imagen la que se contiene dentro.
+                // Con `absolute` + solo aspect-ratio el botón colapsaba a 0x0:
+                // no tenía tamaño intrínseco del que partir.
+                className={`absolute inset-0 cursor-zoom-in transition-opacity duration-[900ms] ease-silk ${
+                  i === indice ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                {n.label}
+                <PlanoImg plano={p} />
               </button>
             ))}
           </div>
-        </Reveal>
 
-        <div key={actual.id} className="animate-[fade-in_0.4s_ease-out]">
-          <p className="mt-8 max-w-xl text-sm font-light leading-relaxed tracking-wide text-white/55">
-            {actual.intro}
-          </p>
-
-          {/* Visor del plano activo. Los planos tienen proporciones muy
-              distintas —los de zona son verticales, los generales apaisados—,
-              así que se encajan por contención dentro de una caja fija. */}
-          <button
-            onClick={() => setAmpliado(true)}
-            aria-label={`Ampliar ${plano.label}`}
-            style={{
-              aspectRatio: plano.aspecto,
-              // Un plano vertical a ancho completo se iría a miles de píxeles de
-              // alto, así que se limita por altura. Y como la caja mantiene la
-              // proporción, hay que estrecharla en la misma medida: si no, el
-              // plano queda como una columna angosta rodeada de vacío.
-              ...(plano.aspecto < 1
-                ? { maxWidth: `calc(80vh * ${plano.aspecto})` }
-                : {}),
-            }}
-            className="mx-auto mt-8 block w-full cursor-zoom-in overflow-hidden border border-white/10 bg-ink/60 p-3 transition-colors duration-500 ease-silk hover:border-bronze/40"
-          >
-            <PlanoImg key={plano.src} plano={plano} contain />
-          </button>
-
-          {/* Pie: controles a la izquierda, como en el carrusel de la galería.
-              No van superpuestos sobre la imagen porque a viewports de ~1280px
-              el contenedor llega hasta el borde y la flecha derecha quedaba
-              debajo de los puntos de navegación lateral. */}
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-5">
-              {hayCarrusel && (
-                <>
-                  <Flecha
-                    lado="izq"
-                    onClick={() => irA(-1)}
-                    label={`Anterior: ${planos[(indice - 1 + planos.length) % planos.length].label}`}
-                  />
-                  <Flecha
-                    lado="der"
-                    onClick={() => irA(1)}
-                    label={`Siguiente: ${planos[(indice + 1) % planos.length].label}`}
-                  />
-                </>
-              )}
-              <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
-                {plano.label}
-              </p>
-            </div>
-            {hayCarrusel && (
+          <div className="pointer-events-none absolute bottom-6 left-8 right-8 flex items-baseline justify-between gap-4 md:left-14 md:right-14">
+            <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-champagne/80">
+              {plano.label}
+            </p>
+            {variosPlanos && (
               <p className="shrink-0 text-[0.6rem] font-light uppercase tracking-[0.3em] tabular-nums text-white/35">
                 {String(indice + 1).padStart(2, "0")} / {String(planos.length).padStart(2, "0")}
               </p>
             )}
           </div>
-
-          {/* Miniaturas: sirven de índice y de salto directo */}
-          {hayCarrusel && (
-            <div className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-5 lg:grid-cols-6">
-              {planos.map((p, i) => (
-                <button
-                  key={p.src}
-                  onClick={() => setIndice(i)}
-                  aria-label={p.label}
-                  aria-current={i === indice}
-                  className={`relative aspect-square overflow-hidden border bg-ink/60 p-1.5 transition-colors duration-400 ease-silk ${
-                    i === indice
-                      ? "border-bronze"
-                      : "border-white/10 hover:border-white/30"
-                  }`}
-                >
-                  <PlanoImg plano={p} contain miniatura />
-                </button>
-              ))}
-            </div>
-          )}
         </div>
 
-        <p className="mt-8 text-[0.6rem] font-light leading-relaxed tracking-wide text-white/30">
-          Planos ilustrativos. Las especificaciones definitivas son las de los
-          documentos técnicos y contractuales.
-        </p>
+        {/* ── Derecha: niveles, planos e inventario ── */}
+        <div className="w-full px-6 py-14 md:px-12 lg:w-[40%] lg:py-24">
+          <div className="lg:pr-4">
+            {NIVELES.map((n, i) => {
+              const activo = i === nivel;
+              return (
+                <button
+                  key={n.id}
+                  onMouseEnter={() => elegirNivel(i)}
+                  onFocus={() => elegirNivel(i)}
+                  onClick={() => elegirNivel(i)}
+                  className="block w-full border-t border-white/10 py-5 text-left last:border-b"
+                >
+                  <span className="flex items-baseline gap-4">
+                    <span
+                      className={`font-serif text-[0.7rem] tabular-nums transition-colors duration-500 ${
+                        activo ? "text-bronze" : "text-white/25"
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`font-serif text-lg font-light leading-snug transition-colors duration-500 sm:text-xl ${
+                        activo ? "text-champagne" : "text-white/40"
+                      }`}
+                    >
+                      {n.label}
+                    </span>
+                  </span>
+
+                  <div
+                    className={`grid transition-all duration-500 ease-silk ${
+                      activo ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden pl-9">
+                      <p className="text-sm font-light leading-relaxed tracking-wide text-white/55">
+                        {n.intro}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+
+            {variosPlanos && (
+              <div className="mt-12">
+                <p className="mb-4 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                  Planos
+                </p>
+                {planos.map((p, i) => (
+                  <button
+                    key={p.src}
+                    onClick={() => setIndice(i)}
+                    aria-current={i === indice}
+                    className="group flex w-full items-baseline gap-4 border-t border-white/[0.07] py-3 text-left last:border-b"
+                  >
+                    <span
+                      className={`font-serif text-[0.7rem] tabular-nums transition-colors duration-400 ${
+                        i === indice ? "text-bronze" : "text-white/20"
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`text-[0.7rem] font-light uppercase tracking-[0.2em] transition-colors duration-400 ${
+                        i === indice
+                          ? "text-champagne"
+                          : "text-white/40 group-hover:text-white/70"
+                      }`}
+                    >
+                      {p.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* El dato comercial como tipografía, no dentro de un JPEG */}
+            {actual.inventario && (
+              <div className="mt-12">
+                <p className="mb-5 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                  {actual.inventario.titulo}
+                </p>
+                {actual.inventario.filas.map((f, i) => (
+                  <motion.div
+                    key={f.area}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-baseline gap-5 border-t border-white/[0.07] py-4 last:border-b"
+                  >
+                    <span className="flex w-28 shrink-0 items-baseline font-serif text-2xl font-extralight leading-none text-champagne">
+                      {f.area}
+                      <span className="ml-1.5 font-sans text-[0.6rem] font-light uppercase tracking-[0.15em] text-bronze/70">
+                        m²
+                      </span>
+                    </span>
+                    <span className="text-[0.7rem] font-light leading-relaxed tracking-[0.12em] text-white/45">
+                      {f.unidades.join(" · ")}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            <p className="mt-10 text-[0.6rem] font-light leading-relaxed tracking-wide text-white/25">
+              Planos e imágenes ilustrativos. Las especificaciones definitivas
+              son las de los documentos técnicos y contractuales.
+            </p>
+          </div>
+        </div>
       </div>
 
       {ampliado && (
         <Visor
           plano={plano}
-          posicion={hayCarrusel ? `${indice + 1} / ${planos.length}` : null}
-          onAnterior={hayCarrusel ? () => irA(-1) : undefined}
-          onSiguiente={hayCarrusel ? () => irA(1) : undefined}
+          posicion={variosPlanos ? `${indice + 1} / ${planos.length}` : null}
+          onAnterior={variosPlanos ? () => irA(-1) : undefined}
+          onSiguiente={variosPlanos ? () => irA(1) : undefined}
           onCerrar={() => setAmpliado(false)}
         />
       )}
@@ -194,69 +250,27 @@ export default function Plantas() {
   );
 }
 
-function Flecha({
-  lado,
-  onClick,
-  label,
-}: {
-  lado: "izq" | "der";
-  onClick: () => void;
-  label: string;
-}) {
+/** Los SVG se sirven tal cual: next/image no los optimiza y perderían el vector. */
+function PlanoImg({ plano }: { plano: Plano }) {
+  if (plano.vector) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={plano.src}
+        alt={plano.label}
+        loading="lazy"
+        className="h-full w-full object-contain"
+      />
+    );
+  }
   return (
-    <button
-      onClick={onClick}
-      aria-label={label}
-      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-300 ease-silk hover:border-bronze hover:text-champagne"
-    >
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path
-          d={lado === "izq" ? "M9 1L3 7L9 13" : "M5 1L11 7L5 13"}
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-        />
-      </svg>
-    </button>
-  );
-}
-
-/** Los SVG se sirven tal cual: `next/image` no los optimiza y perderían el vector. */
-function PlanoImg({
-  plano,
-  contain,
-  miniatura,
-}: {
-  plano: Plano;
-  contain?: boolean;
-  miniatura?: boolean;
-}) {
-  const ajuste = contain ? "object-contain" : "object-cover";
-
-  return (
-    <span className="relative block h-full w-full">
-      {plano.vector ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={plano.src}
-          alt={plano.label}
-          loading="lazy"
-          className={`h-full w-full ${ajuste}`}
-        />
-      ) : (
-        <Image
-          src={plano.src}
-          alt={plano.label}
-          fill
-          sizes={
-            miniatura
-              ? "(max-width: 1024px) 25vw, 200px"
-              : "(max-width: 1280px) 100vw, 1216px"
-          }
-          className={ajuste}
-        />
-      )}
-    </span>
+    <Image
+      src={plano.src}
+      alt={plano.label}
+      fill
+      sizes="(max-width: 1024px) 100vw, 60vw"
+      className="object-contain"
+    />
   );
 }
 
@@ -280,7 +294,7 @@ function Visor({
       aria-modal="true"
       aria-label={plano.label}
       onClick={onCerrar}
-      className="fixed inset-0 z-[70] flex animate-[fade-in_0.25s_ease-out] flex-col items-center justify-center bg-ink/95 p-4 backdrop-blur-sm md:p-10"
+      className="fixed inset-0 z-[70] flex animate-[fade-in_0.3s_ease-out] flex-col items-center justify-center bg-ink/95 p-4 backdrop-blur-sm md:p-10"
     >
       <button
         onClick={onCerrar}
@@ -302,41 +316,33 @@ function Visor({
         <img src={plano.src} alt={plano.label} className="h-auto w-full" />
       </div>
 
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="mt-5 flex items-center gap-6"
-      >
-        {onAnterior && (
-          <button
-            onClick={onAnterior}
-            aria-label="Plano anterior"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors duration-300 hover:border-bronze hover:text-champagne"
-          >
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M9 1L3 7L9 13" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-          </button>
-        )}
-
+      <div onClick={(e) => e.stopPropagation()} className="mt-6 flex items-center gap-6">
+        {onAnterior && <FlechaVisor lado="izq" onClick={onAnterior} />}
         <p className="text-center text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
           {plano.label}
-          {posicion && (
-            <span className="ml-3 tabular-nums text-white/35">{posicion}</span>
-          )}
+          {posicion && <span className="ml-3 tabular-nums text-white/35">{posicion}</span>}
         </p>
-
-        {onSiguiente && (
-          <button
-            onClick={onSiguiente}
-            aria-label="Plano siguiente"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors duration-300 hover:border-bronze hover:text-champagne"
-          >
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M5 1L11 7L5 13" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-          </button>
-        )}
+        {onSiguiente && <FlechaVisor lado="der" onClick={onSiguiente} />}
       </div>
     </div>
+  );
+}
+
+function FlechaVisor({ lado, onClick }: { lado: "izq" | "der"; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={lado === "izq" ? "Plano anterior" : "Plano siguiente"}
+      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-300 ease-silk hover:border-bronze hover:text-champagne"
+    >
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path
+          d={lado === "izq" ? "M9 1L3 7L9 13" : "M5 1L11 7L5 13"}
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </button>
   );
 }
