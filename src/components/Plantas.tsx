@@ -84,7 +84,7 @@ export default function Plantas() {
               posicionarían contra la caja de relleno y lo ignorarían, quedando
               pegados a los bordes y por debajo del navbar.
               Arriba se reserva más espacio porque el navbar mide 105px. */}
-          <div className="absolute inset-0 px-6 pb-14 pt-28 md:px-10 md:pb-14 md:pt-32">
+          <div className="absolute inset-0 px-6 pb-14 pt-24 md:px-10 md:pb-14 md:pt-28">
             <div className="relative h-full w-full">
               {planos.map((p, i) => (
                 <button
@@ -102,7 +102,7 @@ export default function Plantas() {
                   }`}
                 >
                   <span
-                    className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2"
+                    className="absolute left-1/2 top-0 block -translate-x-1/2"
                     style={{
                       width: `${p.escala * 100}%`,
                       height: `${p.escala * 100}%`,
@@ -281,7 +281,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
         src={plano.src}
         alt={plano.label}
         loading="lazy"
-        className="h-full w-full object-contain"
+        className="h-full w-full object-contain object-top"
       />
     );
   }
@@ -291,7 +291,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
       alt={plano.label}
       fill
       sizes="(max-width: 1024px) 100vw, 60vw"
-      className="object-contain"
+      className="object-contain object-top"
     />
   );
 }
