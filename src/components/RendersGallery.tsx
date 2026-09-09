@@ -183,15 +183,19 @@ export default function RendersGallery() {
             </p>
           </div>
 
-          {/* Se repite el acceso al terminar de recorrer el carrusel, pero en
-              voz baja: el botón con caja ya está arriba y dos iguales en la
-              misma sección compiten. */}
+          {/* Se repite el acceso al terminar de recorrer el carrusel. Antes
+              iba en voz baja (texto con un filete) para no competir con el
+              botón con caja de arriba, pero quedaba perdido al pie del
+              carrusel — ahora lleva el mismo lenguaje de botón que el resto
+              del sitio. */}
           <Link
             href="/galeria"
-            className="group flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 ease-silk hover:text-champagne"
+            className="group inline-flex items-center gap-4 self-start border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
           >
             Ver las {CAROUSEL_RENDERS.length} imágenes
-            <span className="h-px w-8 bg-white/25 transition-all duration-500 ease-silk group-hover:w-12 group-hover:bg-bronze" />
+            <span className="transition-transform duration-500 group-hover:translate-x-1">
+              →
+            </span>
           </Link>
         </div>
       </div>
