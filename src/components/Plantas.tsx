@@ -107,12 +107,17 @@ export default function Plantas() {
           <button
             onClick={() => setAmpliado(true)}
             aria-label={`Ampliar ${plano.label}`}
-            style={{ aspectRatio: plano.aspecto }}
-            className={`mt-8 block w-full cursor-zoom-in overflow-hidden border border-white/10 bg-ink/60 p-3 transition-colors duration-500 ease-silk hover:border-bronze/40 ${
-              // Los apaisados llenan el ancho: es donde se lee el plano.
-              // Los verticales sí necesitan tope, o se irían a miles de píxeles.
-              plano.aspecto < 1 ? "max-h-[72vh]" : ""
-            }`}
+            style={{
+              aspectRatio: plano.aspecto,
+              // Un plano vertical a ancho completo se iría a miles de píxeles de
+              // alto, así que se limita por altura. Y como la caja mantiene la
+              // proporción, hay que estrecharla en la misma medida: si no, el
+              // plano queda como una columna angosta rodeada de vacío.
+              ...(plano.aspecto < 1
+                ? { maxWidth: `calc(80vh * ${plano.aspecto})` }
+                : {}),
+            }}
+            className="mx-auto mt-8 block w-full cursor-zoom-in overflow-hidden border border-white/10 bg-ink/60 p-3 transition-colors duration-500 ease-silk hover:border-bronze/40"
           >
             <PlanoImg key={plano.src} plano={plano} contain />
           </button>
