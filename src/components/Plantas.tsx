@@ -130,22 +130,28 @@ export default function Plantas() {
               return (
                 <button
                   key={n.id}
-                  onMouseEnter={() => elegirNivel(i)}
-                  onFocus={() => elegirNivel(i)}
+                  // Solo clic, a diferencia de Amenidades. Allí la lista es lo
+                  // último de la columna y elegir al pasar el cursor funciona;
+                  // aquí debajo van el índice de planos y el inventario, así que
+                  // bajar el puntero cruzaba los otros niveles y cambiaba la
+                  // planta sin que el visitante lo pidiera.
                   onClick={() => elegirNivel(i)}
-                  className="block w-full border-t border-white/10 py-5 text-left last:border-b"
+                  aria-pressed={activo}
+                  className="group block w-full border-t border-white/10 py-5 text-left last:border-b"
                 >
                   <span className="flex items-baseline gap-4">
                     <span
                       className={`font-serif text-[0.7rem] tabular-nums transition-colors duration-500 ${
-                        activo ? "text-bronze" : "text-white/25"
+                        activo ? "text-bronze" : "text-white/25 group-hover:text-bronze/60"
                       }`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
                       className={`font-serif text-lg font-light leading-snug transition-colors duration-500 sm:text-xl ${
-                        activo ? "text-champagne" : "text-white/40"
+                        activo
+                          ? "text-champagne"
+                          : "text-white/40 group-hover:text-white/75"
                       }`}
                     >
                       {n.label}
