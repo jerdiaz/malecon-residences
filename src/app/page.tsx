@@ -8,7 +8,10 @@ import LocationSection from "@/components/LocationSection";
 // reemplazada por Amenidades (contenido real del brochure). El cliente pidió
 // quitar esta versión; queda en el repo por si hay que volver a ella —
 // descomentar este import y usar <Amenities /> en vez de <Amenidades />.
-import Amenidades from "@/components/Amenidades";
+// import Amenidades from "@/components/Amenidades"; // Versión A — la página
+// del brochure como imagen. Montada abajo la Versión B para verla en
+// contexto; ver /preview-amenidades para las dos una junto a la otra.
+import AmenidadesTexto from "@/components/AmenidadesTexto";
 import Plantas from "@/components/Plantas";
 import Aliados from "@/components/Aliados";
 // import Partners from "@/components/Partners"; // sección oculta por ahora
@@ -76,7 +79,7 @@ export default function Home() {
         {/* Ubicación — mapa y distancias */}
         <LocationSection />
 
-        <Amenidades />
+        <AmenidadesTexto id="amenities" />
 
         {/* Plantas — va después de Amenidades y antes del cierre: es el
             contenido más concreto de la página, y quien lo mira ya está

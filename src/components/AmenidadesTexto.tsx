@@ -93,10 +93,16 @@ const GROUPS: AmenityGroup[] = [
   },
 ];
 
-export default function AmenidadesTexto() {
+export default function AmenidadesTexto({
+  id = "amenities-texto",
+}: {
+  /** "amenities-texto" en /preview-amenidades, para convivir con la Versión A;
+   *  "amenities" cuando se monta como la sección real de la página. */
+  id?: string;
+}) {
   return (
     <section
-      id="amenities-texto"
+      id={id}
       className="relative w-full scroll-mt-20 py-24 md:py-32"
       style={{ backgroundColor: CREAM }}
     >
