@@ -4,6 +4,13 @@ export interface Plano {
   /** Proporción ancho/alto. Los planos van de 0.44 (zonas verticales) a 1.74
    *  (las páginas del brochure), así que el visor se adapta a cada uno. */
   aspecto: number;
+  /** Cuánto de la caja ocupa este plano, de 0 a 1.
+   *
+   *  Se afina plano por plano mirando cómo queda, no con una regla general:
+   *  los verticales se ajustan por altura y llegan a tocar los bordes, mientras
+   *  a los apaisados les sobra alto y pueden ir al 100%. Si uno se ve chico o
+   *  apretado, se cambia solo su número. */
+  escala: number;
   /** true = SVG con texto vectorial; se sirve tal cual, sin pasar por next/image */
   vector?: boolean;
 }
@@ -55,7 +62,7 @@ export const NIVELES: NivelPlantas[] = [
       {
         src: "/images/plantas/planta-general.svg",
         label: "Planta general",
-        aspecto: 1.737,
+        aspecto: 1.737, escala: 1,
         vector: true,
       },
     ],
@@ -67,10 +74,10 @@ export const NIVELES: NivelPlantas[] = [
       "El nivel comercial, a pie de calle y con frente sobre la avenida del malecón.",
     ambiente: "/images/renders/locales-comerciales.webp",
     planos: [
-      { src: "/images/plantas/locales-general.webp", label: "El nivel completo", aspecto: 1.509 },
-      { src: "/images/plantas/locales-zona-a.webp", label: "Zona A", aspecto: 0.698 },
-      { src: "/images/plantas/locales-zona-b.webp", label: "Zona B", aspecto: 1.427 },
-      { src: "/images/plantas/locales-zona-c.webp", label: "Zona C", aspecto: 0.537 },
+      { src: "/images/plantas/locales-general.webp", label: "El nivel completo", aspecto: 1.509, escala: 1 },
+      { src: "/images/plantas/locales-zona-a.webp", label: "Zona A", aspecto: 0.698, escala: 0.94 },
+      { src: "/images/plantas/locales-zona-b.webp", label: "Zona B", aspecto: 1.427, escala: 1 },
+      { src: "/images/plantas/locales-zona-c.webp", label: "Zona C", aspecto: 0.537, escala: 0.94 },
     ],
     inventario: {
       titulo: "Locales disponibles",
@@ -95,13 +102,13 @@ export const NIVELES: NivelPlantas[] = [
         // ahora vive como tipografía en la columna, y sacarla del dibujo
         // permite que las tres zonas se vean un 50% más grandes.
         label: "Oficinas por zona",
-        aspecto: 1.632,
+        aspecto: 1.632, escala: 1,
         vector: true,
       },
-      { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A", aspecto: 0.444 },
-      { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B", aspecto: 1.473 },
-      { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C", aspecto: 0.553 },
-      { src: "/images/plantas/oficinas-general.webp", label: "El nivel completo", aspecto: 1.509 },
+      { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A", aspecto: 0.444, escala: 0.94 },
+      { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B", aspecto: 1.473, escala: 1 },
+      { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C", aspecto: 0.553, escala: 0.94 },
+      { src: "/images/plantas/oficinas-general.webp", label: "El nivel completo", aspecto: 1.509, escala: 1 },
     ],
     // Transcrito de la página 12 del brochure. Antes solo existía dentro de la
     // imagen; aquí se actualiza sin pedir arte nueva cuando cambie la oferta.
@@ -126,7 +133,7 @@ export const NIVELES: NivelPlantas[] = [
     intro: "La cubierta, con la terraza del rooftop asomada al Caribe.",
     ambiente: "/images/renders/rooftop-bar.webp",
     planos: [
-      { src: "/images/plantas/cubierta.webp", label: "Planta de cubierta", aspecto: 1.509 },
+      { src: "/images/plantas/cubierta.webp", label: "Planta de cubierta", aspecto: 1.509, escala: 1 },
     ],
   },
 ];

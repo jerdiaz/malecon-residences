@@ -117,7 +117,15 @@ export default function Plantas() {
                       : "pointer-events-none opacity-0"
                   }`}
                 >
-                  <PlanoImg plano={p} />
+                  <span
+                    className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      width: `${p.escala * 100}%`,
+                      height: `${p.escala * 100}%`,
+                    }}
+                  >
+                    <PlanoImg plano={p} />
+                  </span>
                 </button>
               ))}
             </div>
@@ -280,13 +288,8 @@ export default function Plantas() {
 
 /** Los SVG se sirven tal cual: next/image no los optimiza y perderían el vector. */
 function PlanoImg({ plano }: { plano: Plano }) {
-  // Un plano vertical se ajusta por altura y acaba tocando borde superior e
-  // inferior de la caja, sin respiro y rozando el navbar. El relleno va en la
-  // propia imagen: `object-contain` encaja dentro de la caja de contenido, así
-  // que reducirla con padding es lo que le da aire. Los apaisados no lo
-  // necesitan porque les sobra altura.
-  const aire = plano.aspecto < 1 ? "py-[3%]" : "";
-
+  // Sin reglas generales: cuánto ocupa cada plano lo decide su propia `escala`
+  // en lib/plantas.ts, afinada mirando cómo queda cada uno.
   if (plano.vector) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
@@ -294,7 +297,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
         src={plano.src}
         alt={plano.label}
         loading="lazy"
-        className={`h-full w-full object-contain ${aire}`}
+        className="h-full w-full object-contain"
       />
     );
   }
@@ -304,7 +307,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
       alt={plano.label}
       fill
       sizes="(max-width: 1024px) 100vw, 60vw"
-      className={`object-contain ${aire}`}
+      className="object-contain"
     />
   );
 }
