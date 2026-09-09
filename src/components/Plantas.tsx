@@ -77,14 +77,16 @@ export default function Plantas() {
 
       <div className="relative mt-16 lg:flex lg:items-start">
         {/* ── Izquierda: el plano, fijo mientras se recorre la columna ── */}
-        <div className="relative h-[60vh] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:w-[60%]">
+        <div className="relative h-[60vh] w-full overflow-hidden lg:sticky lg:top-[121px] lg:h-[calc(100vh_-_121px)] lg:w-[60%]">
           {/* El plano, flotando sin marco.
               El relleno va en esta capa y los planos se apilan dentro de la caja
               interior: si fueran `absolute inset-0` directamente aquí, se
               posicionarían contra la caja de relleno y lo ignorarían, quedando
               pegados a los bordes y por debajo del navbar.
-              Arriba se reserva más espacio porque el navbar mide 105px. */}
-          <div className="absolute inset-0 px-6 pb-14 pt-24 md:px-10 md:pb-14 md:pt-28">
+              La guarda del navbar (121px) vive en la altura de la columna, no aquí:
+              así el plano arranca casi pegado al título al entrar a la sección
+              y aun así queda bajo la barra cuando la sección llena la pantalla. */}
+          <div className="absolute inset-0 px-6 pb-10 pt-5 md:px-10 md:pb-10 md:pt-6">
             <div className="relative h-full w-full">
               {planos.map((p, i) => (
                 <button
@@ -129,7 +131,7 @@ export default function Plantas() {
         </div>
 
         {/* ── Derecha: niveles, planos e inventario ── */}
-        <div className="w-full px-6 py-14 md:px-12 lg:w-[40%] lg:py-24">
+        <div className="w-full px-6 py-14 md:px-12 lg:w-[40%] lg:pb-24 lg:pt-2">
           <div className="lg:pr-4">
             {NIVELES.map((n, i) => {
               const activo = i === nivel;
