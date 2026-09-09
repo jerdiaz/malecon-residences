@@ -131,7 +131,8 @@ export default function Amenities() {
             >
               <BackgroundImage
                 src={a.image}
-                sizes="(max-width: 1024px) 100vw, 60vw"
+                // 165vh, no 60vw: ver la nota de `sizes` en BackgroundImage.
+                sizes="(max-width: 1024px) 100vw, 165vh"
               />
             </div>
           ))}

@@ -197,7 +197,8 @@ export default function LocationSection() {
                   src="/images/lote/terreno-aereo.jpg"
                   alt="Vista aérea del terreno — Zona Norte, Cartagena de Indias"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  // 165vh, no 50vw: ver la nota de `sizes` en BackgroundImage.
+                  sizes="(max-width: 1024px) 100vw, 165vh"
                   className="object-cover object-center"
                   priority
                 />

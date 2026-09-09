@@ -133,7 +133,9 @@ function ImagePanel({ image, className = "" }: { image: string; className?: stri
         viewport={{ once: false, amount: 0.08 }}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <BackgroundImage src={image} sizes="(max-width: 1024px) 100vw, 50vw" />
+        {/* 165vh en vez de 50vw: el panel es más alto que ancho y con
+            object-cover el corte lo manda el alto (ver BackgroundImage). */}
+        <BackgroundImage src={image} sizes="(max-width: 1024px) 100vw, 165vh" />
       </motion.div>
     </motion.div>
   );

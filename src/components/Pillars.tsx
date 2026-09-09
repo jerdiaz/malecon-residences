@@ -77,7 +77,9 @@ export default function Pillars() {
               >
                 <BackgroundImage
                   src={panel.image}
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  // 165vh, no 33vw: el panel es más vertical que el render
+                  // y el recorte lo manda el alto (ver BackgroundImage).
+                  sizes="(max-width: 768px) 100vw, 165vh"
                 />
               </div>
 

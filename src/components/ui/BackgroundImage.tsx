@@ -6,7 +6,15 @@ interface BackgroundImageProps {
   /** Vacío por defecto: estas imágenes son decorativas y el texto va aparte. */
   alt?: string;
   /** Ancho que ocupará en pantalla. Sin esto el navegador pide el corte más
-   *  grande y se descargan megas de más. */
+   *  grande y se descargan megas de más.
+   *
+   *  Ojo con los paneles más verticales que la imagen: con `object-cover` el
+   *  recorte lo manda la ALTURA, no el ancho. Un panel de 33vw a pantalla
+   *  completa necesita una imagen de ~165vh de ancho (el alto por la
+   *  proporción 1.57 del render, más el 5% del zoom al pasar el cursor);
+   *  pedirle 33vw servía un corte de 640px estirado 2.6 veces, y se veía.
+   *  `vh` es válido en `sizes`, y el navegador que no lo entienda cae en
+   *  100vw, que sirve de más y no de menos. */
   sizes: string;
   priority?: boolean;
   className?: string;
