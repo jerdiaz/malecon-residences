@@ -5,15 +5,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SplitWords from "@/components/ui/SplitWords";
+import { CONTACT } from "@/lib/contact";
 
-const DISTANCES = [
-  { place: "Aeropuerto Internacional Rafael Núñez", minutes: 8,  km: "5.2 km" },
-  { place: "Centro Histórico · Ciudad Amurallada",  minutes: 12, km: "7.8 km" },
-  { place: "Bocagrande · Zona Comercial",           minutes: 6,  km: "3.5 km" },
-  { place: "La Boquilla · Playa Natural",           minutes: 4,  km: "2.1 km" },
+// Reemplazan a la grilla de "Distancias clave", que anunciaba minutos y
+// kilómetros que nadie había verificado. Esta lista la entregó el cliente y
+// no trae tiempos: se listan los destinos, sin inventar la distancia.
+const CONEXIONES = [
+  "Aeropuerto Internacional Rafael Núñez",
+  "Centro Histórico de Cartagena",
+  "Zona Norte y conexión con Barranquilla",
+  "Zona Portuaria y Zonas Francas",
+  "Zona Hotelera",
+  "Centros de Convenciones Cartagena de Indias y Las Américas",
+  "Principales centros comerciales de Cartagena",
+  "Clínica Serena del Mar y Centro Comercial Las Ramblas",
 ];
 
 // ── Tabs del panel derecho ─────────────────────────────────────────────────
+//
+// TODO: falta el mapa de conexiones de la página 8 del brochure — Estefanía
+// tiene que enviar el acceso al archivo. Cuando llegue: exportarlo a WebP en
+// public/images/lote/, sumar "Conexiones" a esta lista y agregar abajo un
+// tercer panel con la misma estructura que los de Foto y Mapa.
 const TABS = ["Foto", "Mapa"] as const;
 type Tab = typeof TABS[number];
 
@@ -55,56 +68,83 @@ export default function LocationSection() {
 
           <Reveal delay={600} variant="fade-up">
             <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              Ubicado en una de las zonas de mayor desarrollo económico de
-              Cartagena, Malecón Business Center conecta a las empresas con un
-              entorno estratégico para hacer negocios, acceder a nuevas
-              oportunidades y consolidar su presencia en una de las ciudades
-              con mayor proyección del Caribe colombiano.
+              La ubicación de Malecón Business Center ofrece conexión directa
+              con los principales centros financieros, turísticos, logísticos e
+              industriales de Cartagena, convirtiéndolo en un punto estratégico
+              para empresas y profesionales.
             </p>
           </Reveal>
 
           <Reveal delay={800} variant="fade-up">
             <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
-              Más que oficinas premium en Cartagena, ofrecemos un centro de
-              negocios pensado para fortalecer la identidad de las empresas,
-              generar confianza en clientes e inversionistas y proporcionar un
-              entorno que impulse el éxito empresarial.
+              Ubicado frente al mar, sobre la Avenida Santander, el proyecto
+              combina conectividad, visibilidad y acceso a las principales zonas
+              de la ciudad, fortaleciendo el posicionamiento de las empresas que
+              eligen establecerse en Malecón Business Center Cartagena.
             </p>
           </Reveal>
 
-          {/* Distancias clave — grilla de tarjetas 2×2 */}
+          {/* Conexiones estratégicas — lista de filas con filete, el mismo
+              idioma que usan Plantas y la galería. Se probó a dos columnas y
+              a 1024px cada celda quedaba de 168px: cuatro y cinco renglones
+              por destino, con filas de alturas dispares. El filete de cierre
+              va en el contenedor: cada fila solo lleva el de arriba. */}
           <Reveal delay={1000}>
-            <div className="mt-10 max-w-xl">
+            <div className="mt-10 max-w-lg">
               <p className="mb-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
-                Distancias clave
+                Conexiones estratégicas
               </p>
-              <div className="grid grid-cols-2 gap-3">
-                {DISTANCES.map((d, i) => (
+              <div className="border-b border-white/10">
+                {CONEXIONES.map((lugar, i) => (
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 16 }}
+                    key={lugar}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{
-                      delay: 1.1 + i * 0.1,
+                      delay: 1.1 + i * 0.07,
                       duration: 0.6,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="border border-white/10 p-5 transition-colors duration-500 ease-silk hover:border-bronze/50"
+                    className="flex items-baseline gap-4 border-t border-white/10 py-2.5"
                   >
-                    <span className="flex items-baseline font-serif text-4xl font-extralight leading-none text-champagne">
-                      {d.minutes}
-                      <span className="ml-1.5 font-sans text-[0.65rem] font-light uppercase tracking-[0.15em] text-bronze/70">
-                        min
-                      </span>
+                    <span className="font-serif text-[0.7rem] tabular-nums text-bronze/70">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="mt-4 text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-white/55">
-                      {d.place}
-                    </p>
-                    <p className="mt-1.5 text-[0.65rem] font-light text-white/30">{d.km}</p>
+                    <span className="text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-white/60">
+                      {lugar}
+                    </span>
                   </motion.div>
                 ))}
               </div>
+            </div>
+          </Reveal>
+
+          {/* Dirección del proyecto + Google Maps */}
+          <Reveal delay={1200}>
+            <div className="mt-10">
+              <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                Ubicación
+              </p>
+              <p className="font-serif text-xl font-light leading-snug text-champagne">
+                Malecón Business Center
+              </p>
+              <p className="mt-2 text-sm font-light leading-relaxed tracking-wide text-white/55">
+                {CONTACT.projectStreet}
+                <br />
+                {CONTACT.projectCity}
+              </p>
+              <a
+                href={CONTACT.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-8 inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+              >
+                Ver en Google Maps
+                <span className="transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
             </div>
           </Reveal>
         </div>
