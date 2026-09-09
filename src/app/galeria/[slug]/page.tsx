@@ -35,6 +35,23 @@ export default async function RenderDetailPage({
         Volver al inicio
       </Link>
 
+      <Link
+        href="/galeria"
+        aria-label="Ver galería completa"
+        className="group absolute right-6 top-6 flex items-center gap-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/60 transition-colors duration-300 hover:text-champagne md:right-12 md:top-8"
+      >
+        {/* El texto se oculta en móvil: junto al enlace de la izquierda no cabe */}
+        <span className="hidden sm:inline">Ver galería completa</span>
+        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition-colors duration-300 group-hover:border-bronze">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="5" height="5" stroke="currentColor" strokeWidth="1" />
+            <rect x="8" y="1" width="5" height="5" stroke="currentColor" strokeWidth="1" />
+            <rect x="1" y="8" width="5" height="5" stroke="currentColor" strokeWidth="1" />
+            <rect x="8" y="8" width="5" height="5" stroke="currentColor" strokeWidth="1" />
+          </svg>
+        </span>
+      </Link>
+
       <GalleryKeyNav prevSlug={prev.slug} nextSlug={next.slug} />
 
       <div className="relative mt-16 w-full max-w-6xl">
@@ -81,19 +98,6 @@ export default async function RenderDetailPage({
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </p>
 
-        {/* Acceso a la grilla completa. El enlace de arriba lleva al inicio,
-            así que este es el único camino a /galeria desde el detalle. */}
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/galeria"
-            className="group flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-          >
-            Ver galería completa
-            <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
-        </div>
       </div>
     </main>
   );
