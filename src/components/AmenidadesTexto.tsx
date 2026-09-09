@@ -72,7 +72,7 @@ const GROUPS: AmenityGroup[] = [
     label: "Sostenibilidad",
     icon: IconSustainability,
     items: [
-      "Sostenibilidad ambiental*",
+      "Sostenibilidad ambiental",
       "Sistemas para ahorro de agua",
       "Eficiencia energética en zonas comunes",
       "Diseño responsable con el medio ambiente",
@@ -182,17 +182,6 @@ export default function AmenidadesTexto({
             );
           })}
         </div>
-
-        {/* ── Nota al pie — aclaración del cliente sobre certificación ── */}
-        <Reveal delay={160}>
-          <p
-            className="mt-10 max-w-2xl text-xs font-light leading-relaxed tracking-wide"
-            style={{ color: NAVY, opacity: 0.65 }}
-          >
-            *Proyecto diseñado con criterios de sostenibilidad, sujeta al
-            cumplimiento de los requisitos de la entidad certificadora.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
