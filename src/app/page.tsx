@@ -4,7 +4,11 @@ import Pillars from "@/components/Pillars";
 import StoryBlock from "@/components/StoryBlock";
 import RendersGallery from "@/components/RendersGallery";
 import LocationSection from "@/components/LocationSection";
-import Amenities from "@/components/Amenities";
+// import Amenities from "@/components/Amenities"; // sección oculta por ahora,
+// reemplazada por Amenidades (contenido real del brochure). El cliente pidió
+// quitar esta versión; queda en el repo por si hay que volver a ella —
+// descomentar este import y usar <Amenities /> en vez de <Amenidades />.
+import Amenidades from "@/components/Amenidades";
 import Plantas from "@/components/Plantas";
 import Aliados from "@/components/Aliados";
 // import Partners from "@/components/Partners"; // sección oculta por ahora
@@ -72,7 +76,7 @@ export default function Home() {
         {/* Ubicación — mapa y distancias */}
         <LocationSection />
 
-        <Amenities />
+        <Amenidades />
 
         {/* Plantas — va después de Amenidades y antes del cierre: es el
             contenido más concreto de la página, y quien lo mira ya está
