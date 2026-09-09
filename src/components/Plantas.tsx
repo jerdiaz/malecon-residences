@@ -280,6 +280,13 @@ export default function Plantas() {
 
 /** Los SVG se sirven tal cual: next/image no los optimiza y perderían el vector. */
 function PlanoImg({ plano }: { plano: Plano }) {
+  // Un plano vertical se ajusta por altura y acaba tocando borde superior e
+  // inferior de la caja, sin respiro y rozando el navbar. El relleno va en la
+  // propia imagen: `object-contain` encaja dentro de la caja de contenido, así
+  // que reducirla con padding es lo que le da aire. Los apaisados no lo
+  // necesitan porque les sobra altura.
+  const aire = plano.aspecto < 1 ? "py-[7%]" : "";
+
   if (plano.vector) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
@@ -287,7 +294,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
         src={plano.src}
         alt={plano.label}
         loading="lazy"
-        className="h-full w-full object-contain"
+        className={`h-full w-full object-contain ${aire}`}
       />
     );
   }
@@ -297,7 +304,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
       alt={plano.label}
       fill
       sizes="(max-width: 1024px) 100vw, 60vw"
-      className="object-contain"
+      className={`object-contain ${aire}`}
     />
   );
 }
