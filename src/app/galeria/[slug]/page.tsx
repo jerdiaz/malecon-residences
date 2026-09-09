@@ -32,7 +32,7 @@ export default async function RenderDetailPage({
             <path d="M9 1L3 7L9 13" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
           </svg>
         </span>
-        Volver a la galería
+        Volver al inicio
       </Link>
 
       <GalleryKeyNav prevSlug={prev.slug} nextSlug={next.slug} />
@@ -80,6 +80,20 @@ export default async function RenderDetailPage({
         <p className="mt-4 text-center text-[0.6rem] font-light uppercase tracking-[0.3em] tabular-nums text-white/30">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </p>
+
+        {/* Acceso a la grilla completa. El enlace de arriba lleva al inicio,
+            así que este es el único camino a /galeria desde el detalle. */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/galeria"
+            className="group flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.65rem] font-light uppercase tracking-[0.3em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+          >
+            Ver galería completa
+            <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
+        </div>
       </div>
     </main>
   );
