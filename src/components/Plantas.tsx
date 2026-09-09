@@ -29,8 +29,9 @@ export default function Plantas() {
   const variosPlanos = planos.length > 1;
 
   const irA = useCallback(
-    (dir: 1 | -1) => setIndice((i) => (i + dir + planos.length) % planos.length),
-    [planos.length]
+    (dir: 1 | -1) =>
+      setIndice((i) => (i + dir + planos.length) % planos.length),
+    [planos.length],
   );
 
   const elegirNivel = (i: number) => {
@@ -85,29 +86,41 @@ export default function Plantas() {
                 i === nivel ? "animate-ken-burns opacity-100" : "opacity-0"
               }`}
             >
-              <BackgroundImage src={n.ambiente} sizes="(max-width: 1024px) 100vw, 60vw" />
+              <BackgroundImage
+                src={n.ambiente}
+                sizes="(max-width: 1024px) 100vw, 60vw"
+              />
             </div>
           ))}
           <div className="absolute inset-0 bg-ink/85" />
 
-          {/* El plano, flotando sin marco */}
-          <div className="absolute inset-0 flex items-center justify-center p-8 md:p-14">
-            {planos.map((p, i) => (
-              <button
-                key={p.src}
-                onClick={() => setAmpliado(true)}
-                aria-label={`Ampliar ${p.label}`}
-                tabIndex={i === indice ? 0 : -1}
-                // Ocupa toda la caja y es la imagen la que se contiene dentro.
-                // Con `absolute` + solo aspect-ratio el botón colapsaba a 0x0:
-                // no tenía tamaño intrínseco del que partir.
-                className={`absolute inset-0 cursor-zoom-in transition-opacity duration-[900ms] ease-silk ${
-                  i === indice ? "opacity-100" : "pointer-events-none opacity-0"
-                }`}
-              >
-                <PlanoImg plano={p} />
-              </button>
-            ))}
+          {/* El plano, flotando sin marco.
+              El relleno va en esta capa y los planos se apilan dentro de la caja
+              interior: si fueran `absolute inset-0` directamente aquí, se
+              posicionarían contra la caja de relleno y lo ignorarían, quedando
+              pegados a los bordes y por debajo del navbar.
+              Arriba se reserva más espacio porque el navbar mide 105px. */}
+          <div className="absolute inset-0 px-8 pb-16 pt-32 md:px-14 md:pb-20 md:pt-36">
+            <div className="relative h-full w-full">
+              {planos.map((p, i) => (
+                <button
+                  key={p.src}
+                  onClick={() => setAmpliado(true)}
+                  aria-label={`Ampliar ${p.label}`}
+                  tabIndex={i === indice ? 0 : -1}
+                  // Ocupa toda la caja y es la imagen la que se contiene dentro.
+                  // Con `absolute` + solo aspect-ratio el botón colapsaba a 0x0:
+                  // no tenía tamaño intrínseco del que partir.
+                  className={`absolute inset-0 cursor-zoom-in transition-opacity duration-[900ms] ease-silk ${
+                    i === indice
+                      ? "opacity-100"
+                      : "pointer-events-none opacity-0"
+                  }`}
+                >
+                  <PlanoImg plano={p} />
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="pointer-events-none absolute bottom-6 left-8 right-8 flex items-baseline justify-between gap-4 md:left-14 md:right-14">
@@ -116,7 +129,8 @@ export default function Plantas() {
             </p>
             {variosPlanos && (
               <p className="shrink-0 text-[0.6rem] font-light uppercase tracking-[0.3em] tabular-nums text-white/35">
-                {String(indice + 1).padStart(2, "0")} / {String(planos.length).padStart(2, "0")}
+                {String(indice + 1).padStart(2, "0")} /{" "}
+                {String(planos.length).padStart(2, "0")}
               </p>
             )}
           </div>
@@ -142,7 +156,9 @@ export default function Plantas() {
                   <span className="flex items-baseline gap-4">
                     <span
                       className={`font-serif text-[0.7rem] tabular-nums transition-colors duration-500 ${
-                        activo ? "text-bronze" : "text-white/25 group-hover:text-bronze/60"
+                        activo
+                          ? "text-bronze"
+                          : "text-white/25 group-hover:text-bronze/60"
                       }`}
                     >
                       {String(i + 1).padStart(2, "0")}
@@ -160,7 +176,9 @@ export default function Plantas() {
 
                   <div
                     className={`grid transition-all duration-500 ease-silk ${
-                      activo ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      activo
+                        ? "mt-2 grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
                     <div className="overflow-hidden pl-9">
@@ -218,7 +236,11 @@ export default function Plantas() {
                     initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ delay: i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{
+                      delay: i * 0.05,
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
                     className="flex items-baseline gap-5 border-t border-white/[0.07] py-4 last:border-b"
                   >
                     <span className="flex w-28 shrink-0 items-baseline font-serif text-2xl font-extralight leading-none text-champagne">
@@ -322,11 +344,16 @@ function Visor({
         <img src={plano.src} alt={plano.label} className="h-auto w-full" />
       </div>
 
-      <div onClick={(e) => e.stopPropagation()} className="mt-6 flex items-center gap-6">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="mt-6 flex items-center gap-6"
+      >
         {onAnterior && <FlechaVisor lado="izq" onClick={onAnterior} />}
         <p className="text-center text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
           {plano.label}
-          {posicion && <span className="ml-3 tabular-nums text-white/35">{posicion}</span>}
+          {posicion && (
+            <span className="ml-3 tabular-nums text-white/35">{posicion}</span>
+          )}
         </p>
         {onSiguiente && <FlechaVisor lado="der" onClick={onSiguiente} />}
       </div>
@@ -334,14 +361,26 @@ function Visor({
   );
 }
 
-function FlechaVisor({ lado, onClick }: { lado: "izq" | "der"; onClick: () => void }) {
+function FlechaVisor({
+  lado,
+  onClick,
+}: {
+  lado: "izq" | "der";
+  onClick: () => void;
+}) {
   return (
     <button
       onClick={onClick}
       aria-label={lado === "izq" ? "Plano anterior" : "Plano siguiente"}
       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-300 ease-silk hover:border-bronze hover:text-champagne"
     >
-      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <svg
+        width="13"
+        height="13"
+        viewBox="0 0 14 14"
+        fill="none"
+        aria-hidden="true"
+      >
         <path
           d={lado === "izq" ? "M9 1L3 7L9 13" : "M5 1L11 7L5 13"}
           stroke="currentColor"
