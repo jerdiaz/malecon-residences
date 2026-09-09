@@ -5,9 +5,13 @@ import Reveal from "@/components/ui/Reveal";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ALIADOS — "Diseño y visión arquitectónica". Contenido entregado por el
-// cliente: el arquitecto líder del proyecto, su portafolio en Cartagena y el
-// cierre sobre el equipo. Distinto de "Marcas que han confiado en nosotros"
-// (componente Partners, hoy oculto).
+// cliente: el arquitecto líder del proyecto y el cierre sobre el equipo.
+// Distinto de "Marcas que han confiado en nosotros" (componente Partners, hoy
+// oculto).
+//
+// El portafolio de proyectos del arquitecto (Oficinas y comercio /
+// Desarrollos residenciales y mixtos) se quitó a pedido del cliente. Sigue en
+// el historial de git si hay que recuperarlo.
 //
 // ⚠️ LOGO PENDIENTE: el cliente lo dejó como archivo de Drive, todavía sin
 // descargar. Al bajarlo, guardarlo en /public/images/aliados/ y poner la ruta
@@ -20,35 +24,6 @@ const ARCHITECT = {
   /** Ruta del logo dentro de /public. `null` mientras no lo tengamos. */
   logo: null as string | null,
 };
-
-interface PortfolioGroup {
-  label: string;
-  projects: string[];
-}
-
-const PORTFOLIO: PortfolioGroup[] = [
-  {
-    label: "Oficinas y comercio",
-    projects: [
-      "Malecón Business Center",
-      "Murano Trade Center",
-      "Torre Empresarial Grupo Área",
-    ],
-  },
-  {
-    label: "Desarrollos residenciales y mixtos",
-    projects: [
-      "Murano Centro",
-      "Ravello",
-      "Claro de Luna",
-      "Bella Luna",
-      "Náutica",
-    ],
-  },
-];
-
-/** El proyecto propio se marca aparte dentro del portafolio. */
-const OWN_PROJECT = "Malecón Business Center";
 
 export default function Aliados() {
   return (
@@ -102,45 +77,6 @@ export default function Aliados() {
             </div>
           </div>
         </Reveal>
-
-        {/* ── Portafolio: filas separadas por hairlines, no tarjetas ── */}
-        <Reveal delay={120}>
-          <p className="mt-20 text-[0.65rem] font-light uppercase tracking-[0.35em] text-bronze/80">
-            Portafolio de proyectos emblemáticos en Cartagena
-          </p>
-        </Reveal>
-
-        <div className="mt-8 border-t border-white/10">
-          {PORTFOLIO.map((group, i) => (
-            <Reveal key={group.label} delay={200 + i * 120}>
-              <div className="group grid gap-5 border-b border-white/10 py-10 transition-[padding] duration-500 ease-silk md:grid-cols-[minmax(0,17rem)_1fr] md:gap-12 md:py-12 md:hover:pl-5">
-                <p className="font-serif text-lg font-light leading-snug tracking-wide text-white/85 transition-colors duration-500 group-hover:text-champagne">
-                  {group.label}
-                </p>
-                <ul className="flex flex-wrap items-baseline gap-x-3 gap-y-3">
-                  {group.projects.map((project, j) => (
-                    <li key={project} className="flex items-baseline gap-3">
-                      {j > 0 && (
-                        <span aria-hidden className="text-bronze/50">
-                          ·
-                        </span>
-                      )}
-                      <span
-                        className={
-                          project === OWN_PROJECT
-                            ? "text-sm font-light tracking-wide text-champagne sm:text-base"
-                            : "text-sm font-light tracking-wide text-white/55 sm:text-base"
-                        }
-                      >
-                        {project}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
 
         {/* ── Cierre ── */}
         <Reveal delay={200}>
