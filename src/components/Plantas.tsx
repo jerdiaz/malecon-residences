@@ -104,28 +104,43 @@ export default function Plantas() {
           {/* Visor del plano activo. Los planos tienen proporciones muy
               distintas —los de zona son verticales, los generales apaisados—,
               así que se encajan por contención dentro de una caja fija. */}
-          <div className="relative mt-8">
-            <button
-              onClick={() => setAmpliado(true)}
-              aria-label={`Ampliar ${plano.label}`}
-              className="block h-[52vh] max-h-[560px] min-h-[300px] w-full cursor-zoom-in overflow-hidden border border-white/10 bg-ink/60 p-3 transition-colors duration-500 ease-silk hover:border-bronze/40"
-            >
-              <PlanoImg key={plano.src} plano={plano} contain />
-            </button>
+          <button
+            onClick={() => setAmpliado(true)}
+            aria-label={`Ampliar ${plano.label}`}
+            style={{ aspectRatio: plano.aspecto }}
+            className={`mt-8 block w-full cursor-zoom-in overflow-hidden border border-white/10 bg-ink/60 p-3 transition-colors duration-500 ease-silk hover:border-bronze/40 ${
+              // Los apaisados llenan el ancho: es donde se lee el plano.
+              // Los verticales sí necesitan tope, o se irían a miles de píxeles.
+              plano.aspecto < 1 ? "max-h-[72vh]" : ""
+            }`}
+          >
+            <PlanoImg key={plano.src} plano={plano} contain />
+          </button>
 
-            {hayCarrusel && (
-              <>
-                <Flecha lado="izq" onClick={() => irA(-1)} label={`Anterior: ${planos[(indice - 1 + planos.length) % planos.length].label}`} />
-                <Flecha lado="der" onClick={() => irA(1)} label={`Siguiente: ${planos[(indice + 1) % planos.length].label}`} />
-              </>
-            )}
-          </div>
-
-          {/* Pie del carrusel: nombre del plano y posición */}
-          <div className="mt-4 flex items-baseline justify-between gap-4">
-            <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
-              {plano.label}
-            </p>
+          {/* Pie: controles a la izquierda, como en el carrusel de la galería.
+              No van superpuestos sobre la imagen porque a viewports de ~1280px
+              el contenedor llega hasta el borde y la flecha derecha quedaba
+              debajo de los puntos de navegación lateral. */}
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-5">
+              {hayCarrusel && (
+                <>
+                  <Flecha
+                    lado="izq"
+                    onClick={() => irA(-1)}
+                    label={`Anterior: ${planos[(indice - 1 + planos.length) % planos.length].label}`}
+                  />
+                  <Flecha
+                    lado="der"
+                    onClick={() => irA(1)}
+                    label={`Siguiente: ${planos[(indice + 1) % planos.length].label}`}
+                  />
+                </>
+              )}
+              <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
+                {plano.label}
+              </p>
+            </div>
             {hayCarrusel && (
               <p className="shrink-0 text-[0.6rem] font-light uppercase tracking-[0.3em] tabular-nums text-white/35">
                 {String(indice + 1).padStart(2, "0")} / {String(planos.length).padStart(2, "0")}
@@ -142,7 +157,7 @@ export default function Plantas() {
                   onClick={() => setIndice(i)}
                   aria-label={p.label}
                   aria-current={i === indice}
-                  className={`relative aspect-[4/3] overflow-hidden border bg-ink/60 p-1 transition-colors duration-400 ease-silk ${
+                  className={`relative aspect-square overflow-hidden border bg-ink/60 p-1.5 transition-colors duration-400 ease-silk ${
                     i === indice
                       ? "border-bronze"
                       : "border-white/10 hover:border-white/30"
@@ -187,9 +202,7 @@ function Flecha({
     <button
       onClick={onClick}
       aria-label={label}
-      className={`absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-ink/70 text-white/70 backdrop-blur-sm transition-all duration-300 ease-silk hover:border-bronze hover:text-champagne md:h-12 md:w-12 ${
-        lado === "izq" ? "left-3 md:left-5" : "right-3 md:right-5"
-      }`}
+      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-300 ease-silk hover:border-bronze hover:text-champagne"
     >
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
         <path

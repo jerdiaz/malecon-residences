@@ -1,6 +1,10 @@
 export interface Plano {
   src: string;
   label: string;
+  /** Proporción ancho/alto. La caja del visor se adapta a ella para que cada
+   *  plano se vea lo más grande posible: van de 0.44 (zonas verticales) a
+   *  1.74 (las páginas del brochure), y una caja fija desperdiciaba el ancho. */
+  aspecto: number;
   /** true = SVG con texto vectorial; se sirve tal cual, sin pasar por next/image */
   vector?: boolean;
 }
@@ -37,7 +41,7 @@ export const NIVELES: NivelPlantas[] = [
     intro:
       "El conjunto visto desde arriba, con las tres zonas —A, B y C— que organizan cada nivel.",
     planos: [
-      { src: "/images/plantas/planta-general.svg", label: "Planta general", vector: true },
+      { src: "/images/plantas/planta-general.svg", label: "Planta general", aspecto: 1.737, vector: true },
     ],
   },
   {
@@ -45,10 +49,10 @@ export const NIVELES: NivelPlantas[] = [
     label: "Locales",
     intro: "El nivel comercial, a pie de calle.",
     planos: [
-      { src: "/images/plantas/locales-general.webp", label: "El nivel completo" },
-      { src: "/images/plantas/locales-zona-a.webp", label: "Zona A" },
-      { src: "/images/plantas/locales-zona-b.webp", label: "Zona B" },
-      { src: "/images/plantas/locales-zona-c.webp", label: "Zona C" },
+      { src: "/images/plantas/locales-general.webp", label: "El nivel completo", aspecto: 1.509 },
+      { src: "/images/plantas/locales-zona-a.webp", label: "Zona A", aspecto: 0.698 },
+      { src: "/images/plantas/locales-zona-b.webp", label: "Zona B", aspecto: 1.427 },
+      { src: "/images/plantas/locales-zona-c.webp", label: "Zona C", aspecto: 0.537 },
     ],
   },
   {
@@ -57,17 +61,17 @@ export const NIVELES: NivelPlantas[] = [
     intro:
       "Planta tipo con la numeración de cada oficina, sus metrajes y la disponibilidad.",
     planos: [
-      { src: "/images/plantas/plantas-por-zona.svg", label: "Oficinas por zona", vector: true },
-      { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A" },
-      { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B" },
-      { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C" },
-      { src: "/images/plantas/oficinas-general.webp", label: "El nivel completo" },
+      { src: "/images/plantas/plantas-por-zona.svg", label: "Oficinas por zona", aspecto: 1.737, vector: true },
+      { src: "/images/plantas/oficinas-zona-a.webp", label: "Zona A", aspecto: 0.444 },
+      { src: "/images/plantas/oficinas-zona-b.webp", label: "Zona B", aspecto: 1.473 },
+      { src: "/images/plantas/oficinas-zona-c.webp", label: "Zona C", aspecto: 0.553 },
+      { src: "/images/plantas/oficinas-general.webp", label: "El nivel completo", aspecto: 1.509 },
     ],
   },
   {
     id: "cubierta",
     label: "Cubierta",
     intro: "La cubierta, con la terraza del rooftop.",
-    planos: [{ src: "/images/plantas/cubierta.webp", label: "Planta de cubierta" }],
+    planos: [{ src: "/images/plantas/cubierta.webp", label: "Planta de cubierta", aspecto: 1.509 }],
   },
 ];
