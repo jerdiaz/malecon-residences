@@ -19,7 +19,13 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative h-dvh w-full overflow-hidden">
-      {/* Video de fondo */}
+      {/* Video de fondo — entrega del 9 de septiembre. El original venía con
+          franjas negras a los lados (formato pillarbox, 1280x720 con el
+          contenido real en 1092x720); se recortaron y se volvió a codificar
+          sin audio (el video siempre va muted). El anterior sigue en
+          /public/video/video_202606291024.mp4 con su poster en
+          /public/images/hero-poster.webp — para volver a él, cambiar las
+          dos rutas de abajo por esas. */}
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
@@ -27,9 +33,9 @@ export default function Hero() {
         muted
         loop
         playsInline
-        poster="/images/hero-poster.webp"
+        poster="/images/hero-poster-fachada.webp"
       >
-        <source src="/video/video_202606291024.mp4" type="video/mp4" />
+        <source src="/video/hero-fachada.mp4" type="video/mp4" />
       </video>
       <div className="veil absolute inset-0" />
 
