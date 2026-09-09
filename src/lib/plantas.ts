@@ -59,7 +59,10 @@ export const NIVELES: NivelPlantas[] = [
         src: "/images/plantas/planta-general.svg",
         label: "Planta general",
         aspecto: 1.737,
-        escala: 1,
+        // 1.07 desborda a propósito la caja para comerse el margen lateral y
+        // llegar al ancho completo de la columna. El techo es 1.075: más allá,
+        // el `overflow-hidden` de la columna empieza a cortar el plano.
+        escala: 1.07,
         vector: true,
       },
     ],
