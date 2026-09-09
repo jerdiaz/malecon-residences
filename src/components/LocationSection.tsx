@@ -10,25 +10,33 @@ import { CONTACT } from "@/lib/contact";
 // Reemplazan a la grilla de "Distancias clave", que anunciaba minutos y
 // kilómetros que nadie había verificado. Esta lista la entregó el cliente y
 // no trae tiempos: se listan los destinos, sin inventar la distancia.
+//
+// Actualizada contra "Conectividad que impulsa los negocios" (página 8 del
+// brochure, la misma que ilustra el tab Conexiones): esa versión nombra los
+// centros comerciales y separa Zona Portuaria de Zonas Francas, esta lista
+// los tenía agrupados.
 const CONEXIONES = [
   "Aeropuerto Internacional Rafael Núñez",
-  "Centro Histórico de Cartagena",
-  "Zona Norte y conexión con Barranquilla",
-  "Zona Portuaria y Zonas Francas",
+  "Centro Histórico",
+  "Zona Norte con conexión a Barranquilla",
+  "Zona Portuaria",
+  "Zonas Francas",
   "Zona Hotelera",
-  "Centros de Convenciones Cartagena de Indias y Las Américas",
-  "Principales centros comerciales de Cartagena",
+  "Centros de Convenciones: Cartagena de Indias y Las Américas",
+  "Centros Comerciales: La Serrezuela, Mall Plaza, Plaza Bocagrande, Nao",
   "Clínica Serena del Mar y Centro Comercial Las Ramblas",
 ];
 
 // ── Tabs del panel derecho ─────────────────────────────────────────────────
-//
-// TODO: falta el mapa de conexiones de la página 8 del brochure — Estefanía
-// tiene que enviar el acceso al archivo. Cuando llegue: exportarlo a WebP en
-// public/images/lote/, sumar "Conexiones" a esta lista y agregar abajo un
-// tercer panel con la misma estructura que los de Foto y Mapa.
-const TABS = ["Foto", "Mapa"] as const;
+const TABS = ["Foto", "Mapa", "Conexiones"] as const;
 type Tab = typeof TABS[number];
+
+// Mapa de conexiones — página 8 del brochure. El cliente lo pasó como
+// captura de WhatsApp (no como archivo), así que esto es esa misma imagen,
+// recortada a solo el panel del mapa (el título, los párrafos y la lista de
+// abajo ya son texto real en la columna izquierda de esta sección, incluirlos
+// otra vez como imagen habría sido redundante) y reexportada a WebP.
+const MAPA_CONEXIONES_SRC = "/images/lote/mapa-conexiones.webp";
 
 // ── URL del iframe de Google Maps ──────────────────────────────────────────
 // Para obtener la URL correcta:
@@ -252,6 +260,29 @@ export default function LocationSection() {
                     Malecón Business Center · Zona Norte
                   </span>
                 </div>
+              </motion.div>
+            )}
+
+            {/* Panel: mapa de conexiones (página 8 del brochure) — es una
+                infografía, no una foto: los pines y la leyenda no pueden
+                recortarse, así que va con object-contain sobre un fondo claro
+                en vez de object-cover a sangre como en el panel de Foto. */}
+            {activeTab === "Conexiones" && (
+              <motion.div
+                key="conexiones"
+                className="absolute inset-0 bg-[#f5f2ec]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Image
+                  src={MAPA_CONEXIONES_SRC}
+                  alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain"
+                />
               </motion.div>
             )}
           </AnimatePresence>
