@@ -72,13 +72,18 @@ export default function Home() {
         {/* Galería de renders arquitectónicos */}
         <RendersGallery />
 
-        {/* Story 2 — El Caribe como contexto */}
+        {/* Story 2 — El Caribe como contexto.
+            Se cambió `panoramica-zona-norte` por este render: aquel tenía una
+            grúa y una torre en obra a la vista (a x≈1575 del original), y
+            ningún encuadre de la animación de entrada las dejaba fuera. Este
+            es la Escena 12 de la entrega, que ya vivía en la galería como
+            "El malecón" — se reusa el mismo archivo en vez de duplicarlo. */}
         <StoryBlock
           id="entorno"
           kicker="El Entorno"
           title="El Caribe como ventana permanente."
           body="La Zona Norte de Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
-          image="/images/renders/panoramica-zona-norte.webp"
+          image="/images/renders/malecon-playa.webp"
           imagePos="left"
         />
 
