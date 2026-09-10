@@ -92,7 +92,7 @@ export default function Pillars() {
                   cruzando de azul a negro dentro de la misma sección. */}
               <div
                 className={`absolute inset-0 transition-colors duration-700 ease-out ${
-                  isActive ? "bg-ink/30" : "bg-ink/60"
+                  isActive ? "bg-ink-950/30" : "bg-ink-950/60"
                 }`}
               />
 

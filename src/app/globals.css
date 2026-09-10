@@ -11,6 +11,8 @@
        pasó con el velo, que siguió en el casi-negro anterior mucho después de
        que el resto del sitio migrara al azul. */
     --ink: 20 34 56;
+    /* El mismo tono, a 45% de luminosidad. Ver la nota de `ink.950`. */
+    --ink-deep: 9 15 25;
   }
 
   html {
@@ -56,15 +58,20 @@
      arrancan en `ink`; en azul, el empalme entre las dos secciones desaparece. */
   .veil {
     background:
+      /* Oscurece en azul profundo hasta el 82% del alto y solo en el último
+         tramo aterriza en `ink` puro, que es el color con el que arrancan los
+         pilares. Así el video se ve oscuro en lugar de teñido, y la costura
+         entre las dos secciones sigue siendo invisible. */
       linear-gradient(
         to bottom,
-        rgb(var(--ink) / 0.35),
-        rgb(var(--ink) / 0.92)
+        rgb(var(--ink-deep) / 0.42) 0%,
+        rgb(var(--ink-deep) / 0.94) 82%,
+        rgb(var(--ink) / 0.97) 100%
       ),
       radial-gradient(
         120% 80% at 50% 20%,
-        rgb(var(--ink) / 0.1),
-        rgb(var(--ink) / 0.85)
+        rgb(var(--ink-deep) / 0.14),
+        rgb(var(--ink-deep) / 0.88)
       );
   }
 

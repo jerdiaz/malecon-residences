@@ -13,6 +13,11 @@ const config: Config = {
         // subiendo solo la luminosidad para capas sutiles.
         ink: {
           DEFAULT: "#142238",
+          // El tono de marca llevado a la luminosidad que tenía el casi-negro
+          // anterior (RGB 20,34,56 escalado a 45%). Para velos sobre foto y
+          // video: oscurece sin teñir, porque el azul saturado al 60-90% de
+          // opacidad se lee como un filtro de color encima de la imagen.
+          950: "#090f19",
           900: "#142238",
           800: "#16263e",
           700: "#192b47",
