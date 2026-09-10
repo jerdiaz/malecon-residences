@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -13,16 +12,20 @@ import Reveal from "@/components/ui/Reveal";
 // Desarrollos residenciales y mixtos) se quitó a pedido del cliente. Sigue en
 // el historial de git si hay que recuperarlo.
 //
-// ⚠️ LOGO PENDIENTE: el cliente lo dejó como archivo de Drive, todavía sin
-// descargar. Al bajarlo, guardarlo en /public/images/aliados/ y poner la ruta
-// en ARCHITECT.logo — el aviso de "logo pendiente" desaparece solo.
+// Logo: el cliente lo pasó como foto (WhatsApp, 1201×369 JPEG) — se
+// vectorizó con potrace (umbral a blanco/negro con ImageMagick y trazado),
+// no era un archivo de diseño. El navy es el color real del logo, muestreado
+// del propio JPEG (#292457), no el bronce/champán de la marca del sitio.
+// Vive en /public/images/aliados/fernandez-logo.svg y se sirve con <img>, no
+// con next/image, para no perder el vector — mismo criterio que los planos
+// de Plantas y el mapa de Ubicación.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ARCHITECT = {
   name: "Arq. Jorge Fernández",
   firm: "Fernández & Compañía Arquitectos Asociados",
   /** Ruta del logo dentro de /public. `null` mientras no lo tengamos. */
-  logo: null as string | null,
+  logo: "/images/aliados/fernandez-logo.svg" as string | null,
 };
 
 export default function Aliados() {
@@ -52,10 +55,10 @@ export default function Aliados() {
         <Reveal delay={240}>
           <div className="mt-16 grid border-y border-white/10 md:grid-cols-[minmax(0,20rem)_1fr]">
             <div className="flex flex-col items-center justify-center gap-6 bg-white/[0.02] px-10 py-14">
+              {/* El logo ya trae el nombre de la firma tipografiado, así que
+                  no se repite como texto aparte debajo — antes, mientras
+                  estaba pendiente, sí hacía falta ese texto de respaldo. */}
               <ArchitectMark />
-              <p className="text-center font-serif text-lg font-light leading-snug tracking-[0.1em] text-champagne">
-                {ARCHITECT.firm}
-              </p>
             </div>
 
             <div className="border-t border-bronze/40 px-0 py-12 md:border-l md:border-t-0 md:px-12 md:py-14">
@@ -106,12 +109,15 @@ export default function Aliados() {
 function ArchitectMark() {
   if (ARCHITECT.logo) {
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
         src={ARCHITECT.logo}
         alt={`Logo de ${ARCHITECT.firm}`}
-        width={160}
-        height={80}
-        className="h-20 w-auto object-contain"
+        // El lockup real es apaisado (2216×564, ≈3.93:1) — nada que ver con
+        // el 160×80 (2:1) que tenía el placeholder. w-full para que llene
+        // la columna angosta (max 20rem, con padding) y h-auto respeta esa
+        // proporción en vez de recortarla.
+        className="h-auto w-full max-w-[13rem]"
       />
     );
   }
