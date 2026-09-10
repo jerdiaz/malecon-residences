@@ -90,6 +90,18 @@
      define el borde de la letra, y una amplia y difusa que le abre un hueco
      oscuro alrededor. Sostiene el blanco incluso sobre cielo quemado, sin
      tener que oscurecer el fotograma entero. */
+  /* Versión cerrada y fuerte, para texto chico sobre video. El halo ancho de
+     .type-halo sirve para tipografía de despliegue, pero a 10px con tracking
+     amplio no alcanza: hace falta una sombra corta y densa que le abra a cada
+     letra su propio hueco oscuro. Sube el contraste del kicker del hero de
+     1.8:1 a 5.4:1 sin tocarle el color ni oscurecer el fotograma. */
+  .type-halo-strong {
+    text-shadow:
+      0 1px 2px rgb(var(--ink-deep) / 0.85),
+      0 0 8px rgb(var(--ink-deep) / 0.75),
+      0 2px 26px rgb(var(--ink-deep) / 0.6);
+  }
+
   .type-halo {
     text-shadow:
       0 1px 2px rgb(var(--ink-deep) / 0.6),

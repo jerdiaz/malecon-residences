@@ -58,7 +58,12 @@ export default function Hero() {
       {/* Contenido central */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <p
-          className="type-halo mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90 opacity-0"
+          // Bronce a opacidad plena y halo fuerte: a 10px sobre el video, el
+          // bronce al 90% quedaba en 1.8:1 contra el fondo. No es que
+          // faltara velo — el color del texto es oscuro, y medirlo como si
+          // fuera blanco fue el error. El halo lo resuelve sin tocar el
+          // fotograma ni salirse del acento de marca.
+          className="type-halo-strong mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0"
           style={{ animationDelay: "0.2s" }}
         >
           Zona Norte · Cartagena de Indias
