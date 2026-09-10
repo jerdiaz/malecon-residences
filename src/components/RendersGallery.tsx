@@ -55,34 +55,38 @@ export default function RendersGallery() {
             stagger={50}
           />
         </h2>
-        {/* El acceso a la galería completa vive aquí, a la derecha del párrafo
-            y no bajo el carrusel: abajo era un enlace gris al 60% del tamaño
-            del pie de foto, junto a las flechas, y se pasaba de largo. Arriba
-            cae en la vista al entrar a la sección, y con caja se lee como
-            acción. Misma esquina que en las páginas de detalle. */}
-        <div className="mt-8 flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
-          <Reveal delay={500}>
-            <p className="max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
-              {CAROUSEL_RENDERS.length} perspectivas del Malecón Business
-              Center. Arquitectura contemporánea diseñada para la Zona Norte de
-              Cartagena de Indias.
-            </p>
-          </Reveal>
-          <Reveal delay={700} className="shrink-0">
-            <Link
-              href="/galeria"
-              className="group inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-            >
-              Ver galería completa
-              <span className="transition-transform duration-500 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-          </Reveal>
-        </div>
+        <Reveal delay={500}>
+          <p className="mt-8 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">
+            {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
+            Arquitectura contemporánea diseñada para la Zona Norte de Cartagena
+            de Indias.
+          </p>
+        </Reveal>
+
+        {/* Único acceso a la galería completa, y va aquí abajo del párrafo, no
+            a la derecha: alineado a la derecha compartía columna con el CTA del
+            navbar —los dos terminaban en el mismo píxel— y al hacer scroll una
+            caja pasaba por debajo de la otra. Abajo y a la izquierda sigue el
+            mismo patrón que los StoryBlock, que es el idioma del resto de la
+            página. */}
+        <Reveal delay={700}>
+          <Link
+            href="/galeria"
+            className="group mt-10 inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+          >
+            Ver galería completa
+            <span className="transition-transform duration-500 group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
+        </Reveal>
       </div>
 
-      {/* Carrusel — composición asimétrica sobre el set completo de renders */}
+      {/* Carrusel — rejilla alineada sobre el set completo de renders. Antes
+          las piezas iban desplazadas en vertical (translate-y-4, -translate-y-6,
+          mt-2) y la columna derecha partida en 58/42. Se enderezó: todas las
+          fotos comparten borde superior e inferior y las dos pequeñas miden lo
+          mismo. La jerarquía la sigue dando el ancho —65/35—, no el desorden. */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="relative">
           <div
@@ -96,11 +100,11 @@ export default function RendersGallery() {
               className={
                 current.length === 1
                   ? "h-80 w-full sm:h-full"
-                  : "h-80 w-full sm:h-full sm:w-[65%] sm:translate-y-4"
+                  : "h-80 w-full sm:h-full sm:w-[65%]"
               }
             />
 
-            {/* Columna derecha — asimétrica: una más alargada y desplazada, otra más baja */}
+            {/* Columna derecha — dos piezas iguales, alineadas con la grande */}
             {current.length > 1 && (
               <div className="flex w-full flex-col gap-4 sm:w-[35%]">
                 <RenderTile
@@ -108,15 +112,15 @@ export default function RendersGallery() {
                   sizes={SIZES_CHICA}
                   className={
                     current.length === 2
-                      ? "h-64 w-full sm:h-full sm:-translate-y-6"
-                      : "h-64 w-full sm:h-[58%] sm:-translate-y-6"
+                      ? "h-64 w-full sm:h-full"
+                      : "h-64 w-full sm:flex-1"
                   }
                 />
                 {current[2] && (
                   <RenderTile
                     render={current[2]}
                     sizes={SIZES_CHICA}
-                    className="h-56 w-full sm:h-[42%] sm:mt-2"
+                    className="h-56 w-full sm:flex-1"
                   />
                 )}
               </div>
@@ -137,9 +141,9 @@ export default function RendersGallery() {
             />
             {next.length > 1 && (
               <div className="flex w-full flex-col gap-4 sm:w-[35%]">
-                <PreloadTile render={next[1]} sizes={SIZES_CHICA} className="h-[58%] w-full" />
+                <PreloadTile render={next[1]} sizes={SIZES_CHICA} className="w-full flex-1" />
                 {next[2] && (
-                  <PreloadTile render={next[2]} sizes={SIZES_CHICA} className="h-[42%] w-full" />
+                  <PreloadTile render={next[2]} sizes={SIZES_CHICA} className="w-full flex-1" />
                 )}
               </div>
             )}
@@ -157,9 +161,9 @@ export default function RendersGallery() {
           />
         </div>
 
-        {/* Controles + acceso a la galería completa */}
-        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-5">
+        {/* Controles del carrusel. El acceso a la galería completa ya no se
+            repite aquí: vive una sola vez, arriba en el encabezado. */}
+        <div className="mt-8 flex items-center gap-5">
             <button
               onClick={() => go(-1)}
               aria-label="Ver el grupo anterior"
@@ -181,22 +185,7 @@ export default function RendersGallery() {
               {" / "}
               {String(SLIDES.length).padStart(2, "0")}
             </p>
-          </div>
 
-          {/* Se repite el acceso al terminar de recorrer el carrusel. Antes
-              iba en voz baja (texto con un filete) para no competir con el
-              botón con caja de arriba, pero quedaba perdido al pie del
-              carrusel — ahora lleva el mismo lenguaje de botón que el resto
-              del sitio. */}
-          <Link
-            href="/galeria"
-            className="group inline-flex items-center gap-4 self-start border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-          >
-            Ver las {CAROUSEL_RENDERS.length} imágenes
-            <span className="transition-transform duration-500 group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
         </div>
       </div>
     </section>
