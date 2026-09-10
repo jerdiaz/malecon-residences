@@ -67,7 +67,7 @@ export default function LocationSection() {
           </h2>
 
           <Reveal delay={600} variant="fade-up">
-            <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
+            <p className="max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
               La ubicación de Malecón Business Center ofrece conexión directa
               con los principales centros financieros, turísticos, logísticos e
               industriales de Cartagena, convirtiéndolo en un punto estratégico
@@ -76,7 +76,7 @@ export default function LocationSection() {
           </Reveal>
 
           <Reveal delay={800} variant="fade-up">
-            <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
+            <p className="mt-4 max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
               Ubicado frente al mar, sobre la Avenida Santander, el proyecto
               combina conectividad, visibilidad y acceso a las principales zonas
               de la ciudad, fortaleciendo el posicionamiento de las empresas que
@@ -111,7 +111,7 @@ export default function LocationSection() {
                     <span className="font-serif text-[0.7rem] tabular-nums text-bronze/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-cuerpo">
+                    <span className="text-[0.7rem] font-normal uppercase leading-relaxed tracking-[0.12em] text-cuerpo">
                       {lugar}
                     </span>
                   </motion.div>

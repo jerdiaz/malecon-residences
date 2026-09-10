@@ -139,7 +139,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-light leading-relaxed tracking-wide text-sobrefoto opacity-0 sm:text-base"
+          className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-normal leading-relaxed text-sobrefoto opacity-0 sm:text-base"
           style={{ animationDelay: "0.9s" }}
         >
           Colección de oficinas y locales de lujo frente al Mar Caribe.

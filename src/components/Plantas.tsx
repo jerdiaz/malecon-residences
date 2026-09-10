@@ -176,7 +176,7 @@ export default function Plantas() {
                     }`}
                   >
                     <div className="overflow-hidden pl-9">
-                      <p className="text-sm font-light leading-relaxed tracking-wide text-cuerpo">
+                      <p className="text-sm font-normal leading-relaxed text-cuerpo">
                         {n.intro}
                       </p>
                     </div>

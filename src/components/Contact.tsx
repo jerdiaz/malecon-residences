@@ -96,7 +96,7 @@ export default function Contact() {
           </h2>
         </Reveal>
         <Reveal delay={240}>
-          <p className="mx-auto mt-5 max-w-md text-center text-sm font-light leading-relaxed tracking-wide text-cuerpo">
+          <p className="mx-auto mt-5 max-w-md text-center text-sm font-normal leading-relaxed text-cuerpo">
             Agenda una cita reservada con nuestro equipo. Atendemos un número
             limitado de clientes por temporada.
           </p>
@@ -110,7 +110,7 @@ export default function Contact() {
             <p className="font-serif text-2xl font-extralight text-white">
               Gracias, {form.nombre || "estimado cliente"}.
             </p>
-            <p className="mx-auto mt-3 max-w-sm text-sm font-light leading-relaxed text-cuerpo">
+            <p className="mx-auto mt-3 max-w-sm text-sm font-normal leading-relaxed text-cuerpo">
               Hemos recibido tu solicitud. Un asesor de Malecón Business Center
               se pondrá en contacto contigo de forma personal y discreta.
             </p>

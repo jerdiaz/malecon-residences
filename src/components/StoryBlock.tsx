@@ -68,7 +68,7 @@ export default function StoryBlock({
                 {body.split("\n\n").map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base"
+                    className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base"
                   >
                     {paragraph}
                   </p>
@@ -86,7 +86,7 @@ export default function StoryBlock({
                     {bullets.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base"
+                        className="flex items-start gap-3 text-sm font-normal leading-relaxed text-cuerpo sm:text-base"
                       >
                         <span
                           aria-hidden

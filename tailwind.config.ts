@@ -32,9 +32,14 @@ const config: Config = {
         //
         // No aplican a Amenidades: esa sección va sobre crema con tinta
         // navy y tiene su propio sistema.
-        cuerpo: "rgb(255 255 255 / 0.65)", //  7.5:1 — párrafos
-        apoyo: "rgb(255 255 255 / 0.55)", //   5.7:1 — datos, pies y notas
-        sobrefoto: "rgb(255 255 255 / 0.75)", // 9.5:1 — encima de foto o video
+        // El techo del cuerpo es 72%, y no es arbitrario: el champaña de los
+        // acentos da 9.4:1 contra `ink`, y a partir del 75% el texto de lectura
+        // brillaría MÁS que el color que debe mandar. Ahí se rompe la jerarquía
+        // tonal. Por eso el resto de la legibilidad se resuelve con peso y
+        // espaciado, no subiendo más el blanco.
+        cuerpo: "rgb(255 255 255 / 0.72)", //  8.8:1 — párrafos
+        apoyo: "rgb(255 255 255 / 0.60)", //   6.6:1 — datos, pies y notas
+        sobrefoto: "rgb(255 255 255 / 0.80)", // 10.6:1 — encima de foto o video
 
         // Subtle metallic accents — champagne / bronze
         champagne: "#d8c4a0",

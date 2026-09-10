@@ -72,7 +72,7 @@ export default function Aliados() {
               <p className="mt-4 font-serif text-2xl font-extralight tracking-tight text-white sm:text-3xl">
                 {ARCHITECT.name}
               </p>
-              <p className="mt-6 max-w-2xl text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
+              <p className="mt-6 max-w-2xl text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
                 Líder e impulsor en la transformación del paisaje urbano
                 vertical y corporativo de{" "}
                 <span className="text-white/85">Cartagena de Indias</span>, el{" "}
@@ -88,13 +88,13 @@ export default function Aliados() {
         {/* ── Cierre ── */}
         <Reveal delay={200}>
           <div className="mx-auto mt-20 max-w-3xl space-y-5 text-center">
-            <p className="text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
+            <p className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
               Reunimos la trayectoria de reconocidos arquitectos, ingenieros y
               especialistas de primer nivel para consolidar una propuesta de
               oficinas e inversión inmobiliaria que combina solidez, innovación
               y ubicación estratégica.
             </p>
-            <p className="text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
+            <p className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
               <span className="text-white/85">Malecón Business Center</span> es
               la respuesta ejecutiva para empresas e inversionistas que buscan
               posicionarse en uno de los desarrollos corporativos más ambiciosos
