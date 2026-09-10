@@ -37,6 +37,39 @@ export default function Contact() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // PENDIENTE — EL FORMULARIO NO ENVÍA NADA. Auditado el 2026-09-10.
+  //
+  // Estado actual: los datos se descartan en el navegador y la página muestra
+  // "Hemos recibido tu solicitud. Un asesor se pondrá en contacto contigo".
+  // El sitio está en producción en el dominio final pidiendo nombre, correo,
+  // celular, empresa, cargo y mensaje. Cada prospecto que lo llena cree que lo
+  // van a llamar, y no queda registro de quién era.
+  //
+  // No se arregló porque la empresa todavía no ha definido dónde se guardan
+  // los datos. Cuando lo defina, hace falta:
+  //
+  //   1. Un destino real. Puede ser un endpoint propio, un servicio de correo
+  //      transaccional (Resend, SendGrid) o un formulario gestionado
+  //      (Formspree, Netlify Forms). Hoy no hay ninguno.
+  //
+  //   2. Una casilla de autorización de tratamiento de datos, obligatoria.
+  //      La Ley 1581 de 2012 (Habeas Data) exige consentimiento previo,
+  //      expreso e informado para tratar datos personales en Colombia. El
+  //      formulario no la tiene, y sin ella recolectar estos campos incumple.
+  //      Debe enlazar a la política de privacidad.
+  //
+  //   3. Las páginas de confianza, que hoy dan 404: política de tratamiento
+  //      de datos personales y términos y condiciones. Para redactarlas hace
+  //      falta la razón social y el NIT del responsable, y deberían pasar por
+  //      revisión legal antes de publicarse.
+  //
+  // A favor: el sitio no tiene analítica, cookies ni píxeles de rastreo
+  // (verificado), así que la política será corta y podrá ser honesta.
+  //
+  // Mientras esto siga así, considerar quitar el mensaje de confirmación: hoy
+  // promete un contacto que no va a ocurrir.
+  // ─────────────────────────────────────────────────────────────────────────
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Mockup: sin backend — se simula el envío con un estado de confirmación.
