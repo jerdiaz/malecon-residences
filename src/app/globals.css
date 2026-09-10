@@ -57,30 +57,33 @@
      Todo en el azul de marca, nunca en negro. */
   .veil {
     background:
-      /* Banda superior. Medido fotograma a fotograma sobre el video del hero:
-         arriba es donde más claro está. En su peor fotograma el logo queda en
-         2.4:1 contra blanco y los links del navbar en 2.8:1 — hace falta ~54%
-         de velo para llevarlos a 4.5:1. La cola baja hasta el kicker (27-32%
-         del alto), que pide 17%, y se apaga antes del titular. */
+      /* Banda superior. Arriba es donde el video está más claro: medido
+         fotograma a fotograma, en su peor momento el logo queda en 2.4:1
+         contra blanco y los links del navbar en 2.8:1, y hacen falta ~55%
+         de velo para llevarlos a 4.5:1. Estos números son lo que la banda
+         SUMA sobre la base de abajo, no el total — por eso son más bajos de
+         lo que parece. Se apaga al 30%, donde la base sola ya alcanza. */
       linear-gradient(
         to bottom,
-        rgb(var(--ink-deep) / 0.58) 0%,
-        rgb(var(--ink-deep) / 0.52) 16%,
-        rgb(var(--ink-deep) / 0.18) 30%,
-        rgb(var(--ink-deep) / 0) 40%
+        rgb(var(--ink-deep) / 0.46) 0%,
+        rgb(var(--ink-deep) / 0.39) 16%,
+        rgb(var(--ink-deep) / 0) 30%
       ),
       /* Banda inferior: el hero aterriza en `ink`, el mismo color con el que
          arrancan los pilares, así la costura entre secciones no se ve. */
       linear-gradient(
         to top,
         rgb(var(--ink) / 0.98) 0%,
-        rgb(var(--ink) / 0.88) 6%,
+        rgb(var(--ink) / 0.86) 6%,
         rgb(var(--ink-deep) / 0) 38%
-      );
-    /* A propósito no hay capa de base pareja: entre el 40% y el 62% del alto
-       el video va limpio. La misma medición dice que ahí no hace falta —el
-       titular en su peor fotograma da 5.2:1 y el subtítulo 6.7:1—, y los
-       blancos quemados puntuales los sostiene .type-halo, no un velo. */
+      ),
+      /* Base pareja sobre todo el video. La medición dice que el bloque de
+         texto central no la necesita para pasar el umbral de contraste, pero
+         el umbral no es lo mismo que la comodidad de lectura: un asiento
+         parejo y suave unifica el hero y despega el texto del fondo sin
+         volverlo un filtro. Deliberadamente baja — el render se sigue
+         apreciando. */
+      rgb(var(--ink-deep) / 0.22);
   }
 
   /* Halo del texto sobre imagen o video. Dos sombras: una corta y cerrada que
