@@ -172,10 +172,12 @@ export default function Contact() {
             <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
               Dirección
             </p>
+            {/* La del proyecto, la misma que muestra Ubicación — no la de la
+                oficina comercial de Marbella, que era la que estaba aquí. */}
             <p className="text-sm font-light leading-relaxed text-white/55">
-              {CONTACT.addressStreet}
+              {CONTACT.projectStreet}
               <br />
-              {CONTACT.addressCity}
+              {CONTACT.projectCity}
             </p>
           </div>
           <div>
