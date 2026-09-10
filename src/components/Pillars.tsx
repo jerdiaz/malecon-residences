@@ -104,9 +104,12 @@ export default function Pillars() {
 
               {/* Contenido del panel */}
               <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-10">
-                <h3 className="font-serif text-xl font-light uppercase tracking-[0.3em] text-white sm:text-2xl">
+                {/* h2, no h3: estos tres paneles son secciones de primer nivel
+                    de la página y venían antes del primer h2 del documento, así
+                    que la jerarquía saltaba de h1 a h3. */}
+                <h2 className="font-serif text-xl font-light uppercase tracking-[0.3em] text-white sm:text-2xl">
                   {panel.heading}
-                </h3>
+                </h2>
                 <div
                   className={`grid transition-all ease-silk mt-4 grid-rows-[1fr] opacity-100 duration-500 delay-100 ${
                     isActive

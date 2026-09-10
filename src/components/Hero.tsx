@@ -40,12 +40,13 @@ export default function Hero() {
           cambiar las dos rutas de abajo por esas. */}
       <video
         ref={videoRef}
+        aria-label="Oficinas en la Zona Norte de Cartagena: recorrido por la fachada del Malecón Business Center sobre la Avenida Santander"
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
         loop
         playsInline
-        poster="/images/hero-poster-fachada.webp"
+        poster="/images/oficinas-zona-norte-cartagena.webp"
       >
         <source src="/video/hero-fachada.mp4" type="video/mp4" />
       </video>
@@ -74,13 +75,15 @@ export default function Hero() {
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.35s" }}
           >
-            Hacer negocios
+            Oficinas frente al mar
           </span>
           <span
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.6s" }}
           >
-            <span className="text-shimmer font-light italic">frente al mar</span>
+            <span className="text-shimmer font-light italic">
+              en la Zona Norte de Cartagena
+            </span>
           </span>
         </h1>
 
@@ -88,8 +91,8 @@ export default function Hero() {
           className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-light leading-relaxed tracking-wide text-white/70 opacity-0 sm:text-base"
           style={{ animationDelay: "0.9s" }}
         >
-          Colección de oficinas y locales de lujo frente al Mar Caribe.
-          Una sola dirección.
+          Oficinas y locales de lujo en la Zona Norte de Cartagena, a cero
+          metros del Mar Caribe.
         </p>
       </div>
 
