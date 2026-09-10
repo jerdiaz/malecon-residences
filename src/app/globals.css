@@ -5,6 +5,12 @@
 @layer base {
   :root {
     color-scheme: dark;
+    /* Azul profundo de marca: el mismo #142238 que `ink` en
+       tailwind.config.ts. Vive aquí como variable para que las capas escritas
+       en CSS plano no puedan quedarse atrás de la paleta — que es justo lo que
+       pasó con el velo, que siguió en el casi-negro anterior mucho después de
+       que el resto del sitio migrara al azul. */
+    --ink: 20 34 56;
   }
 
   html {
@@ -14,7 +20,7 @@
   }
 
   body {
-    background-color: #142238;
+    background-color: rgb(var(--ink));
     color: #e7e3da;
     font-family: var(--font-sans), system-ui, sans-serif;
     overflow-x: hidden;
@@ -43,14 +49,22 @@
     border-radius: 9999px;
   }
 
-  /* Velo radial sobre las imágenes de fondo para legibilidad */
+  /* Velo radial sobre las imágenes de fondo para legibilidad.
+     Va en el azul de marca, no en negro: al 92% de opacidad el velo tapa
+     prácticamente todo el video, así que su color ES el color con el que
+     termina el hero. En casi-negro dejaba un escalón contra los pilares, que
+     arrancan en `ink`; en azul, el empalme entre las dos secciones desaparece. */
   .veil {
     background:
-      linear-gradient(to bottom, rgba(9, 13, 17, 0.35), rgba(9, 13, 17, 0.92)),
+      linear-gradient(
+        to bottom,
+        rgb(var(--ink) / 0.35),
+        rgb(var(--ink) / 0.92)
+      ),
       radial-gradient(
         120% 80% at 50% 20%,
-        rgba(9, 13, 17, 0.1),
-        rgba(9, 13, 17, 0.85)
+        rgb(var(--ink) / 0.1),
+        rgb(var(--ink) / 0.85)
       );
   }
 

@@ -49,8 +49,11 @@ export default function Pillars() {
       id="pillars"
       className="relative w-full overflow-hidden bg-ink min-h-screen md:h-screen"
     >
-      {/* Fundido de entrada — disuelve la costura con el final del Hero */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-32 bg-gradient-to-b from-ink to-transparent md:h-40" />
+      {/* Fundido de entrada — disuelve la costura con el final del Hero.
+          Termina en `ink/0` y no en `transparent`: los dos son invisibles, pero
+          `transparent` es negro con alfa 0 y deja el degradado interpolando
+          hacia un color que ya no existe en la paleta. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-32 bg-gradient-to-b from-ink to-ink/0 md:h-40" />
 
       <div className="relative flex min-h-screen flex-col md:h-screen md:flex-row">
         {PANELS.map((panel, i) => {
@@ -83,10 +86,13 @@ export default function Pillars() {
                 />
               </div>
 
-              {/* Overlay oscuro — se aclara al activar */}
+              {/* Overlay oscuro — se aclara al activar. En azul de marca, no
+                  en negro: el fundido de arriba entra desde `ink`, así que si
+                  la foto estuviera velada en negro el empalme seguiría
+                  cruzando de azul a negro dentro de la misma sección. */}
               <div
                 className={`absolute inset-0 transition-colors duration-700 ease-out ${
-                  isActive ? "bg-black/30" : "bg-black/60"
+                  isActive ? "bg-ink/30" : "bg-ink/60"
                 }`}
               />
 
