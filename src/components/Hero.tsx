@@ -46,13 +46,13 @@ export default function Hero() {
       {/* Contenido central */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <p
-          className="mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90 opacity-0"
+          className="type-halo mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90 opacity-0"
           style={{ animationDelay: "0.2s" }}
         >
           Zona Norte · Cartagena de Indias
         </p>
 
-        <h1 className="max-w-5xl text-balance font-serif text-5xl font-extralight leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="type-halo max-w-5xl text-balance font-serif text-5xl font-extralight leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
           <span
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.35s" }}
@@ -68,7 +68,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="mt-10 max-w-xl animate-fade-up text-sm font-light leading-relaxed tracking-wide text-white/70 opacity-0 sm:text-base"
+          className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-light leading-relaxed tracking-wide text-white/70 opacity-0 sm:text-base"
           style={{ animationDelay: "0.9s" }}
         >
           Colección de oficinas y locales de lujo frente al Mar Caribe.

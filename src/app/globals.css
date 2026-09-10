@@ -51,28 +51,44 @@
     border-radius: 9999px;
   }
 
-  /* Velo radial sobre las imágenes de fondo para legibilidad.
-     Va en el azul de marca, no en negro: al 92% de opacidad el velo tapa
-     prácticamente todo el video, así que su color ES el color con el que
-     termina el hero. En casi-negro dejaba un escalón contra los pilares, que
-     arrancan en `ink`; en azul, el empalme entre las dos secciones desaparece. */
+  /* Velo sobre las imágenes y el video de fondo. Tres capas, cada una con un
+     trabajo distinto: sostener el navbar arriba, aterrizar en el color de la
+     sección siguiente abajo, y una base pareja y ligera en el medio.
+     Todo en el azul de marca, nunca en negro. */
   .veil {
     background:
-      /* Oscurece en azul profundo hasta el 82% del alto y solo en el último
-         tramo aterriza en `ink` puro, que es el color con el que arrancan los
-         pilares. Así el video se ve oscuro en lugar de teñido, y la costura
-         entre las dos secciones sigue siendo invisible. */
+      /* Banda superior: lo justo para que el navbar y el logo no se pierdan
+         sobre el cielo del video. */
       linear-gradient(
         to bottom,
-        rgb(var(--ink-deep) / 0.42) 0%,
-        rgb(var(--ink-deep) / 0.94) 82%,
-        rgb(var(--ink) / 0.97) 100%
+        rgb(var(--ink-deep) / 0.55) 0%,
+        rgb(var(--ink-deep) / 0) 20%
       ),
-      radial-gradient(
-        120% 80% at 50% 20%,
-        rgb(var(--ink-deep) / 0.14),
-        rgb(var(--ink-deep) / 0.88)
-      );
+      /* Banda inferior: el hero aterriza en `ink`, el mismo color con el que
+         arrancan los pilares, así la costura entre secciones no se ve. */
+      linear-gradient(
+        to top,
+        rgb(var(--ink) / 0.98) 0%,
+        rgb(var(--ink) / 0.88) 6%,
+        rgb(var(--ink-deep) / 0) 38%
+      ),
+      /* Base pareja y ligera. Antes esta capa llegaba al 94% abajo y tapaba
+         casi todo el render; el grueso de la legibilidad ahora lo sostiene la
+         sombra del texto (.type-halo), no un velo a pantalla completa. El
+         video se mide con blancos quemados —cielo, reflejos en el vidrio— que
+         dejan el contraste en 1:1 en cada zona de texto, y ninguna cantidad
+         razonable de velo arregla eso: hay que atacarlo en la tipografía. */
+      rgb(var(--ink-deep) / 0.34);
+  }
+
+  /* Halo del texto sobre imagen o video. Dos sombras: una corta y cerrada que
+     define el borde de la letra, y una amplia y difusa que le abre un hueco
+     oscuro alrededor. Sostiene el blanco incluso sobre cielo quemado, sin
+     tener que oscurecer el fotograma entero. */
+  .type-halo {
+    text-shadow:
+      0 1px 2px rgb(var(--ink-deep) / 0.6),
+      0 2px 22px rgb(var(--ink-deep) / 0.5);
   }
 
   .text-balance {
