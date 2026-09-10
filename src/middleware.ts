@@ -21,8 +21,11 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(url, 301);
 }
 
+// El filtro va aquí y no en un `matcher` con expresión regular: la versión
+// anterior llevaba `.*\..*` escrito en un string de JavaScript, donde `\.`
+// se convierte en `.` y el patrón terminaba excluyendo TODAS las rutas. El
+// resultado era que solo la home redirigía y las 34 páginas restantes seguían
+// existiendo por duplicado en www. En código el filtro se lee y se prueba.
 export const config = {
-  // Todo menos los estáticos y el optimizador de imágenes: redirigir esos no
-  // aporta nada y suma un salto a cada recurso de la página.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\..*).*)"],
+  matcher: "/((?!_next/).*)",
 };
