@@ -20,12 +20,24 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-dvh w-full overflow-hidden">
       {/* Video de fondo — entrega del 9 de septiembre. El original venía con
-          franjas negras a los lados (formato pillarbox, 1280x720 con el
-          contenido real en 1092x720); se recortaron y se volvió a codificar
-          sin audio (el video siempre va muted). El anterior sigue en
-          /public/video/video_202606291024.mp4 con su poster en
-          /public/images/hero-poster.webp — para volver a él, cambiar las
-          dos rutas de abajo por esas. */}
+          franjas negras a los lados (pillarbox 1280x720 con el contenido real
+          en 1092x720): se recorta con crop=1092:720:94:0 y se codifica sin
+          audio (el video siempre va muted).
+
+          Recodificado el 2026-09-10 desde el archivo original en vez del
+          intermedio: el primer encode había quedado en 0.156 bits/pixel y se
+          notaba, porque en pantalla el video se estira 1.76x y los artefactos
+          se agrandan con él. Ahora va a CRF 24 (x264, preset slower), que da
+          SSIM 0.972 contra el original frente al 0.960 de antes —un tercio
+          menos de error— por 4.3 MB en vez de 2.8. Sigue pesando menos que el
+          video anterior del hero, que eran 4.7 MB.
+
+          El poster es el fotograma 0 de ESTE encode, no otra imagen: si se
+          cambia el video hay que regenerarlo, o el primer cuadro salta.
+
+          El video anterior sigue en /public/video/video_202606291024.mp4 con
+          su poster en /public/images/hero-poster.webp — para volver a él,
+          cambiar las dos rutas de abajo por esas. */}
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
