@@ -75,15 +75,13 @@ export default function Hero() {
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.35s" }}
           >
-            Oficinas frente al mar
+            Hacer negocios
           </span>
           <span
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.6s" }}
           >
-            <span className="text-shimmer font-light italic">
-              en la Zona Norte de Cartagena
-            </span>
+            <span className="text-shimmer font-light italic">frente al mar</span>
           </span>
         </h1>
 
