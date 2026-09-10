@@ -59,6 +59,12 @@ export default function Hero() {
       {/* Contenido central */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <p
+          // El texto lleva la keyword principal del sitio. Antes decía "Zona
+          // Norte · Cartagena de Indias", que además repetía palabra por
+          // palabra el primer ítem de la marquesina de abajo. Es el lugar
+          // natural para la keyword: va sobre el pliegue y justo encima del
+          // titular, que es una línea de marca y no se toca.
+          //
           // Bronce a opacidad plena y halo fuerte: a 10px sobre el video, el
           // bronce al 90% quedaba en 1.8:1 contra el fondo. No es que
           // faltara velo — el color del texto es oscuro, y medirlo como si
@@ -67,7 +73,7 @@ export default function Hero() {
           className="type-halo-strong mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0"
           style={{ animationDelay: "0.2s" }}
         >
-          Zona Norte · Cartagena de Indias
+          Oficinas en la Zona Norte de Cartagena
         </p>
 
         <h1 className="type-halo max-w-5xl text-balance font-serif text-5xl font-extralight leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
@@ -89,8 +95,8 @@ export default function Hero() {
           className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-light leading-relaxed tracking-wide text-white/70 opacity-0 sm:text-base"
           style={{ animationDelay: "0.9s" }}
         >
-          Oficinas y locales de lujo en la Zona Norte de Cartagena, a cero
-          metros del Mar Caribe.
+          Colección de oficinas y locales de lujo frente al Mar Caribe.
+          Una sola dirección.
         </p>
       </div>
 
