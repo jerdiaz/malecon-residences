@@ -10,11 +10,59 @@ const TICKER_ITEMS = [
   "Frente al Mar Caribe",
 ];
 
+const FUENTE_VIDEO = "/video/hero-fachada.mp4";
+
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // El video pesa 4.3 MB y es lo primero que pedía el navegador, compitiendo
+  // por ancho de banda con todo lo demás justo cuando se decide la primera
+  // pintura. Ahora el `src` no está en el HTML: se asigna después de `load` y
+  // en cuanto el navegador esté ocioso, así que primero entra el póster —152
+  // KB— y el video llega detrás sin bloquear a nadie.
   useEffect(() => {
-    if (videoRef.current) videoRef.current.playbackRate = 0.85;
+    const video = videoRef.current;
+    if (!video) return;
+    // `defaultPlaybackRate` y no solo `playbackRate`: más abajo se llama a
+    // `load()`, que reinicia el elemento y devuelve la velocidad a 1. El valor
+    // por defecto sí sobrevive, y es el que `load()` restaura.
+    video.defaultPlaybackRate = 0.85;
+    video.playbackRate = 0.85;
+
+    // Con ahorro de datos activo el video no se descarga: se queda el póster,
+    // que es el mismo fotograma y pesa el 3%.
+    const conexion = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection;
+    if (conexion?.saveData) return;
+
+    let cancelado = false;
+    const cargar = () => {
+      if (cancelado || video.src) return;
+      video.src = FUENTE_VIDEO;
+      video.load();
+      video.playbackRate = 0.85;
+      video.play().catch(() => {
+        // Si el navegador bloquea la reproducción automática, el póster queda
+        // como imagen fija. No es un error que haya que reportar.
+      });
+    };
+
+    const programar = () => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(cargar, { timeout: 2000 });
+      } else {
+        setTimeout(cargar, 300);
+      }
+    };
+
+    if (document.readyState === "complete") programar();
+    else window.addEventListener("load", programar, { once: true });
+
+    return () => {
+      cancelado = true;
+      window.removeEventListener("load", programar);
+    };
   }, []);
 
   return (
@@ -47,9 +95,8 @@ export default function Hero() {
         loop
         playsInline
         poster="/images/oficinas-zona-norte-cartagena.webp"
-      >
-        <source src="/video/hero-fachada.mp4" type="video/mp4" />
-      </video>
+        preload="none"
+      />
       <div className="veil absolute inset-0" />
 
       {/* Línea decorativa superior */}
