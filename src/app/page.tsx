@@ -38,13 +38,16 @@ export default function Home() {
         {/* Segunda vista — los 3 pilares (acordeón interactivo) */}
         <Pillars />
 
-        {/* Story 1 — Las residencias */}
+        {/* Story 1 — El proyecto.
+            La imagen es la Escena 11 de la entrega, que ya vivía en la galería
+            como "Acceso vehicular": se reusa el mismo archivo en vez de subir
+            una copia. Reemplazó a `frontal-palmeras`. */}
         <StoryBlock
           id="residencias"
           kicker="El Proyecto"
           title="Edificio de oficinas y locales corporativos de alto nivel."
           body="Malecón Business Center es un moderno centro de negocios ubicado en Cartagena, diseñado para ofrecer oficinas corporativas de alto nivel. Sus espacios boutique, acabados premium y excelente ubicación lo convierten en una opción ideal para empresas, profesionales e inversionistas que buscan un entorno empresarial exclusivo."
-          image="/images/renders/frontal-palmeras.webp"
+          image="/images/renders/acceso-vehicular.webp"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
         />
