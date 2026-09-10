@@ -119,9 +119,10 @@ function ArchitectMark() {
         alt={`Logo de ${ARCHITECT.firm}`}
         // El lockup real es apaisado (2216×564, ≈3.93:1) — nada que ver con
         // el 160×80 (2:1) que tenía el placeholder. w-full para que llene
-        // la columna angosta (max 20rem, con padding) y h-auto respeta esa
-        // proporción en vez de recortarla.
-        className="h-auto w-full max-w-[13rem]"
+        // la columna angosta (max 20rem, con padding de 2.5rem por lado —
+        // 15rem es prácticamente el ancho útil completo) y h-auto respeta
+        // esa proporción en vez de recortarla.
+        className="h-auto w-full max-w-[15rem]"
       />
     );
   }
