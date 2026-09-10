@@ -47,6 +47,24 @@ jobs:
             git fetch --all
             git reset --hard origin/main
 
+            # ── Caché del optimizador de imágenes ──────────────────────
+            # `next build` NO limpia .next/cache/images: es una caché pensada
+            # para sobrevivir compilaciones. Y next.config.mjs la fija en un
+            # año (minimumCacheTTL), con la clave formada por ruta + ancho +
+            # calidad — el CONTENIDO del archivo no entra en la clave.
+            #
+            # Resultado: cuando se reemplazó un render conservando su nombre,
+            # el VPS siguió sirviendo el corte viejo. El 2026-09-10 producción
+            # mostraba en "El Proyecto" un render que ya no existía en el repo,
+            # y 7 de cada 10 renders exteriores estaban igual. En localhost se
+            # veían bien, porque su caché se había generado después.
+            #
+            # Se limpia en cada despliegue. El costo es que el primer visitante
+            # de cada imagen paga la optimización una vez; barato al lado de
+            # servir arte que ya se retiró.
+            echo "→ Limpiando la caché del optimizador de imágenes..."
+            rm -rf .next/cache/images
+
             echo "→ Instalando dependencias..."
             npm ci
 
