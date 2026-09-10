@@ -47,3 +47,14 @@ next-env.d.ts
 
 # entregas comprimidas de material (cientos de MB) — se descomprimen local
 *.zip
+
+# material suelto dejado en la raiz para trabajar (renders sin optimizar,
+# capturas, videos). Al sitio solo entran las versiones optimizadas bajo
+# /public, asi que nada de esto deberia versionarse. La barra inicial ancla
+# el patron a la raiz: no afecta a /public/images ni a /public/video.
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.mp4
+/*.mov
