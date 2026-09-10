@@ -14,8 +14,12 @@ import Reveal from "@/components/ui/Reveal";
 //
 // Logo: el cliente lo pasó como foto (WhatsApp, 1201×369 JPEG) — se
 // vectorizó con potrace (umbral a blanco/negro con ImageMagick y trazado),
-// no era un archivo de diseño. El navy es el color real del logo, muestreado
-// del propio JPEG (#292457), no el bronce/champán de la marca del sitio.
+// no era un archivo de diseño. El color real del logo es un navy
+// (#292457, muestreado del propio JPEG) pensado para fondo blanco — sobre
+// el panel oscuro de esta sección quedaba casi invisible (navy sobre
+// navy). Se recoloreó a un crema claro (#f5f2ec), el mismo criterio que ya
+// usa el logo del sitio en la navbar. El SVG con el navy original queda en
+// git (commit del 10 de sept.) por si se necesita para fondo claro.
 // Vive en /public/images/aliados/fernandez-logo.svg y se sirve con <img>, no
 // con next/image, para no perder el vector — mismo criterio que los planos
 // de Plantas y el mapa de Ubicación.
