@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
+import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
 import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -18,10 +19,35 @@ const sans = Jost({
   display: "swap",
 });
 
+const TITULO = "Malecón Business Center · Zona Norte, Cartagena de Indias";
+// Bajo los 165 caracteres que pide la checklist. La anterior decía "oficinas
+// y vivienda": se quedó de la etapa Malecón Residences, cuando el proyecto
+// era de apartamentos. Hoy son oficinas y locales comerciales.
+const DESCRIPCION =
+  "Oficinas y locales comerciales frente al Mar Caribe, sobre la Avenida Santander en la Zona Norte de Cartagena de Indias.";
+
 export const metadata: Metadata = {
-  title: "Malecón Business Center · Zona Norte, Cartagena de Indias",
-  description:
-    "Proyecto de uso mixto de súper lujo frente al Mar Caribe. Espacios exclusivos de oficinas y vivienda en la Zona Norte de Cartagena de Indias.",
+  // Sin esto, Next no puede resolver las URL relativas de canónicas y Open
+  // Graph, y las emite sin dominio.
+  metadataBase: new URL(SITE_URL),
+  title: TITULO,
+  description: DESCRIPCION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: "/",
+    siteName: SITE_NAME,
+    title: TITULO,
+    description: DESCRIPCION,
+    images: [{ url: SITE_OG_IMAGE, width: 2560, height: 1696, alt: TITULO }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITULO,
+    description: DESCRIPCION,
+    images: [SITE_OG_IMAGE],
+  },
   icons: {
     // El orden importa: el navegador toma el primero que sepa mostrar.
     //   icon.svg          → adaptativo, placa blanca solo en modo oscuro.
