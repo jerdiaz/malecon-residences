@@ -218,6 +218,9 @@ function PreloadTile({
   const blur = blurFor(render.src);
   return (
     <div className={`relative overflow-hidden ${className}`}>
+      {/* alt vacío a propósito: esta es la copia invisible del slide siguiente,
+          existe solo para calentar la caché y su contenedor va `aria-hidden`.
+          Describirla duplicaría cada render para los lectores de pantalla. */}
       <Image
         src={render.src}
         alt=""

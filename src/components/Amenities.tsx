@@ -131,6 +131,7 @@ export default function Amenities() {
             >
               <BackgroundImage
                 src={a.image}
+                alt={`${a.title} — Malecón Business Center, Cartagena de Indias`}
                 // 165vh, no 60vw: ver la nota de `sizes` en BackgroundImage.
                 sizes="(max-width: 1024px) 100vw, 165vh"
               />

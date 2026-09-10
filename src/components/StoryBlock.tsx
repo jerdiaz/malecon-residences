@@ -17,6 +17,9 @@ interface StoryBlockProps {
   /** Posición de la imagen respecto al texto */
   imagePos?: "left" | "right";
   cta?: { label: string; sectionId: string };
+  /** Descripción de la imagen. Estas no son decorativas: son los renders del
+   *  proyecto, contenido en sí mismo, así que llevan alt real. */
+  imageAlt: string;
 }
 
 export default function StoryBlock({
@@ -28,6 +31,7 @@ export default function StoryBlock({
   image,
   imagePos = "right",
   cta,
+  imageAlt,
 }: StoryBlockProps) {
   return (
     <section
@@ -42,7 +46,9 @@ export default function StoryBlock({
         {/* Imagen izquierda — en móvil siempre va después del texto (order-2) para
             que cada sección se identifique por su propio título antes que por su foto;
             en desktop vuelve a su posición natural en la columna izquierda. */}
-        {imagePos === "left" && <ImagePanel image={image} className="order-2 lg:order-none" />}
+        {imagePos === "left" && (
+          <ImagePanel image={image} alt={imageAlt} className="order-2 lg:order-none" />
+        )}
 
         {/* Texto — en móvil siempre primero (order-1), en desktop vuelve a su posición natural */}
         <div className="order-1 flex items-center px-8 py-28 lg:order-none lg:items-start lg:px-16 xl:px-24">
@@ -111,13 +117,23 @@ export default function StoryBlock({
         </div>
 
         {/* Imagen derecha — mismo orden forzado en móvil que la variante izquierda */}
-        {imagePos === "right" && <ImagePanel image={image} className="order-2 lg:order-none" />}
+        {imagePos === "right" && (
+          <ImagePanel image={image} alt={imageAlt} className="order-2 lg:order-none" />
+        )}
       </div>
     </section>
   );
 }
 
-function ImagePanel({ image, className = "" }: { image: string; className?: string }) {
+function ImagePanel({
+  image,
+  alt,
+  className = "",
+}: {
+  image: string;
+  alt: string;
+  className?: string;
+}) {
   return (
     <motion.div
       className={`relative min-h-[55vw] overflow-hidden lg:min-h-0 ${className}`}
@@ -135,7 +151,7 @@ function ImagePanel({ image, className = "" }: { image: string; className?: stri
       >
         {/* 165vh en vez de 50vw: el panel es más alto que ancho y con
             object-cover el corte lo manda el alto (ver BackgroundImage). */}
-        <BackgroundImage src={image} sizes="(max-width: 1024px) 100vw, 165vh" />
+        <BackgroundImage src={image} alt={alt} sizes="(max-width: 1024px) 100vw, 165vh" />
       </motion.div>
     </motion.div>
   );

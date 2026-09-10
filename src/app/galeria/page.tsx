@@ -8,10 +8,30 @@ import {
   type RenderCategory,
 } from "@/lib/renders";
 import { blurFor } from "@/lib/blur";
+import { SITE_NAME, SITE_OG_IMAGE } from "@/lib/site";
+
+const TITULO = "Galería completa · Malecón Business Center";
+const DESCRIPCION = `Los ${RENDERS.length} renders oficiales del Malecón Business Center: oficinas, locales, lobby y rooftop del proyecto en la Zona Norte de Cartagena de Indias.`;
 
 export const metadata: Metadata = {
-  title: "Galería completa · Malecón Business Center",
-  description: `Los ${RENDERS.length} renders oficiales del Malecón Business Center: exteriores e interiores del proyecto en la Zona Norte de Cartagena de Indias.`,
+  title: TITULO,
+  description: DESCRIPCION,
+  alternates: { canonical: "/galeria" },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: "/galeria",
+    siteName: SITE_NAME,
+    title: TITULO,
+    description: DESCRIPCION,
+    images: [{ url: SITE_OG_IMAGE, width: 2560, height: 1696, alt: TITULO }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITULO,
+    description: DESCRIPCION,
+    images: [SITE_OG_IMAGE],
+  },
 };
 
 const ORDER: RenderCategory[] = ["exteriores", "interiores"];

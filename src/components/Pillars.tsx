@@ -8,6 +8,8 @@ interface Panel {
   heading: string;
   description: string;
   image: string;
+  /** Alt de la foto. Son renders del proyecto, no decoración. */
+  alt: string;
 }
 
 const PANELS: Panel[] = [
@@ -16,12 +18,14 @@ const PANELS: Panel[] = [
     heading: "Oficinas",
     description: "Espacios de alta eficiencia para empresas de vanguardia.",
     image: "/images/renders/oficina-open-space.webp",
+    alt: "Oficinas corporativas del Malecón Business Center en Cartagena de Indias",
   },
   {
     id: "locales",
     heading: "Locales",
     description: "Zonas comerciales premium en el epicentro de la Zona Norte.",
     image: "/images/renders/locales-comerciales.webp",
+    alt: "Locales comerciales del Malecón Business Center sobre la Avenida Santander, Cartagena de Indias",
   },
   {
     id: "rooftop",
@@ -29,6 +33,7 @@ const PANELS: Panel[] = [
     description:
       "El escenario perfecto para cerrar tratos con vista al horizonte.",
     image: "/images/renders/rooftop-bar.webp",
+    alt: "Rooftop del Malecón Business Center con vista al Mar Caribe, Cartagena de Indias",
   },
 ];
 
@@ -80,6 +85,7 @@ export default function Pillars() {
               >
                 <BackgroundImage
                   src={panel.image}
+                  alt={panel.alt}
                   // 165vh, no 33vw: el panel es más vertical que el render
                   // y el recorte lo manda el alto (ver BackgroundImage).
                   sizes="(max-width: 768px) 100vw, 165vh"

@@ -23,6 +23,7 @@ import Aliados from "@/components/Aliados";
 // import Partners from "@/components/Partners"; // sección oculta por ahora
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
+import SeoJsonLd from "@/components/SeoJsonLd";
 import SectionNav from "@/components/SectionNav";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -48,6 +49,7 @@ export default function Home() {
           title="Edificio de oficinas y locales corporativos de alto nivel."
           body="Malecón Business Center es un moderno centro de negocios ubicado en Cartagena, diseñado para ofrecer oficinas corporativas de alto nivel. Sus espacios boutique, acabados premium y excelente ubicación lo convierten en una opción ideal para empresas, profesionales e inversionistas que buscan un entorno empresarial exclusivo."
           image="/images/renders/acceso-vehicular.webp"
+          imageAlt="Acceso vehicular del Malecón Business Center, centro de negocios en la Zona Norte de Cartagena de Indias"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
         />
@@ -69,6 +71,7 @@ export default function Home() {
             ],
           }}
           image="/images/renders/fachada-nocturna.webp"
+          imageAlt="Fachada nocturna del Malecón Business Center, oficinas y locales frente al Mar Caribe en Cartagena de Indias"
           imagePos="left"
         />
 
@@ -87,6 +90,7 @@ export default function Home() {
           title="El Caribe como ventana permanente."
           body="La Zona Norte de Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
           image="/images/renders/malecon-playa.webp"
+          imageAlt="Malecón Business Center visto desde la playa, sobre la Avenida Santander en Cartagena de Indias"
           imagePos="left"
         />
 
@@ -114,6 +118,8 @@ export default function Home() {
 
       {/* Botón flotante de WhatsApp — permanente abajo a la derecha */}
       <WhatsAppButton />
+
+      <SeoJsonLd />
     </>
   );
 }
