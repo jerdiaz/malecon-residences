@@ -80,7 +80,7 @@ export default function AliadosAlt() {
         <div className="order-1 flex items-center px-6 py-20 md:px-12 lg:order-none lg:px-16 lg:py-28 xl:px-24">
           <div className="max-w-xl">
             <Reveal>
-              <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+              <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
                 Aliados
               </p>
             </Reveal>

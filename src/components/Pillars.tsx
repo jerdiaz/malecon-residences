@@ -119,7 +119,7 @@ export default function Pillars() {
                 >
                   <div className="overflow-hidden">
                     <p
-                      className={`max-w-[80%] text-sm font-light leading-relaxed tracking-wide text-white/75 transition-all ease-silk sm:max-w-xs translate-y-0 duration-500 delay-150 ${
+                      className={`max-w-[80%] text-sm font-light leading-relaxed tracking-wide text-sobrefoto transition-all ease-silk sm:max-w-xs translate-y-0 duration-500 delay-150 ${
                         isActive
                           ? ""
                           : "[@media(hover:hover)]:translate-y-4 [@media(hover:hover)]:duration-150 [@media(hover:hover)]:delay-0"

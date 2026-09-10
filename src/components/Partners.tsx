@@ -39,7 +39,7 @@ export default function Partners() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <Reveal>
-          <p className="text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+          <p className="text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
             Confianza
           </p>
         </Reveal>

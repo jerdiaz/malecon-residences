@@ -53,7 +53,7 @@ export default function LocationSection() {
         {/* ── Columna de texto ── */}
         <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
           <Reveal>
-            <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+            <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
               La ubicación
             </p>
           </Reveal>
@@ -67,7 +67,7 @@ export default function LocationSection() {
           </h2>
 
           <Reveal delay={600} variant="fade-up">
-            <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
+            <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
               La ubicación de Malecón Business Center ofrece conexión directa
               con los principales centros financieros, turísticos, logísticos e
               industriales de Cartagena, convirtiéndolo en un punto estratégico
@@ -76,7 +76,7 @@ export default function LocationSection() {
           </Reveal>
 
           <Reveal delay={800} variant="fade-up">
-            <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base">
+            <p className="mt-4 max-w-md text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base">
               Ubicado frente al mar, sobre la Avenida Santander, el proyecto
               combina conectividad, visibilidad y acceso a las principales zonas
               de la ciudad, fortaleciendo el posicionamiento de las empresas que
@@ -91,7 +91,7 @@ export default function LocationSection() {
               va en el contenedor: cada fila solo lleva el de arriba. */}
           <Reveal delay={1000}>
             <div className="mt-10 max-w-lg">
-              <p className="mb-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+              <p className="mb-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
                 Conexiones estratégicas
               </p>
               <div className="border-b border-white/10">
@@ -111,7 +111,7 @@ export default function LocationSection() {
                     <span className="font-serif text-[0.7rem] tabular-nums text-bronze/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-white/60">
+                    <span className="text-[0.7rem] font-light uppercase leading-relaxed tracking-[0.12em] text-cuerpo">
                       {lugar}
                     </span>
                   </motion.div>
@@ -123,13 +123,13 @@ export default function LocationSection() {
           {/* Dirección del proyecto + Google Maps */}
           <Reveal delay={1200}>
             <div className="mt-10">
-              <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+              <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
                 Ubicación
               </p>
               <p className="font-serif text-xl font-light leading-snug text-champagne">
                 Malecón Business Center
               </p>
-              <p className="mt-2 text-sm font-light leading-relaxed tracking-wide text-white/55">
+              <p className="mt-2 text-sm font-light leading-relaxed tracking-wide text-apoyo">
                 {CONTACT.projectStreet}
                 <br />
                 {CONTACT.projectCity}

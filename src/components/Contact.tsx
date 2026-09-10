@@ -83,7 +83,7 @@ export default function Contact() {
     >
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
         <Reveal>
-          <p className="mb-5 text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+          <p className="mb-5 text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
             Visita privada
           </p>
         </Reveal>
@@ -96,7 +96,7 @@ export default function Contact() {
           </h2>
         </Reveal>
         <Reveal delay={240}>
-          <p className="mx-auto mt-5 max-w-md text-center text-sm font-light leading-relaxed tracking-wide text-white/60">
+          <p className="mx-auto mt-5 max-w-md text-center text-sm font-light leading-relaxed tracking-wide text-cuerpo">
             Agenda una cita reservada con nuestro equipo. Atendemos un número
             limitado de clientes por temporada.
           </p>
@@ -110,7 +110,7 @@ export default function Contact() {
             <p className="font-serif text-2xl font-extralight text-white">
               Gracias, {form.nombre || "estimado cliente"}.
             </p>
-            <p className="mx-auto mt-3 max-w-sm text-sm font-light leading-relaxed text-white/55">
+            <p className="mx-auto mt-3 max-w-sm text-sm font-light leading-relaxed text-cuerpo">
               Hemos recibido tu solicitud. Un asesor de Malecón Business Center
               se pondrá en contacto contigo de forma personal y discreta.
             </p>
@@ -207,7 +207,7 @@ export default function Contact() {
             </p>
             {/* La del proyecto, la misma que muestran Ubicación y el mega
                 menú. Desde el 2026-09-10 es la única dirección del sitio. */}
-            <p className="text-sm font-light leading-relaxed text-white/55">
+            <p className="text-sm font-light leading-relaxed text-apoyo">
               {CONTACT.projectStreet}
               <br />
               {CONTACT.projectCity}
@@ -219,7 +219,7 @@ export default function Contact() {
             </p>
             <a
               href={`tel:${CONTACT.phoneTel}`}
-              className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
+              className="text-sm font-light text-apoyo transition-colors duration-300 hover:text-champagne"
             >
               {CONTACT.phoneDisplay}
             </a>
@@ -230,7 +230,7 @@ export default function Contact() {
             </p>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="text-sm font-light text-white/55 transition-colors duration-300 hover:text-champagne"
+              className="text-sm font-light text-apoyo transition-colors duration-300 hover:text-champagne"
             >
               {CONTACT.email}
             </a>
@@ -245,7 +245,7 @@ export default function Contact() {
           <SocialLinks />
         </div>
 
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/30 sm:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-[0.6rem] font-light uppercase tracking-[0.25em] text-apoyo sm:flex-row">
           <Logo variant="stacked" className="h-20" />
           <span>© {new Date().getFullYear()} — Todos los derechos reservados</span>
         </div>
@@ -277,7 +277,7 @@ function Field({
 }: FieldProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/40 transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">
@@ -308,7 +308,7 @@ interface TextareaProps {
 function Textarea({ label, value, onChange, className = "" }: TextareaProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/40 transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">

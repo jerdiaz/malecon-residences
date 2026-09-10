@@ -54,7 +54,7 @@ export default function StoryBlock({
         <div className="order-1 flex items-center px-8 py-28 lg:order-none lg:items-start lg:px-16 xl:px-24">
           <div className="max-w-lg">
             <Reveal>
-              <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+              <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
                 {kicker}
               </p>
             </Reveal>
@@ -68,7 +68,7 @@ export default function StoryBlock({
                 {body.split("\n\n").map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base"
+                    className="text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base"
                   >
                     {paragraph}
                   </p>
@@ -79,14 +79,14 @@ export default function StoryBlock({
             {bullets && (
               <Reveal delay={750} variant="fade-up">
                 <div className="mt-8">
-                  <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                  <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
                     {bullets.label}
                   </p>
                   <ul className="space-y-2.5">
                     {bullets.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 text-sm font-light leading-relaxed tracking-wide text-white/60 sm:text-base"
+                        className="flex items-start gap-3 text-sm font-light leading-relaxed tracking-wide text-cuerpo sm:text-base"
                       >
                         <span
                           aria-hidden

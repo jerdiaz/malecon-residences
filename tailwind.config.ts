@@ -23,6 +23,19 @@ const config: Config = {
           700: "#192b47",
           600: "#1e3253",
         },
+        // Escala del cuerpo de texto sobre el azul de marca. Antes había seis
+        // opacidades sueltas de blanco repartidas sin criterio —75, 70, 60,
+        // 55, 50 y 25%—: el mismo tipo de párrafo aparecía con tres valores
+        // distintos según la sección. Estos tres roles las reemplazan, y los
+        // tres pasan el mínimo de 4.5:1 contra `ink`; el 25% daba 2.3:1 y lo
+        // llevaba justamente la nota legal de Plantas.
+        //
+        // No aplican a Amenidades: esa sección va sobre crema con tinta
+        // navy y tiene su propio sistema.
+        cuerpo: "rgb(255 255 255 / 0.65)", //  7.5:1 — párrafos
+        apoyo: "rgb(255 255 255 / 0.55)", //   5.7:1 — datos, pies y notas
+        sobrefoto: "rgb(255 255 255 / 0.75)", // 9.5:1 — encima de foto o video
+
         // Subtle metallic accents — champagne / bronze
         champagne: "#d8c4a0",
         bronze: "#b08d57",

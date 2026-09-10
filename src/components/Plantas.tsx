@@ -61,7 +61,7 @@ export default function Plantas() {
     <section id="plantas" className="relative w-full bg-ink scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12">
         <Reveal>
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
             Plantas · La distribución
           </p>
         </Reveal>
@@ -176,7 +176,7 @@ export default function Plantas() {
                     }`}
                   >
                     <div className="overflow-hidden pl-9">
-                      <p className="text-sm font-light leading-relaxed tracking-wide text-white/55">
+                      <p className="text-sm font-light leading-relaxed tracking-wide text-cuerpo">
                         {n.intro}
                       </p>
                     </div>
@@ -187,7 +187,7 @@ export default function Plantas() {
 
             {variosPlanos && (
               <div className="mt-12">
-                <p className="mb-4 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                <p className="mb-4 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze">
                   Planos
                 </p>
                 {planos.map((p, i) => (
@@ -221,7 +221,7 @@ export default function Plantas() {
             {/* El dato comercial como tipografía, no dentro de un JPEG */}
             {actual.inventario && (
               <div className="mt-12">
-                <p className="mb-5 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze/90">
+                <p className="mb-5 text-[0.65rem] font-light uppercase tracking-[0.3em] text-bronze">
                   {actual.inventario.titulo}
                 </p>
                 {actual.inventario.filas.map((f, i) => (
@@ -251,7 +251,12 @@ export default function Plantas() {
               </div>
             )}
 
-            <p className="mt-10 text-[0.6rem] font-light leading-relaxed tracking-wide text-white/25">
+            {/* Nota con implicaciones contractuales: es el descargo que
+                sostiene cualquier reclamo por diferencias entre lo mostrado y
+                lo entregado. Estaba en blanco al 25% y 9.6px —2.3:1 de
+                contraste, el texto menos legible de la página—, que es
+                exactamente al revés de lo que debería ser. */}
+            <p className="mt-10 text-[0.7rem] font-light leading-relaxed tracking-wide text-apoyo">
               Planos e imágenes ilustrativos. Las especificaciones definitivas
               son las de los documentos técnicos y contractuales.
             </p>
