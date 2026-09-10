@@ -172,8 +172,8 @@ export default function Contact() {
             <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
               Dirección
             </p>
-            {/* La del proyecto, la misma que muestra Ubicación — no la de la
-                oficina comercial de Marbella, que era la que estaba aquí. */}
+            {/* La del proyecto, la misma que muestran Ubicación y el mega
+                menú. Desde el 2026-09-10 es la única dirección del sitio. */}
             <p className="text-sm font-light leading-relaxed text-white/55">
               {CONTACT.projectStreet}
               <br />

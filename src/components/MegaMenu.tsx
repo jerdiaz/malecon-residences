@@ -15,7 +15,7 @@ const MENU_LINKS = [
 ];
 
 const INFO_ITEMS = [
-  { label: "Dirección",  value: CONTACT.address },
+  { label: "Dirección",  value: CONTACT.projectAddress },
   { label: "Teléfono",   value: CONTACT.phoneDisplay },
   { label: "Email",      value: CONTACT.email },
   { label: "Entrega",    value: "2026 · Espacios exclusivos" },
