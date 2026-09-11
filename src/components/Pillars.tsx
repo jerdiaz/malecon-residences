@@ -72,11 +72,7 @@ export default function Pillars() {
             >
               {/* Imagen de fondo — la escala va en el contenedor para que
                   `next/image` pueda seguir sirviendo el corte adecuado */}
-              <div
-                className={`absolute inset-0 transition-transform duration-[1400ms] ease-silk ${
-                  isActive ? "scale-105" : "scale-100"
-                }`}
-              >
+              <div className="absolute inset-0">
                 <BackgroundImage
                   src={panel.image}
                   alt={panel.alt}
@@ -86,15 +82,18 @@ export default function Pillars() {
                 />
               </div>
 
-              {/* Overlay oscuro — se aclara al activar. En azul de marca, no
-                  en negro: el fundido de arriba entra desde `ink`, así que si
-                  la foto estuviera velada en negro el empalme seguiría
-                  cruzando de azul a negro dentro de la misma sección. */}
-              <div
-                className={`absolute inset-0 transition-colors duration-700 ease-out ${
-                  isActive ? "bg-ink-950/30" : "bg-ink-950/60"
-                }`}
-              />
+              {/* Velo fijo: antes iba del 60% al 30% al pasar el cursor, y ese
+                  aclarado se quitó a pedido — el único efecto al apuntar debe
+                  ser que aparezca el texto.
+                  45% y no el 30% del estado claro anterior: medido sobre las
+                  tres fotos, al 30% la descripción de Oficinas queda en 4.0:1
+                  —bajo el mínimo de 4.5— y sus zonas más claras en 2.6:1. A
+                  45% la peor de las tres da 5.3:1, y sigue siendo bastante más
+                  claro que el 60% en que descansaban antes.
+                  En azul de marca y no en negro: el fundido que entra desde
+                  arriba viene de `ink`, y con velo negro el empalme cruzaría de
+                  azul a negro dentro de la misma sección. */}
+              <div className="absolute inset-0 bg-ink-950/45" />
 
               {/* Contenido del panel */}
               <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-10">
