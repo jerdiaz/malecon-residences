@@ -89,7 +89,8 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="text-balance text-center font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            Conoce la nueva sede corporativa de tu empresa en Cartagena
+            Conoce la nueva sede corporativa de tu empresa en{" "}
+            <span className="text-shimmer">Cartagena</span>
           </h2>
         </Reveal>
 
