@@ -62,13 +62,7 @@ export default function Plantas() {
           </div>
         </div>
 
-        {/* Nota */}
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <p className="mt-10 text-[0.7rem] font-light leading-relaxed tracking-wide text-apoyo">
-            Planos e imágenes ilustrativos. Las especificaciones definitivas
-            son las de los documentos técnicos y contractuales.
-          </p>
-        </div>
+
       </div>
 
       {ampliado && (
