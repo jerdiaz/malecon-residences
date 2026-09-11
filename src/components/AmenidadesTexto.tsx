@@ -155,7 +155,7 @@ export default function AmenidadesTexto({
                   >
                     <Icon className="h-5 w-5 shrink-0" style={{ color: NAVY }} />
                     <p
-                      className="font-serif text-lg font-light italic leading-snug tracking-wide sm:text-xl"
+                      className="font-serif text-lg font-bold italic leading-snug tracking-wide sm:text-xl"
                       style={{ color: NAVY }}
                     >
                       {group.label}

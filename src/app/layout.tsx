@@ -7,14 +7,19 @@ import CustomCursor from "@/components/CustomCursor";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  // 700 se suma para los títulos de categoría de Amenidades: sin este peso
+  // cargado, `font-bold` cae en negrita sintética (el navegador la inclina
+  // artificialmente), no en el trazo real de la fuente.
+  weight: ["300", "400", "500", "700"],
   variable: "--font-serif",
   display: "swap",
 });
 
 const sans = Jost({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500"],
+  // 700 se suma para el título "Conexiones estratégicas" de Ubicación: mismo
+  // motivo que el 700 de arriba en `serif`.
+  weight: ["200", "300", "400", "500", "700"],
   variable: "--font-sans",
   display: "swap",
 });

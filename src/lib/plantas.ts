@@ -13,6 +13,13 @@ export interface Plano {
   escala: number;
   /** true = SVG con texto vectorial; se sirve tal cual, sin pasar por next/image */
   vector?: boolean;
+  /** Contra qué borde de la caja se apoya el plano, por defecto "arriba"
+   *  (pegado al título de la sección al entrar). Los planos muy apaisados
+   *  (aspecto > ~1.6) sobran de alto una vez encajados por ancho, y arriba
+   *  esa sobra cae entre la imagen y el rótulo de abajo, que queda flotando
+   *  lejos de lo que rotula. "abajo" apoya el plano contra ese rótulo en su
+   *  lugar. */
+  alinear?: "arriba" | "abajo";
 }
 
 /** Una fila del inventario: el área y las unidades que la tienen. */
@@ -64,6 +71,7 @@ export const NIVELES: NivelPlantas[] = [
         // el `overflow-hidden` de la columna empieza a cortar el plano.
         escala: 1.07,
         vector: true,
+        alinear: "abajo",
       },
     ],
   },

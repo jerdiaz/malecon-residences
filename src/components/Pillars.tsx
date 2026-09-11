@@ -54,12 +54,6 @@ export default function Pillars() {
       id="pillars"
       className="relative w-full overflow-hidden bg-ink min-h-screen md:h-screen"
     >
-      {/* Fundido de entrada — disuelve la costura con el final del Hero.
-          Termina en `ink/0` y no en `transparent`: los dos son invisibles, pero
-          `transparent` es negro con alfa 0 y deja el degradado interpolando
-          hacia un color que ya no existe en la paleta. */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-32 bg-gradient-to-b from-ink to-ink/0 md:h-40" />
-
       <div className="relative flex min-h-screen flex-col md:h-screen md:flex-row">
         {PANELS.map((panel, i) => {
           const isActive = active === i;

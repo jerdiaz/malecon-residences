@@ -104,7 +104,9 @@ export default function Plantas() {
                   }`}
                 >
                   <span
-                    className="absolute left-1/2 top-0 block -translate-x-1/2"
+                    className={`absolute left-1/2 block -translate-x-1/2 ${
+                      p.alinear === "abajo" ? "bottom-0" : "top-0"
+                    }`}
                     style={{
                       width: `${p.escala * 100}%`,
                       height: `${p.escala * 100}%`,
@@ -281,6 +283,8 @@ export default function Plantas() {
 function PlanoImg({ plano }: { plano: Plano }) {
   // Sin reglas generales: cuánto ocupa cada plano lo decide su propia `escala`
   // en lib/plantas.ts, afinada mirando cómo queda cada uno.
+  const posicion =
+    plano.alinear === "abajo" ? "object-bottom" : "object-top";
   if (plano.vector) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
@@ -288,7 +292,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
         src={plano.src}
         alt={plano.label}
         loading="lazy"
-        className="h-full w-full object-contain object-top"
+        className={`h-full w-full object-contain ${posicion}`}
       />
     );
   }
@@ -298,7 +302,7 @@ function PlanoImg({ plano }: { plano: Plano }) {
       alt={plano.label}
       fill
       sizes="(max-width: 1024px) 100vw, 60vw"
-      className="object-contain object-top"
+      className={`object-contain ${posicion}`}
     />
   );
 }
