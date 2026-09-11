@@ -89,17 +89,8 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="text-balance text-center font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            Haz clic aquí y descubre
-            <span className="block font-light italic text-shimmer">
-              la nueva sede corporativa de tu empresa en Cartagena.
-            </span>
+            Conoce la nueva sede corporativa de tu empresa en Cartagena
           </h2>
-        </Reveal>
-        <Reveal delay={240}>
-          <p className="mx-auto mt-5 max-w-md text-center text-sm font-normal leading-relaxed text-cuerpo">
-            Agenda una cita reservada con nuestro equipo. Atendemos un número
-            limitado de clientes por temporada.
-          </p>
         </Reveal>
 
         {sent ? (

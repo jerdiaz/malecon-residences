@@ -27,10 +27,7 @@ export default function Plantas() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            <SplitWords text="Cada metro," delay={200} stagger={50} />
-            <span className="block font-light italic text-shimmer">
-              pensado de antemano
-            </span>
+            <SplitWords text="Cada metro pensado con los más altos estándares" delay={200} stagger={50} />
           </h2>
         </Reveal>
       </div>
