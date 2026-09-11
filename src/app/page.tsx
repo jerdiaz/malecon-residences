@@ -91,8 +91,8 @@ export default function Home() {
           kicker="El Entorno"
           title="El Caribe como ventana permanente."
           body="La Zona Norte de Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
-          image="/images/renders/malecon-playa.webp"
-          imageAlt="Malecón Business Center visto desde la playa, sobre la Avenida Santander en Cartagena de Indias"
+          image="/images/entorno/oficina-vista-al-mar-cartagena.webp"
+          imageAlt="Vista al Mar Caribe y a la Avenida Santander desde una oficina del Malecón Business Center, Zona Norte de Cartagena de Indias"
           imagePos="left"
         />
 
