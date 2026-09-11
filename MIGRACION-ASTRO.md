@@ -105,8 +105,8 @@ sobre un cambio que toca las 44 páginas a la vez.
 
 En el repo conviven alternativas sin resolver: `Amenidades` / `AmenidadesTexto`
 / `Amenities`, `Aliados` / `AliadosAlt`, `LocationSection` / `Ubicacion`, más
-tres rutas `preview-*`. Son ~1.400 líneas de componentes que quizá no lleguen a
-la versión final.
+tres rutas `preview-*`. Son **698 líneas** —604 en componentes
+y 94 en las rutas de prueba— que quizá no lleguen a la versión final.
 
 **Por qué bloquea:** migrar código que se va a borrar es trabajo tirado, y
 duplica la superficie a reverificar.
@@ -221,7 +221,7 @@ con otras APIs:
 
 ### Fase 5 — Imágenes (2-3 días)
 
-La fase de más riesgo. `next/image` se usa en 13 archivos y hay lógica afinada:
+La fase de más riesgo. `next/image` se usa en 11 archivos y hay lógica afinada:
 
 - El `sizes="165vh"` de los paneles verticales
 - `deviceSizes` recortado a 2048 en `next.config.mjs`
