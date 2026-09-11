@@ -1,39 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV_LINKS, SECTION_IDS, scrollToSection } from "@/lib/sections";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import MegaMenu from "@/components/MegaMenu";
 import Logo from "@/components/Logo";
 
-// PRUEBA: el navbar se retrae al bajar y vuelve a aparecer al subir, o al
-// acercarse al tope. Umbral de 6px para ignorar el jitter de scroll de iOS
-// (rebote elástico), y no empieza a esconderse hasta pasar HIDE_AFTER: cerca
-// del hero, con el logo grande, siempre queda visible.
-const HIDE_AFTER = 160;
-const DIRECTION_THRESHOLD = 6;
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const active = useActiveSection(SECTION_IDS);
-  const lastY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 40);
-
-      const delta = y - lastY.current;
-      if (y < HIDE_AFTER) {
-        setHidden(false);
-      } else if (delta > DIRECTION_THRESHOLD) {
-        setHidden(true);
-      } else if (delta < -DIRECTION_THRESHOLD) {
-        setHidden(false);
-      }
-      lastY.current = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -49,8 +30,6 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-silk ${
-          !menuOpen && hidden ? "-translate-y-full" : "translate-y-0"
-        } ${
           menuOpen
             ? "border-b border-transparent bg-transparent"
             : scrolled

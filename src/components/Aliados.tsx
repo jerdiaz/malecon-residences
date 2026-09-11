@@ -47,10 +47,7 @@ export default function Aliados() {
         </Reveal>
         <Reveal delay={120}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
-            Diseño y visión
-            <span className="block font-light italic text-shimmer">
-              arquitectónica
-            </span>
+            Diseño y visión <span className="text-shimmer">arquitectónica</span>
           </h2>
         </Reveal>
 

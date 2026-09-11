@@ -16,6 +16,14 @@
   }
 
   html {
+    /* Casi todo el sitio mide su tipografía y su espaciado en rem (incluidas
+       las decenas de kickers en text-[0.6rem]/[0.65rem], los más chicos y
+       difíciles de leer), así que subir la raíz sube la letra entera sin
+       tener que tocar clase por clase ni desatender ninguna.
+       El Hero ocupa exactamente una pantalla (`h-dvh`) sin scroll, así que a
+       partir de aquí compensa su propio espaciado en ventanas bajas — ver
+       Hero.tsx y ScrollCue.tsx. */
+    font-size: 110%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -70,12 +78,16 @@
         rgb(var(--ink-deep) / 0) 30%
       ),
       /* Banda inferior: el hero aterriza en `ink`, el mismo color con el que
-         arrancan los pilares, así la costura entre secciones no se ve. */
+         arrancan los pilares, así la costura entre secciones no se ve.
+         Se acorta a 20% (antes 38%) y se aligera en el camino: al 6% ya
+         tapaba "Descubrir" y el video de fondo con casi el mismo velo que
+         la marquesina de abajo, que es la única franja que de verdad
+         necesita quedar opaca para leerse. */
       linear-gradient(
         to top,
-        rgb(var(--ink) / 0.98) 0%,
-        rgb(var(--ink) / 0.86) 6%,
-        rgb(var(--ink-deep) / 0) 38%
+        rgb(var(--ink) / 0.92) 0%,
+        rgb(var(--ink) / 0.55) 5%,
+        rgb(var(--ink-deep) / 0) 20%
       ),
       /* Base pareja sobre todo el video. La medición dice que el bloque de
          texto central no la necesita para pasar el umbral de contraste, pero

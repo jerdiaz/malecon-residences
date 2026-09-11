@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Reveal from "@/components/ui/Reveal";
-import SplitWords from "@/components/ui/SplitWords";
 import { CONTACT } from "@/lib/contact";
 
 // Reemplazan a la grilla de "Distancias clave", que anunciaba minutos y
@@ -52,101 +47,79 @@ export default function LocationSection() {
 
         {/* ── Columna de texto ── */}
         <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
-          <Reveal>
-            <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
-              La ubicación
-            </p>
-          </Reveal>
+          <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+            La ubicación
+          </p>
 
           <h2 className="mb-8 font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-            <SplitWords
-              text="¿Por qué elegir un centro de negocios en Cartagena?"
-              delay={100}
-              stagger={42}
-            />
+            ¿Por qué elegir un centro de negocios en Cartagena?
           </h2>
 
-          <Reveal delay={600} variant="fade-up">
-            <p className="max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
-              La ubicación de Malecón Business Center ofrece conexión directa
-              con los principales centros financieros, turísticos, logísticos e
-              industriales de Cartagena, convirtiéndolo en un punto estratégico
-              para empresas y profesionales.
-            </p>
-          </Reveal>
+          <p className="max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
+            La ubicación de Malecón Business Center ofrece conexión directa
+            con los principales centros financieros, turísticos, logísticos e
+            industriales de Cartagena, convirtiéndolo en un punto estratégico
+            para empresas y profesionales.
+          </p>
 
-          <Reveal delay={800} variant="fade-up">
-            <p className="mt-4 max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
-              Ubicado frente al mar, sobre la Avenida Santander, el proyecto
-              combina conectividad, visibilidad y acceso a las principales zonas
-              de la ciudad, fortaleciendo el posicionamiento de las empresas que
-              eligen establecerse en Malecón Business Center Cartagena.
-            </p>
-          </Reveal>
+          <p className="mt-4 max-w-md text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
+            Ubicado frente al mar, sobre la Avenida Santander, el proyecto
+            combina conectividad, visibilidad y acceso a las principales zonas
+            de la ciudad, fortaleciendo el posicionamiento de las empresas que
+            eligen establecerse en Malecón Business Center Cartagena.
+          </p>
 
           {/* Conexiones estratégicas — lista de filas con filete, el mismo
               idioma que usan Plantas y la galería. Se probó a dos columnas y
               a 1024px cada celda quedaba de 168px: cuatro y cinco renglones
               por destino, con filas de alturas dispares. El filete de cierre
               va en el contenedor: cada fila solo lleva el de arriba. */}
-          <Reveal delay={1000}>
-            <div className="mt-10 max-w-lg">
-              <p className="mb-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
-                Conexiones estratégicas
-              </p>
-              <div className="border-b border-white/10">
-                {CONEXIONES.map((lugar, i) => (
-                  <motion.div
-                    key={lugar}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{
-                      delay: 1.1 + i * 0.07,
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="flex items-baseline gap-4 border-t border-white/10 py-2.5"
-                  >
-                    <span className="font-serif text-[0.7rem] tabular-nums text-bronze/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-[0.7rem] font-normal uppercase leading-relaxed tracking-[0.12em] text-cuerpo">
-                      {lugar}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+          <div className="mt-10 max-w-lg">
+            <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-[0.3em] text-bronze">
+              Conexiones estratégicas
+            </p>
+            <div className="border-b border-white/10">
+              {CONEXIONES.map((lugar, i) => (
+                <div
+                  key={lugar}
+                  className="flex items-baseline gap-4 border-t border-white/10 py-2.5"
+                >
+                  <span className="font-serif text-[0.7rem] tabular-nums text-bronze/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.7rem] font-normal uppercase leading-relaxed tracking-[0.12em] text-cuerpo">
+                    {lugar}
+                  </span>
+                </div>
+              ))}
             </div>
-          </Reveal>
+          </div>
 
           {/* Dirección del proyecto + Google Maps */}
-          <Reveal delay={1200}>
-            <div className="mt-10">
-              <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
-                Ubicación
-              </p>
-              <p className="font-serif text-xl font-light leading-snug text-champagne">
-                Malecón Business Center
-              </p>
-              <p className="mt-2 text-sm font-light leading-relaxed tracking-wide text-apoyo">
-                {CONTACT.projectStreet}
-                <br />
-                {CONTACT.projectCity}
-              </p>
-              <a
-                href={CONTACT.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-8 inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-              >
-                Ver en Google Maps
-                <span className="transition-transform duration-500 group-hover:translate-x-1">
-                  →
-                </span>
-              </a>
-            </div>
-          </Reveal>
+          <div className="mt-10">
+            <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
+              Ubicación
+            </p>
+            <p className="font-serif text-xl font-light leading-snug text-champagne">
+              Malecón Business Center
+            </p>
+            <p className="mt-2 text-sm font-light leading-relaxed tracking-wide text-apoyo">
+              {CONTACT.projectStreet}
+              <br />
+              {CONTACT.projectCity}
+            </p>
+            <a
+              href={CONTACT.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+            >
+              Ver en Google Maps
+              <span className="transition-transform duration-500 group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+          </div>
         </div>
 
         {/* ── Columna derecha: mapa de conexiones (página 8 del brochure) ──
@@ -165,19 +138,17 @@ export default function LocationSection() {
             diseño original — ver la nota junto a MAPA_CONEXIONES_SRC. Se
             sirve con <img>, no con next/image: es un SVG y next/image no
             lo optimiza, con fill perdería el vector. */}
-        <Reveal delay={200}>
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-white lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
-            <div className="absolute inset-0 flex items-center justify-center p-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={MAPA_CONEXIONES_SRC}
-                alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
-                loading="lazy"
-                className="h-full w-full object-contain"
-              />
-            </div>
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-white lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={MAPA_CONEXIONES_SRC}
+              alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
+              loading="lazy"
+              className="h-full w-full object-contain"
+            />
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

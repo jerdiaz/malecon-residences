@@ -117,7 +117,7 @@ export default function Hero() {
           // faltara velo — el color del texto es oscuro, y medirlo como si
           // fuera blanco fue el error. El halo lo resuelve sin tocar el
           // fotograma ni salirse del acento de marca.
-          className="type-halo-strong mb-8 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0"
+          className="type-halo-strong mb-4 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
           style={{ animationDelay: "0.2s" }}
         >
           Oficinas en la Zona Norte de Cartagena
@@ -134,12 +134,12 @@ export default function Hero() {
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.6s" }}
           >
-            <span className="text-shimmer font-light italic">frente al mar</span>
+            <span className="font-light italic">frente al mar</span>
           </span>
         </h1>
 
         <p
-          className="type-halo mt-10 max-w-xl animate-fade-up text-sm font-normal leading-relaxed text-sobrefoto opacity-0 sm:text-base"
+          className="type-halo mt-5 max-w-xl animate-fade-up text-sm font-normal leading-relaxed text-sobrefoto opacity-0 sm:text-base [@media(min-height:780px)]:mt-10"
           style={{ animationDelay: "0.9s" }}
         >
           Colección de oficinas y locales de lujo frente al Mar Caribe.
