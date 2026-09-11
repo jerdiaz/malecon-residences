@@ -24,7 +24,10 @@ import Aliados from "@/components/Aliados";
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
 import SeoJsonLd from "@/components/SeoJsonLd";
-import SectionNav from "@/components/SectionNav";
+// import SectionNav from "@/components/SectionNav"; // navegación lateral por
+// puntos (lado derecho). El cliente la pidió quitar por ilegible/de más;
+// queda en el repo por si hay que volver a ella — descomentar este import y
+// <SectionNav /> más abajo.
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
@@ -32,7 +35,6 @@ export default function Home() {
     <>
       <ScrollProgress />
       <Navbar />
-      <SectionNav />
       <main>
         <Hero />
 

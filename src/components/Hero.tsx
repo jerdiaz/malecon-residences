@@ -134,7 +134,7 @@ export default function Hero() {
             className="block animate-fade-up opacity-0"
             style={{ animationDelay: "0.6s" }}
           >
-            <span className="text-shimmer font-light italic">frente al mar</span>
+            <span className="font-light italic">frente al mar</span>
           </span>
         </h1>
 
