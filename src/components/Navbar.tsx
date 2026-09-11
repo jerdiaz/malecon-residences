@@ -80,14 +80,29 @@ export default function Navbar() {
           {/* gap-6 a 1024px y gap-10 desde 1280: con seis links, el espaciado
           amplio no cabe en 1024 y el logo —único bloque sin ancho mínimo—
           se comprimía para compensar. */}
-          <ul className="hidden items-center gap-6 lg:flex xl:gap-10">
+          {/* El lockup horizontal mide ~232px contra los ~139px del apilado:
+              90px más de pista que hay que devolver. Como el navbar compacto
+              ya iba justo con seis enlaces, en ese estado se aprieta el
+              interlineado y el tamaño; en el hero se quedan como estaban. */}
+          <ul
+            className={`hidden items-center lg:flex ${
+              scrolled ? "gap-5 xl:gap-7" : "gap-6 xl:gap-10"
+            }`}
+          >
             {NAV_LINKS.map((section) => {
               const isActive = section.id === active;
               return (
                 <li key={section.id}>
                   <button
                     onClick={() => handleNavigate(section.id)}
-                    className={`group relative text-[0.7rem] font-light uppercase tracking-[0.25em] transition-colors ${
+                    // `whitespace-nowrap`: "El Proyecto" son dos palabras y se
+                    // partía en dos renglones, que era lo que hacía ver
+                    // apretado el navbar compacto. No era falta de espacio.
+                    className={`group relative whitespace-nowrap font-light uppercase transition-colors ${
+                      scrolled
+                        ? "text-[0.62rem] tracking-[0.18em]"
+                        : "text-[0.7rem] tracking-[0.25em]"
+                    } ${
                       isActive ? "text-champagne" : "text-white/90 hover:text-white"
                     }`}
                   >
@@ -107,7 +122,11 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <button
               onClick={() => handleNavigate("contact")}
-              className="hidden rounded-full border border-white/15 px-6 py-2 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/90 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne md:inline-block"
+              className={`hidden whitespace-nowrap rounded-full border border-white/15 font-light uppercase text-white/90 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne md:inline-block ${
+                scrolled
+                  ? "px-4 py-1.5 text-[0.6rem] tracking-[0.16em]"
+                  : "px-6 py-2 text-[0.65rem] tracking-[0.25em]"
+              }`}
             >
               Agenda tu visita
             </button>
