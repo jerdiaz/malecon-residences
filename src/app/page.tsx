@@ -72,8 +72,8 @@ export default function Home() {
               "Uso propio o renta",
             ],
           }}
-          image="/images/renders/fachada-nocturna.webp"
-          imageAlt="Fachada nocturna del Malecón Business Center, oficinas y locales frente al Mar Caribe en Cartagena de Indias"
+          image="/images/cartagena-por-que.webp"
+          imageAlt="Vista de Cartagena de Indias, Malecón Business Center, oficinas y locales frente al Mar Caribe en la Zona Norte"
           imagePos="left"
         />
 
