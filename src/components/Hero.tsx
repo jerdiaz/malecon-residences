@@ -100,7 +100,9 @@ export default function Hero() {
       <div className="veil absolute inset-0" />
 
       {/* Línea decorativa superior */}
-      {/* Línea de encuadre — debe quedar por debajo del navbar (104px móvil / 120px desktop) */}
+      {/* Línea de encuadre — va por debajo del navbar. En el hero el navbar
+          está en su estado alto (115px), que es el que manda aquí: al bajar se
+          encoge a 67px, pero para entonces esta línea ya salió de pantalla. */}
       <div className="absolute left-6 right-6 top-24 z-10 h-px bg-white/10 md:left-12 md:right-12 md:top-28" />
 
       {/* Contenido central */}

@@ -37,14 +37,43 @@ export default function Navbar() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12">
+        {/* El navbar se encoge al salir del hero. Arriba del todo el logo
+            grande es presencia de marca y no estorba, porque no hay nada
+            debajo; en el resto de la página es una barra fija tapando
+            contenido, y ahí conviene que ocupe lo mínimo.
+            Reutiliza el estado `scrolled` que ya movía el fondo, así que no
+            agrega ni un listener más. */}
+        <nav
+          className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 ease-silk md:px-12 ${
+            scrolled ? "py-3" : "py-5"
+          }`}
+        >
           {/* Logo */}
           <button
             onClick={() => handleNavigate("hero")}
             className="group flex flex-col items-start leading-none"
             aria-label="Malecón Business Center — inicio"
           >
-            <Logo variant="stacked" className="h-16 md:h-20" hoverEffect priority />
+            {/* Dos lockups, no uno encogido. El apilado tiene "MALECÓN" y
+                "BUSINESS CENTER" en renglones separados: por debajo de ~60px
+                de alto el segundo renglón se vuelve ilegible, así que achicarlo
+                no era opción. El horizontal pone lo mismo en línea y aguanta
+                barras bajas — es para lo que existe la variante.
+                Los dos se renderizan siempre y se alterna cuál se muestra: así
+                el navegador precarga ambos y al bajar no hay un cuadro sin
+                logo. El oculto va con `hidden`, que no ocupa espacio. */}
+            <Logo
+              variant="stacked"
+              className={`h-16 md:h-20 ${scrolled ? "hidden" : ""}`}
+              hoverEffect
+              priority
+            />
+            <Logo
+              variant="horizontal"
+              className={`h-9 md:h-10 ${scrolled ? "" : "hidden"}`}
+              hoverEffect
+              priority
+            />
           </button>
 
           {/* Links desktop */}
