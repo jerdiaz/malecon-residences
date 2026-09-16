@@ -24,8 +24,8 @@ export function GET() {
 
   const cuerpo = `# Malecón Business Center
 
-> Centro de negocios frente al Mar Caribe, sobre la Avenida Santander en la
-> Zona Norte de Cartagena de Indias, Colombia. Ofrece oficinas corporativas y
+> Centro de negocios frente al Mar Caribe, sobre la Avenida Santander en
+> Marbella, Cartagena de Indias, Colombia. Ofrece oficinas corporativas y
 > locales comerciales en venta, con acabados premium y espacios boutique.
 
 ## Qué es

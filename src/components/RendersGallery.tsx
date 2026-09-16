@@ -58,7 +58,7 @@ export default function RendersGallery() {
         <Reveal delay={500}>
           <p className="mt-8 max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
             {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
-            Arquitectura contemporánea diseñada para la Zona Norte de Cartagena
+            Arquitectura contemporánea diseñada para Marbella, Cartagena
             de Indias.
           </p>
         </Reveal>

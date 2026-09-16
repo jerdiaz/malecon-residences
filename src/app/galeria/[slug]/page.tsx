@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (!render) return {};
 
   const titulo = `${render.label} · ${SITE_NAME}`;
-  const descripcion = `${render.label} del ${SITE_NAME}, centro de negocios con oficinas y locales frente al Mar Caribe en la Zona Norte de Cartagena de Indias.`;
+  const descripcion = `${render.label} del ${SITE_NAME}, centro de negocios con oficinas y locales frente al Mar Caribe en Marbella, Cartagena de Indias.`;
   const ruta = `/galeria/${render.slug}`;
 
   return {
@@ -102,7 +102,7 @@ export default async function RenderDetailPage({
         "@type": "ImageObject",
         contentUrl: `${SITE_URL}${render.src}`,
         name: render.label,
-        caption: `${render.label} del ${SITE_NAME}, Zona Norte de Cartagena de Indias`,
+        caption: `${render.label} del ${SITE_NAME}, Marbella, Cartagena de Indias`,
         representativeOfPage: true,
       },
     ],

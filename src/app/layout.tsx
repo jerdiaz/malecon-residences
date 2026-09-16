@@ -28,12 +28,12 @@ const sans = Jost({
 // que ve el usuario en el resultado de búsqueda. La marca queda detrás, que en
 // un proyecto nuevo aún no es lo que la gente busca.
 const TITULO =
-  "Oficinas en la Zona Norte de Cartagena · Malecón Business Center";
+  "Oficinas en Marbella, Cartagena de Indias · Malecón Business Center";
 // Bajo los 165 caracteres que pide la checklist. La anterior decía "oficinas
 // y vivienda": se quedó de la etapa Malecón Residences, cuando el proyecto
 // era de apartamentos. Hoy son oficinas y locales comerciales.
 const DESCRIPCION =
-  "Oficinas en la Zona Norte de Cartagena, frente al Mar Caribe sobre la Avenida Santander. Oficinas corporativas y locales comerciales en venta.";
+  "Oficinas en Marbella, Cartagena de Indias: frente al Mar Caribe, sobre la Avenida Santander. Oficinas corporativas y locales comerciales en venta.";
 
 export const metadata: Metadata = {
   // Sin esto, Next no puede resolver las URL relativas de canónicas y Open

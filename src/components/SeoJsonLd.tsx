@@ -51,7 +51,7 @@ export default function SeoJsonLd() {
         name: SITE_NAME,
         url: SITE_URL,
         description:
-          "Centro de negocios con oficinas corporativas y locales comerciales frente al Mar Caribe, sobre la Avenida Santander en la Zona Norte de Cartagena de Indias.",
+          "Centro de negocios con oficinas corporativas y locales comerciales frente al Mar Caribe, sobre la Avenida Santander en Marbella, Cartagena de Indias.",
         image: `${SITE_URL}${SITE_OG_IMAGE}`,
         address: {
           "@type": "PostalAddress",

@@ -51,7 +51,7 @@ export default function Home() {
           title="Edificio de oficinas y locales corporativos de alto nivel."
           body="Malecón Business Center es un moderno centro de negocios ubicado en Cartagena, diseñado para ofrecer oficinas corporativas de alto nivel. Sus espacios boutique, acabados premium y excelente ubicación lo convierten en una opción ideal para empresas, profesionales e inversionistas que buscan un entorno empresarial exclusivo."
           image="/images/renders/acceso-vehicular.webp"
-          imageAlt="Acceso vehicular del Malecón Business Center, centro de negocios en la Zona Norte de Cartagena de Indias"
+          imageAlt="Acceso vehicular del Malecón Business Center, centro de negocios en Marbella, Cartagena de Indias"
           imagePos="right"
           cta={{ label: "Ver galería", sectionId: "galeria" }}
         />
@@ -73,7 +73,7 @@ export default function Home() {
             ],
           }}
           image="/images/cartagena-por-que.webp"
-          imageAlt="Vista de Cartagena de Indias, Malecón Business Center, oficinas y locales frente al Mar Caribe en la Zona Norte"
+          imageAlt="Vista de Cartagena de Indias, Malecón Business Center, oficinas y locales frente al Mar Caribe en Marbella"
           imagePos="left"
         />
 
@@ -90,9 +90,9 @@ export default function Home() {
           id="entorno"
           kicker="El Entorno"
           title="El Caribe como ventana permanente."
-          body="La Zona Norte de Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
+          body="Marbella, Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center ocupa la última posición privilegiada disponible en esta franja costera."
           image="/images/entorno/oficina-vista-al-mar-cartagena.webp"
-          imageAlt="Vista al Mar Caribe y a la Avenida Santander desde una oficina del Malecón Business Center, Zona Norte de Cartagena de Indias"
+          imageAlt="Vista al Mar Caribe y a la Avenida Santander desde una oficina del Malecón Business Center, Marbella, Cartagena de Indias"
           imagePos="left"
         />
 

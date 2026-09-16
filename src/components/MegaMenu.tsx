@@ -164,7 +164,7 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <div className="flex flex-col gap-2 text-[0.6rem] font-light uppercase tracking-[0.2em] text-white/30 sm:flex-row sm:justify-between">
-              <span>Zona Norte · Cartagena de Indias · Colombia</span>
+              <span>Marbella · Cartagena de Indias · Colombia</span>
               <span>© {new Date().getFullYear()} Malecón Business Center — Todos los derechos reservados</span>
             </div>
           </motion.div>

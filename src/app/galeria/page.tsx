@@ -11,7 +11,7 @@ import { blurFor } from "@/lib/blur";
 import { SITE_NAME, SITE_OG_IMAGE } from "@/lib/site";
 
 const TITULO = "Galería completa · Malecón Business Center";
-const DESCRIPCION = `Los ${RENDERS.length} renders oficiales del Malecón Business Center: oficinas, locales, lobby y rooftop del proyecto en la Zona Norte de Cartagena de Indias.`;
+const DESCRIPCION = `Los ${RENDERS.length} renders oficiales del Malecón Business Center: oficinas, locales, lobby y rooftop del proyecto en Marbella, Cartagena de Indias.`;
 
 export const metadata: Metadata = {
   title: TITULO,

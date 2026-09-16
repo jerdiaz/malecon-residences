@@ -5,7 +5,7 @@ import ScrollCue from "@/components/ScrollCue";
 import Marquee from "@/components/ui/Marquee";
 
 const TICKER_ITEMS = [
-  "Zona Norte · Cartagena de Indias",
+  "Marbella · Cartagena de Indias",
   "Oficinas y Locales de Lujo",
   "Frente al Mar Caribe",
 ];
@@ -88,7 +88,7 @@ export default function Hero() {
           cambiar las dos rutas de abajo por esas. */}
       <video
         ref={videoRef}
-        aria-label="Oficinas en la Zona Norte de Cartagena: recorrido por la fachada del Malecón Business Center sobre la Avenida Santander"
+        aria-label="Oficinas en Marbella, Cartagena de Indias: recorrido por la fachada del Malecón Business Center sobre la Avenida Santander"
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
@@ -122,7 +122,7 @@ export default function Hero() {
           className="type-halo-strong mb-4 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
           style={{ animationDelay: "0.2s" }}
         >
-          Oficinas en la Zona Norte de Cartagena
+          Oficinas en Marbella, Cartagena de Indias
         </p>
 
         <h1 className="type-halo max-w-5xl text-balance font-serif text-5xl font-extralight leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
