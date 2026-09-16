@@ -131,6 +131,29 @@ pm2 logs malecon --lines 5000 --nostream | grep "NO GUARDADO EN LA HOJA"
 Cada línea trae el registro en JSON. PM2 rota los logs; conviene revisar
 esto después del primer despliegue y cada vez que se cambie algo de la hoja.
 
+## Acceso interno (para no registrarse)
+
+Al pie de la puerta hay un enlace discreto, **Acceso interno**, que abre un
+campo de clave. Con la clave correcta el navegador queda marcado como si se
+hubiera registrado y no vuelve a ver la puerta; no se escribe nada en la
+hoja. Es para administración y el equipo comercial.
+
+La clave está en el `.env` del VPS como `ACCESO_EQUIPO_CLAVE`; la comprueba
+`src/app/api/acceso/route.ts` (nunca viaja al navegador). Para cambiarla:
+
+```bash
+cd /home/ubuntu/malecon-residences
+sed -i 's/^ACCESO_EQUIPO_CLAVE=.*/ACCESO_EQUIPO_CLAVE=la-nueva-clave/' .env
+pm2 restart malecon
+```
+
+Diez intentos fallidos seguidos desde una misma IP bloquean esa IP diez
+minutos.
+
+Para volver a ver la puerta en un navegador que ya entró (por ejemplo, para
+enseñársela a alguien): consola del navegador →
+`localStorage.removeItem('mbc-registro')` y recargar.
+
 ## Qué guarda cada fila
 
 | Columna | Contenido |

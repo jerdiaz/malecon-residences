@@ -33,6 +33,15 @@ import Logo from "@/components/Logo";
  * servidor y responde OK. (El formulario de Contacto sigue sin enviar a
  * ninguna parte; ver la nota en Contact.tsx.)
  *
+ * Acceso interno
+ * ──────────────
+ * Al pie hay un enlace discreto que abre un campo de clave, para que la
+ * administración y el equipo comercial entren sin registrarse como
+ * prospectos. La clave se comprueba en /api/acceso contra ACCESO_EQUIPO_CLAVE
+ * (en el .env del VPS): nunca está en este archivo, porque todo lo que va al
+ * navegador es público. Si coincide, el navegador queda marcado con la misma
+ * marca que un registro, con el valor "equipo" para distinguirlos.
+ *
  * La casilla de autorización no estaba en el pedido, pero es obligatoria: la
  * Ley 1581 de 2012 exige consentimiento previo y expreso para tratar datos
  * personales en Colombia. Debería enlazar a la política de tratamiento de
@@ -60,6 +69,12 @@ export default function RegistroGate() {
   const [autoriza, setAutoriza] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Acceso interno (equipo)
+  const [modoEquipo, setModoEquipo] = useState(false);
+  const [clave, setClave] = useState("");
+  const [verificando, setVerificando] = useState(false);
+  const [errorClave, setErrorClave] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -115,6 +130,39 @@ export default function RegistroGate() {
         "No pudimos guardar tu registro. Revisa tu conexión e inténtalo de nuevo.",
       );
       setEnviando(false);
+    }
+  };
+
+  const entrarEquipo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (verificando) return;
+    setVerificando(true);
+    setErrorClave(null);
+    try {
+      const res = await fetch("/api/acceso", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clave }),
+      });
+      if (res.status === 401) throw new Error("clave");
+      if (res.status === 429) throw new Error("intentos");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      try {
+        localStorage.setItem(CLAVE, "equipo");
+      } catch {
+        // Ver el comentario del efecto de arriba.
+      }
+      setAbierto(false);
+    } catch (err) {
+      const motivo = err instanceof Error ? err.message : "";
+      setErrorClave(
+        motivo === "clave"
+          ? "Clave incorrecta."
+          : motivo === "intentos"
+            ? "Demasiados intentos. Espera unos minutos."
+            : "No pudimos verificar la clave. Inténtalo de nuevo.",
+      );
+      setVerificando(false);
     }
   };
 
@@ -256,6 +304,61 @@ export default function RegistroGate() {
                   )}
                 </div>
               </form>
+
+              {/* Acceso interno. Va al pie y en el tono más bajo de la
+                  paleta: es para quien sabe que existe, no para el
+                  prospecto. Al pulsarlo se cambia por el campo de clave. */}
+              <div className="mt-12">
+                {modoEquipo ? (
+                  <form
+                    onSubmit={entrarEquipo}
+                    className="mx-auto flex max-w-xs flex-col items-stretch gap-5 text-left"
+                  >
+                    <Campo
+                      label="Clave de acceso interno"
+                      type="password"
+                      name="clave"
+                      value={clave}
+                      onChange={(e) => setClave(e.target.value)}
+                      autoComplete="current-password"
+                      autoFocus
+                    />
+                    <div className="flex items-center justify-between gap-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setModoEquipo(false);
+                          setClave("");
+                          setErrorClave(null);
+                        }}
+                        className="text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/40 transition-colors duration-300 hover:text-champagne"
+                      >
+                        Volver
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={verificando}
+                        className="text-[0.65rem] font-light uppercase tracking-[0.25em] text-champagne underline-offset-8 transition-colors duration-300 hover:text-white hover:underline disabled:cursor-wait disabled:opacity-60"
+                      >
+                        {verificando ? "Verificando…" : "Entrar →"}
+                      </button>
+                    </div>
+                    {errorClave && (
+                      <p role="alert" className="text-xs font-light text-champagne">
+                        {errorClave}
+                      </p>
+                    )}
+                  </form>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setModoEquipo(true)}
+                    className="text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/35 underline-offset-8 transition-colors duration-300 hover:text-champagne hover:underline"
+                  >
+                    Acceso interno
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
@@ -277,6 +380,9 @@ interface CampoProps {
   autoComplete?: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
   className?: string;
+  /** Solo para campos que aparecen por acción del usuario: al cargar la
+   *  página abriría el teclado en móvil. */
+  autoFocus?: boolean;
 }
 
 function Campo({
@@ -288,6 +394,7 @@ function Campo({
   autoComplete,
   inputMode,
   className = "",
+  autoFocus,
 }: CampoProps) {
   return (
     <label className={`group block ${className}`}>
@@ -302,6 +409,7 @@ function Campo({
           onChange={onChange}
           autoComplete={autoComplete}
           inputMode={inputMode}
+          autoFocus={autoFocus}
           required
           className="peer w-full border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
         />
