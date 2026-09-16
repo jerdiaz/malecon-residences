@@ -211,6 +211,15 @@
     transform: translate(4%, -2%);
   }
 }
+/* Puerta de registro (RegistroGate.tsx). Un script en línea pone
+   `data-registrado` en <html> antes de que React arranque si el navegador ya
+   tiene la marca de registro; esta regla la esconde en esa misma pintura,
+   para que a quien ya se registró no le parpadee en cada visita. Ver la
+   nota del componente. */
+html[data-registrado] [data-registro-gate] {
+  display: none;
+}
+
 .grain-overlay {
   position: fixed;
   inset: 0;

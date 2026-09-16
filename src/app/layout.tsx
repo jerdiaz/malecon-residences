@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
 import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
+import RegistroGate from "@/components/RegistroGate";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -77,9 +78,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${serif.variable} ${sans.variable}`}>
+    // `suppressHydrationWarning`: RegistroGate pone `data-registrado` en
+    // <html> con un script que corre antes de que React hidrate, y React
+    // avisa del atributo que no venía del servidor. Solo silencia ese
+    // elemento, no a sus hijos. Mismo remedio que usa next-themes.
+    <html
+      lang="es"
+      className={`${serif.variable} ${sans.variable}`}
+      suppressHydrationWarning
+    >
       <body className="bg-ink text-[#e7e3da] antialiased">
         {children}
+        {/* Va en el layout y no en page.tsx para que cubra también las
+            fichas de la galería, que se comparten por enlace directo. */}
+        <RegistroGate />
         <GrainOverlay />
         <CustomCursor />
       </body>
