@@ -70,11 +70,17 @@
          contra blanco y los links del navbar en 2.8:1, y hacen falta ~55%
          de velo para llevarlos a 4.5:1. Estos números son lo que la banda
          SUMA sobre la base de abajo, no el total — por eso son más bajos de
-         lo que parece. Se apaga al 30%, donde la base sola ya alcanza. */
+         lo que parece. Se apaga al 30%, donde la base sola ya alcanza.
+         Subida de 0.46/0.39 a 0.76/0.66 (ajustes del 15 de septiembre): el
+         4.5:1 se cumplía, pero con los links en font-light a 0.7rem el umbral
+         no bastaba para que se leyeran cómodos sobre la fachada de vidrio en
+         los fotogramas más claros. El navbar en el hero mide ~120px, que en
+         una pantalla de 900px es el 13%: queda entero dentro del tramo denso.
+         Más allá de ~0.80 deja de leerse como velo y parece barra sólida. */
       linear-gradient(
         to bottom,
-        rgb(var(--ink-deep) / 0.46) 0%,
-        rgb(var(--ink-deep) / 0.39) 16%,
+        rgb(var(--ink-deep) / 0.76) 0%,
+        rgb(var(--ink-deep) / 0.66) 16%,
         rgb(var(--ink-deep) / 0) 30%
       ),
       /* Banda inferior: el hero aterriza en `ink`, el mismo color con el que

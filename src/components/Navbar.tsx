@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => handleNavigate("hero")}
-            className="group flex flex-col items-start leading-none"
+            className="group block leading-none"
             aria-label="Malecón Business Center — inicio"
           >
             {/* Dos lockups, no uno encogido. El apilado tiene "MALECÓN" y
@@ -59,21 +59,49 @@ export default function Navbar() {
                 de alto el segundo renglón se vuelve ilegible, así que achicarlo
                 no era opción. El horizontal pone lo mismo en línea y aguanta
                 barras bajas — es para lo que existe la variante.
-                Los dos se renderizan siempre y se alterna cuál se muestra: así
-                el navegador precarga ambos y al bajar no hay un cuadro sin
-                logo. El oculto va con `hidden`, que no ocupa espacio. */}
-            <Logo
-              variant="stacked"
-              className={`h-16 md:h-20 ${scrolled ? "hidden" : ""}`}
-              hoverEffect
-              priority
-            />
-            <Logo
-              variant="horizontal"
-              className={`h-9 md:h-10 ${scrolled ? "" : "hidden"}`}
-              hoverEffect
-              priority
-            />
+                Los dos se renderizan siempre (el navegador precarga ambos y al
+                bajar no hay un cuadro sin logo), fuera del flujo y cruzándose
+                en opacidad. Lo que sí ocupa espacio es el span de afuera, que
+                anima su alto y su ancho entre los dos tamaños: como el logo es
+                lo que marca la altura del header, así la barra se encoge con
+                la misma curva que el fondo y el padding. Antes se alternaban
+                con `hidden` y el header saltaba 40px en un frame mientras el
+                resto seguía fundiéndose. Los anchos son el alto por la
+                proporción de cada archivo (1100/633 y 1400/266). */}
+            <span
+              className={`relative block transition-all duration-500 ease-silk ${
+                scrolled
+                  ? "h-9 w-[190px] md:h-10 md:w-[211px]"
+                  : "h-16 w-[111px] md:h-20 md:w-[139px]"
+              }`}
+            >
+              <span
+                aria-hidden={scrolled}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 transition-opacity duration-500 ease-silk ${
+                  scrolled ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <Logo
+                  variant="stacked"
+                  className="h-16 md:h-20"
+                  hoverEffect
+                  priority
+                />
+              </span>
+              <span
+                aria-hidden={!scrolled}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 transition-opacity duration-500 ease-silk ${
+                  scrolled ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Logo
+                  variant="horizontal"
+                  className="h-9 md:h-10"
+                  hoverEffect
+                  priority
+                />
+              </span>
+            </span>
           </button>
 
           {/* Links desktop */}
@@ -85,7 +113,7 @@ export default function Navbar() {
               ya iba justo con seis enlaces, en ese estado se aprieta el
               interlineado y el tamaño; en el hero se quedan como estaban. */}
           <ul
-            className={`hidden items-center lg:flex ${
+            className={`hidden items-center transition-[gap] duration-500 ease-silk lg:flex ${
               scrolled ? "gap-5 xl:gap-7" : "gap-6 xl:gap-10"
             }`}
           >
@@ -98,7 +126,10 @@ export default function Navbar() {
                     // `whitespace-nowrap`: "El Proyecto" son dos palabras y se
                     // partía en dos renglones, que era lo que hacía ver
                     // apretado el navbar compacto. No era falta de espacio.
-                    className={`group relative whitespace-nowrap font-light uppercase transition-colors ${
+                    // `transition-all` y no `transition-colors`: el tamaño y
+                    // el tracking también cambian al encogerse el navbar, y
+                    // sin esto saltaban de golpe mientras el fondo se fundía.
+                    className={`group relative whitespace-nowrap font-light uppercase transition-all duration-500 ease-silk ${
                       scrolled
                         ? "text-[0.62rem] tracking-[0.18em]"
                         : "text-[0.7rem] tracking-[0.25em]"
