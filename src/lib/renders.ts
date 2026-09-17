@@ -42,7 +42,7 @@ export const RENDERS: RenderItem[] = [
   { slug: "vista-aerea-diurna",     src: "/images/renders/aerea-diurna.webp",           label: "Vista aérea diurna",          category: "exteriores" },
   { slug: "vista-aerea-nocturna",   src: "/images/renders/aerea-nocturna.webp",         label: "Vista aérea nocturna",        category: "exteriores" },
   { slug: "vista-aerea-en-contexto", src: "/images/renders/aerea-contexto.webp",        label: "El proyecto en su entorno",   category: "exteriores" },
-  { slug: "vista-aerea-sobre-la-avenida", src: "/images/renders/aerea-avenida.webp",    label: "Sobre la avenida",            category: "exteriores" },
+  { slug: "vista-aerea-sobre-la-avenida", src: "/images/renders/aerea-avenida.webp",    label: "Sobre la Avenida Santander",  category: "exteriores" },
 
   // ── Interiores ────────────────────────────────────────────────────────────
   { slug: "lobby",                  src: "/images/renders/lobby-recepcion.webp",        label: "Lobby",                       category: "interiores" },
