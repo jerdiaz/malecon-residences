@@ -1906,4 +1906,9 @@
       </g>
     </g>
   </g>
+  <!-- Rotulo del mar, pedido el 14 de septiembre. Va en la misma Georgia
+       italica que las etiquetas de los pines, pero mas grande y espaciado:
+       es el nombre de un accidente geografico, no un destino de la lista.
+       Al final del documento para que quede por encima del rect del mar. -->
+  <text transform="translate(470 96)" fill="#1b3053" font-family="Georgia-Italic, Georgia" font-size="13" font-style="italic" letter-spacing="2.2"><tspan x="0" y="0">Mar Caribe</tspan></text>
 </svg>
