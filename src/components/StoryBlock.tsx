@@ -61,12 +61,12 @@ export default function StoryBlock({
                   papel: 0.8rem, peso 500 y el tracking de 0.45 a 0.2em — a
                   0.45em las mayúsculas quedan tan sueltas que hay que
                   reconstruir la palabra letra por letra. */}
-              <p className="mb-6 text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
+              <p className="antetitulo mb-6 text-bronze">
                 {kicker}
               </p>
             </Reveal>
 
-            <h2 className="mb-8 font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+            <h2 className="titulo-seccion mb-8 text-white">
               <SplitWords text={title} delay={100} stagger={38} />
             </h2>
 
@@ -91,7 +91,7 @@ export default function StoryBlock({
             {bullets && (
               <Reveal delay={750} variant="fade-up">
                 <div className="mt-8">
-                  <p className="mb-4 text-[0.78rem] font-medium uppercase tracking-[0.18em] text-bronze">
+                  <p className="rotulo mb-4 text-bronze">
                     {bullets.label}
                   </p>
                   <ul className="space-y-2.5">

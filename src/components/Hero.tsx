@@ -125,7 +125,7 @@ export default function Hero() {
           // letras quedaban tan sueltas que había que reconstruir cada palabra,
           // y encima estiraban la frase a 660px. Con el cuerpo nuevo mide menos
           // que antes, así que en móvil ocupa las mismas dos líneas.
-          className="type-halo-strong mb-4 animate-fade-in text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
+          className="antetitulo type-halo-strong mb-4 animate-fade-in text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
           style={{ animationDelay: "0.2s" }}
         >
           Oficinas en Marbella, cerca al centro histórico de Cartagena

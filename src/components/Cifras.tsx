@@ -44,11 +44,11 @@ export default function Cifras() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}
         <Reveal>
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
+          <p className="antetitulo text-bronze">
             El edificio en cifras
           </p>
         </Reveal>
-        <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+        <h2 className="titulo-seccion mt-6 max-w-2xl text-balance text-white">
           <SplitWords text="Espacios diseñados para " delay={100} stagger={50} />
           <span className="font-light italic">crecer</span>
         </h2>

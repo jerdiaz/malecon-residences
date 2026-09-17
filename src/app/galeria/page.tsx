@@ -58,10 +58,10 @@ export default function GaleriaPage() {
           Volver al inicio
         </Link>
 
-        <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+        <p className="antetitulo mb-6 text-bronze">
           Galería completa
         </p>
-        <h1 className="max-w-3xl font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+        <h1 className="titulo-seccion max-w-3xl text-white">
           Los renders del proyecto.
         </h1>
         <p className="mt-6 max-w-lg text-sm font-light leading-relaxed tracking-wide text-white/50">

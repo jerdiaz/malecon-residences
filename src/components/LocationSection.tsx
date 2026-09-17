@@ -53,11 +53,11 @@ export default function LocationSection() {
 
         {/* ── Columna de texto ── */}
         <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
-          <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+          <p className="antetitulo mb-6 text-bronze">
             La ubicación
           </p>
 
-          <h2 className="mb-8 font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+          <h2 className="titulo-seccion mb-8 text-white">
             ¿Por qué elegir un centro de negocios en Cartagena?
           </h2>
 
@@ -81,7 +81,7 @@ export default function LocationSection() {
               por destino, con filas de alturas dispares. El filete de cierre
               va en el contenedor: cada fila solo lleva el de arriba. */}
           <div className="mt-10 max-w-lg">
-            <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-[0.3em] text-bronze">
+            <p className="rotulo mb-5 text-bronze">
               Conexiones estratégicas
             </p>
             <div className="border-b border-white/10">
@@ -103,7 +103,7 @@ export default function LocationSection() {
 
           {/* Dirección del proyecto + Google Maps */}
           <div className="mt-10">
-            <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
+            <p className="rotulo mb-4 text-bronze">
               Ubicación
             </p>
             <p className="font-serif text-xl font-light leading-snug text-champagne">

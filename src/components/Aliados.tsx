@@ -61,12 +61,12 @@ export default function Aliados() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}
         <Reveal>
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
+          <p className="antetitulo text-bronze">
             Aliados
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+          <h2 className="titulo-seccion mt-6 max-w-2xl text-balance text-white">
             Diseño y visión <span className="text-shimmer">arquitectónica</span>
           </h2>
         </Reveal>
@@ -80,7 +80,7 @@ export default function Aliados() {
                   columna era solo el logo y el nombre vivía al otro lado; en
                   la página impresa van juntos, y así el logo deja de flotar
                   sin pie. */}
-              <p className="text-center text-[0.72rem] font-normal uppercase tracking-[0.16em] text-bronze/90">
+              <p className="rotulo text-center text-bronze">
                 Diseño y visión arquitectónica
               </p>
               <p className="text-center font-serif text-2xl font-extralight tracking-tight text-white sm:text-3xl">
@@ -102,7 +102,7 @@ export default function Aliados() {
               </p>
 
               <div className="mt-8">
-                <p className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-bronze/90">
+                <p className="rotulo text-bronze">
                   Algunos de sus proyectos
                 </p>
                 {/* En fila y con el punto de bronce delante de cada nombre,
@@ -159,7 +159,7 @@ export default function Aliados() {
              Alianza, así que queda sola. */}
         <Reveal delay={320}>
           <div className="mt-16 flex flex-col items-center gap-5 border-t border-white/10 pt-12">
-            <p className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-bronze/90">
+            <p className="rotulo text-bronze">
               Promotora
             </p>
             <Logo variant="stacked" className="h-20" />

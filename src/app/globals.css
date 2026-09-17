@@ -42,6 +42,61 @@
   }
 }
 
+@layer components {
+  /* ── Los tres niveles de título del sitio ──────────────────────────────────
+     Viven aquí, en una sola definición, y no repartidos por cada componente.
+     Hasta el 2026-09-16 cada sección llevaba sus propios valores en línea, y
+     al agrandar la tipografía por pedido del cliente unas se actualizaron y
+     otras no: Galería quedó en 0.65rem/300 al lado de ¿Por qué escogernos? en
+     0.8rem/500, y los títulos llegaron a tener tres tamaños distintos a partir
+     de 1024px (3, 3.25 y 3.5rem). El cliente lo señaló: "todos los títulos
+     deben tener la misma tipografía para que sea una sola experiencia".
+     Cambiar el valor aquí lo cambia en todo el sitio; ese es el punto.
+
+     El COLOR no entra en estas clases: lo pone cada sección, porque cambia
+     según el fondo (bronce sobre el azul de marca, navy sobre la crema de
+     Amenidades, champán sobre foto). */
+
+  /* Nivel 1 — el renglón corto en versalitas que encabeza cada sección. */
+  .antetitulo {
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  /* Nivel 2 — el título en serif de la sección. */
+  .titulo-seccion {
+    font-family: var(--font-serif), Georgia, serif;
+    font-size: 2.25rem;
+    /* 300 y no 200: Cormorant Garamond se carga con 300, 400, 500 y 700 (ver
+       layout.tsx). Las clases decían `font-extralight`, que es 200, y el
+       navegador ya venía resolviéndolo al 300 igual — aquí queda escrito el
+       peso que de verdad se dibuja. */
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  /* Nivel 3 — rótulo dentro de una sección: "Beneficios", "Dirección",
+     "Conexiones estratégicas", "Promotora". Un punto por debajo del
+     antetítulo, para que no compitan. */
+  .rotulo {
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  @media (min-width: 640px) {
+    .titulo-seccion {
+      font-size: 3rem;
+    }
+  }
+}
+
 @layer utilities {
   /* Scrollbar minimalista para el contenedor con snap */
   .scroll-shell {

@@ -199,7 +199,7 @@ export default function RegistroGate() {
             <div className="relative m-auto w-full max-w-xl px-6 py-14 text-center sm:px-10">
               <Logo variant="stacked" className="mx-auto h-20 md:h-24" priority />
 
-              <p className="mt-10 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+              <p className="antetitulo mt-10 text-bronze">
                 Invitación privada
               </p>
 
@@ -398,7 +398,7 @@ function Campo({
 }: CampoProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="rotulo mb-3 block text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">

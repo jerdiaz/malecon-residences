@@ -117,7 +117,7 @@ export default function AmenidadesTexto({
             // septiembre: 0.8rem, peso 500 y tracking 0.2em. Va a opacidad
             // plena — el navy al 85% sobre crema es el gris pálido que el
             // cliente marcó como ilegible.
-            className="text-[0.8rem] font-medium uppercase tracking-[0.2em]"
+            className="antetitulo"
             style={{ color: NAVY }}
           >
             Amenidades
@@ -125,7 +125,7 @@ export default function AmenidadesTexto({
         </Reveal>
         <Reveal delay={120}>
           <h2
-            className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight sm:text-5xl"
+            className="titulo-seccion mt-6 max-w-2xl text-balance"
             style={{ color: NAVY }}
           >
             Un edificio preparado

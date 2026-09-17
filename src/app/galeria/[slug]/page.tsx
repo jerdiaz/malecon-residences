@@ -184,7 +184,7 @@ export default async function RenderDetailPage({
         {/* El H1 de la ficha. Antes era un <p> y la página no tenía ninguno.
             Va un punto por encima de los rótulos de la grilla: aquí el nombre
             es el título de la página, no una etiqueta sobre una miniatura. */}
-        <h1 className="mt-8 text-center text-[0.85rem] font-medium uppercase tracking-[0.2em] text-champagne">
+        <h1 className="antetitulo mt-8 text-center text-champagne">
           {render.label}
         </h1>
         <p className="mt-2 text-center font-serif text-sm font-light tracking-wide text-white/40">
@@ -200,7 +200,7 @@ export default async function RenderDetailPage({
             siguiente, que era una cadena de 33 eslabones y nada más. */}
         {relacionados.length > 0 && (
           <section className="mt-20 border-t border-white/10 pt-10">
-            <h2 className="mb-6 text-center text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/80">
+            <h2 className="rotulo mb-6 text-center text-bronze">
               Más {CATEGORY_LABELS[render.category].toLowerCase()}
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

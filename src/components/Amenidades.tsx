@@ -26,7 +26,7 @@ export default function Amenidades() {
     <section id="amenities" className="relative w-full scroll-mt-20 bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <Reveal>
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+          <p className="antetitulo text-bronze">
             Amenidades
           </p>
         </Reveal>

@@ -90,12 +90,12 @@ export default function Contact() {
     >
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
         <Reveal>
-          <p className="mb-5 text-center text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
+          <p className="antetitulo mb-5 text-center text-bronze">
             Visita privada
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h2 className="text-balance text-center font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+          <h2 className="titulo-seccion text-balance text-center text-white">
             Conoce la nueva sede corporativa de tu empresa en{" "}
             <span className="text-shimmer">Cartagena</span>
           </h2>
@@ -189,7 +189,7 @@ export default function Contact() {
         {/* Datos de contacto — dirección, teléfono y correo */}
         <div className="mx-auto mb-10 grid max-w-7xl grid-cols-1 gap-8 text-center sm:grid-cols-3">
           <div>
-            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
+            <p className="rotulo mb-3 text-bronze">
               Dirección
             </p>
             {/* La del proyecto, la misma que muestran Ubicación y el mega
@@ -201,7 +201,7 @@ export default function Contact() {
             </p>
           </div>
           <div>
-            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
+            <p className="rotulo mb-3 text-bronze">
               Teléfono
             </p>
             <a
@@ -212,7 +212,7 @@ export default function Contact() {
             </a>
           </div>
           <div>
-            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
+            <p className="rotulo mb-3 text-bronze">
               Correo
             </p>
             <a
@@ -226,7 +226,7 @@ export default function Contact() {
 
         {/* Redes sociales */}
         <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4 pt-4">
-          <p className="text-[0.72rem] font-medium uppercase tracking-[0.14em] text-white/55">
+          <p className="rotulo text-white/55">
             Síguenos
           </p>
           <SocialLinks />
@@ -264,7 +264,7 @@ function Field({
 }: FieldProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="rotulo mb-3 block text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">
@@ -295,7 +295,7 @@ interface TextareaProps {
 function Textarea({ label, value, onChange, className = "" }: TextareaProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="rotulo mb-3 block text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">

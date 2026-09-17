@@ -39,7 +39,7 @@ export default function MapaConectividad() {
         <div>
           <Reveal>
             <p
-              className="text-[0.65rem] font-light uppercase tracking-[0.45em]"
+              className="antetitulo"
               style={{ color: NAVY, opacity: 0.85 }}
             >
               Conectividad
@@ -47,7 +47,7 @@ export default function MapaConectividad() {
           </Reveal>
           <Reveal delay={120}>
             <h2
-              className="mt-6 text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight sm:text-5xl"
+              className="titulo-seccion mt-6 text-balance"
               style={{ color: NAVY }}
             >
               Conectividad que

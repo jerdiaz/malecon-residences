@@ -21,12 +21,12 @@ export default function Plantas() {
     <section id="plantas" className="relative w-full bg-ink scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12">
         <Reveal>
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+          <p className="antetitulo text-bronze">
             Plantas · La distribución
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+          <h2 className="titulo-seccion mt-6 max-w-2xl text-balance text-white">
             <SplitWords text="Cada metro " delay={200} stagger={50} />
             <span className="text-shimmer">pensado con los más altos estándares</span>
           </h2>
@@ -54,7 +54,7 @@ export default function Plantas() {
           </div>
 
           <div className="mt-6 flex items-baseline justify-between">
-            <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-champagne/80">
+            <p className="rotulo text-champagne">
               {plano.label}
             </p>
           </div>
@@ -137,7 +137,7 @@ function Visor({
 
       <p
         onClick={(e) => e.stopPropagation()}
-        className="mt-6 text-center text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90"
+        className="rotulo mt-6 text-center text-champagne"
       >
         {plano.label}
       </p>

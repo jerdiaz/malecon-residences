@@ -44,11 +44,11 @@ export default function RendersGallery() {
       {/* Header — con más aire alrededor para una composición más exclusiva */}
       <div className="mx-auto max-w-7xl px-6 md:px-12 mb-20 lg:mb-28">
         <Reveal>
-          <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+          <p className="antetitulo mb-6 text-bronze">
             Galería
           </p>
         </Reveal>
-        <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+        <h2 className="titulo-seccion text-white">
           <SplitWords
             text="Espacios diseñados con altos estándares."
             delay={100}

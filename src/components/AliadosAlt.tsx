@@ -80,12 +80,12 @@ export default function AliadosAlt() {
         <div className="order-1 flex items-center px-6 py-20 md:px-12 lg:order-none lg:px-16 lg:py-28 xl:px-24">
           <div className="max-w-xl">
             <Reveal>
-              <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+              <p className="antetitulo text-bronze">
                 Aliados
               </p>
             </Reveal>
             <Reveal delay={120}>
-              <h2 className="mt-6 text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+              <h2 className="titulo-seccion mt-6 text-balance text-white">
                 Diseño y visión
                 <span className="block font-light italic text-shimmer">
                   arquitectónica

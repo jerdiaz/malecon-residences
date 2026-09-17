@@ -104,12 +104,12 @@ export default function Amenities() {
     <section id="amenities" className="relative w-full bg-ink scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12">
         <Reveal>
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/90">
+          <p className="antetitulo text-bronze">
             Amenidades · La experiencia
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+          <h2 className="titulo-seccion mt-6 max-w-2xl text-balance text-white">
             Todo lo que tu empresa
             <span className="block font-light italic text-shimmer">
               necesita para crecer

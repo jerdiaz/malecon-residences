@@ -22,11 +22,11 @@ export default function NotFound() {
 
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center justify-center bg-ink px-6 py-24 text-center">
-      <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze/80">
+      <p className="antetitulo mb-6 text-bronze">
         Error 404
       </p>
 
-      <h1 className="max-w-2xl font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white sm:text-5xl">
+      <h1 className="titulo-seccion max-w-2xl text-white">
         Esta página no existe.
       </h1>
 
@@ -54,7 +54,7 @@ export default function NotFound() {
       </div>
 
       <div className="mt-20 w-full max-w-3xl border-t border-white/10 pt-10">
-        <h2 className="mb-6 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+        <h2 className="rotulo mb-6 text-bronze">
           Del proyecto
         </h2>
         <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
