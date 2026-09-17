@@ -161,17 +161,21 @@ export default function Contact() {
             />
 
             <div className="sm:col-span-2">
+              {/* "Agenda tu cita resaltado" — pedido del 14 de septiembre.
+                  Era un botón fantasma: texto claro y contorno en blanco al
+                  15%, que sobre el azul de marca da 1.51:1 y a efectos
+                  prácticos no se ve. El texto se leía bien, pero nada decía
+                  que fuera un botón, y es el único de la página que convierte.
+                  Ahora va relleno en el bronce de marca con la tipografía en
+                  ink: 5.16:1, y al apuntar sube a champán, 9.37:1. El barrido
+                  interior se retiró — existía para insinuar relleno en un
+                  botón que no lo tenía. */}
               <button
                 type="submit"
-                className="group relative flex w-full items-center justify-center gap-3 overflow-hidden border border-white/15 py-5 text-[0.7rem] font-light uppercase tracking-[0.3em] text-white/90 transition-colors duration-500 ease-silk hover:border-bronze hover:text-champagne"
+                className="group flex w-full items-center justify-center gap-3 bg-bronze py-5 text-[0.8rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors duration-500 ease-silk hover:bg-champagne"
               >
-                {/* Barrido de relleno al pasar el cursor */}
-                <span
-                  aria-hidden
-                  className="absolute inset-0 -translate-x-full bg-bronze/10 transition-transform duration-700 ease-silk group-hover:translate-x-0"
-                />
-                <span className="relative z-10">Agenda tu cita</span>
-                <span className="relative z-10 text-bronze transition-transform duration-500 ease-silk group-hover:translate-x-1">
+                Agenda tu cita
+                <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
                   →
                 </span>
               </button>
