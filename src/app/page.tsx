@@ -18,6 +18,7 @@ import LocationSection from "@/components/LocationSection";
 // del brochure como imagen. Montada abajo la Versión B para verla en
 // contexto; ver /preview-amenidades para las dos una junto a la otra.
 import AmenidadesTexto from "@/components/AmenidadesTexto";
+import Cifras from "@/components/Cifras";
 import Plantas from "@/components/Plantas";
 import Aliados from "@/components/Aliados";
 // import Partners from "@/components/Partners"; // sección oculta por ahora
@@ -100,6 +101,13 @@ export default function Home() {
         <LocationSection />
 
         <AmenidadesTexto id="amenities" />
+
+        {/* Cifras — la página del brochure que habla de metrajes. Va aquí y no
+            en otro lado porque es la antesala natural de Plantas: dice cuánto
+            mide una oficina justo antes de que el plano muestre dónde está, y
+            el inventario de Plantas repite esas mismas áreas (32,6 m² en
+            adelante). */}
+        <Cifras />
 
         {/* Plantas — va después de Amenidades y antes del cierre: es el
             contenido más concreto de la página, y quien lo mira ya está

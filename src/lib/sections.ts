@@ -13,6 +13,11 @@ export const SECTIONS: SectionLink[] = [
   { id: "entorno",     label: "Entorno",     hideInNav: true },
   { id: "ubicacion",   label: "Ubicación"                 },
   { id: "amenities",   label: "Amenidades"                },
+  // Oculta en el menú por ahora: el menú definitivo está por definirse con la
+  // diseñadora, y sumarle una séptima entrada al navbar sin esa decisión es
+  // justo lo que lo dejaba sin espacio. El id vive aquí igual para que
+  // useActiveSection sepa marcarla al pasar.
+  { id: "cifras",      label: "Cifras",      hideInNav: true },
   { id: "plantas",     label: "Plantas"                   },
   { id: "aliados",     label: "Aliados",     hideInNav: true },
   // { id: "marcas", label: "Marcas", hideInNav: true }, // sección oculta por ahora
