@@ -81,7 +81,7 @@ export default function Home() {
         <RendersGallery />
 
         {/* Story 2 — El Caribe como contexto.
-            Se cambió `panoramica-zona-norte` por este render: aquel tenía una
+            Se cambió `panoramica-frente-al-mar` por este render: aquel tenía una
             grúa y una torre en obra a la vista (a x≈1575 del original), y
             ningún encuadre de la animación de entrada las dejaba fuera. Este
             es la Escena 12 de la entrega, que ya vivía en la galería como

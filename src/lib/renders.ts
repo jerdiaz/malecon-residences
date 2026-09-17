@@ -37,7 +37,10 @@ export const RENDERS: RenderItem[] = [
   { slug: "atardecer",              src: "/images/renders/atardecer-mar.webp",          label: "Atardecer sobre el Caribe",   category: "exteriores" },
   { slug: "vista-al-caribe",        src: "/images/renders/vista-caribe.webp",           label: "Vista al Caribe",             category: "exteriores" },
   { slug: "el-malecon",             src: "/images/renders/malecon-playa.webp",          label: "El malecón",                  category: "exteriores" },
-  { slug: "panoramica-zona-norte",  src: "/images/renders/panoramica-zona-norte.webp",  label: "Panorámica de la Zona Norte", category: "exteriores" },
+  // El archivo sigue llamandose panoramica-zona-norte.webp a proposito: esa
+  // URL de imagen esta en el sitemap y puede estar indexada en Google
+  // Imagenes. Lo que el cliente pidio cambiar es el rotulo, no el asset.
+  { slug: "panoramica-frente-al-mar", src: "/images/renders/panoramica-zona-norte.webp", label: "Panorámica frente al mar",  category: "exteriores" },
   { slug: "vista-aerea",            src: "/images/renders/aerea-atardecer.webp",        label: "Vista aérea",                 category: "exteriores" },
   { slug: "vista-aerea-diurna",     src: "/images/renders/aerea-diurna.webp",           label: "Vista aérea diurna",          category: "exteriores" },
   { slug: "vista-aerea-nocturna",   src: "/images/renders/aerea-nocturna.webp",         label: "Vista aérea nocturna",        category: "exteriores" },

@@ -20,6 +20,22 @@ const nextConfig = {
       },
     ],
   },
+
+  // La ficha de este render se publicó como /galeria/panoramica-zona-norte y
+  // esa URL vive en el sitemap desde el 2026-09-10, así que puede estar
+  // indexada y compartida por chat. Al renombrar el slug, sin esto quedaría
+  // un 404. Funciona igual en los dos despliegues: el VPS corre `next start`,
+  // que resuelve los redirects nativamente, y el plugin de Next en Netlify
+  // los traduce a sus propias reglas.
+  async redirects() {
+    return [
+      {
+        source: "/galeria/panoramica-zona-norte",
+        destination: "/galeria/panoramica-frente-al-mar",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
