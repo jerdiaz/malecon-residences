@@ -185,35 +185,35 @@ export default function Contact() {
         {/* Datos de contacto — dirección, teléfono y correo */}
         <div className="mx-auto mb-10 grid max-w-7xl grid-cols-1 gap-8 text-center sm:grid-cols-3">
           <div>
-            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
               Dirección
             </p>
             {/* La del proyecto, la misma que muestran Ubicación y el mega
                 menú. Desde el 2026-09-10 es la única dirección del sitio. */}
-            <p className="text-sm font-light leading-relaxed text-apoyo">
+            <p className="text-base font-normal leading-relaxed text-apoyo">
               {CONTACT.projectStreet}
               <br />
               {CONTACT.projectCity}
             </p>
           </div>
           <div>
-            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
               Teléfono
             </p>
             <a
               href={`tel:${CONTACT.phoneTel}`}
-              className="text-sm font-light text-apoyo transition-colors duration-300 hover:text-champagne"
+              className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
             >
               {CONTACT.phoneDisplay}
             </a>
           </div>
           <div>
-            <p className="mb-3 text-[0.6rem] font-light uppercase tracking-[0.3em] text-bronze/70">
+            <p className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-bronze">
               Correo
             </p>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="text-sm font-light text-apoyo transition-colors duration-300 hover:text-champagne"
+              className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
             >
               {CONTACT.email}
             </a>
@@ -222,7 +222,7 @@ export default function Contact() {
 
         {/* Redes sociales */}
         <div className="mx-auto mb-8 flex max-w-7xl flex-col items-center gap-4 pt-4">
-          <p className="text-[0.6rem] font-light uppercase tracking-[0.3em] text-white/35">
+          <p className="text-[0.72rem] font-medium uppercase tracking-[0.14em] text-white/55">
             Síguenos
           </p>
           <SocialLinks />
