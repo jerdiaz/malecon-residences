@@ -90,7 +90,7 @@ export default function Contact() {
     >
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
         <Reveal>
-          <p className="mb-5 text-center text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+          <p className="mb-5 text-center text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
             Visita privada
           </p>
         </Reveal>
@@ -260,7 +260,7 @@ function Field({
 }: FieldProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">
@@ -270,7 +270,7 @@ function Field({
           onChange={onChange}
           autoComplete={autoComplete}
           required={required}
-          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
+          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
         />
         {/* Línea ámbar que se pinta de izquierda a derecha al enfocar */}
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
@@ -291,7 +291,7 @@ interface TextareaProps {
 function Textarea({ label, value, onChange, className = "" }: TextareaProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">
@@ -299,7 +299,7 @@ function Textarea({ label, value, onChange, className = "" }: TextareaProps) {
           value={value}
           onChange={onChange}
           rows={3}
-          className="peer w-full resize-none border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
+          className="peer w-full resize-none border-b border-white/15 bg-transparent pb-3 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
         />
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
       </div>

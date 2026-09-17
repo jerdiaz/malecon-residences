@@ -398,7 +398,7 @@ function Campo({
 }: CampoProps) {
   return (
     <label className={`group block ${className}`}>
-      <span className="mb-3 block text-[0.6rem] font-light uppercase tracking-[0.3em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
+      <span className="mb-3 block text-[0.72rem] font-normal uppercase tracking-[0.14em] text-apoyo transition-colors duration-500 group-focus-within:text-amber-400">
         {label}
       </span>
       <div className="relative">
@@ -411,7 +411,7 @@ function Campo({
           inputMode={inputMode}
           autoFocus={autoFocus}
           required
-          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-light tracking-wide text-white outline-none placeholder:text-white/20"
+          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
         />
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
       </div>
