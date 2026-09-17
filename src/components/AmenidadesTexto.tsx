@@ -15,11 +15,12 @@ import Reveal from "@/components/ui/Reveal";
 //     página del brochure, no el azul de marca / champán del resto del
 //     sitio — el shimmer champán-oro es ilegible sobre fondo claro, así que
 //     esta versión no lo usa.
-//   · Disposición: tres columnas en escritorio, igual a como están repartidas
+//   · Disposición: tres columnas desde 1024, igual a como están repartidas
 //     las categorías en el brochure (Tecnología+Movilidad a la izquierda,
 //     Servicios+Sostenibilidad al centro, Bienestar corporativo a la derecha
-//     ocupando las dos filas por ser la lista más larga). Colapsa a una sola
-//     columna en móvil: es la razón de ser de una versión en texto.
+//     ocupando las dos filas por ser la lista más larga). Entre 768 y 1023 van
+//     a dos columnas en orden natural, y en móvil a una sola: es la razón de
+//     ser de una versión en texto.
 //
 // Ver /preview-amenidades para las dos una debajo de la otra. Cuando se elija
 // una, borrar este archivo (o Amenidades.tsx) y esa ruta de comparación.
@@ -32,7 +33,9 @@ interface AmenityGroup {
   label: string;
   icon: (props: { className?: string; style?: React.CSSProperties }) => React.ReactElement;
   items: string[];
-  /** Posición en la cuadrícula de escritorio, calcada de la del brochure. */
+  /** Posición en la cuadrícula de escritorio, calcada de la del brochure.
+   *  Se aplica desde `lg`: a `md` las tres columnas quedaban de ~200px y los
+   *  ítems largos se partían en tres y cuatro renglones. */
   placement: string;
 }
 
@@ -45,7 +48,7 @@ const GROUPS: AmenityGroup[] = [
       "Sistemas integrados de seguridad",
       "Infraestructura tecnológica de última generación",
     ],
-    placement: "md:col-start-1 md:row-start-1",
+    placement: "lg:col-start-1 lg:row-start-1",
   },
   {
     label: "Servicios",
@@ -54,7 +57,7 @@ const GROUPS: AmenityGroup[] = [
       "Oferta gastronómica (sujeta a operador de Rooftop)",
       "Áreas comunes diseñadas para networking empresarial",
     ],
-    placement: "md:col-start-2 md:row-start-1",
+    placement: "lg:col-start-2 lg:row-start-1",
   },
   {
     label: "Movilidad",
@@ -66,7 +69,7 @@ const GROUPS: AmenityGroup[] = [
       "Bicicleteros y parqueaderos para scooters",
       "Zona automatizada para lavado de vehículos",
     ],
-    placement: "md:col-start-1 md:row-start-2",
+    placement: "lg:col-start-1 lg:row-start-2",
   },
   {
     label: "Sostenibilidad",
@@ -77,7 +80,7 @@ const GROUPS: AmenityGroup[] = [
       "Eficiencia energética en zonas comunes",
       "Diseño responsable con el medio ambiente",
     ],
-    placement: "md:col-start-2 md:row-start-2",
+    placement: "lg:col-start-2 lg:row-start-2",
   },
   {
     label: "Bienestar corporativo",
@@ -89,7 +92,7 @@ const GROUPS: AmenityGroup[] = [
       "Sala de reuniones equipadas con video beam y mobiliario básico",
       "Espacios diseñados para promover productividad y bienestar",
     ],
-    placement: "md:col-start-3 md:row-start-1 md:row-span-2",
+    placement: "lg:col-start-3 lg:row-start-1 lg:row-span-2",
   },
 ];
 
@@ -103,15 +106,19 @@ export default function AmenidadesTexto({
   return (
     <section
       id={id}
-      className="relative w-full scroll-mt-20 py-24 md:py-32"
+      className="relative w-full scroll-mt-20 py-28 md:py-36"
       style={{ backgroundColor: CREAM }}
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}
         <Reveal>
           <p
-            className="text-[0.65rem] font-light uppercase tracking-[0.45em]"
-            style={{ color: NAVY, opacity: 0.85 }}
+            // Mismo antetítulo que el resto del sitio tras el pedido del 14 de
+            // septiembre: 0.8rem, peso 500 y tracking 0.2em. Va a opacidad
+            // plena — el navy al 85% sobre crema es el gris pálido que el
+            // cliente marcó como ilegible.
+            className="text-[0.8rem] font-medium uppercase tracking-[0.2em]"
+            style={{ color: NAVY }}
           >
             Amenidades
           </p>
@@ -129,8 +136,8 @@ export default function AmenidadesTexto({
         </Reveal>
         <Reveal delay={240}>
           <p
-            className="mt-6 max-w-2xl text-sm font-light leading-relaxed tracking-wide sm:text-base"
-            style={{ color: NAVY, opacity: 0.9 }}
+            className="mt-6 max-w-2xl text-base font-normal leading-relaxed tracking-wide sm:text-lg"
+            style={{ color: NAVY, opacity: 0.95 }}
           >
             <span style={{ opacity: 1 }}>Malecón Business Center</span>{" "}
             incorpora amenidades y tecnologías inspiradas en los principales
@@ -138,8 +145,13 @@ export default function AmenidadesTexto({
           </p>
         </Reveal>
 
-        {/* ── Categorías: tres columnas, igual disposición que el brochure ── */}
-        <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-3 md:gap-y-14">
+        {/* ── Categorías: tres columnas, igual disposición que el brochure ──
+             Con una parada intermedia de dos columnas. A `md` las tres del
+             brochure daban ~200px por columna, unos 24 caracteres por renglón,
+             y los ítems largos se partían en tres y cuatro líneas: eso es lo
+             que el cliente vio apretado el 14 de septiembre. A dos columnas la
+             tablet queda en ~308px y las tres del brochure entran desde 1024. */}
+        <div className="mt-16 grid grid-cols-1 gap-x-14 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {GROUPS.map((group, i) => {
             const Icon = group.icon;
             return (
@@ -155,23 +167,30 @@ export default function AmenidadesTexto({
                   >
                     <Icon className="h-5 w-5 shrink-0" style={{ color: NAVY }} />
                     <p
-                      className="font-serif text-lg font-bold italic leading-snug tracking-wide sm:text-xl"
+                      className="font-serif text-xl font-bold italic leading-snug tracking-wide sm:text-2xl"
                       style={{ color: NAVY }}
                     >
                       {group.label}
                     </p>
                   </div>
-                  <ul className="mt-4 space-y-2.5">
+                  {/* "Más fuerte las letras": el peso sube de 300 a 400 y el
+                      navy va a opacidad plena. Jost Light sobre crema es lo que
+                      se veía lavado en la captura del cliente, no el tamaño.
+                      El cuerpo sube un escalón y solo llega a `text-lg` en xl,
+                      donde la columna mide 351px; a 1024 son 272px y a ese
+                      ancho 19.8px empezaba a partir todo en dos renglones.
+                      "Más amplia": el aire entre ítems pasa de 2.5 a 4. */}
+                  <ul className="mt-5 space-y-4">
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-baseline gap-2.5 text-sm font-light leading-relaxed tracking-wide sm:text-base"
-                        style={{ color: NAVY, opacity: 0.92 }}
+                        className="flex items-baseline gap-2.5 text-base font-normal leading-relaxed tracking-wide xl:text-lg"
+                        style={{ color: NAVY }}
                       >
                         <span
                           aria-hidden
                           className="mt-[0.55em] h-1 w-1 shrink-0 rounded-full"
-                          style={{ backgroundColor: NAVY, opacity: 0.65 }}
+                          style={{ backgroundColor: NAVY, opacity: 0.75 }}
                         />
                         <span>{item}</span>
                       </li>
