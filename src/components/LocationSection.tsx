@@ -31,10 +31,16 @@ const CONEXIONES = [
 // no existe aquí, y otra que su propio clipPath dejaba fuera del área
 // visible.
 //
-// El "terreno" del mapa es transparente a propósito en el diseño original
-// (se apoya en el fondo blanco de la página completa) — sin un fondo claro
-// detrás, las etiquetas de los pines quedan ilegibles. Por eso el panel de
-// abajo lo pone sobre bg-white, no sobre el azul de marca del sitio.
+// En el diseño original el AGUA era la que no tenía relleno (se apoyaba en el
+// fondo blanco de la página del brochure) y la tierra iba en un azul grisáceo
+// — o sea, al revés de lo que se espera de un mapa. El cliente lo pidió
+// invertido el 14 de septiembre, así que ahora el SVG pinta su propio mar y
+// la tierra va en la crema del brochure.
+//
+// El panel de abajo repite ese mismo azul como fondo: el mapa se sirve con
+// object-contain y sin esto el sobrante de los lados quedaría blanco,
+// recortando el mar con un borde que no existe.
+const MAPA_MAR = "#6ea9d2";
 const MAPA_CONEXIONES_SRC = "/images/ubicacion/mapa-conexiones.svg";
 
 export default function LocationSection() {
@@ -133,12 +139,16 @@ export default function LocationSection() {
             aspect-[16/9], en escritorio se sangra de lado a lado y queda
             pegajoso (sticky) para acompañar la lectura de la lista. Es una
             infografía vectorial, no una foto: los pines y la leyenda no
-            pueden recortarse (object-contain, no object-cover), y va sobre
-            bg-white porque el "terreno" del mapa es transparente en el
-            diseño original — ver la nota junto a MAPA_CONEXIONES_SRC. Se
-            sirve con <img>, no con next/image: es un SVG y next/image no
-            lo optimiza, con fill perdería el vector. */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-white lg:aspect-auto lg:sticky lg:top-0 lg:h-screen">
+            pueden recortarse (object-contain, no object-cover), y el fondo
+            del panel repite el azul del mar del propio SVG para que el
+            sobrante no se vea como un borde — ver la nota junto a
+            MAPA_CONEXIONES_SRC. Se sirve con <img>, no con next/image: es
+            un SVG y next/image no lo optimiza, con fill perdería el
+            vector. */}
+        <div
+          className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-0 lg:h-screen"
+          style={{ backgroundColor: MAPA_MAR }}
+        >
           <div className="absolute inset-0 flex items-center justify-center p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
