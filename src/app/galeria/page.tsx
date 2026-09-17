@@ -108,7 +108,9 @@ export default function GaleriaPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
+                    {/* Mismo cuerpo y peso que los rótulos del carrusel del
+                        home: es el mismo dato en las dos vistas. */}
+                    <p className="text-[0.78rem] font-medium uppercase tracking-[0.16em] text-champagne">
                       {render.label}
                     </p>
                   </div>

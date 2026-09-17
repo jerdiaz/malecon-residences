@@ -261,11 +261,17 @@ function RenderTile({
             animation: "gallery-ken-burns 8000ms ease-out forwards",
           }}
         />
-        {/* Velo inferior — visible siempre en táctil; en desktop solo aparece al pasar el cursor */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-100 transition-opacity duration-700 ease-in-out [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100" />
-        {/* Etiqueta — visible siempre en táctil; en desktop solo aparece al pasar el cursor */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-0 p-5 opacity-100 transition-all duration-700 ease-in-out [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.3em] text-champagne/90">
+        {/* Velo inferior — ahora fijo. Antes en escritorio arrancaba en
+            opacity-0 y solo entraba al pasar el cursor, igual que la etiqueta;
+            se oscurece un punto más al apuntar, que es todo el efecto que
+            queda. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent transition-opacity duration-700 ease-in-out [@media(hover:hover)]:opacity-90 [@media(hover:hover)]:group-hover:opacity-100" />
+        {/* Etiqueta — siempre visible. Esto es el "salen en unas sí y en otras
+            no" que anotó el cliente el 14 de septiembre: el carrusel avanza
+            solo cada 5 segundos, así que el nombre únicamente aparecía en la
+            foto que tuviera el cursor encima y las otras dos quedaban mudas. */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <p className="text-[0.78rem] font-medium uppercase tracking-[0.16em] text-champagne">
             {render.label}
           </p>
         </div>

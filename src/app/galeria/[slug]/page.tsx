@@ -181,8 +181,10 @@ export default async function RenderDetailPage({
           </Link>
         </div>
 
-        {/* El H1 de la ficha. Antes era un <p> y la página no tenía ninguno. */}
-        <h1 className="mt-8 text-center text-[0.65rem] font-light uppercase tracking-[0.35em] text-champagne/90">
+        {/* El H1 de la ficha. Antes era un <p> y la página no tenía ninguno.
+            Va un punto por encima de los rótulos de la grilla: aquí el nombre
+            es el título de la página, no una etiqueta sobre una miniatura. */}
+        <h1 className="mt-8 text-center text-[0.85rem] font-medium uppercase tracking-[0.2em] text-champagne">
           {render.label}
         </h1>
         <p className="mt-2 text-center font-serif text-sm font-light tracking-wide text-white/40">
@@ -217,7 +219,7 @@ export default async function RenderDetailPage({
                       className="object-cover transition-transform duration-700 ease-silk group-hover:scale-105"
                     />
                   </span>
-                  <span className="mt-3 block text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/45 transition-colors duration-300 group-hover:text-champagne">
+                  <span className="mt-3 block text-[0.7rem] font-normal uppercase tracking-[0.14em] text-white/70 transition-colors duration-300 group-hover:text-champagne">
                     {r.label}
                   </span>
                 </Link>
