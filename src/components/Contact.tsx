@@ -6,12 +6,15 @@ import SocialLinks from "@/components/SocialLinks";
 import Logo from "@/components/Logo";
 import { CONTACT } from "@/lib/contact";
 
+// Empresa y Cargo salieron el 14 de septiembre por pedido del cliente. Quedan
+// los mismos tres datos que pide la puerta de registro de la entrada —nombre,
+// correo y celular— más el mensaje opcional; el cliente lo asumió sabiendo que
+// se repiten ("aunque estaríamos repitiendo la misma información del banner
+// inicial, hagámoslo así").
 interface FormState {
   nombre: string;
   email: string;
   celular: string;
-  empresa: string;
-  cargo: string;
   mensaje: string;
 }
 
@@ -19,8 +22,6 @@ const EMPTY: FormState = {
   nombre: "",
   email: "",
   celular: "",
-  empresa: "",
-  cargo: "",
   mensaje: "",
 };
 
@@ -43,8 +44,14 @@ export default function Contact() {
   // Estado actual: los datos se descartan en el navegador y la página muestra
   // "Hemos recibido tu solicitud. Un asesor se pondrá en contacto contigo".
   // El sitio está en producción en el dominio final pidiendo nombre, correo,
-  // celular, empresa, cargo y mensaje. Cada prospecto que lo llena cree que lo
-  // van a llamar, y no queda registro de quién era.
+  // celular y mensaje. Cada prospecto que lo llena cree que lo van a llamar, y
+  // no queda registro de quién era.
+  //
+  // Desde el 15 de septiembre la puerta de registro de la entrada
+  // (RegistroGate) SÍ tiene destino: /api/registro escribe en una hoja de
+  // Google. Este formulario deberían apuntar al mismo sitio — es el mismo dato
+  // y el mismo consentimiento— pero eso es un cambio aparte, no lo que se
+  // pidió el 14 de septiembre.
   //
   // No se arregló porque la empresa todavía no ha definido dónde se guardan
   // los datos. Cuando lo defina, hace falta:
@@ -144,22 +151,6 @@ export default function Contact() {
               value={form.celular}
               onChange={handleChange("celular")}
               autoComplete="tel"
-              required
-            />
-            <Field
-              label="Empresa"
-              type="text"
-              value={form.empresa}
-              onChange={handleChange("empresa")}
-              autoComplete="organization"
-              required
-            />
-            <Field
-              label="Cargo"
-              type="text"
-              value={form.cargo}
-              onChange={handleChange("cargo")}
-              autoComplete="organization-title"
               required
             />
             <Textarea
