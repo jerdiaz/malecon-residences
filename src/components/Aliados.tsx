@@ -1,28 +1,31 @@
 "use client";
 
 import Reveal from "@/components/ui/Reveal";
+import Logo from "@/components/Logo";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ALIADOS — "Diseño y visión arquitectónica". Contenido entregado por el
-// cliente: el arquitecto líder del proyecto y el cierre sobre el equipo.
+// ALIADOS — la página del brochure "Diseño y Visión Arquitectónica", que sigue
+// con "Un proyecto construido sobre confianza".
+//
+// El cliente pidió el 14 de septiembre que esta sección quedara igual que esa
+// página ("esta la cambiamos, debe quedar igual que el brochure"), con una
+// excepción explícita: SIN el logo de Alianza Fiduciaria. Por eso abajo va
+// solo la promotora. Si algún día entra la fiducia, el bloque de promotora ya
+// está armado para recibir una segunda firma al lado.
+//
 // Distinto de "Marcas que han confiado en nosotros" (componente Partners, hoy
 // oculto).
 //
-// El portafolio de proyectos del arquitecto (Oficinas y comercio /
-// Desarrollos residenciales y mixtos) se quitó a pedido del cliente. Sigue en
-// el historial de git si hay que recuperarlo.
-//
-// Logo: el cliente lo pasó como foto (WhatsApp, 1201×369 JPEG) — se
-// vectorizó con potrace (umbral a blanco/negro con ImageMagick y trazado),
-// no era un archivo de diseño. El color real del logo es un navy
-// (#292457, muestreado del propio JPEG) pensado para fondo blanco — sobre
-// el panel oscuro de esta sección quedaba casi invisible (navy sobre
-// navy). Se recoloreó a un crema claro (#f5f2ec), el mismo criterio que ya
-// usa el logo del sitio en la navbar. El SVG con el navy original queda en
-// git (commit del 10 de sept.) por si se necesita para fondo claro.
-// Vive en /public/images/aliados/fernandez-logo.svg y se sirve con <img>, no
-// con next/image, para no perder el vector — mismo criterio que los planos
-// de Plantas y el mapa de Ubicación.
+// Logo del arquitecto: el cliente lo pasó como foto (WhatsApp, 1201×369 JPEG)
+// — se vectorizó con potrace (umbral a blanco/negro con ImageMagick y
+// trazado), no era un archivo de diseño. El color real del logo es un navy
+// (#292457, muestreado del propio JPEG) pensado para fondo blanco — sobre el
+// panel oscuro de esta sección quedaba casi invisible (navy sobre navy). Se
+// recoloreó a un crema claro (#f5f2ec), el mismo criterio que ya usa el logo
+// del sitio en la navbar. El SVG con el navy original queda en git (commit del
+// 10 de sept.) por si se necesita para fondo claro. Se sirve con <img>, no con
+// next/image, para no perder el vector — mismo criterio que los planos de
+// Plantas y el mapa de Ubicación.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ARCHITECT = {
@@ -31,6 +34,23 @@ const ARCHITECT = {
   /** Ruta del logo dentro de /public. `null` mientras no lo tengamos. */
   logo: "/images/aliados/fernandez-logo.svg" as string | null,
 };
+
+/** Los proyectos que nombra el brochure, en su mismo orden.
+ *
+ *  Ojo con el historial: en septiembre se quitó de esta sección un portafolio
+ *  del arquitecto agrupado por categorías (Oficinas y comercio / Desarrollos
+ *  residenciales y mixtos) a pedido del cliente. Esto NO es aquello: es la
+ *  línea suelta que el propio brochure trae bajo la semblanza, y entra ahora
+ *  porque el cliente pidió calcar esa página. */
+const PROYECTOS = [
+  "Murano Centro",
+  "Ravello",
+  "Claro de Luna",
+  "Bella Luna",
+  "Náutica",
+  "Torre empresarial Grupo Área",
+  "Murano Trade Center",
+];
 
 export default function Aliados() {
   return (
@@ -41,7 +61,7 @@ export default function Aliados() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}
         <Reveal>
-          <p className="text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
             Aliados
           </p>
         </Reveal>
@@ -56,48 +76,93 @@ export default function Aliados() {
         <Reveal delay={240}>
           <div className="mt-16 grid border-y border-white/10 md:grid-cols-[minmax(0,20rem)_1fr]">
             <div className="flex flex-col items-center justify-center gap-6 bg-white/[0.02] px-10 py-14">
+              {/* El rótulo que encabeza el bloque en el brochure. Antes esta
+                  columna era solo el logo y el nombre vivía al otro lado; en
+                  la página impresa van juntos, y así el logo deja de flotar
+                  sin pie. */}
+              <p className="text-center text-[0.72rem] font-normal uppercase tracking-[0.16em] text-bronze/90">
+                Diseño y visión arquitectónica
+              </p>
+              <p className="text-center font-serif text-2xl font-extralight tracking-tight text-white sm:text-3xl">
+                {ARCHITECT.name}
+              </p>
               {/* El logo ya trae el nombre de la firma tipografiado, así que
-                  no se repite como texto aparte debajo — antes, mientras
-                  estaba pendiente, sí hacía falta ese texto de respaldo. */}
+                  no se repite como texto aparte debajo. */}
               <ArchitectMark />
             </div>
 
             <div className="border-t border-bronze/40 px-0 py-12 md:border-l md:border-t-0 md:px-12 md:py-14">
-              <p className="text-[0.65rem] font-light uppercase tracking-[0.35em] text-bronze/80">
-                Arquitecto
+              <p className="max-w-2xl text-base font-normal leading-relaxed text-cuerpo xl:text-lg">
+                Una de las mentes más influyentes en la evolución del paisaje
+                urbano vertical y corporativo de{" "}
+                <span className="text-white/85">Cartagena</span>.{" "}
+                <span className="text-white/85">Malecón Business Center</span>{" "}
+                representa la culminación de su genialidad creativa y su amor
+                por la ciudad.
               </p>
-              <p className="mt-4 font-serif text-2xl font-extralight tracking-tight text-white sm:text-3xl">
-                {ARCHITECT.name}
-              </p>
-              <p className="mt-6 max-w-2xl text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
-                Líder e impulsor en la transformación del paisaje urbano
-                vertical y corporativo de{" "}
-                <span className="text-white/85">Cartagena de Indias</span>, el{" "}
-                <span className="text-white/85">{ARCHITECT.name}</span> imprime
-                en <span className="text-white/85">Malecón Business Center</span>{" "}
-                la cúspide de su trayectoria profesional, diseño vanguardista y
-                visión urbanística.
-              </p>
+
+              <div className="mt-8">
+                <p className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-bronze/90">
+                  Algunos de sus proyectos
+                </p>
+                {/* En fila y con el punto de bronce delante de cada nombre,
+                    no con filetes entre uno y otro: en el brochure es una
+                    línea corrida separada por barras, pero al reacomodarse la
+                    barra caía al principio del renglón siguiente, como si
+                    faltara un nombre antes. El punto es un marcador, no un
+                    separador, así que aguanta el salto de línea — y es el
+                    mismo que usan las demás listas del sitio. */}
+                <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2.5">
+                  {PROYECTOS.map((p) => (
+                    <li
+                      key={p}
+                      className="flex items-center gap-2.5 text-base font-normal leading-relaxed text-cuerpo"
+                    >
+                      <span
+                        aria-hidden
+                        className="h-1 w-1 shrink-0 rounded-full bg-bronze"
+                      />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </Reveal>
 
-        {/* ── Cierre ── */}
-        <Reveal delay={200}>
-          <div className="mx-auto mt-20 max-w-3xl space-y-5 text-center">
-            <p className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
-              Reunimos la trayectoria de reconocidos arquitectos, ingenieros y
-              especialistas de primer nivel para consolidar una propuesta de
-              oficinas e inversión inmobiliaria que combina solidez, innovación
-              y ubicación estratégica.
+        {/* ── Cierre: "Un proyecto construido sobre confianza" ── */}
+        <Reveal delay={200} variant="fade-up">
+          <div className="mx-auto mt-20 max-w-3xl text-center">
+            <h3 className="font-serif text-3xl font-extralight leading-[1.15] tracking-tight text-white sm:text-4xl">
+              Un proyecto construido sobre{" "}
+              <span className="font-light italic">confianza</span>
+            </h3>
+            <p className="mx-auto mt-6 max-w-2xl text-base font-normal leading-relaxed text-cuerpo xl:text-lg">
+              <span className="text-white/85">Malecón Business Center</span>{" "}
+              cuenta con el respaldo de un equipo de profesionales con amplia
+              trayectoria en el desarrollo de proyectos inmobiliarios de gran
+              escala.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base">
-              <span className="text-white/85">Malecón Business Center</span> es
-              la respuesta ejecutiva para empresas e inversionistas que buscan
-              posicionarse en uno de los desarrollos corporativos más ambiciosos
-              y de mayor valorización en{" "}
+            <p className="mx-auto mt-5 max-w-2xl text-base font-normal leading-relaxed text-cuerpo xl:text-lg">
+              Es la respuesta ejecutiva para empresas e inversionistas que
+              buscan posicionarse en uno de los desarrollos corporativos más
+              ambiciosos y de mayor valorización en{" "}
               <span className="text-white/85">Cartagena, Colombia</span>.
             </p>
+          </div>
+        </Reveal>
+
+        {/* ── Promotora — el pie de la página del brochure, sin la fiducia ──
+             La página impresa pone "Promotora" y "Fiducia" una al lado de la
+             otra; el cliente pidió expresamente dejar fuera el logo de
+             Alianza, así que queda sola. */}
+        <Reveal delay={320}>
+          <div className="mt-16 flex flex-col items-center gap-5 border-t border-white/10 pt-12">
+            <p className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-bronze/90">
+              Promotora
+            </p>
+            <Logo variant="stacked" className="h-20" />
           </div>
         </Reveal>
       </div>
