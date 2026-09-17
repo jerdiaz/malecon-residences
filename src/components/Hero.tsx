@@ -5,7 +5,7 @@ import ScrollCue from "@/components/ScrollCue";
 import Marquee from "@/components/ui/Marquee";
 
 const TICKER_ITEMS = [
-  "Marbella · Cartagena de Indias",
+  "Marbella, cerca al centro histórico",
   "Oficinas y Locales de Lujo",
   "Frente al Mar Caribe",
 ];
@@ -122,7 +122,7 @@ export default function Hero() {
           className="type-halo-strong mb-4 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
           style={{ animationDelay: "0.2s" }}
         >
-          Oficinas en Marbella, Cartagena de Indias
+          Oficinas en Marbella, cerca al centro histórico de Cartagena
         </p>
 
         <h1 className="type-halo max-w-5xl text-balance font-serif text-5xl font-extralight leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">

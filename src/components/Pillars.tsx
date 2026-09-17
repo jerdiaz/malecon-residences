@@ -23,7 +23,8 @@ const PANELS: Panel[] = [
   {
     id: "locales",
     heading: "Locales",
-    description: "Zonas comerciales premium en el epicentro de Marbella.",
+    description:
+      "Zonas comerciales premium en Marbella, cerca al centro histórico.",
     image: "/images/renders/locales-comerciales.webp",
     alt: "Locales comerciales del Malecón Business Center sobre la Avenida Santander, Cartagena de Indias",
   },
