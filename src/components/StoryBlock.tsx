@@ -54,7 +54,14 @@ export default function StoryBlock({
         <div className="order-1 flex items-center px-8 py-28 lg:order-none lg:items-start lg:px-16 xl:px-24">
           <div className="max-w-lg">
             <Reveal>
-              <p className="mb-6 text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze">
+              {/* El antetítulo dorado, el cuerpo blanco y el rótulo de la lista
+                  suben de cuerpo y de peso por pedido del 14 de septiembre
+                  ("letra dorada más grande al igual que la blanca"). Mismo
+                  tratamiento que el antetítulo del hero, que cumple este mismo
+                  papel: 0.8rem, peso 500 y el tracking de 0.45 a 0.2em — a
+                  0.45em las mayúsculas quedan tan sueltas que hay que
+                  reconstruir la palabra letra por letra. */}
+              <p className="mb-6 text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze">
                 {kicker}
               </p>
             </Reveal>
@@ -68,7 +75,12 @@ export default function StoryBlock({
                 {body.split("\n\n").map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-sm font-normal leading-relaxed text-cuerpo sm:text-base"
+                    // Un escalón completo arriba (sm→base, base→lg). El color
+                    // no se toca: `text-cuerpo` ya está en el techo de la
+                    // jerarquía tonal — ver la nota de la paleta en
+                    // tailwind.config.ts—, así que lo que queda para ganar
+                    // legibilidad es el cuerpo, no más blanco.
+                    className="text-base font-normal leading-relaxed text-cuerpo sm:text-lg"
                   >
                     {paragraph}
                   </p>
@@ -79,18 +91,21 @@ export default function StoryBlock({
             {bullets && (
               <Reveal delay={750} variant="fade-up">
                 <div className="mt-8">
-                  <p className="mb-4 text-[0.7rem] font-light uppercase tracking-[0.3em] text-bronze">
+                  <p className="mb-4 text-[0.78rem] font-medium uppercase tracking-[0.18em] text-bronze">
                     {bullets.label}
                   </p>
                   <ul className="space-y-2.5">
                     {bullets.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 text-sm font-normal leading-relaxed text-cuerpo sm:text-base"
+                        className="flex items-start gap-3 text-base font-normal leading-relaxed text-cuerpo sm:text-lg"
                       >
                         <span
                           aria-hidden
-                          className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-bronze"
+                          // El punto baja con el cuerpo: a `text-lg` la primera
+                          // línea arranca más abajo y con mt-2.5 quedaba pegado
+                          // al borde superior en vez de centrado con el renglón.
+                          className="mt-3 h-1 w-1 shrink-0 rounded-full bg-bronze"
                         />
                         {item}
                       </li>
