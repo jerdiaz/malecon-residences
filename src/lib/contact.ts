@@ -3,10 +3,11 @@
 //
 // Confirmados por el cliente: dirección y correo.
 //
-// El 2026-09-10 se retiró la dirección de la oficina comercial (Cra. 3
+// El 2026-09-10 se retiró la dirección de la OFICINA COMERCIAL (Cra. 3
 // #46-110, Piso 14, Barrio Marbella) por pedido del cliente: "la otra no va
 // más por ahora". Queda una sola dirección en todo el sitio, la del proyecto.
-// Si vuelve a hacer falta, está en el historial de git.
+// Si vuelve a hacer falta, está en el historial de git. No confundirlas: las
+// dos están en Marbella, pero la de abajo es la del lote.
 //
 // TODO: el teléfono +57 300 000 0000 es PLACEHOLDER — confirmado por el
 // cliente el 2026-09-06, todavía no hay número definitivo. El de WhatsApp se
@@ -16,7 +17,13 @@
 // Dirección del proyecto: la única que muestra el sitio. Partida en dos
 // porque el pie y Ubicación la reparten en dos renglones; `projectAddress`
 // las une para donde se necesite en una sola línea (mega menú, Google Maps).
-const projectStreet = "Av. Santander K 2A 49-246, Manzana 3";
+//
+// El barrio se sumó el 14 de septiembre por pedido del cliente ("completar con
+// MARBELLA"). Va dentro de `projectStreet` y no como campo aparte a propósito:
+// así entra también en el `streetAddress` del JSON-LD —schema.org no tiene
+// campo de barrio, y la convención es incluirlo en la calle— y de paso afina
+// la búsqueda de Google Maps, que hoy cae en la zona pero no clava el punto.
+const projectStreet = "Av. Santander K 2A 49-246, Manzana 3, Barrio Marbella";
 const projectCity = "Cartagena de Indias";
 const projectAddress = `${projectStreet}, ${projectCity}`;
 
