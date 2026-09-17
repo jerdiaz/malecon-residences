@@ -113,8 +113,8 @@ export default function Navbar() {
               ya iba justo con seis enlaces, en ese estado se aprieta el
               interlineado y el tamaño; en el hero se quedan como estaban. */}
           <ul
-            className={`hidden items-center transition-[gap] duration-500 ease-silk lg:flex ${
-              scrolled ? "gap-5 xl:gap-7" : "gap-6 xl:gap-10"
+            className={`hidden items-center gap-3 transition-[gap] duration-500 ease-silk lg:flex ${
+              scrolled ? "xl:gap-5" : "xl:gap-6"
             }`}
           >
             {NAV_LINKS.map((section) => {
@@ -129,10 +129,32 @@ export default function Navbar() {
                     // `transition-all` y no `transition-colors`: el tamaño y
                     // el tracking también cambian al encogerse el navbar, y
                     // sin esto saltaban de golpe mientras el fondo se fundía.
-                    className={`group relative whitespace-nowrap font-light uppercase transition-all duration-500 ease-silk ${
+                    //
+                    // El cliente pidió el 14 de septiembre letra más grande y
+                    // más gruesa ("si en el TV se ve pequeña, igual en el
+                    // celular"). Medido a 1024px, la barra no cabía ni como
+                    // estaba: los seis enlaces pedían 676px y el hueco entre el
+                    // logo apilado y el CTA es de 534. El desborde ya existía
+                    // —lo absorbía el flex encogiendo los bloques hasta dejar
+                    // cero separación—, así que subir el cuerpo sin más solo lo
+                    // empeoraba.
+                    //
+                    // Se resuelve por breakpoint. Hasta 1279 manda el espacio y
+                    // los dos estados comparten el mismo valor, apretado: 0.68rem
+                    // con 0.06em. Desde 1280 sobra pista y el cuerpo sube de
+                    // verdad —0.8rem en el hero, 0.76 en la barra compacta—, que
+                    // es donde se ve en un monitor o en el TV del cliente.
+                    //
+                    // Lo que paga el aumento es el tracking, no el ancho: 0.25em
+                    // sobre 52 caracteres eran 160px de puro aire entre letras,
+                    // y a estos cuerpos es lo que más estorba para leer.
+                    // El peso sube de 300 a 400, que Jost trae cargado de verdad
+                    // (ver layout.tsx) — `font-light` en una geométrica a 11px es
+                    // justamente lo que no se leía.
+                    className={`group relative whitespace-nowrap text-[0.68rem] font-normal uppercase tracking-[0.06em] transition-all duration-500 ease-silk ${
                       scrolled
-                        ? "text-[0.62rem] tracking-[0.18em]"
-                        : "text-[0.7rem] tracking-[0.25em]"
+                        ? "xl:text-[0.76rem] xl:tracking-[0.1em]"
+                        : "xl:text-[0.8rem] xl:tracking-[0.12em]"
                     } ${
                       isActive ? "text-champagne" : "text-white/90 hover:text-white"
                     }`}
@@ -153,10 +175,14 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <button
               onClick={() => handleNavigate("contact")}
-              className={`hidden whitespace-nowrap rounded-full border border-white/15 font-light uppercase text-white/90 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne md:inline-block ${
+              // Mismo criterio y mismo corte por breakpoint que los enlaces:
+              // más cuerpo y más peso, pagados con tracking. Va un punto por
+              // debajo de ellos a propósito — dentro de una cápsula, el mismo
+              // tamaño se lee más grande.
+              className={`hidden whitespace-nowrap rounded-full border border-white/15 font-normal uppercase text-white/90 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne md:inline-block ${
                 scrolled
-                  ? "px-4 py-1.5 text-[0.6rem] tracking-[0.16em]"
-                  : "px-6 py-2 text-[0.65rem] tracking-[0.25em]"
+                  ? "px-3.5 py-1.5 text-[0.66rem] tracking-[0.06em] xl:px-4 xl:text-[0.72rem] xl:tracking-[0.1em]"
+                  : "px-5 py-2 text-[0.7rem] tracking-[0.1em] xl:px-6 xl:text-[0.78rem] xl:tracking-[0.14em]"
               }`}
             >
               Agenda tu visita

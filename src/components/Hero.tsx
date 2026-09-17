@@ -119,7 +119,13 @@ export default function Hero() {
           // faltara velo — el color del texto es oscuro, y medirlo como si
           // fuera blanco fue el error. El halo lo resuelve sin tocar el
           // fotograma ni salirse del acento de marca.
-          className="type-halo-strong mb-4 animate-fade-in text-[0.65rem] font-light uppercase tracking-[0.45em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
+          // El 14 de septiembre el cliente lo pidió más grande y más grueso.
+          // Sube de 0.65 a 0.8rem y de peso 300 a 500 —Jost lleva los dos
+          // cargados—, y el tracking baja de 0.45em a 0.2em: a 0.45em las
+          // letras quedaban tan sueltas que había que reconstruir cada palabra,
+          // y encima estiraban la frase a 660px. Con el cuerpo nuevo mide menos
+          // que antes, así que en móvil ocupa las mismas dos líneas.
+          className="type-halo-strong mb-4 animate-fade-in text-[0.8rem] font-medium uppercase tracking-[0.2em] text-bronze opacity-0 [@media(min-height:780px)]:mb-8"
           style={{ animationDelay: "0.2s" }}
         >
           Oficinas en Marbella, cerca al centro histórico de Cartagena
