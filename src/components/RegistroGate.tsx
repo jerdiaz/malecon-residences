@@ -215,7 +215,7 @@ export default function RegistroGate() {
 
               <p className="mx-auto mt-5 max-w-md text-sm font-normal leading-relaxed text-cuerpo">
                 Regístrate y sé parte del grupo exclusivo que tendrá el
-                privilegio de descubrirlo antes que nadie.
+                privilegio de descubrirlo.
               </p>
 
               <form
