@@ -35,21 +35,33 @@ const ARCHITECT = {
   logo: "/images/aliados/fernandez-logo.svg" as string | null,
 };
 
-/** Los proyectos que nombra el brochure, en su mismo orden.
+/** Los proyectos que nombra el brochure, en dos renglones.
+ *
+ *  El orden ya no es el del brochure. Estefanía lo pidió el 2026-09-22: "los
+ *  dos últimos de primero y abajo los residenciales". Va primero lo corporativo
+ *  —que es lo que este proyecto vende— y debajo lo residencial.
+ *
+ *  Son dos listas y no una sola reordenada porque "abajo" pide un renglón
+ *  propio: con un único `flex-wrap` el corte cae donde alcance el ancho, y en
+ *  pantallas anchas los residenciales subirían a la misma línea.
  *
  *  Ojo con el historial: en septiembre se quitó de esta sección un portafolio
  *  del arquitecto agrupado por categorías (Oficinas y comercio / Desarrollos
- *  residenciales y mixtos) a pedido del cliente. Esto NO es aquello: es la
- *  línea suelta que el propio brochure trae bajo la semblanza, y entra ahora
- *  porque el cliente pidió calcar esa página. */
-const PROYECTOS = [
+ *  residenciales y mixtos) a pedido del cliente. Por eso los grupos van SIN
+ *  rótulo: se separan por posición, que es lo que se pidió, y no se reintroduce
+ *  el encabezado que se retiró. Esto NO es aquel portafolio: es la línea suelta
+ *  que el propio brochure trae bajo la semblanza. */
+const PROYECTOS_CORPORATIVOS = [
+  "Torre empresarial Grupo Área",
+  "Murano Trade Center",
+];
+
+const PROYECTOS_RESIDENCIALES = [
   "Murano Centro",
   "Ravello",
   "Claro de Luna",
   "Bella Luna",
   "Náutica",
-  "Torre empresarial Grupo Área",
-  "Murano Trade Center",
 ];
 
 export default function Aliados() {
@@ -112,20 +124,29 @@ export default function Aliados() {
                     faltara un nombre antes. El punto es un marcador, no un
                     separador, así que aguanta el salto de línea — y es el
                     mismo que usan las demás listas del sitio. */}
-                <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2.5">
-                  {PROYECTOS.map((p) => (
-                    <li
-                      key={p}
-                      className="flex items-center gap-2.5 text-base font-normal leading-relaxed text-cuerpo"
-                    >
-                      <span
-                        aria-hidden
-                        className="h-1 w-1 shrink-0 rounded-full bg-bronze"
-                      />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-4 space-y-2.5">
+                  {[PROYECTOS_CORPORATIVOS, PROYECTOS_RESIDENCIALES].map(
+                    (grupo) => (
+                      <ul
+                        key={grupo[0]}
+                        className="flex flex-wrap items-center gap-x-6 gap-y-2.5"
+                      >
+                        {grupo.map((p) => (
+                          <li
+                            key={p}
+                            className="flex items-center gap-2.5 text-base font-normal leading-relaxed text-cuerpo"
+                          >
+                            <span
+                              aria-hidden
+                              className="h-1 w-1 shrink-0 rounded-full bg-bronze"
+                            />
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
+                    ),
+                  )}
+                </div>
               </div>
             </div>
           </div>
