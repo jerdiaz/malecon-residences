@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import Logo from "@/components/Logo";
 
@@ -9,9 +10,12 @@ import Logo from "@/components/Logo";
 //
 // El cliente pidió el 14 de septiembre que esta sección quedara igual que esa
 // página ("esta la cambiamos, debe quedar igual que el brochure"), con una
-// excepción explícita: SIN el logo de Alianza Fiduciaria. Por eso abajo va
-// solo la promotora. Si algún día entra la fiducia, el bloque de promotora ya
-// está armado para recibir una segunda firma al lado.
+// excepción explícita: SIN el logo de Alianza Fiduciaria.
+//
+// El 22 de septiembre entró un segundo crédito, Promociones 0803 como
+// estratega inmobiliario, así que el pie dejó de ser una firma centrada y pasó
+// a ser una fila. La fiducia sigue fuera; cuando llegue su logo, es sumar una
+// entrada más a CREDITOS y la fila se reacomoda sola.
 //
 // Distinto de "Marcas que han confiado en nosotros" (componente Partners, hoy
 // oculto).
@@ -34,6 +38,32 @@ const ARCHITECT = {
   /** Ruta del logo dentro de /public. `null` mientras no lo tengamos. */
   logo: "/images/aliados/fernandez-logo.svg" as string | null,
 };
+
+/** El pie de la sección: quién es quién en el proyecto.
+ *
+ *  El logo de Promociones 0803 llegó en negro sobre blanco, que sobre el fondo
+ *  oscuro de esta sección desaparecía. Se recoloreó la palabra a crema
+ *  (#f5f2ec) dejando la P en su rojo de marca (#e51c22), que es el elemento
+ *  que identifica al logo y sobre el fondo oscuro se lee sin problema. Mismo
+ *  criterio que ya se usó con el logo del arquitecto. La textura desgastada
+ *  del original vive en el canal alfa, no en el color, así que recolorear el
+ *  RGB conservando ese alfa la deja intacta.
+ *
+ *  Falta la fiducia (Alianza): el logo que publican hoy en su web es la
+ *  versión "40 años", branding conmemorativo que no conviene en un sitio de
+ *  larga vida, y el lockup "Alianza Fiduciaria" del brochure ya no lo usan.
+ *  Hay que pedirle el archivo al cliente. */
+const CREDITOS = [
+  { rol: "Promotora", tipo: "logo-sitio" as const },
+  {
+    rol: "Estratega inmobiliario",
+    tipo: "imagen" as const,
+    src: "/images/aliados/promociones-0803.webp",
+    alt: "Logo de Promociones 0803, estratega inmobiliario del proyecto",
+    width: 800,
+    height: 361,
+  },
+];
 
 /** Los proyectos que nombra el brochure, en dos renglones.
  *
@@ -174,16 +204,31 @@ export default function Aliados() {
           </div>
         </Reveal>
 
-        {/* ── Promotora — el pie de la página del brochure, sin la fiducia ──
-             La página impresa pone "Promotora" y "Fiducia" una al lado de la
-             otra; el cliente pidió expresamente dejar fuera el logo de
-             Alianza, así que queda sola. */}
+        {/* ── Créditos — el pie de la página del brochure, que pone los roles
+             uno al lado del otro. Apilados en móvil, en fila desde sm. */}
         <Reveal delay={320}>
-          <div className="mt-16 flex flex-col items-center gap-5 border-t border-white/10 pt-12">
-            <p className="rotulo text-bronze">
-              Promotora
-            </p>
-            <Logo variant="stacked" className="h-20" />
+          <div className="mt-16 border-t border-white/10 pt-12">
+            <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-20">
+              {CREDITOS.map((c) => (
+                <div
+                  key={c.rol}
+                  className="flex flex-col items-center gap-5"
+                >
+                  <p className="rotulo text-center text-bronze">{c.rol}</p>
+                  {c.tipo === "logo-sitio" ? (
+                    <Logo variant="stacked" className="h-20" />
+                  ) : (
+                    <Image
+                      src={c.src}
+                      alt={c.alt}
+                      width={c.width}
+                      height={c.height}
+                      className="h-20 w-auto"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
