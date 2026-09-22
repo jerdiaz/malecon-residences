@@ -149,7 +149,21 @@ export default function LocationSection() {
           className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-0 lg:h-screen"
           style={{ backgroundColor: MAPA_MAR }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-4">
+          {/* `lg:pt-32` deja libre la franja de la barra fija. El panel se pega
+              en top-0, asi que sin esto la parte superior del mapa quedaba bajo
+              el header: la barra es transparente y el mapa se transparentaba a
+              traves, pero el logo y el menu caian justo encima del Mar Caribe,
+              la brujula y la etiqueta de Kristal Malls.
+              Son 8rem y no la constante de 80px que usa el resto del sitio
+              (`scroll-mt-20`, `offset = 80` en sections.ts) porque esa
+              constante se quedo corta: el header mide 133px estables mientras
+              este panel esta pegado, medido a 1024, 1440 y 1920. Y como el
+              sitio define el rem en 17.6px, `pt-32` son 140.8px reales: libra
+              los 133 con holgura y el mapa pierde solo 6px de alto respecto a
+              su tamano maximo.
+              Solo desde lg, que es donde el panel es pegajoso; en movil va en
+              flujo normal y la barra no lo pisa. */}
+          <div className="absolute inset-0 flex items-center justify-center p-4 lg:pt-32">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={MAPA_CONEXIONES_SRC}
