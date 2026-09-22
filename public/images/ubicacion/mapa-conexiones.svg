@@ -1936,16 +1936,20 @@
        es el nombre de un accidente geografico, no un destino de la lista.
        Al final del documento para que quede por encima del rect del mar. -->
   <text transform="translate(470 96)" fill="#1b3053" font-family="Georgia-Italic, Georgia" font-size="13" font-style="italic" letter-spacing="2.2"><tspan x="0" y="0">Mar Caribe</tspan></text>
-  <!-- Brujula esquinera, pedida el 14 de septiembre. Trazo fino en el mismo
-       navy de las etiquetas y aguja con la mitad norte solida, que es la
-       convencion cartografica: no hace falta rotular los cuatro puntos. Va
-       sobre el mar, en la esquina libre, encima del rotulo del Caribe. -->
-  <g transform="translate(487 52)" fill="none" stroke="#1b3053" stroke-width=".8">
-    <circle r="17" stroke-opacity=".35"/>
-    <line x1="-17" y1="0" x2="-13" y2="0" stroke-opacity=".35"/>
-    <line x1="17" y1="0" x2="13" y2="0" stroke-opacity=".35"/>
-    <polygon points="0,-13 4,0 0,13 -4,0" stroke-opacity=".45"/>
-    <polygon points="0,-13 4,0 -4,0" fill="#1b3053" stroke="none"/>
+  <!-- Brujula esquinera, pedida el 14 de septiembre. Va sobre el mar, en la
+       esquina libre, encima del rotulo del Caribe.
+       Iba en el mismo navy de las etiquetas, que sobre el azul del mar
+       (#6ea9d2) contrastaba poco y la dejaba casi invisible. Pasa a blanco y
+       rojo, que ademas es la convencion cartografica: aguja con la mitad norte
+       en rojo y la sur en blanco, asi no hace falta rotular los cuatro puntos.
+       El rojo es el #e84648 que ya usa la leyenda, no un color nuevo. -->
+  <g transform="translate(487 52)" fill="none" stroke="#fff" stroke-width=".8">
+    <circle r="17" stroke-opacity=".6"/>
+    <line x1="-17" y1="0" x2="-13" y2="0" stroke-opacity=".6"/>
+    <line x1="17" y1="0" x2="13" y2="0" stroke-opacity=".6"/>
+    <!-- La aguja entera en blanco; encima, la mitad norte en rojo. -->
+    <polygon points="0,-13 4,0 0,13 -4,0" fill="#fff" stroke="none"/>
+    <polygon points="0,-13 4,0 -4,0" fill="#e84648" stroke="none"/>
   </g>
-  <text transform="translate(487 30)" text-anchor="middle" fill="#1b3053" font-family="Georgia-Bold, Georgia" font-size="7.5" font-weight="700"><tspan x="0" y="0">N</tspan></text>
+  <text transform="translate(487 30)" text-anchor="middle" fill="#fff" font-family="Georgia-Bold, Georgia" font-size="7.5" font-weight="700"><tspan x="0" y="0">N</tspan></text>
 </svg>
