@@ -9,10 +9,17 @@
 // Si vuelve a hacer falta, está en el historial de git. No confundirlas: las
 // dos están en Marbella, pero la de abajo es la del lote.
 //
-// TODO: el teléfono +57 300 000 0000 es PLACEHOLDER — confirmado por el
-// cliente el 2026-09-06, todavía no hay número definitivo. El de WhatsApp se
-// mantiene igual al teléfono, así que hereda el mismo pendiente: hoy el botón
-// flotante abre un chat con un número que no existe.
+// Las dos líneas oficiales, entregadas por el cliente el 2026-09-22. Sustituyen
+// al placeholder +57 300 000 0000, que estuvo en producción hasta hoy y hacía
+// que el botón de WhatsApp abriera un chat con un número inexistente.
+//
+// Van las dos a la vista, por pedido del cliente ("los dos que salgan en el
+// footer").
+//
+// TODO: falta definir CUÁL de las dos atiende WhatsApp; el cliente lo dirá.
+// Mientras tanto `whatsappNumber` apunta a la primera — provisional, pero un
+// número real y atendido es mejor que el que no existía. Cuando lo confirme,
+// se cambia esa sola línea.
 
 // Dirección del proyecto: la única que muestra el sitio. Partida en dos
 // porque el pie y Ubicación la reparten en dos renglones; `projectAddress`
@@ -27,10 +34,18 @@ const projectStreet = "Av. Santander K 2A 49-246, Manzana 3, Barrio Marbella";
 const projectCity = "Cartagena de Indias";
 const projectAddress = `${projectStreet}, ${projectCity}`;
 
+/** Las dos líneas, en el orden en que se muestran. */
+const phones = [
+  { display: "+57 324 583 3087", tel: "+573245833087" },
+  { display: "+57 324 583 3148", tel: "+573245833148" },
+] as const;
+
 export const CONTACT = {
-  phoneDisplay: "+57 300 000 0000",
-  phoneTel: "+573000000000",
-  whatsappNumber: "573000000000",
+  phones,
+  // Para los sitios donde solo cabe una (el icono de llamar del pie).
+  phoneDisplay: phones[0].display,
+  phoneTel: phones[0].tel,
+  whatsappNumber: "573245833087",
   whatsappMessage: "Hola, me interesa Malecón Business Center.",
   email: "info@maleconbusiness.com",
   projectStreet,

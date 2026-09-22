@@ -202,14 +202,20 @@ export default function Contact() {
           </div>
           <div>
             <p className="rotulo mb-3 text-bronze">
-              Teléfono
+              {CONTACT.phones.length > 1 ? "Teléfonos" : "Teléfono"}
             </p>
-            <a
-              href={`tel:${CONTACT.phoneTel}`}
-              className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
-            >
-              {CONTACT.phoneDisplay}
-            </a>
+            {/* Las dos líneas oficiales, cada una con su enlace de llamada. */}
+            <div className="flex flex-col gap-1">
+              {CONTACT.phones.map((t) => (
+                <a
+                  key={t.tel}
+                  href={`tel:${t.tel}`}
+                  className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
+                >
+                  {t.display}
+                </a>
+              ))}
+            </div>
           </div>
           <div>
             <p className="rotulo mb-3 text-bronze">

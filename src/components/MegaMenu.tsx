@@ -16,7 +16,12 @@ const MENU_LINKS = [
 
 const INFO_ITEMS = [
   { label: "Dirección",  value: CONTACT.projectAddress },
-  { label: "Teléfono",   value: CONTACT.phoneDisplay },
+  {
+    label: CONTACT.phones.length > 1 ? "Teléfonos" : "Teléfono",
+    // Caben las dos en un renglón a 0.75rem; el separador es el mismo
+    // punto medio que usa el resto del sitio.
+    value: CONTACT.phones.map((t) => t.display).join("  ·  "),
+  },
   { label: "Email",      value: CONTACT.email },
   { label: "Entrega",    value: "2026 · Espacios exclusivos" },
 ];

@@ -25,7 +25,8 @@ Bing Webmaster Tools.
 
 ## Fugas de conversión activas
 
-El sitio tiene hoy tres vías de contacto visibles. **Ninguna funciona.**
+El sitio tiene hoy tres vías de contacto visibles. El teléfono ya es real
+(punto 3); **las otras dos siguen sin funcionar.**
 
 ### 2. El formulario no envía nada
 
@@ -45,10 +46,14 @@ Arrastra consigo:
 A favor: el sitio no tiene analítica, cookies ni píxeles de rastreo
 (verificado), así que la política será corta y podrá ser honesta.
 
-### 3. El teléfono es un placeholder
+### 3. ~~El teléfono es un placeholder~~ — RESUELTO el 2026-09-22
 
-`+57 300 000 0000`, en `src/lib/contact.ts`. El botón flotante de WhatsApp
-hereda ese número, así que abre un chat con una cuenta que no existe.
+El cliente entregó las dos líneas oficiales: `+57 324 583 3087` y
+`+57 324 583 3148`. Las dos se muestran en el pie y en el mega menú, y ya
+entran como `telephone` en los datos estructurados.
+
+Queda un fleco: falta definir **cuál de las dos atiende WhatsApp**. Mientras
+tanto el botón flotante apunta a la primera.
 
 ### 4. Los perfiles de redes apuntan a los dominios pelados
 
@@ -103,5 +108,6 @@ Twitter Card · `robots.txt` con sitemap y agentes de IA · `sitemap.xml` con 35
 URL y 70 imágenes · `llms.txt` · título, descripción, H1 y migas propios en las
 33 fichas · datos estructurados (WebSite, Organization, Place, BreadcrumbList,
 ImageObject) · jerarquía de encabezados sin saltos · alt descriptivo en los
-renders · página 404 propia · video del hero diferido · keyword en título,
+renders · página 404 propia · video del hero diferido · teléfonos reales en el pie,
+el mega menú y el JSON-LD · keyword en título,
 descripción, primer texto, primer H2 y nombre del póster.

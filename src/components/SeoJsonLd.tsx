@@ -6,8 +6,8 @@ import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
  *
  * Se declara solo lo que se puede sostener. Quedan fuera a propósito:
  *
- *   · `telephone` — hoy es un placeholder (ver contact.ts). Publicarlo aquí lo
- *     mete en el grafo de conocimiento de Google como si fuera real.
+ *   · `sameAs` — los perfiles de redes todavía apuntan a los dominios pelados
+ *     (ver SocialLinks.tsx), así que no hay nada real que enlazar.
  *   · `geo` — las coordenadas que traía el mapa embebido nunca se verificaron
  *     contra la dirección, y una lat/lon equivocada manda a la gente a otro
  *     punto de la ciudad.
@@ -35,6 +35,10 @@ export default function SeoJsonLd() {
         name: SITE_NAME,
         url: SITE_URL,
         email: CONTACT.email,
+        // Se publican desde el 2026-09-22, cuando el cliente entregó las dos
+        // líneas oficiales. Antes quedaban fuera a propósito: el número era un
+        // placeholder y declararlo lo metía en el grafo de Google como real.
+        telephone: CONTACT.phones.map((t) => t.tel),
         logo: `${SITE_URL}/icon-fallback.png`,
         image: `${SITE_URL}${SITE_OG_IMAGE}`,
         address: {
