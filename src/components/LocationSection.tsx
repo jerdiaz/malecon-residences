@@ -1,4 +1,5 @@
 import { CONTACT } from "@/lib/contact";
+import MapaAmpliable from "@/components/MapaAmpliable";
 
 // Reemplazan a la grilla de "Distancias clave", que anunciaba minutos y
 // kilómetros que nadie había verificado. Esta lista la entregó el cliente y
@@ -181,15 +182,20 @@ export default function LocationSection() {
               Queda un relleno mínimo para que el mapa no apoye en los bordes y
               se lea como cortado. Solo desde lg, que es donde el panel es
               pegajoso; en móvil va en flujo normal y la barra no lo pisa. */}
-          <div className="absolute inset-0 flex items-center justify-center p-4 lg:px-4 lg:py-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={MAPA_CONEXIONES_SRC}
-              alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
-              loading="lazy"
-              className="h-full w-full object-contain"
-            />
-          </div>
+          {/* El mapa se abre en grande al tocarlo, con el mismo visor que el
+              plano de Plantas. En móvil hace falta de verdad: este panel es
+              16/9, pero el mapa es MÁS ALTO QUE ANCHO (0.92, según su
+              viewBox), así que con `object-contain` lo que queda en pantalla
+              son unos 162x176 —una infografía con ocho pines, sus etiquetas y
+              una leyenda, a 176px de alto—. En el visor pasa a 567x617.
+
+              El `<img>` con su alt largo sigue dentro: se mueve de sitio, no
+              se sustituye. Y el panel sigue sirviéndose desde un componente
+              de servidor; lo único que viaja al navegador es el botón. */}
+          <MapaAmpliable
+            src={MAPA_CONEXIONES_SRC}
+            alt="Mapa de conectividad de Malecón Business Center con la zona hotelera, zonas francas, centros comerciales, centros de convención y zonas residenciales cercanas"
+          />
         </div>
       </div>
     </section>
