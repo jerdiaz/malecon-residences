@@ -18,7 +18,7 @@ export default function Plantas() {
   const plano = nivel.planos[0];
 
   return (
-    <section id="plantas" className="relative w-full bg-ink scroll-mt-20">
+    <section id="plantas" className="relative w-full bg-ink scroll-mt-16">
       <div className="mx-auto max-w-7xl px-6 md:px-12 aire-seccion-arriba">
         <Reveal>
           <p className="antetitulo text-bronze">
@@ -33,7 +33,7 @@ export default function Plantas() {
         </Reveal>
       </div>
 
-      <div className="relative mt-16">
+      <div className="relative mt-10">
         {/* Plano general - ancho completo */}
         <div className="relative mx-auto max-w-7xl px-6 md:px-12">
           <div className="relative">
@@ -42,10 +42,31 @@ export default function Plantas() {
               aria-label={`Ampliar ${plano.label}`}
               className="w-full cursor-zoom-in"
             >
+              {/* `aspectRatio` reserva el hueco del plano antes de que cargue.
+                  El SVG solo declara `viewBox`, sin ancho ni alto, así que no
+                  tiene tamaño intrínseco: hasta que la imagen no llega, este
+                  contenedor medía 0 y el `h-full` de dentro resolvía a 0
+                  también. Con la proporción declarada de antemano el hueco
+                  existe desde el primer pintado, así que no hay salto de
+                  maquetación cuando entra el archivo —que pesa 2.2 MB— y la
+                  sección mide lo mismo antes y después.
+
+                  El alto medido con el hueco reservado es 750px, y sin él la
+                  sección marcaba 379 (nada) contra 1110 (con el plano). Por
+                  eso el tope de abajo hace falta.
+
+                  `maxHeight: 52svh` es lo que hace que la sección quepa en una
+                  pantalla: con el plano a 750px se iba a 1.3 pantallas; con el
+                  tope cae a ~765px y entra entera. Encoger el plano cuesta
+                  menos de lo que parece, porque aquí es un anticipo: se hace
+                  clic y se abre en el visor a tamaño completo, así que lo que
+                  importa es que se reconozca, no que se lea. */}
               <span
                 className="block mx-auto"
                 style={{
                   maxWidth: `${plano.escala * 100}%`,
+                  aspectRatio: plano.aspecto,
+                  maxHeight: "52svh",
                 }}
               >
                 <PlanoImg plano={plano} />
