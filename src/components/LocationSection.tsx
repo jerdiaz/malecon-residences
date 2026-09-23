@@ -80,11 +80,17 @@ export default function LocationSection() {
           </p>
 
           {/* Conexiones estratégicas — lista de filas con filete, el mismo
-              idioma que usan Plantas y la galería. Se probó a dos columnas y
-              a 1024px cada celda quedaba de 168px: cuatro y cinco renglones
-              por destino, con filas de alturas dispares. El filete de cierre
-              va en el contenedor: cada fila solo lleva el de arriba. */}
-          <div className="mt-10 max-w-lg">
+              idioma que usan Plantas y la galería. El filete de cierre va en
+              el contenedor: cada fila solo lleva el de arriba.
+
+              SE PROBÓ a dos columnas desde `xl` para recortar los 445px que
+              mide apilada, que es la pieza más cara de la sección, y salió
+              peor: la columna de texto es el 43% del ancho, o sea 613px a
+              1440, así que cada celda queda en ~285px y los nueve destinos
+              pasan a dos y tres renglones. La lista seguía midiendo 434px y la
+              sección subía de 1476 a 1568. Medido, no supuesto — no volver a
+              intentarlo sin ensanchar antes la columna. */}
+          <div className="mt-8 max-w-lg">
             <p className="rotulo mb-5 text-bronze">
               Conexiones estratégicas
             </p>
@@ -105,8 +111,14 @@ export default function LocationSection() {
             </div>
           </div>
 
-          {/* Dirección del proyecto + Google Maps */}
-          <div className="mt-10">
+          {/* Dirección del proyecto + Google Maps.
+              SE PROBÓ a poner el botón al lado de la dirección en vez de
+              debajo, para ahorrar el hueco vertical entre los dos. También
+              salió peor: el bloque pasó de 215px a 335. La dirección lleva
+              barrio y ciudad y no cabe junto a un botón de 280px en una
+              columna de 613, así que los dos se parten y el bloque acaba más
+              alto que apilado. Medido, no supuesto. */}
+          <div className="mt-8">
             <p className="rotulo mb-4 text-bronze">
               Ubicación
             </p>
