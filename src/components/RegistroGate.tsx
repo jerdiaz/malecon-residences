@@ -260,7 +260,16 @@ export default function RegistroGate() {
                   inputMode="tel"
                 />
 
-                <label className="flex cursor-pointer items-start gap-3 sm:col-span-2">
+                {/* La casilla medía 15x15 en un teléfono. Es la autorización
+                    de tratamiento de datos —obligatoria, y lo primero que ve
+                    todo el mundo al entrar al sitio—, así que conviene que se
+                    vea si está marcada y que no haya que apuntar.
+
+                    22px de caja visible, y el área que responde al toque es la
+                    etiqueta entera (322x64), porque el input va dentro de ella.
+                    El `py-2` asegura los 44 de alto aunque el texto quepa en
+                    un solo renglón en una pantalla ancha. */}
+                <label className="flex cursor-pointer items-start gap-3 py-2 sm:col-span-2">
                   <input
                     type="checkbox"
                     name="autorizacion"
@@ -268,7 +277,7 @@ export default function RegistroGate() {
                     checked={autoriza}
                     onChange={(e) => setAutoriza(e.target.checked)}
                     required
-                    className="mt-0.5 h-3.5 w-3.5 shrink-0 cursor-pointer accent-bronze"
+                    className="mt-px h-[22px] w-[22px] shrink-0 cursor-pointer accent-bronze"
                   />
                   <span className="text-xs font-light leading-relaxed text-apoyo">
                     Autorizo a Malecón Business Center el tratamiento de mis
@@ -331,14 +340,14 @@ export default function RegistroGate() {
                           setClave("");
                           setErrorClave(null);
                         }}
-                        className="text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/40 transition-colors duration-300 hover:text-champagne"
+                        className="inline-flex min-h-[44px] items-center text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/40 transition-colors duration-300 hover:text-champagne"
                       >
                         Volver
                       </button>
                       <button
                         type="submit"
                         disabled={verificando}
-                        className="text-[0.65rem] font-light uppercase tracking-[0.25em] text-champagne underline-offset-8 transition-colors duration-300 hover:text-white hover:underline disabled:cursor-wait disabled:opacity-60"
+                        className="inline-flex min-h-[44px] items-center text-[0.65rem] font-light uppercase tracking-[0.25em] text-champagne underline-offset-8 transition-colors duration-300 hover:text-white hover:underline disabled:cursor-wait disabled:opacity-60"
                       >
                         {verificando ? "Verificando…" : "Entrar →"}
                       </button>
@@ -353,7 +362,7 @@ export default function RegistroGate() {
                   <button
                     type="button"
                     onClick={() => setModoEquipo(true)}
-                    className="text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/35 underline-offset-8 transition-colors duration-300 hover:text-champagne hover:underline"
+                    className="inline-flex min-h-[44px] items-center text-[0.6rem] font-light uppercase tracking-[0.25em] text-white/35 underline-offset-8 transition-colors duration-300 hover:text-champagne hover:underline"
                   >
                     Acceso interno
                   </button>
@@ -411,7 +420,10 @@ function Campo({
           inputMode={inputMode}
           autoFocus={autoFocus}
           required
-          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
+          // `pt-2` además del `pb-3`: sin él el campo medía 41px de alto,
+          // tres por debajo del mínimo táctil. El filete sigue abajo; lo
+          // que cambia es que el renglón respira.
+          className="peer w-full border-b border-white/15 bg-transparent pb-3 pt-2 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
         />
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
       </div>
