@@ -196,6 +196,40 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
+            {/* Contacto directo — SOLO en móvil. En escritorio estos mismos
+                datos viven en la columna de la derecha del menú, que es
+                `hidden lg:flex`: o sea que estaban donde el pie de la página
+                queda a un scroll, y faltaban donde el pie está a 15.000px.
+
+                Van en el PIE del menú y no en el cuerpo a propósito: el cuerpo
+                se desplaza —seis enlaces a 80px no caben en una pantalla
+                corta— y esto es lo que no debería haber que buscar. El pie no
+                se mueve.
+
+                Y son enlaces de verdad: tocar el número marca, tocar el correo
+                abre el correo. Cada fila mide 44px de alto, que es el mínimo
+                táctil; en el pie de la página estos mismos datos miden 26. */}
+            <div className="mb-6 lg:hidden">
+              <p className="rotulo mb-1 text-bronze">Contacto directo</p>
+              <div className="flex flex-col">
+                {CONTACT.phones.map((t) => (
+                  <a
+                    key={t.tel}
+                    href={`tel:${t.tel}`}
+                    className="flex min-h-[44px] items-center text-base font-normal tracking-wide text-cuerpo transition-colors duration-300 hover:text-champagne active:text-champagne"
+                  >
+                    {t.display}
+                  </a>
+                ))}
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="flex min-h-[44px] items-center text-base font-normal tracking-wide text-cuerpo transition-colors duration-300 hover:text-champagne active:text-champagne"
+                >
+                  {CONTACT.email}
+                </a>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-2 text-[0.6rem] font-light uppercase tracking-[0.2em] text-white/30 sm:flex-row sm:justify-between">
               <span>Marbella · Cartagena de Indias · Colombia</span>
               <span>© {new Date().getFullYear()} Malecón Business Center — Todos los derechos reservados</span>
