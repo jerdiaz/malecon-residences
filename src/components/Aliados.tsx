@@ -53,18 +53,24 @@ const ARCHITECT = {
  *  versión "40 años", branding conmemorativo que no conviene en un sitio de
  *  larga vida, y el lockup "Alianza Fiduciaria" del brochure ya no lo usan.
  *  Hay que pedirle el archivo al cliente. */
-const PROMOTORA = { rol: "Promotora" };
-
-/** Los demás roles del proyecto. Van debajo de la promotora y a menos tamaño.
+/** Los roles del proyecto, uno al lado del otro.
+ *
+ *  `alto` es por crédito y no común a todos a propósito: a la misma altura, el
+ *  lockup de Promociones 0803 mide 195px de ancho contra los 153 de Malecón, y
+ *  encima es una condensada sólida con una P roja frente a un trazo fino en
+ *  crema. Igualar alturas hacía pesar más al aliado que a la promotora.
  *
  *  Cuando entre la fiducia (Alianza) se suma aquí y la fila se reacomoda sola. */
-const CREDITOS_SECUNDARIOS = [
+const CREDITOS = [
+  { rol: "Promotora", tipo: "logo-sitio" as const, alto: "h-20" },
   {
     rol: "Estratega inmobiliario",
+    tipo: "imagen" as const,
     src: "/images/aliados/promociones-0803.webp",
     alt: "Logo de Promociones 0803, estratega inmobiliario del proyecto",
     width: 800,
     height: 361,
+    alto: "h-12",
   },
 ];
 
@@ -219,22 +225,27 @@ export default function Aliados() {
              por tamaño, no solo por el rótulo. */}
         <Reveal delay={320}>
           <div className="mt-10 border-t border-white/10 pt-10">
-            <div className="flex flex-col items-center gap-5">
-              <p className="rotulo text-center text-bronze">{PROMOTORA.rol}</p>
-              <Logo variant="stacked" className="h-20" />
-            </div>
-
-            <div className="mt-12 flex flex-col items-center justify-center gap-10 sm:flex-row sm:gap-16">
-              {CREDITOS_SECUNDARIOS.map((c) => (
-                <div key={c.rol} className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-20">
+              {CREDITOS.map((c) => (
+                <div key={c.rol} className="flex flex-col items-center gap-5">
                   <p className="rotulo text-center text-bronze">{c.rol}</p>
-                  <Image
-                    src={c.src}
-                    alt={c.alt}
-                    width={c.width}
-                    height={c.height}
-                    className="h-12 w-auto"
-                  />
+                  {/* Caja de alto común: cada logo se centra dentro, así los
+                      rótulos quedan alineados entre sí aunque las marcas vayan
+                      a distinto tamaño. Sin ella, el crédito más chico
+                      arrastraría su rótulo hacia arriba. */}
+                  <div className="flex h-20 items-center">
+                    {c.tipo === "logo-sitio" ? (
+                      <Logo variant="stacked" className={c.alto} />
+                    ) : (
+                      <Image
+                        src={c.src}
+                        alt={c.alt}
+                        width={c.width}
+                        height={c.height}
+                        className={`${c.alto} w-auto`}
+                      />
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
