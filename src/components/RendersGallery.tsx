@@ -83,7 +83,13 @@ export default function RendersGallery() {
         <Reveal delay={700}>
           <Link
             href="/galeria"
-            className="group mt-5 inline-flex items-center gap-3 text-[0.72rem] font-normal uppercase tracking-[0.16em] text-white/85 transition-colors duration-300 ease-silk hover:text-champagne"
+            // `min-h-[44px]` con `mt-3` en vez de `mt-5`: medído en un
+            // teléfono, este enlace tenía 24px de alto —es el único camino a
+            // la galería completa y se quedaba a 20px del mínimo táctil—. La
+            // caja crece hacia arriba y hacia abajo por igual, así que el
+            // margen de arriba baja lo mismo para que el filete se quede
+            // donde estaba.
+            className="group mt-3 inline-flex min-h-[44px] items-center gap-3 text-[0.72rem] font-normal uppercase tracking-[0.16em] text-white/85 transition-colors duration-300 ease-silk hover:text-champagne"
           >
             <span className="border-b border-white/25 pb-1 transition-colors duration-300 group-hover:border-bronze">
               Ver galería completa

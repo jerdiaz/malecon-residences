@@ -204,13 +204,20 @@ export default function Contact() {
             <p className="rotulo mb-3 text-bronze">
               {CONTACT.phones.length > 1 ? "Teléfonos" : "Teléfono"}
             </p>
-            {/* Las dos líneas oficiales, cada una con su enlace de llamada. */}
+            {/* Las dos líneas oficiales, cada una con su enlace de llamada.
+
+                `min-h-[44px]`: medídas en un teléfono, estas filas tenían 26px
+                de alto. Son el enlace que MARCA —lo más parecido a un botón de
+                conversión que tiene el pie— y se quedaban a 18px del mínimo
+                táctil de 44. El texto no cambia de tamaño: lo que crece es la
+                zona que responde al dedo, que va a todo el ancho de la columna
+                porque el pie ya está centrado. */}
             <div className="flex flex-col gap-1">
               {CONTACT.phones.map((t) => (
                 <a
                   key={t.tel}
                   href={`tel:${t.tel}`}
-                  className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
+                  className="flex min-h-[44px] items-center justify-center text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne active:text-champagne"
                 >
                   {t.display}
                 </a>
@@ -221,9 +228,10 @@ export default function Contact() {
             <p className="rotulo mb-3 text-bronze">
               Correo
             </p>
+            {/* Mismo caso que los teléfonos: medía 25px. */}
             <a
               href={`mailto:${CONTACT.email}`}
-              className="text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne"
+              className="flex min-h-[44px] items-center justify-center text-base font-normal text-apoyo transition-colors duration-300 hover:text-champagne active:text-champagne"
             >
               {CONTACT.email}
             </a>
