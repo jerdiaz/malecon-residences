@@ -54,20 +54,36 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* ── Navbar dentro del menú ── */}
+          {/* ── Navbar dentro del menú ──
+              El logo lleva tamaño explícito en vez del `h-12` por defecto de
+              Logo.tsx. A esa altura el lockup horizontal mide 218px de ancho:
+              en una pantalla de 375 terminaba en x=244 y la palabra "Cerrar"
+              empezaba en x=244 también —cero de hueco—, así que se leía
+              "MALECÓNCERRAR" de corrido. Medido a 375 y a 360.
+
+              `h-9 md:h-10` es el mismo tamaño que usa la barra en su estado
+              compacto, que es sobre la que se abre este menú: además de
+              resolver el choque, el logo ya no salta al abrir. */}
           <div className="flex shrink-0 items-center justify-between px-6 py-5 md:px-12">
             <button
               onClick={() => handleNavigate("hero")}
               className="flex flex-col items-start leading-none"
             >
-              <Logo />
+              <Logo className="h-9 md:h-10" />
             </button>
 
             <button
               onClick={onClose}
+              // Con la palabra escondida el botón se queda sin nombre
+              // accesible en móvil, porque `display:none` lo saca del árbol.
+              // El rótulo lo pone aquí, igual que en la barra.
+              aria-label="Cerrar menú"
               className="group -m-2 flex items-center gap-3 p-2 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/70 transition-colors hover:text-white"
             >
-              Cerrar
+              {/* La palabra se esconde en pantallas estrechas, igual que hace
+                  el botón "Menú" de la barra: la equis sola ya dice qué hace, y
+                  son 68px que no hacen falta donde menos sobran. */}
+              <span className="hidden sm:inline">Cerrar</span>
               <span className="relative flex h-8 w-8 items-center justify-center">
                 <span className="absolute h-px w-5 rotate-45 bg-current transition-all duration-300" />
                 <span className="absolute h-px w-5 -rotate-45 bg-current transition-all duration-300" />
