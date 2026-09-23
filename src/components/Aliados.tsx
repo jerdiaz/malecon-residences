@@ -53,11 +53,14 @@ const ARCHITECT = {
  *  versión "40 años", branding conmemorativo que no conviene en un sitio de
  *  larga vida, y el lockup "Alianza Fiduciaria" del brochure ya no lo usan.
  *  Hay que pedirle el archivo al cliente. */
-const CREDITOS = [
-  { rol: "Promotora", tipo: "logo-sitio" as const },
+const PROMOTORA = { rol: "Promotora" };
+
+/** Los demás roles del proyecto. Van debajo de la promotora y a menos tamaño.
+ *
+ *  Cuando entre la fiducia (Alianza) se suma aquí y la fila se reacomoda sola. */
+const CREDITOS_SECUNDARIOS = [
   {
     rol: "Estratega inmobiliario",
-    tipo: "imagen" as const,
     src: "/images/aliados/promociones-0803.webp",
     alt: "Logo de Promociones 0803, estratega inmobiliario del proyecto",
     width: 800,
@@ -204,28 +207,34 @@ export default function Aliados() {
           </div>
         </Reveal>
 
-        {/* ── Créditos — el pie de la página del brochure, que pone los roles
-             uno al lado del otro. Apilados en móvil, en fila desde sm. */}
+        {/* ── Créditos — el pie de la página del brochure.
+             Estaban los dos roles en una misma fila y al mismo alto, y ahí el
+             estratega le ganaba la partida a la promotora: a 88px de alto, el
+             lockup de Promociones 0803 mide 195px de ancho contra los 153 de
+             Malecón, y encima es una condensada sólida con una P roja, mientras
+             que el de Malecón es un trazo fino en crema. Pesaba más el aliado
+             que el dueño del proyecto.
+             Ahora la promotora va sola y centrada, y los demás roles caen a una
+             segunda fila a la mitad de alto. La jerarquía queda por posición y
+             por tamaño, no solo por el rótulo. */}
         <Reveal delay={320}>
           <div className="mt-10 border-t border-white/10 pt-10">
-            <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-20">
-              {CREDITOS.map((c) => (
-                <div
-                  key={c.rol}
-                  className="flex flex-col items-center gap-5"
-                >
+            <div className="flex flex-col items-center gap-5">
+              <p className="rotulo text-center text-bronze">{PROMOTORA.rol}</p>
+              <Logo variant="stacked" className="h-20" />
+            </div>
+
+            <div className="mt-12 flex flex-col items-center justify-center gap-10 sm:flex-row sm:gap-16">
+              {CREDITOS_SECUNDARIOS.map((c) => (
+                <div key={c.rol} className="flex flex-col items-center gap-4">
                   <p className="rotulo text-center text-bronze">{c.rol}</p>
-                  {c.tipo === "logo-sitio" ? (
-                    <Logo variant="stacked" className="h-20" />
-                  ) : (
-                    <Image
-                      src={c.src}
-                      alt={c.alt}
-                      width={c.width}
-                      height={c.height}
-                      className="h-20 w-auto"
-                    />
-                  )}
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    width={c.width}
+                    height={c.height}
+                    className="h-12 w-auto"
+                  />
                 </div>
               ))}
             </div>
