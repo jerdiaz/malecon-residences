@@ -51,22 +51,24 @@ export default function Plantas() {
                   maquetación cuando entra el archivo —que pesa 2.2 MB— y la
                   sección mide lo mismo antes y después.
 
-                  El alto medido con el hueco reservado es 750px, y sin él la
-                  sección marcaba 379 (nada) contra 1110 (con el plano). Por
-                  eso el tope de abajo hace falta.
+                  SIN TOPE DE ALTO, a propósito. Se probó uno de `52svh` para
+                  que la sección cupiera en una pantalla: funcionaba —771px
+                  contra los 770 de objetivo— pero dejaba el plano en 759×437
+                  flotando en medio de la sección, con aire muerto a los lados.
+                  El cliente lo marcó: aquí lo que manda es que el plano se vea
+                  grande.
 
-                  `maxHeight: 52svh` es lo que hace que la sección quepa en una
-                  pantalla: con el plano a 750px se iba a 1.3 pantallas; con el
-                  tope cae a ~765px y entra entera. Encoger el plano cuesta
-                  menos de lo que parece, porque aquí es un anticipo: se hace
-                  clic y se abre en el visor a tamaño completo, así que lo que
-                  importa es que se reconozca, no que se lea. */}
+                  El plano es apaisado (proporción 1.737), así que su alto y su
+                  ancho se pagan el uno al otro: para que ocupe 750px de alto
+                  necesita 1302 de ancho, y con eso la sección mide 1110px,
+                  o sea 1.3 pantallas. No hay forma de tener las dos cosas en
+                  una ventana de 840px; entre un plano grande y una sección
+                  exacta, gana el plano. */}
               <span
                 className="block mx-auto"
                 style={{
                   maxWidth: `${plano.escala * 100}%`,
                   aspectRatio: plano.aspecto,
-                  maxHeight: "52svh",
                 }}
               >
                 <PlanoImg plano={plano} />
