@@ -58,36 +58,15 @@ export default function RendersGallery() {
             stagger={50}
           />
         </h2>
-        {/* El párrafo y el único acceso a la galería completa comparten
-            renglón desde `md`: apilados costaban 187px —el botón más su
-            margen— y al lado ocupan el alto del más alto de los dos.
-
-            Ojo, el botón NO va alineado al borde derecho, y no es un descuido:
-            ahí compartía columna con el CTA del navbar —los dos terminaban en
-            el mismo píxel— y al desplazarse una caja pasaba por debajo de la
-            otra. Va pegado al párrafo, dentro de un grupo que tope en 4xl, así
-            que nunca llega al borde. */}
-        <div className="mt-8 flex max-w-4xl flex-col gap-6 md:flex-row md:items-center md:gap-10">
-          <Reveal>
-            <p className="max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
-              {CAROUSEL_RENDERS.length} perspectivas del Malecón Business
-              Center. Arquitectura contemporánea diseñada para Marbella,
-              Cartagena de Indias.
-            </p>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <Link
-              href="/galeria"
-              className="group inline-flex shrink-0 items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-            >
-              Ver galería completa
-              <span className="transition-transform duration-500 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-          </Reveal>
-        </div>
+        {/* El acceso a la galería completa ya no vive aquí: bajó a la fila de
+            controles del carrusel. Ver la nota de allí. */}
+        <Reveal delay={500}>
+          <p className="mt-8 max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
+            {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
+            Arquitectura contemporánea diseñada para Marbella, Cartagena
+            de Indias.
+          </p>
+        </Reveal>
       </div>
 
       {/* Carrusel — rejilla alineada sobre el set completo de renders. Antes
@@ -169,9 +148,24 @@ export default function RendersGallery() {
           />
         </div>
 
-        {/* Controles del carrusel. El acceso a la galería completa ya no se
-            repite aquí: vive una sola vez, arriba en el encabezado. */}
-        <div className="mt-8 flex items-center gap-5">
+        {/* Controles del carrusel, y aquí vive también el único acceso a la
+            galería completa.
+
+            Estuvo antes bajo el párrafo del encabezado, y en la ronda de
+            alturas se probó a ponerlo al lado del párrafo para ahorrar los
+            187px que costaba apilado: quedaba como una caja suelta flotando en
+            medio del blanco, y el cliente lo marcó. Aquí resuelve las dos
+            cosas: sigue sin costar alto —la fila de controles ya existía y le
+            sobraba sitio a la derecha— y deja de ser un bloque suelto, porque
+            se lee junto a las flechas y al contador como lo que es, un control
+            más de la galería.
+
+            Va como enlace de texto y no como botón con recuadro: al lado de
+            dos flechas circulares y un contador, una caja con borde vuelve a
+            desentonar. Y alineado a la derecha aquí no repite el problema
+            viejo de chocar con el CTA del navbar, porque está al final de la
+            sección y no arriba, a su misma altura. */}
+        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
             <button
               onClick={() => go(-1)}
               aria-label="Ver el grupo anterior"
@@ -194,6 +188,17 @@ export default function RendersGallery() {
               {String(SLIDES.length).padStart(2, "0")}
             </p>
 
+            <Link
+              href="/galeria"
+              className="group ml-auto inline-flex items-center gap-3 text-[0.7rem] font-normal uppercase tracking-[0.16em] text-white/80 transition-colors duration-300 ease-silk hover:text-champagne"
+            >
+              <span className="border-b border-white/20 pb-1 transition-colors duration-300 group-hover:border-bronze">
+                Ver galería completa
+              </span>
+              <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
         </div>
       </div>
     </section>
