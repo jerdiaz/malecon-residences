@@ -288,7 +288,11 @@ function Field({
           onChange={onChange}
           autoComplete={autoComplete}
           required={required}
-          className="peer w-full border-b border-white/15 bg-transparent pb-3 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
+          // `pt-2` además del `pb-3`: sin él el campo medía 41px de alto,
+          // tres por debajo del mínimo táctil de 44. El filete sigue abajo;
+          // lo que cambia es que el renglón respira. Mismo ajuste que en el
+          // campo de la puerta de registro, que es el mismo patrón.
+          className="peer w-full border-b border-white/15 bg-transparent pb-3 pt-2 font-normal tracking-wide text-white outline-none placeholder:text-white/20"
         />
         {/* Línea ámbar que se pinta de izquierda a derecha al enfocar */}
         <span className="pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-500 ease-silk peer-focus:w-full" />
