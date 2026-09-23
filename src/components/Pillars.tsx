@@ -53,9 +53,9 @@ export default function Pillars() {
   return (
     <section
       id="pillars"
-      className="relative w-full overflow-hidden bg-ink min-h-screen md:h-screen"
+      className="relative w-full overflow-hidden bg-ink scroll-mt-16 min-h-pantalla md:h-pantalla"
     >
-      <div className="relative flex min-h-screen flex-col md:h-screen md:flex-row">
+      <div className="relative flex min-h-pantalla flex-col md:h-pantalla md:flex-row">
         {PANELS.map((panel, i) => {
           const isActive = active === i;
 
@@ -69,7 +69,7 @@ export default function Pillars() {
               onBlur={() => clearIfActive(i)}
               onClick={() => setActive(i)}
               aria-label={panel.heading}
-              className="group relative h-[33vh] w-full flex-1 overflow-hidden border-b border-white/5 text-left last:border-none md:h-full md:border-b-0 md:border-r"
+              className="group relative h-[calc((100svh-4rem)/3)] w-full flex-1 overflow-hidden border-b border-white/5 text-left last:border-none md:h-full md:border-b-0 md:border-r"
             >
               {/* Imagen de fondo — la escala va en el contenedor para que
                   `next/image` pueda seguir sirviendo el corte adecuado */}

@@ -47,13 +47,13 @@ export default function LocationSection() {
   return (
     <section
       id="ubicacion"
-      className="relative min-h-screen w-full bg-ink scroll-mt-20"
+      className="relative min-h-pantalla w-full bg-ink scroll-mt-16"
     >
       {/* El mapa se lleva mas ancho que el texto: es el contenido de la
             seccion y su proporcion es vertical, asi que en pantallas altas
             el ancho de columna es lo que le pone techo al tamano. 43/57 deja
             la columna de texto en una medida de lectura comoda. */}
-        <div className="grid min-h-screen grid-cols-1 items-stretch lg:grid-cols-[minmax(0,43fr)_minmax(0,57fr)]">
+        <div className="grid min-h-pantalla grid-cols-1 items-stretch lg:grid-cols-[minmax(0,43fr)_minmax(0,57fr)]">
 
         {/* ── Columna de texto ── */}
         <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
@@ -150,29 +150,26 @@ export default function LocationSection() {
             un SVG y next/image no lo optimiza, con fill perdería el
             vector. */}
         <div
-          className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-0 lg:h-screen"
+          className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:sticky lg:top-16 lg:h-pantalla"
           style={{ backgroundColor: MAPA_MAR }}
         >
-          {/* `lg:pt-32` deja libre la franja de la barra fija. El panel se pega
-              en top-0, asi que sin esto la parte superior del mapa quedaba bajo
-              el header: la barra es transparente y el mapa se transparentaba a
-              traves, pero el logo y el menu caian justo encima del Mar Caribe,
-              la brujula y la etiqueta de Kristal Malls.
-              La reserva son los 133px exactos que mide el header mientras este
-              panel esta pegado (medido a 1024, 1440 y 1920), no la constante de
-              80px que usa el resto del sitio en `scroll-mt-20` y en
-              `offset = 80` de sections.ts: esa se quedo corta y dejaba 20px de
-              solape. Va en px y no en una clase de escala porque el sitio
-              define el rem en 110% (17.6px) y las clases valdrian un 10% mas.
-              Abajo lleva un relleno minimo (`pb-2`) y no el `p-4` de antes: lo
-              que sobra de alto es justamente lo que le pone techo al mapa, que
-              en ventanas de 900px queda limitado por altura y no por ancho.
-              Sin nada de relleno el mapa apoyaba en el borde inferior de la
-              pantalla y se leia como cortado; 8.8px bastan para despegarlo y
-              cuestan un 1% de tamano.
-              Solo desde lg, que es donde el panel es pegajoso; en movil va en
-              flujo normal y la barra no lo pisa. */}
-          <div className="absolute inset-0 flex items-center justify-center p-4 lg:px-4 lg:pb-2 lg:pt-[133px]">
+          {/* Ya no hace falta reservarle sitio a la barra con relleno: el panel
+              se pega en `lg:top-16`, o sea POR DEBAJO de ella, y mide
+              `lg:h-pantalla` —la ventana menos esos mismos 4rem—. El hueco que
+              queda es exactamente el visible, así que el mapa lo puede llenar
+              entero.
+
+              Antes se reservaban 133px por arriba. Ese número es el alto de la
+              barra en su estado ALTO, el del hero; mientras este panel está
+              pegado la barra siempre está en su estado compacto, que mide 71px
+              —medido en cinco puntos a lo largo de la sección—. Reservar 133
+              costaba unos 60px de alto de mapa, que en ventanas de 900px es
+              justo lo que le pone techo.
+
+              Queda un relleno mínimo para que el mapa no apoye en los bordes y
+              se lea como cortado. Solo desde lg, que es donde el panel es
+              pegajoso; en móvil va en flujo normal y la barra no lo pisa. */}
+          <div className="absolute inset-0 flex items-center justify-center p-4 lg:px-4 lg:py-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={MAPA_CONEXIONES_SRC}

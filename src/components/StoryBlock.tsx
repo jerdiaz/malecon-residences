@@ -36,10 +36,10 @@ export default function StoryBlock({
   return (
     <section
       id={id}
-      className="relative w-full scroll-mt-20 bg-ink"
+      className="relative w-full scroll-mt-16 bg-ink"
     >
       <div
-        className={`grid min-h-screen w-full grid-cols-1 items-stretch lg:grid-cols-2 ${
+        className={`grid min-h-pantalla w-full grid-cols-1 items-stretch lg:grid-cols-2 ${
           imagePos === "left" ? "lg:[grid-template-columns:1fr_1fr]" : ""
         }`}
       >

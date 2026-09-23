@@ -31,7 +31,7 @@ export const SECTION_IDS: string[] = SECTIONS.map((s) => s.id);
 export function scrollToSection(id: string): void {
   const target = document.getElementById(id);
   if (!target) return;
-  const offset = 80;
+  const offset = 70;
   const top = target.getBoundingClientRect().top + window.scrollY - offset;
   window.scrollTo({ top, behavior: "smooth" });
 }

@@ -45,6 +45,23 @@ const config: Config = {
         champagne: "#d8c4a0",
         bronze: "#b08d57",
       },
+      // Alto de una sección que debe verse ENTERA bajo la barra fija.
+      //
+      // Una sección a `min-h-screen` mide exactamente la ventana, pero el
+      // navbar está fijo encima y le tapa el arranque: medido a 1440×840, de
+      // una sección de 840px solo se veían 707. Nunca se veía completa.
+      //
+      // 4rem es el alto real de la barra en su estado compacto —70.4px contra
+      // los 71 medidos—, que es el estado en el que está siempre que hay una
+      // sección en pantalla: py-3 (26.4px) más el lockup horizontal (44px).
+      //
+      // `svh` y no `vh`: en móvil `vh` cuenta la ventana como si la barra del
+      // navegador estuviera oculta, así que la sección se pasa de largo justo
+      // en las pantallas más cortas. `svh` usa la ventana chica, que es la que
+      // se ve de verdad. En escritorio los dos valen lo mismo.
+      height: { pantalla: "calc(100svh - 4rem)" },
+      minHeight: { pantalla: "calc(100svh - 4rem)" },
+
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
