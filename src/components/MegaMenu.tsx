@@ -196,6 +196,29 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
+            {/* "Agenda tu visita" — SOLO en móvil. En la barra el botón es
+                `hidden md:inline-block`, así que por debajo de 768px no
+                existía: en un teléfono la barra solo tenía el logo y la
+                hamburguesa, y el único CTA con forma de botón del sitio no
+                aparecía por ninguna parte.
+
+                No se puede devolver a la barra: medido a 375, entre el logo
+                compacto (190px), la hamburguesa y los márgenes quedan 81px
+                libres, y el botón pide unos 158. Aquí sí cabe, y este menú es
+                la navegación móvil.
+
+                Relleno en bronce sobre ink, el mismo tratamiento y el mismo
+                5,16:1 que el botón de Contacto. */}
+            <button
+              onClick={() => handleNavigate("contact")}
+              className="group mb-5 flex w-full items-center justify-center gap-3 bg-bronze py-4 text-[0.75rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors duration-500 ease-silk hover:bg-champagne active:bg-champagne lg:hidden"
+            >
+              Agenda tu visita
+              <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+
             {/* Contacto directo — SOLO en móvil. En escritorio estos mismos
                 datos viven en la columna de la derecha del menú, que es
                 `hidden lg:flex`: o sea que estaban donde el pie de la página
