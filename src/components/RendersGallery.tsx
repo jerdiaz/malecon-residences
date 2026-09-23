@@ -58,14 +58,40 @@ export default function RendersGallery() {
             stagger={50}
           />
         </h2>
-        {/* El acceso a la galería completa ya no vive aquí: bajó a la fila de
-            controles del carrusel. Ver la nota de allí. */}
         <Reveal delay={500}>
           <p className="mt-8 max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
             {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
             Arquitectura contemporánea diseñada para Marbella, Cartagena
             de Indias.
           </p>
+        </Reveal>
+
+        {/* El acceso a la galería completa va ARRIBA, bajo el párrafo, y no al
+            final de la sección: el interés por ver más aparece mientras se
+            baja, y si el enlace vive después del carrusel hay que pasar por
+            todo para encontrarlo.
+
+            Va como enlace de texto con filete y no como botón con recuadro.
+            Esa es la forma que se probó antes y el cliente marcó: una caja de
+            8 de relleno al lado del párrafo se leía como un bloque suelto
+            flotando en el blanco. Además el recuadro costaba 187px con su
+            margen; así son 48, y el acceso se queda donde tiene que estar.
+
+            Alineado a la izquierda, siguiendo el párrafo. A la derecha ya se
+            sabe qué pasa: comparte columna con el CTA del navbar y al
+            desplazarse una caja pasa por debajo de la otra. */}
+        <Reveal delay={700}>
+          <Link
+            href="/galeria"
+            className="group mt-5 inline-flex items-center gap-3 text-[0.72rem] font-normal uppercase tracking-[0.16em] text-white/85 transition-colors duration-300 ease-silk hover:text-champagne"
+          >
+            <span className="border-b border-white/25 pb-1 transition-colors duration-300 group-hover:border-bronze">
+              Ver galería completa
+            </span>
+            <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
         </Reveal>
       </div>
 
@@ -148,24 +174,10 @@ export default function RendersGallery() {
           />
         </div>
 
-        {/* Controles del carrusel, y aquí vive también el único acceso a la
-            galería completa.
-
-            Estuvo antes bajo el párrafo del encabezado, y en la ronda de
-            alturas se probó a ponerlo al lado del párrafo para ahorrar los
-            187px que costaba apilado: quedaba como una caja suelta flotando en
-            medio del blanco, y el cliente lo marcó. Aquí resuelve las dos
-            cosas: sigue sin costar alto —la fila de controles ya existía y le
-            sobraba sitio a la derecha— y deja de ser un bloque suelto, porque
-            se lee junto a las flechas y al contador como lo que es, un control
-            más de la galería.
-
-            Va como enlace de texto y no como botón con recuadro: al lado de
-            dos flechas circulares y un contador, una caja con borde vuelve a
-            desentonar. Y alineado a la derecha aquí no repite el problema
-            viejo de chocar con el CTA del navbar, porque está al final de la
-            sección y no arriba, a su misma altura. */}
-        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+        {/* Controles del carrusel. El acceso a la galería completa no se
+            repite aquí: vive una sola vez, arriba en el encabezado, que es
+            donde hace falta — ver la nota de allí. */}
+        <div className="mt-8 flex items-center gap-5">
             <button
               onClick={() => go(-1)}
               aria-label="Ver el grupo anterior"
@@ -188,17 +200,6 @@ export default function RendersGallery() {
               {String(SLIDES.length).padStart(2, "0")}
             </p>
 
-            <Link
-              href="/galeria"
-              className="group ml-auto inline-flex items-center gap-3 text-[0.7rem] font-normal uppercase tracking-[0.16em] text-white/80 transition-colors duration-300 ease-silk hover:text-champagne"
-            >
-              <span className="border-b border-white/20 pb-1 transition-colors duration-300 group-hover:border-bronze">
-                Ver galería completa
-              </span>
-              <span className="transition-transform duration-500 ease-silk group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
         </div>
       </div>
     </section>
