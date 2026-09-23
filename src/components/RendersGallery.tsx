@@ -41,8 +41,11 @@ export default function RendersGallery() {
 
   return (
     <section id="galeria" className="relative w-full bg-ink scroll-mt-16 aire-seccion">
-      {/* Header — con más aire alrededor para una composición más exclusiva */}
-      <div className="mx-auto max-w-7xl px-6 md:px-12 mb-20 lg:mb-28">
+      {/* Header. El margen inferior baja de 20/28 a 10/12: eran 196px de aire
+          puro entre el encabezado y el carrusel, la pieza más cara de la
+          sección después de las fotos, y las fotos no se tocan porque son el
+          contenido. */}
+      <div className="mx-auto max-w-7xl px-6 md:px-12 mb-10 lg:mb-12">
         <Reveal>
           <p className="antetitulo mb-6 text-bronze">
             Galería
@@ -55,31 +58,36 @@ export default function RendersGallery() {
             stagger={50}
           />
         </h2>
-        <Reveal delay={500}>
-          <p className="mt-8 max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
-            {CAROUSEL_RENDERS.length} perspectivas del Malecón Business Center.
-            Arquitectura contemporánea diseñada para Marbella, Cartagena
-            de Indias.
-          </p>
-        </Reveal>
+        {/* El párrafo y el único acceso a la galería completa comparten
+            renglón desde `md`: apilados costaban 187px —el botón más su
+            margen— y al lado ocupan el alto del más alto de los dos.
 
-        {/* Único acceso a la galería completa, y va aquí abajo del párrafo, no
-            a la derecha: alineado a la derecha compartía columna con el CTA del
-            navbar —los dos terminaban en el mismo píxel— y al hacer scroll una
-            caja pasaba por debajo de la otra. Abajo y a la izquierda sigue el
-            mismo patrón que los StoryBlock, que es el idioma del resto de la
-            página. */}
-        <Reveal delay={700}>
-          <Link
-            href="/galeria"
-            className="group mt-10 inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
-          >
-            Ver galería completa
-            <span className="transition-transform duration-500 group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
-        </Reveal>
+            Ojo, el botón NO va alineado al borde derecho, y no es un descuido:
+            ahí compartía columna con el CTA del navbar —los dos terminaban en
+            el mismo píxel— y al desplazarse una caja pasaba por debajo de la
+            otra. Va pegado al párrafo, dentro de un grupo que tope en 4xl, así
+            que nunca llega al borde. */}
+        <div className="mt-8 flex max-w-4xl flex-col gap-6 md:flex-row md:items-center md:gap-10">
+          <Reveal>
+            <p className="max-w-lg text-sm font-normal leading-relaxed text-cuerpo">
+              {CAROUSEL_RENDERS.length} perspectivas del Malecón Business
+              Center. Arquitectura contemporánea diseñada para Marbella,
+              Cartagena de Indias.
+            </p>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <Link
+              href="/galeria"
+              className="group inline-flex shrink-0 items-center gap-4 border border-white/20 px-8 py-4 text-[0.7rem] font-light uppercase tracking-[0.25em] text-white/80 transition-all duration-500 ease-silk hover:border-bronze hover:text-champagne"
+            >
+              Ver galería completa
+              <span className="transition-transform duration-500 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </Reveal>
+        </div>
       </div>
 
       {/* Carrusel — rejilla alineada sobre el set completo de renders. Antes
