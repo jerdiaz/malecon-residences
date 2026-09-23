@@ -19,7 +19,7 @@ export default function Plantas() {
 
   return (
     <section id="plantas" className="relative w-full bg-ink scroll-mt-20">
-      <div className="mx-auto max-w-7xl px-6 pt-28 md:px-12">
+      <div className="mx-auto max-w-7xl px-6 md:px-12 aire-seccion-arriba">
         <Reveal>
           <p className="antetitulo text-bronze">
             Plantas · La distribución

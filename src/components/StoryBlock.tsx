@@ -51,7 +51,7 @@ export default function StoryBlock({
         )}
 
         {/* Texto — en móvil siempre primero (order-1), en desktop vuelve a su posición natural */}
-        <div className="order-1 flex items-center px-8 py-28 lg:order-none lg:items-start lg:px-16 xl:px-24">
+        <div className="order-1 flex items-center px-8 aire-seccion lg:order-none lg:items-start lg:px-16 xl:px-24">
           <div className="max-w-lg">
             <Reveal>
               {/* El antetítulo dorado, el cuerpo blanco y el rótulo de la lista

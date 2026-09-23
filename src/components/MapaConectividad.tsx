@@ -31,7 +31,7 @@ export default function MapaConectividad() {
   return (
     <section
       id="conectividad-prueba"
-      className="relative w-full scroll-mt-20 py-24 md:py-32"
+      className="relative w-full scroll-mt-16 aire-seccion"
       style={{ backgroundColor: CREAM }}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-12">

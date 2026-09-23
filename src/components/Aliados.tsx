@@ -98,7 +98,7 @@ export default function Aliados() {
   return (
     <section
       id="aliados"
-      className="relative w-full scroll-mt-20 bg-ink py-24 md:py-32"
+      className="relative w-full scroll-mt-16 bg-ink aire-seccion"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}

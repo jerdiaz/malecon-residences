@@ -39,7 +39,7 @@ export default function Cifras() {
   return (
     <section
       id="cifras"
-      className="relative w-full scroll-mt-20 bg-ink py-28 md:py-36"
+      className="relative w-full scroll-mt-16 bg-ink aire-seccion"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ── Encabezado ── */}

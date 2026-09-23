@@ -40,7 +40,7 @@ export default function RendersGallery() {
   const next = SLIDES[(slide + 1) % SLIDES.length];
 
   return (
-    <section id="galeria" className="relative w-full bg-ink scroll-mt-20 py-28 lg:py-40">
+    <section id="galeria" className="relative w-full bg-ink scroll-mt-16 aire-seccion">
       {/* Header — con más aire alrededor para una composición más exclusiva */}
       <div className="mx-auto max-w-7xl px-6 md:px-12 mb-20 lg:mb-28">
         <Reveal>

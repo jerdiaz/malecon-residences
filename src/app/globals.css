@@ -13,6 +13,10 @@
     --ink: 20 34 56;
     /* El mismo tono, a 45% de luminosidad. Ver la nota de `ink.950`. */
     --ink-deep: 9 15 25;
+    /* Ritmo vertical de las secciones — ver la nota de `.aire-seccion`. Vive
+       en el mismo :root que los colores para que no haya dos sitios donde
+       buscar las constantes del sitio. */
+    --aire-seccion: clamp(3rem, 9vh, 9.5rem);
   }
 
   html {
@@ -43,6 +47,32 @@
 }
 
 @layer components {
+  /* ── Ritmo vertical de las secciones ──────────────────────────────────────
+     El aire de arriba y abajo deja de ser fijo y pasa a depender del ALTO de
+     la ventana, no solo del ancho. El motivo es medible: con `py-36` fijos,
+     una sección gasta 316px en aire — en un portátil de 600px de viewport eso
+     es más de la mitad de la pantalla, y es justo lo que impedía que la
+     sección cupiera.
+
+     clamp(3rem, 9vh, 9.5rem) da, por lado:
+        600px de ventana →  52.8px   (manda el mínimo; no llega a verse apretado)
+        840px            →  75.6px
+       1080px            →  97.2px
+       1600px            →  144px
+       1760px            →  158px    (lo mismo que el `py-36` de antes)
+
+     O sea: en el portátil se recoge, en el monitor grande se queda como
+     estaba. La elegancia se conserva donde hay sitio para ella. */
+  .aire-seccion {
+    padding-block: var(--aire-seccion);
+  }
+
+  /* Para las secciones que solo llevan aire arriba, porque abajo cierran con
+     otra cosa (el pie en Contacto, el plano en Plantas). */
+  .aire-seccion-arriba {
+    padding-top: var(--aire-seccion);
+  }
+
   /* ── Los tres niveles de título del sitio ──────────────────────────────────
      Viven aquí, en una sola definición, y no repartidos por cada componente.
      Hasta el 2026-09-16 cada sección llevaba sus propios valores en línea, y

@@ -56,7 +56,7 @@ export default function LocationSection() {
         <div className="grid min-h-pantalla grid-cols-1 items-stretch lg:grid-cols-[minmax(0,43fr)_minmax(0,57fr)]">
 
         {/* ── Columna de texto ── */}
-        <div className="flex flex-col justify-center px-8 py-28 lg:px-16 xl:px-24">
+        <div className="flex flex-col justify-center px-8 aire-seccion lg:px-16 xl:px-24">
           <p className="antetitulo mb-6 text-bronze">
             La ubicación
           </p>

@@ -106,7 +106,7 @@ export default function AmenidadesTexto({
   return (
     <section
       id={id}
-      className="relative w-full scroll-mt-20 py-28 md:py-36"
+      className="relative w-full scroll-mt-16 aire-seccion"
       style={{ backgroundColor: CREAM }}
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">

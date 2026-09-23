@@ -25,7 +25,7 @@ import Reveal from "@/components/ui/Reveal";
 
 export default function Ubicacion() {
   return (
-    <section id="ubicacion" className="relative w-full scroll-mt-20 bg-ink py-24 md:py-32">
+    <section id="ubicacion" className="relative w-full scroll-mt-16 bg-ink aire-seccion">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <Reveal>
           <p className="antetitulo text-bronze">

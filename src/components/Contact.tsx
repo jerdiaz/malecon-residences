@@ -88,7 +88,7 @@ export default function Contact() {
       id="contact"
       className="relative flex min-h-pantalla w-full flex-col bg-ink scroll-mt-16"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pt-28 pb-12">
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 pb-12 aire-seccion-arriba">
         <Reveal>
           <p className="antetitulo mb-5 text-center text-bronze">
             Visita privada

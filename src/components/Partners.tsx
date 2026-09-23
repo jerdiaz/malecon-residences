@@ -35,7 +35,7 @@ export default function Partners() {
   return (
     <section
       id="marcas"
-      className="relative w-full overflow-hidden bg-ink py-24 scroll-mt-20 md:py-28"
+      className="relative w-full overflow-hidden bg-ink scroll-mt-16 aire-seccion"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <Reveal>
