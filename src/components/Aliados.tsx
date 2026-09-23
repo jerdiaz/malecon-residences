@@ -116,7 +116,7 @@ export default function Aliados() {
         {/* ── Banda del arquitecto: firma a la izquierda, semblanza a la
              derecha, con el acento de bronce en la costura ── */}
         <Reveal delay={240}>
-          <div className="mt-16 grid border-y border-white/10 md:grid-cols-[minmax(0,20rem)_1fr]">
+          <div className="mt-10 grid border-y border-white/10 md:grid-cols-[minmax(0,20rem)_1fr]">
             <div className="flex flex-col items-center justify-center gap-6 bg-white/[0.02] px-10 py-14">
               {/* El rótulo que encabeza el bloque en el brochure. Antes esta
                   columna era solo el logo y el nombre vivía al otro lado; en
@@ -184,7 +184,7 @@ export default function Aliados() {
 
         {/* ── Cierre: "Un proyecto construido sobre confianza" ── */}
         <Reveal delay={200} variant="fade-up">
-          <div className="mx-auto mt-20 max-w-3xl text-center">
+          <div className="mx-auto mt-12 max-w-3xl text-center">
             <h3 className="font-serif text-3xl font-extralight leading-[1.15] tracking-tight text-white sm:text-4xl">
               Un proyecto construido sobre{" "}
               <span className="font-light italic">confianza</span>
@@ -207,7 +207,7 @@ export default function Aliados() {
         {/* ── Créditos — el pie de la página del brochure, que pone los roles
              uno al lado del otro. Apilados en móvil, en fila desde sm. */}
         <Reveal delay={320}>
-          <div className="mt-16 border-t border-white/10 pt-12">
+          <div className="mt-10 border-t border-white/10 pt-10">
             <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-20">
               {CREDITOS.map((c) => (
                 <div
