@@ -53,19 +53,23 @@ const ARCHITECT = {
  *  versión "40 años", branding conmemorativo que no conviene en un sitio de
  *  larga vida, y el lockup "Alianza Fiduciaria" del brochure ya no lo usan.
  *  Hay que pedirle el archivo al cliente. */
-/** Los roles del proyecto, uno al lado del otro.
+/** La promotora, que va siempre en la casilla del centro. */
+const PROMOTORA = { rol: "Promotora", alto: "h-20" };
+
+/** Los demás roles, a los lados de la promotora.
+ *
+ *  El lado es explícito y no se deduce del orden: así Malecón queda clavado en
+ *  el centro de la página haya uno o dos aliados, y cuando entre la fiducia
+ *  (Alianza) basta con darle `lado: "izquierda"`.
  *
  *  `alto` es por crédito y no común a todos a propósito: a la misma altura, el
  *  lockup de Promociones 0803 mide 195px de ancho contra los 153 de Malecón, y
  *  encima es una condensada sólida con una P roja frente a un trazo fino en
- *  crema. Igualar alturas hacía pesar más al aliado que a la promotora.
- *
- *  Cuando entre la fiducia (Alianza) se suma aquí y la fila se reacomoda sola. */
-const CREDITOS = [
-  { rol: "Promotora", tipo: "logo-sitio" as const, alto: "h-20" },
+ *  crema. Igualar alturas hacía pesar más al aliado que a la promotora. */
+const LATERALES = [
   {
     rol: "Estratega inmobiliario",
-    tipo: "imagen" as const,
+    lado: "derecha" as const,
     src: "/images/aliados/promociones-0803.webp",
     alt: "Logo de Promociones 0803, estratega inmobiliario del proyecto",
     width: 800,
@@ -225,29 +229,43 @@ export default function Aliados() {
              por tamaño, no solo por el rótulo. */}
         <Reveal delay={320}>
           <div className="mt-10 border-t border-white/10 pt-10">
-            <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-20">
-              {CREDITOS.map((c) => (
-                <div key={c.rol} className="flex flex-col items-center gap-5">
-                  <p className="rotulo text-center text-bronze">{c.rol}</p>
-                  {/* Caja de alto común: cada logo se centra dentro, así los
-                      rótulos quedan alineados entre sí aunque las marcas vayan
-                      a distinto tamaño. Sin ella, el crédito más chico
-                      arrastraría su rótulo hacia arriba. */}
-                  <div className="flex h-20 items-center">
-                    {c.tipo === "logo-sitio" ? (
-                      <Logo variant="stacked" className={c.alto} />
-                    ) : (
-                      <Image
-                        src={c.src}
-                        alt={c.alt}
-                        width={c.width}
-                        height={c.height}
-                        className={`${c.alto} w-auto`}
-                      />
-                    )}
+            {/* Tres casillas de igual ancho: la promotora ocupa siempre la del
+                medio, así queda centrada en la página aunque solo haya un
+                aliado a un lado. Con `flex` y `justify-center` no pasaba: el
+                par se centraba como bloque y Malecón se iba a la izquierda.
+                En móvil se apila y la casilla vacía desaparece. */}
+            <div className="flex flex-col items-center gap-12 sm:grid sm:grid-cols-3 sm:items-start sm:gap-8">
+              {(["izquierda", "centro", "derecha"] as const).map((lado) => {
+                const lateral = LATERALES.find((l) => l.lado === lado);
+                const esCentro = lado === "centro";
+                if (!esCentro && !lateral) {
+                  return <div key={lado} className="hidden sm:block" />;
+                }
+                const rol = esCentro ? PROMOTORA.rol : lateral!.rol;
+                const alto = esCentro ? PROMOTORA.alto : lateral!.alto;
+                return (
+                  <div key={lado} className="flex flex-col items-center gap-5">
+                    <p className="rotulo text-center text-bronze">{rol}</p>
+                    {/* Caja de alto común: cada logo se centra dentro, así los
+                        rótulos quedan alineados entre sí aunque las marcas
+                        vayan a distinto tamaño. Sin ella, el crédito más chico
+                        arrastraría su rótulo hacia arriba. */}
+                    <div className="flex h-20 items-center">
+                      {esCentro ? (
+                        <Logo variant="stacked" className={alto} />
+                      ) : (
+                        <Image
+                          src={lateral!.src}
+                          alt={lateral!.alt}
+                          width={lateral!.width}
+                          height={lateral!.height}
+                          className={`${alto} w-auto`}
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </Reveal>
