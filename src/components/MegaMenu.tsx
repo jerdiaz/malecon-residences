@@ -2,17 +2,23 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { scrollToSection } from "@/lib/sections";
+import { NAV_LINKS, scrollToSection } from "@/lib/sections";
 import { CONTACT } from "@/lib/contact";
 import Logo from "@/components/Logo";
 
-const MENU_LINKS = [
-  { id: "residencias", label: "El Proyecto",  number: "01" },
-  { id: "galeria",     label: "Galería",      number: "02" },
-  { id: "ubicacion",   label: "Ubicación",    number: "03" },
-  { id: "amenities",   label: "Amenidades",   number: "04" },
-  { id: "contact",     label: "Contacto",     number: "05" },
-];
+// Las entradas salen de NAV_LINKS, la misma lista de la que se dibuja la barra
+// de escritorio. Estaban escritas a mano aquí y se habían desfasado: la barra
+// tenía seis y este menú cinco, así que en un teléfono —donde este menú ES la
+// única navegación, porque la barra horizontal no se muestra— la sección de
+// Plantas no existía. Es justo la que lleva el plano del edificio.
+//
+// De paso los números se calculan solos. Antes, insertar una entrada obligaba
+// a renumerar a mano las de abajo, que es la otra forma de que esto se
+// desfase. Añadir o quitar una sección en lib/sections.ts ahora basta.
+const MENU_LINKS = NAV_LINKS.map((seccion, i) => ({
+  ...seccion,
+  number: String(i + 1).padStart(2, "0"),
+}));
 
 const INFO_ITEMS = [
   { label: "Dirección",  value: CONTACT.projectAddress },
@@ -100,7 +106,13 @@ export default function MegaMenu({ open, onClose }: MegaMenuProps) {
           />
 
           {/* ── Cuerpo ── */}
-          <div className="grid flex-1 grid-cols-1 overflow-hidden lg:grid-cols-[1fr_420px]">
+          {/* El cuerpo se desplaza en móvil. Con la sexta entrada el menú deja
+              de caber en las pantallas cortas: a 375x667 el hueco son 481px y
+              los enlaces piden 569, así que con el `overflow-hidden` de antes
+              "Contacto" quedaba cortado por la mitad y no había forma de
+              llegar a él. En escritorio el menú es de dos columnas y sigue
+              sin desplazarse. */}
+          <div className="grid flex-1 grid-cols-1 overflow-y-auto overscroll-contain lg:grid-cols-[1fr_420px] lg:overflow-hidden">
             {/* Columna izquierda · Links grandes */}
             <nav className="flex flex-col justify-center px-6 py-10 md:px-12">
               {MENU_LINKS.map((link, i) => (
