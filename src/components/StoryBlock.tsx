@@ -20,6 +20,11 @@ interface StoryBlockProps {
   /** Descripción de la imagen. Estas no son decorativas: son los renders del
    *  proyecto, contenido en sí mismo, así que llevan alt real. */
   imageAlt: string;
+  /** Hacia dónde se ancla el recorte de la foto, como `object-position`. Solo
+   *  hace falta para las fotos verticales: el panel es apaisado en casi todas
+   *  las ventanas, y con el recorte centrado se pierde la parte de arriba.
+   *  Ver la nota en la historia de El Entorno, en page.tsx. */
+  imageFocus?: string;
 }
 
 export default function StoryBlock({
@@ -32,6 +37,7 @@ export default function StoryBlock({
   imagePos = "right",
   cta,
   imageAlt,
+  imageFocus,
 }: StoryBlockProps) {
   return (
     <section
@@ -47,7 +53,7 @@ export default function StoryBlock({
             que cada sección se identifique por su propio título antes que por su foto;
             en desktop vuelve a su posición natural en la columna izquierda. */}
         {imagePos === "left" && (
-          <ImagePanel image={image} alt={imageAlt} className="order-2 lg:order-none" />
+          <ImagePanel image={image} alt={imageAlt} focus={imageFocus} className="order-2 lg:order-none" />
         )}
 
         {/* Texto — en móvil siempre primero (order-1), en desktop vuelve a su posición natural */}
@@ -133,7 +139,7 @@ export default function StoryBlock({
 
         {/* Imagen derecha — mismo orden forzado en móvil que la variante izquierda */}
         {imagePos === "right" && (
-          <ImagePanel image={image} alt={imageAlt} className="order-2 lg:order-none" />
+          <ImagePanel image={image} alt={imageAlt} focus={imageFocus} className="order-2 lg:order-none" />
         )}
       </div>
     </section>
@@ -143,10 +149,12 @@ export default function StoryBlock({
 function ImagePanel({
   image,
   alt,
+  focus,
   className = "",
 }: {
   image: string;
   alt: string;
+  focus?: string;
   className?: string;
 }) {
   return (
@@ -168,7 +176,7 @@ function ImagePanel({
       >
         {/* 165vh en vez de 50vw: el panel es más alto que ancho y con
             object-cover el corte lo manda el alto (ver BackgroundImage). */}
-        <BackgroundImage src={image} alt={alt} sizes="(max-width: 1024px) 100vw, 165vh" />
+        <BackgroundImage src={image} alt={alt} position={focus} sizes="(max-width: 1024px) 100vw, 165vh" />
       </motion.div>
     </motion.div>
   );

@@ -93,6 +93,22 @@ export default function Home() {
           title="El Caribe como ventana permanente."
           body="Marbella, Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center se levanta sobre la Avenida Santander, con el Caribe abierto al frente."
           image="/images/entorno/oficina-vista-al-mar-cartagena-v2.webp"
+          // La foto es VERTICAL (1536x2048, 3:4) y el panel es apaisado en casi
+          // todas las ventanas, así que `object-cover` recorta arriba y abajo.
+          // Centrado, lo primero que caía era la cabeza: en una ventana de
+          // escritorio normal (1905x835) se veía del 20% al 80% de la foto y
+          // cortaba el pelo, y en el teléfono y la tablet, del 28% al 72% —la
+          // foto empezaba en la barbilla—. En pantalla completa el panel es
+          // más alto y por eso sí se veía entera.
+          //
+          // La cara va del 12% al 30% del alto. Anclando el recorte al 15%, lo
+          // que se ve queda así:
+          //   1905x835   6%–67%     1920x1080   3%–83%
+          //   1366x657   5%–70%     375x812     9%–52%
+          // Cabeza entera en todas, con aire arriba, y la vista del centro
+          // histórico (28%–32%, a la derecha) también. Es un valor de ESTA
+          // foto: si se cambia la imagen, hay que volver a medirlo.
+          imageFocus="50% 15%"
           imageAlt="Vista al Mar Caribe y a la Avenida Santander desde una oficina del Malecón Business Center, Marbella, Cartagena de Indias"
           imagePos="left"
         />

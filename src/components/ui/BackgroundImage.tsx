@@ -18,6 +18,12 @@ interface BackgroundImageProps {
   sizes: string;
   priority?: boolean;
   className?: string;
+  /** Hacia dónde se ancla el recorte de `object-cover`, como `object-position`
+   *  ("50% 15%"). Por defecto al centro. Hace falta cuando lo importante de
+   *  la foto no está en el medio: con el centro, si el hueco es más apaisado
+   *  que la foto, se recorta arriba y abajo por igual y lo primero que se
+   *  pierde es lo de arriba. */
+  position?: string;
 }
 
 /**
@@ -34,6 +40,7 @@ export default function BackgroundImage({
   sizes,
   priority = false,
   className = "",
+  position,
 }: BackgroundImageProps) {
   const blur = blurFor(src);
 
@@ -45,6 +52,7 @@ export default function BackgroundImage({
       sizes={sizes}
       priority={priority}
       className={`object-cover ${className}`}
+      style={position ? { objectPosition: position } : undefined}
       {...(blur ? { placeholder: "blur" as const, blurDataURL: blur } : {})}
     />
   );
