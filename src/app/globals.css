@@ -24,7 +24,7 @@
        las decenas de kickers en text-[0.6rem]/[0.65rem], los más chicos y
        difíciles de leer), así que subir la raíz sube la letra entera sin
        tener que tocar clase por clase ni desatender ninguna.
-       El Hero ocupa exactamente una pantalla (`h-dvh`) sin scroll, así que a
+       El Hero ocupa exactamente una pantalla (`h-svh`) sin scroll, así que a
        partir de aquí compensa su propio espaciado en ventanas bajas — ver
        Hero.tsx y ScrollCue.tsx. */
     font-size: 110%;

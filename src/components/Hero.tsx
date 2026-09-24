@@ -72,7 +72,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative h-dvh w-full overflow-hidden">
+    // `h-svh` y no `h-dvh`. `dvh` sigue el alto de la ventana EN VIVO: en un
+    // teléfono, al bajar, el navegador esconde su barra de direcciones, la
+    // ventana crece unos 60-100px y el hero crecía con ella a mitad de gesto,
+    // arrastrando el título centrado. `svh` es el alto con la barra visible y
+    // no cambia. Es la misma unidad que usa el resto del sitio (`pantalla` en
+    // tailwind.config.ts), que ya la eligió por esto.
+    <section id="hero" className="relative h-svh w-full overflow-hidden">
       {/* Video de fondo — entrega del 9 de septiembre. El original venía con
           franjas negras a los lados (pillarbox 1280x720 con el contenido real
           en 1092x720): se recorta con crop=1092:720:94:0 y se codifica sin
