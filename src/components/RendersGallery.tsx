@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SplitWords from "@/components/ui/SplitWords";
@@ -22,16 +22,61 @@ const AUTO_ADVANCE_MS = 5000;
 
 export default function RendersGallery() {
   const [slide, setSlide] = useState(0);
+  const carruselRef = useRef<HTMLDivElement>(null);
+  const [avanza, setAvanza] = useState(false);
+
+  // EL CARRUSEL SOLO AVANZA SOLO CUANDO SE VE ENTERO.
+  // Antes el temporizador corría siempre, desde que cargaba la página. En un
+  // teléfono eso lo hacía hostil: las tres fotos se apilan y el carrusel mide
+  // 915px, más que la pantalla, así que hay que bajar por él para verlo —y
+  // mientras se baja, cada 5 segundos las fotos cambiaban debajo del dedo—.
+  // Para cuando se llegaba a las flechas, 1393px más abajo, el grupo había
+  // dado tres o cuatro vueltas. Y seguía girando con la sección fuera de
+  // pantalla, así que al volver se caía en un grupo cualquiera.
+  //
+  // La regla es una sola y no depende del ancho: avanza mientras esté visible
+  // al menos el 95% del carrusel, descontando la barra fija de arriba.
+  //   · En escritorio (560px de carrusel) se cumple mientras la sección está
+  //     en pantalla: avanza como siempre, y se detiene al salir.
+  //   · En un teléfono vertical (915px contra 742 de hueco) no se cumple
+  //     nunca: no avanza solo, se pasa con el dedo o con las flechas.
+  //
+  // Tampoco avanza con `prefers-reduced-motion`: un carrusel que se mueve solo
+  // es justo lo que esa preferencia pide evitar (WCAG 2.2.2).
+  useEffect(() => {
+    const el = carruselRef.current;
+    if (!el) return;
+    const reducido = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let entero = false;
+    const actualizar = () => setAvanza(entero && !reducido.matches);
+    const observador = new IntersectionObserver(
+      ([entrada]) => {
+        entero = entrada.intersectionRatio >= 0.95;
+        actualizar();
+      },
+      // -70px arriba: la barra fija tapa esa franja, y una foto debajo de
+      // ella no se está viendo. Es el mismo desplazamiento de scrollToSection.
+      { rootMargin: "-70px 0px 0px 0px", threshold: [0, 0.95] }
+    );
+    observador.observe(el);
+    reducido.addEventListener("change", actualizar);
+    return () => {
+      observador.disconnect();
+      reducido.removeEventListener("change", actualizar);
+    };
+  }, []);
 
   // El temporizador depende de `slide`, así que cualquier salto manual
-  // reinicia la cuenta en vez de dejar el slide nuevo a medio tiempo.
+  // reinicia la cuenta en vez de dejar el slide nuevo a medio tiempo. Y de
+  // `avanza`: al volver a verse entero, la cuenta empieza de cero.
   useEffect(() => {
+    if (!avanza) return;
     const timer = setTimeout(
       () => setSlide((prev) => (prev + 1) % SLIDES.length),
       AUTO_ADVANCE_MS
     );
     return () => clearTimeout(timer);
-  }, [slide]);
+  }, [slide, avanza]);
 
   const go = (dir: 1 | -1) =>
     setSlide((prev) => (prev + dir + SLIDES.length) % SLIDES.length);
@@ -107,7 +152,7 @@ export default function RendersGallery() {
           fotos comparten borde superior e inferior y las dos pequeñas miden lo
           mismo. La jerarquía la sigue dando el ancho —65/35—, no el desorden. */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="relative">
+        <div ref={carruselRef} className="relative">
           <div
             key={slide}
             className="flex animate-[fade-in_0.4s_ease-out] flex-col gap-4 sm:h-[65vh] sm:max-h-[560px] sm:flex-row"
@@ -169,15 +214,21 @@ export default function RendersGallery() {
           </div>
         </div>
 
-        {/* Barra de progreso — se llena mientras dura el slide activo */}
+        {/* Barra de progreso — se llena mientras dura el slide activo. Solo
+            existe mientras el carrusel avanza: si no, se llenaba igual y
+            anunciaba un cambio que no iba a llegar. Al reaparecer se monta de
+            nuevo y arranca de cero, igual que el temporizador. Parada, queda
+            el filete vacío, que hace de separador. */}
         <div className="mt-8 h-px w-full bg-white/10">
-          <div
-            key={slide}
-            className="h-full bg-amber-500/80"
-            style={{
-              animation: `gallery-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
-            }}
-          />
+          {avanza && (
+            <div
+              key={slide}
+              className="h-full bg-amber-500/80"
+              style={{
+                animation: `gallery-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
+              }}
+            />
+          )}
         </div>
 
         {/* Controles del carrusel. El acceso a la galería completa no se
