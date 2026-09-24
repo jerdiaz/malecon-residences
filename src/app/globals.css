@@ -243,6 +243,26 @@
     transform: scale(1.05);
   }
 }
+/* Como clase y no en línea: iba en el `style` de cada foto de la galería, y
+   un estilo en línea no se puede apagar desde la media query de movimiento
+   reducido de más abajo. */
+.animate-galeria-zoom {
+  animation: gallery-ken-burns 8000ms ease-out forwards;
+}
+
+/* Fundido sin desplazamiento. Es el sustituto de `fade-up` cuando se pide
+   menos movimiento —ver más abajo—. Tiene nombre propio a propósito: los
+   keyframes `fade-in` de Tailwind solo existen mientras alguna clase los use,
+   y si un día desaparecen, lo que dependiera de ellos se quedaría en su
+   `opacity-0` inicial, invisible. */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* Barra de progreso — se llena de 0% a 100% mientras dura un slide */
 @keyframes gallery-progress {
@@ -364,12 +384,29 @@ html.has-custom-cursor select {
   }
 }
 
-/* Respeto por usuarios que prefieren menos movimiento */
+/* Respeto por usuarios que prefieren menos movimiento.
+   Hasta el 2026-09-24 esto cubría cuatro de las animaciones del sitio.
+   Quedaban fuera la entrada del hero, el halo de WhatsApp, el zoom de las
+   fotos de la galería y todo lo que anima Framer Motion —títulos, párrafos,
+   fotos de las historias—, que es la mayor parte. Framer Motion se cubre en
+   PreferenciaMovimiento.tsx; el carrusel, el scroll y el video del hero, cada
+   uno en su componente.
+
+   Lo que es fundido se queda: cambiar de opacidad no es desplazamiento y no
+   marea a nadie. Lo que sale es lo que se mueve, escala o se desliza. */
 @media (prefers-reduced-motion: reduce) {
   .animate-ken-burns,
   .animate-marquee,
+  .animate-galeria-zoom,
+  .animate-ping,
   .grain-overlay::before {
     animation: none !important;
+  }
+  /* La entrada del hero subía 24px mientras aparecía. Se queda en fundido.
+     `animation: none` no sirve aquí: estos elementos arrancan en `opacity-0`
+     y es la animación la que los hace visibles. */
+  .animate-fade-up {
+    animation-name: aparecer !important;
   }
   .text-shimmer {
     animation: none !important;

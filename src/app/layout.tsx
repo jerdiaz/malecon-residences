@@ -5,6 +5,7 @@ import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
 import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
 import RegistroGate from "@/components/RegistroGate";
+import PreferenciaMovimiento from "@/components/PreferenciaMovimiento";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -88,12 +89,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-ink text-[#e7e3da] antialiased">
-        {children}
-        {/* Va en el layout y no en page.tsx para que cubra también las
-            fichas de la galería, que se comparten por enlace directo. */}
-        <RegistroGate />
-        <GrainOverlay />
-        <CustomCursor />
+        <PreferenciaMovimiento>
+          {children}
+          {/* Va en el layout y no en page.tsx para que cubra también las
+              fichas de la galería, que se comparten por enlace directo. */}
+          <RegistroGate />
+          <GrainOverlay />
+          <CustomCursor />
+        </PreferenciaMovimiento>
       </body>
     </html>
   );

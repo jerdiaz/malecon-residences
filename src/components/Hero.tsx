@@ -31,10 +31,16 @@ export default function Hero() {
 
     // Con ahorro de datos activo el video no se descarga: se queda el póster,
     // que es el mismo fotograma y pesa el 3%.
+    //
+    // Tampoco con `prefers-reduced-motion`: es un recorrido de cámara en bucle
+    // que arranca solo y no se puede pausar, justo lo que esa preferencia pide
+    // evitar. El póster es el primer fotograma, así que el hero se ve igual,
+    // quieto.
     const conexion = (
       navigator as Navigator & { connection?: { saveData?: boolean } }
     ).connection;
     if (conexion?.saveData) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let cancelado = false;
     const cargar = () => {

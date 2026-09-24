@@ -360,11 +360,8 @@ function RenderTile({
           alt={render.label}
           fill
           sizes={sizes}
-          className="object-cover"
+          className="animate-galeria-zoom object-cover"
           {...(blur ? { placeholder: "blur" as const, blurDataURL: blur } : {})}
-          style={{
-            animation: "gallery-ken-burns 8000ms ease-out forwards",
-          }}
         />
         {/* Velo inferior — ahora fijo. Antes en escritorio arrancaba en
             opacity-0 y solo entraba al pasar el cursor, igual que la etiqueta;

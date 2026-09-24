@@ -33,5 +33,8 @@ export function scrollToSection(id: string): void {
   if (!target) return;
   const offset = 70;
   const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: "smooth" });
+  // Con menos movimiento pedido, salto directo: un desplazamiento suave de
+  // diez mil píxeles es exactamente lo que esa preferencia quiere evitar.
+  const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top, behavior: reducido ? "auto" : "smooth" });
 }
