@@ -81,6 +81,29 @@ export default function RendersGallery() {
   const go = (dir: 1 | -1) =>
     setSlide((prev) => (prev + dir + SLIDES.length) % SLIDES.length);
 
+  // Deslizar con el dedo. Antes la única forma de cambiar de grupo eran las
+  // dos flechas del pie, que en un teléfono quedan 1393px por debajo de la
+  // primera foto; y es el gesto que cualquiera prueba primero sobre una foto.
+  //
+  // Solo cuenta un gesto claramente horizontal: al menos 48px de recorrido y
+  // el doble de horizontal que de vertical. Todo lo demás es alguien bajando
+  // por la página, y eso no debe cambiar la foto.
+  const toque = useRef<{ x: number; y: number } | null>(null);
+  const alEmpezarToque = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    toque.current = { x: t.clientX, y: t.clientY };
+  };
+  const alTerminarToque = (e: React.TouchEvent) => {
+    const inicio = toque.current;
+    toque.current = null;
+    if (!inicio) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - inicio.x;
+    const dy = t.clientY - inicio.y;
+    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 2) return;
+    go(dx < 0 ? 1 : -1);
+  };
+
   const current = SLIDES[slide];
   const next = SLIDES[(slide + 1) % SLIDES.length];
 
@@ -152,7 +175,18 @@ export default function RendersGallery() {
           fotos comparten borde superior e inferior y las dos pequeñas miden lo
           mismo. La jerarquía la sigue dando el ancho —65/35—, no el desorden. */}
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div ref={carruselRef} className="relative">
+        {/* `touch-pan-y touch-pinch-zoom`: el navegador se sigue ocupando del
+            desplazamiento vertical y del zoom con dos dedos, y el gesto
+            horizontal queda libre para el carrusel. Sin esto, en algunos
+            navegadores un deslizamiento con algo de inclinación arrancaba el
+            scroll de la página y el toque terminaba cancelado. */}
+        <div
+          ref={carruselRef}
+          onTouchStart={alEmpezarToque}
+          onTouchEnd={alTerminarToque}
+          onTouchCancel={() => (toque.current = null)}
+          className="relative touch-pan-y touch-pinch-zoom"
+        >
           <div
             key={slide}
             className="flex animate-[fade-in_0.4s_ease-out] flex-col gap-4 sm:h-[65vh] sm:max-h-[560px] sm:flex-row"
