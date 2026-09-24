@@ -26,7 +26,13 @@ export default function Reveal({
   className = "",
   delay = 0,
   variant = "fade-up",
-  once = false,
+  // Una sola vez por defecto. Con `false` cada bloque volvía a su estado
+  // oculto al salir de pantalla y se reanimaba 1,1s al volver a entrar. En un
+  // teléfono, donde la página son 18 pantallas y se sube y se baja con
+  // golpes de dedo, eso era un parpadeo constante: al retroceder para releer
+  // algo, el texto desaparecía y volvía a entrar debajo del dedo.
+  // Quien quiera el comportamiento anterior puede pasar `once={false}`.
+  once = true,
 }: RevealProps) {
   return (
     <motion.div

@@ -32,7 +32,9 @@ export default function SplitWords({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.1 }}
+      // Una sola vez: mismo motivo que en Reveal.tsx. Los títulos eran lo que
+      // más se notaba, porque entran palabra por palabra.
+      viewport={{ once: true, amount: 0.1 }}
       variants={{
         hidden: {},
         visible: {

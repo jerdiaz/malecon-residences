@@ -154,14 +154,16 @@ function ImagePanel({
       className={`relative min-h-[55vw] overflow-hidden lg:min-h-0 ${className}`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false, amount: 0.08 }}
+      // Una sola vez, igual que Reveal y SplitWords: al volver a pasar por la
+      // sección la foto ya no se apaga y vuelve a encenderse.
+      viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.06 }}
         whileInView={{ scale: 1 }}
-        viewport={{ once: false, amount: 0.08 }}
+        viewport={{ once: true, amount: 0.08 }}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* 165vh en vez de 50vw: el panel es más alto que ancho y con
