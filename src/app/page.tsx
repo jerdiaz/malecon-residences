@@ -92,7 +92,7 @@ export default function Home() {
           kicker="El Entorno"
           title="El Caribe como ventana permanente."
           body="Marbella, Cartagena de Indias: el destino más codiciado de la Costa colombiana. A pocos minutos del centro histórico y a cero metros del mar, Malecón Business Center se levanta sobre la Avenida Santander, con el Caribe abierto al frente."
-          image="/images/entorno/oficina-vista-al-mar-cartagena.webp"
+          image="/images/entorno/oficina-vista-al-mar-cartagena-v2.webp"
           imageAlt="Vista al Mar Caribe y a la Avenida Santander desde una oficina del Malecón Business Center, Marbella, Cartagena de Indias"
           imagePos="left"
         />

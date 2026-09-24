@@ -2,6 +2,8 @@
 // Miniaturas de 12 px en base64 que `next/image` usa como placeholder
 // borroso mientras descarga la imagen real. Regenerar al cambiar los renders.
 export const BLUR: Record<string, string> = {
+  "/images/entorno/oficina-vista-al-mar-cartagena-v2.webp":
+    "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoMABAAA8BgJZgCdAYvrbTbyX7eyAAA4S1w22YOd87nYOtNhruB5ktrw39TT1Gm+ZppBiweqjeY3T9u7wEkPlRHONVC7a46NnTbGJlGR9jxgAAA",
   "/images/entorno/oficina-vista-al-mar-cartagena.webp":
     "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAACwAQCdASoMAAcABUB8JQBOgBsyI0YAAPaJUOO66mgNgq1tnOnSMGMjMJFRAv8250Pd5ooEZa4AAA==",
   "/images/renders/acceso-peatonal.webp":

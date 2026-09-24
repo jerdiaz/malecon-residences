@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         absoluta("/images/oficinas-zona-norte-cartagena.webp"),
         absoluta("/images/renders/acceso-vehicular.webp"),
         absoluta("/images/renders/fachada-nocturna.webp"),
-        absoluta("/images/entorno/oficina-vista-al-mar-cartagena.webp"),
+        absoluta("/images/entorno/oficina-vista-al-mar-cartagena-v2.webp"),
       ],
     },
     {
