@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Superposición para leer una imagen en grande: el plano de Plantas y el mapa
@@ -9,6 +10,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 //
 // Quien lo usa se queda con su propio disparador y su propio estado: aquí solo
 // vive la capa de encima, que es la parte que costaba.
+//
+// SE MONTA EN <body> CON UN PORTAL, no donde lo pone quien lo usa. El mapa de
+// Ubicación vive dentro de un panel `lg:sticky`, y `position: sticky` abre su
+// propio contexto de apilamiento: el `z-[70]` de esta capa dejaba de competir
+// con la barra fija (`z-50`), que se pintaba ENCIMA. En producción, desde
+// 1024px, la barra tapaba el botón de cerrar y el borde de arriba del mapa, y
+// no había forma de salir. Lo mismo pasaría con un `transform` o un `filter`
+// en cualquier ancestro; desde <body> no lo atrapa ninguno.
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface VisorImagenProps {
@@ -71,7 +80,20 @@ export default function VisorImagen({
     };
   }, []);
 
-  return (
+  // Escape cierra, que es lo primero que se intenta en escritorio.
+  useEffect(() => {
+    const alPulsar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCerrar();
+    };
+    window.addEventListener("keydown", alPulsar);
+    return () => window.removeEventListener("keydown", alPulsar);
+  }, [onCerrar]);
+
+  // Solo se monta tras un clic del visitante, nunca en el servidor; la guarda
+  // es por si algún día alguien lo renderiza abierto de entrada.
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
@@ -157,7 +179,17 @@ export default function VisorImagen({
             {pista}
           </p>
         )}
+        {/* En escritorio pasa lo mismo: el mapa se muestra a vez y media el
+            alto del visor y las barras de desplazamiento de macOS no se ven
+            hasta que se usan, así que la leyenda cortada abajo parecía un
+            fallo y no algo que se recorre. */}
+        {recorrible && (
+          <p className="rotulo mt-2 hidden text-white/40 [@media(hover:hover)]:block">
+            Desplázate para ver el resto · Esc para cerrar
+          </p>
+        )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
