@@ -62,7 +62,6 @@ export default function MapaAmpliable({
           label="Mapa de conectividad"
           alt={alt}
           aspecto={MAPA_ASPECTO}
-          pista="Desliza para recorrer el mapa"
           onCerrar={() => setAmpliado(false)}
         />
       )}

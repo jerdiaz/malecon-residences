@@ -100,7 +100,6 @@ export default function Plantas() {
           src={plano.src}
           label={plano.label}
           aspecto={plano.aspecto}
-          pista="Desliza para recorrer el plano"
           onCerrar={() => setAmpliado(false)}
         />
       )}
